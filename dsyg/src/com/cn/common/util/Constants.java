@@ -9,6 +9,28 @@ package com.cn.common.util;
  */
 public class Constants {
 	
+	//dict01
+	//商品分类
+	public final static String DICT_GOODS_TYPE = "goods";
+	public final static String DICT_GOODS_TYPE_CODE_01 = "01";//电线
+	public final static String DICT_GOODS_TYPE_CODE_02 = "02";//套管
+	public final static String DICT_GOODS_TYPE_CODE_03 = "03";//扁平线
+	public final static String DICT_GOODS_TYPE_CODE_04 = "04";//线束
+	public final static String DICT_GOODS_TYPE_CODE_05 = "05";//连接器
+	public final static String DICT_GOODS_TYPE_CODE_06 = "06";//FPC
+	
+	//产地
+	public final static String DICT_MAKEAREA = "makearea";
+	
+	//小分类：耐温
+	public final static String DICT_SUB_TYPE_ITEM01 = "item01";
+	//小分类：耐压
+	public final static String DICT_SUB_TYPE_ITEM02 = "item02";
+	//小分类：材质（电线）/绝缘（套管）
+	public final static String DICT_SUB_TYPE_ITEM03 = "item03";
+	//小分类：收缩比
+	public final static String DICT_SUB_TYPE_ITEM04 = "item04";
+	
 	/**
 	 * 验证码
 	 */

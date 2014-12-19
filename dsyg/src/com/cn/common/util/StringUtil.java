@@ -5,9 +5,12 @@ import java.math.BigDecimal;
 import java.sql.Blob;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import net.sf.json.JSONArray;
 
 /**
  * 字符串操作工具类
@@ -410,10 +413,28 @@ public class StringUtil {
 		return "0";
 	}
 	
+	/**
+	 * @param list
+	 * @return
+	 */
+	public static String list2json(List<?> list) {
+		if(list != null && list.size() > 0) {
+			JSONArray array = JSONArray.fromObject(list);
+			return array.toString();
+		}
+		return "";
+	}
+	
 	public static void main(String arg[]) {
-		System.out.println(replenishStr("1111", 8));
-		System.out.println(replenishStr("1111", 4));
-		System.out.println(replenishStr("1111", 3));
-		System.out.println(replenishStr("1111", 0));
+//		List<Dict01Dto> list = new ArrayList<Dict01Dto>();
+//		Dict01Dto dd = new Dict01Dto();
+//		dd.setCode("aa");
+//		dd.setFieldname("bbbbbnn");
+//		list.add(dd);
+//		dd = new Dict01Dto();
+//		dd.setCode("aa");
+//		dd.setFieldname("bbbbbnn");
+//		list.add(dd);
+//		System.out.println(list2json(list));
 	}
 }

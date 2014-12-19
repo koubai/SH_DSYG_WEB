@@ -22,8 +22,9 @@ DROP TABLE IF EXISTS `tbdict01`;
 
 CREATE TABLE `tbdict01` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `fieldcode` varchar(32) DEFAULT NULL COMMENT '代码',
+  `fieldcode` varchar(32) DEFAULT NULL COMMENT '大分类',
   `fieldname` varchar(64) DEFAULT NULL COMMENT '名称',
+  `code` varchar(16) DEFAULT NULL COMMENT '代码',
   `lang` varchar(8) DEFAULT NULL COMMENT '语言，默认为C=Chinese',
   `mean` varchar(128) DEFAULT NULL COMMENT '含义（单位）',
   `note` varchar(256) DEFAULT NULL COMMENT '备注',
@@ -33,9 +34,11 @@ CREATE TABLE `tbdict01` (
   `updateuid` varchar(32) DEFAULT NULL COMMENT '数据更新者',
   `updatedate` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC;
 
 /*Data for the table `tbdict01` */
+
+insert  into `tbdict01`(`id`,`fieldcode`,`fieldname`,`code`,`lang`,`mean`,`note`,`status`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (1,'goods','电线','01','c','商品类型','电线',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(2,'goods','套管','02','c','商品类型','套管',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(3,'goods','扁平线','03','c','商品类型','扁平线',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(4,'goods','线束','04','c','商品类型','线束',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(5,'goods','连接器','05','c','商品类型','连接器',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(6,'goods','FPC','06','c','商品类型','FPC',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(7,'01_item01','80℃','01','c','耐温','电线耐温80℃',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(8,'01_item01','105℃','02','c','耐温','电线耐温105℃',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(9,'01_item01','150℃','03','c','耐温','电线耐温150℃',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(10,'02_item01','80℃','01','c','耐温','套管耐温80℃',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(11,'02_item01','105℃','02','c','耐温','套管耐温105℃',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(12,'02_item01','150℃','03','c','耐温','套管耐温150℃',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(13,'01_item02','30V','001','c','耐压','耐压30V',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(14,'01_item02','60V','002','c','耐压','耐压60V',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(15,'01_item02','150V','003','c','耐压','耐压150V',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(16,'01_item02','300V','004','c','耐压','耐压300V',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(17,'01_item02','600V','006','c','耐压','耐压600V',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(18,'01_item02','3KV','030','c','耐压','耐压3KV',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(19,'01_item02','6KV','060','c','耐压','耐压6KV',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(20,'01_item02','10KV及以上','100','c','耐压','耐压10KV及以上',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(21,'02_item02','300V','004','c','耐压','耐压300V',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(22,'02_item02','600V','006','c','耐压','耐压600V',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(23,'02_item02','1KV及以上','010','c','耐压','耐压1KV及以上',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(24,'01_item03','PVC Free','01','c','材质','材质PVC Free',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(25,'01_item03','Halogen Free','02','c','材质','材质Halogen Free',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(26,'02_item03','双层绝缘','01','c','绝缘','绝缘双层绝缘',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(27,'02_item03','单层绝缘','02','c','绝缘','绝缘单层绝缘',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(28,'02_item04','2:1','01','c','收缩比','收缩比2:1',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(29,'02_item04','3:1','02','c','收缩比','收缩比3:1',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(30,'02_item04','4:1','03','c','收缩比','收缩比4:1',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(31,'makearea','日本','001','c','产地','产地日本',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(32,'makearea','马来西亚','002','c','产地','产地马来西亚',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00'),(33,'makearea','苏州','003','c','产地','产地苏州',1,'admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00');
 
 /*Table structure for table `tbnews` */
 
@@ -73,7 +76,7 @@ DROP TABLE IF EXISTS `tbproduct01`;
 
 CREATE TABLE `tbproduct01` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `fieldno` varchar(8) DEFAULT NULL COMMENT '品种01：电线，02：套管，03：扁平线，04：线束，05：连接器，06：FPC',
+  `fieldcode` varchar(8) DEFAULT NULL COMMENT '品种01：电线，02：套管，03：扁平线，04：线束，05：连接器，06：FPC',
   `cata1` varchar(8) DEFAULT NULL COMMENT '大分类',
   `cata2` varchar(8) DEFAULT NULL COMMENT '中分类',
   `cata3` varchar(8) DEFAULT NULL COMMENT '小分类',
@@ -133,14 +136,17 @@ CREATE TABLE `tbproduct01` (
   `res08` varchar(16) DEFAULT NULL COMMENT '预备项目8',
   `res09` varchar(16) DEFAULT NULL COMMENT '预备项目9',
   `res10` varchar(16) DEFAULT NULL COMMENT '预备项目10',
+  `keyword` varchar(64) DEFAULT NULL COMMENT '关键字，模糊查询用',
   `createuid` varchar(32) DEFAULT NULL COMMENT '数据创建者',
   `createdate` datetime DEFAULT NULL COMMENT '数据创建时间',
   `updateuid` varchar(32) DEFAULT NULL COMMENT '数据更新者',
   `updatedate` datetime DEFAULT NULL COMMENT '数据更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbproduct01` */
+
+insert  into `tbproduct01`(`id`,`fieldcode`,`cata1`,`cata2`,`cata3`,`nameno`,`typeno`,`typenosub`,`color1`,`color2`,`size01`,`size02`,`makearea`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`item11`,`item12`,`item13`,`item14`,`item15`,`item16`,`item17`,`item18`,`item19`,`item20`,`item21`,`item22`,`item23`,`item24`,`item25`,`item26`,`item27`,`item28`,`item29`,`item30`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`pdfpath`,`rank`,`status`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`keyword`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (1,'03',NULL,NULL,NULL,'test11','abad',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'哈哈','admin','2014-12-16 00:00:00','admin','2014-12-16 00:00:00');
 
 /*Table structure for table `tbrole` */
 
@@ -184,7 +190,7 @@ CREATE TABLE `tbuser` (
 
 /*Data for the table `tbuser` */
 
-insert  into `tbuser`(`userid`,`username`,`password`,`rolecode`,`status`,`note`,`createuid`,`createdate`,`updateuid`,`updatedate`) values ('admin','admin','b59c67bf196a4758191e42f76670ceba','admin',1,'admin add','admin','2014-12-08 00:00:00','admin','2014-12-08 00:00:00');
+insert  into `tbuser`(`userid`,`username`,`password`,`rolecode`,`status`,`note`,`createuid`,`createdate`,`updateuid`,`updatedate`) values ('admin','admin11','b59c67bf196a4758191e42f76670ceba','admin',1,'admin addaaa','admin','2014-12-08 00:00:00','admin','2014-12-15 23:06:39');
 
 /*Table structure for table `tbwarehouse` */
 

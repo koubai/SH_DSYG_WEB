@@ -74,6 +74,36 @@
 		<to>/user/updPassword.action</to>
 	</rule>
 	
+	<rule>
+		<from>^/showManageProductList.shtml$</from>
+		<to>/product/showManageProductList.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/queryManageProduct.shtml$</from>
+		<to>/product/queryManageProduct.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turnManageProduct.shtml$</from>
+		<to>/product/turnManageProduct.action</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/product/turnManageProduct.action$</from>
+		<to>/turnManageProduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/queryManageProduct.action$</from>
+		<to>/queryManageProduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/showManageProductList.action$</from>
+		<to>/showManageProductList.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/user/updPassword.action$</from>
 		<to>/updPassword.shtml</to>

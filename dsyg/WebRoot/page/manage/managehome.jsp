@@ -13,8 +13,8 @@ function logout() {
 	window.location.href = '<c:url value="/manage/manageLogout.action"></c:url>';
 }
 
-function showAddPage() {
-	//window.location.href = '<c:url value="/manage/manageLogout.action"></c:url>';
+function showManageProduct() {
+	window.location.href = '<c:url value="/product/showManageProductList.action"></c:url>';
 }
 
 function showUserManage() {
@@ -43,7 +43,7 @@ function updPassword() {
 					<td>
 						<div class="menu">
 							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;" onclick="showAddPage();">
+							<div class="menu_c" style="cursor: pointer;" onclick="showManageProduct();">
 								<a href="#">库存检索输入</a>
 							</div>
 							<div class="menu_r"></div>
@@ -53,7 +53,7 @@ function updPassword() {
 						<div class="menu">
 							<div class="menu_l"></div>
 							<div class="menu_c" style="cursor: pointer;" onclick="show();">
-								<a href="#">库存检索输入</a>
+								<a href="#">aaaaaa</a>
 							</div>
 							<div class="menu_r"></div>
 						</div>

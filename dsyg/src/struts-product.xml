@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="product" extends="struts-dsyg" namespace="/product">
+	
+		<action name="showAddProduct" class="product01Action" method="showAddProduct">
+			<result name="success">/page/product/addproduct.jsp</result>
+		</action>
+		
+		<action name="addProduct" class="product01Action" method="addProduct">
+			<result name="success">/page/product/addproduct.jsp</result>
+		</action>
+	
+		<action name="showManageProductList" class="product01Action" method="showManageProductList">
+			<result name="success">/page/product/productlist.jsp</result>
+		</action>
+		
+		<action name="queryManageProduct" class="product01Action" method="queryManageProduct">
+			<result name="success">/page/product/productlist.jsp</result>
+		</action>
+		
+		<action name="turnManageProduct" class="product01Action" method="turnManageProduct">
+			<result name="success">/page/product/productlist.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

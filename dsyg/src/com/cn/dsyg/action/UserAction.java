@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import com.cn.common.action.BaseAction;
 import com.cn.common.util.Constants;
+import com.cn.common.util.MD5Util;
 import com.cn.common.util.Page;
 import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dto.RoleDto;
@@ -87,6 +88,14 @@ public class UserAction extends BaseAction {
 				this.addActionMessage("请输入旧密码！");
 				return "checkerror";
 			}
+			//当前操作用户ID
+			String userid = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
+			//验证旧密码是否正确
+			UserDto user = userService.queryUserByID(userid);
+			if(!MD5Util.md5(psdUserDto.getOldpassword()).equals(user.getPassword())) {
+				this.addActionMessage("旧密码不正确！");
+				return "checkerror";
+			}
 			if(StringUtil.isBlank(psdUserDto.getPassword())) {
 				this.addActionMessage("请输入新密码！");
 				return "checkerror";
@@ -103,8 +112,6 @@ public class UserAction extends BaseAction {
 				this.addActionMessage("两次密码不一致！");
 				return "checkerror";
 			}
-			//当前操作用户ID
-			String userid = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
 			//修改密码
 			psdUserDto.setUserid(userid);
 			userService.updPassword(psdUserDto);

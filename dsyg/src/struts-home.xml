@@ -4,10 +4,14 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 
-	<package name="home" extends="struts-default" namespace="/home">
+	<package name="home" extends="struts-default, json-default" namespace="/home">
 	
 		<action name="goHomeAction" class="homeAction" method="goHomeAction">
 			<result name="success">/page/home/home.jsp</result>
+		</action>
+		
+		<action name="querySubItem" class="homeAction" method="querySubItem">
+			<result type="json"></result>
 		</action>
 		
 	</package>

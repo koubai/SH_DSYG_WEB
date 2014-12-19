@@ -13,6 +13,8 @@
 	<include file="struts-manage.xml"></include>
 	<!-- 用户 -->
 	<include file="struts-user.xml"></include>
+	<!-- product -->
+	<include file="struts-product.xml"></include>
 	
 	<package name="index" extends="struts-default, json-default" namespace="/index">
 		

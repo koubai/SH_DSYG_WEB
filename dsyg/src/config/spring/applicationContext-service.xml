@@ -3,6 +3,32 @@
 
 <beans>
 
+	<!-- product01 -->
+	<bean id="product01Service" class="com.cn.dsyg.service.impl.Product01ServiceImpl" >
+		<property name="product01Dao">
+			<ref local="product01Dao"/>
+		</property>
+	</bean>
+	
+	<bean id="product01Dao" class="com.cn.dsyg.dao.impl.Product01DaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
+	<!-- 字典表 -->
+	<bean id="dict01Service" class="com.cn.dsyg.service.impl.Dict01ServiceImpl" >
+		<property name="dict01Dao">
+			<ref local="dict01Dao"/>
+		</property>
+	</bean>
+	
+	<bean id="dict01Dao" class="com.cn.dsyg.dao.impl.Dict01DaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
 	<!-- 用户 -->
 	<bean id="userService" class="com.cn.dsyg.service.impl.UserServiceImpl" >
 		<property name="userDao">
