@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite3.2.dtd">
+
+<urlrewrite>
+
+	<rule>
+		<from>^/manageindex.shtml$</from>
+		<to>/manage/showManageLoginAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/managelogin.shtml$</from>
+		<to>/manage/manageLoginAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/managelogout.shtml$</from>
+		<to>/manage/manageLogout.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/home.shtml$</from>
+		<to>/home/goHomeAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showUserManager.shtml$</from>
+		<to>/user/showUserManagePage.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/queryUser.shtml$</from>
+		<to>/user/queryUserAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turnUser.shtml$</from>
+		<to>/user/turnUserAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showAddUser.shtml$</from>
+		<to>/user/showAddUserAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/addUser.shtml$</from>
+		<to>/user/addUserAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showUpdUser.shtml$</from>
+		<to>/user/showUpdUserAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/updUser.shtml$</from>
+		<to>/user/updUserAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/delUser.shtml$</from>
+		<to>/user/delUserAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showUpdPassword.shtml$</from>
+		<to>/user/showUpdPassword.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/updPassword.shtml$</from>
+		<to>/user/updPassword.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showManageProductList.shtml$</from>
+		<to>/product/showManageProductList.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/queryManageProduct.shtml$</from>
+		<to>/product/queryManageProduct.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turnManageProduct.shtml$</from>
+		<to>/product/turnManageProduct.action</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/product/turnManageProduct.action$</from>
+		<to>/turnManageProduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/queryManageProduct.action$</from>
+		<to>/queryManageProduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/showManageProductList.action$</from>
+		<to>/showManageProductList.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/updPassword.action$</from>
+		<to>/updPassword.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/showUpdPassword.action$</from>
+		<to>/showUpdPassword.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/delUserAction.action$</from>
+		<to>/delUser.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/updUserAction.action$</from>
+		<to>/updUser.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/showUpdUserAction.action$</from>
+		<to>/showUpdUser.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/addUserAction.action$</from>
+		<to>/addUser.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/showAddUserAction.action$</from>
+		<to>/showAddUser.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/turnUserAction.action$</from>
+		<to>/turnUser.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/queryUserAction.action$</from>
+		<to>/queryUser.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/showUserManagePage.action$</from>
+		<to>/showUserManager.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/goHomeAction.action$</from>
+		<to>/home.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/manage/manageLogout.action$</from>
+		<to>/managelogout.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/manage/manageLoginAction.action$</from>
+		<to>/managelogin.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/manage/showManageLoginAction.action$</from>
+		<to>/manageindex.shtml</to>
+	</outbound-rule>
+	
+</urlrewrite>
+

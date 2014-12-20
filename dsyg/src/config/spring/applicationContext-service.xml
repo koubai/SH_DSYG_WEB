@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans>
+
+	<!-- product01 -->
+	<bean id="product01Service" class="com.cn.dsyg.service.impl.Product01ServiceImpl" >
+		<property name="product01Dao">
+			<ref local="product01Dao"/>
+		</property>
+	</bean>
+	
+	<bean id="product01Dao" class="com.cn.dsyg.dao.impl.Product01DaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
+	<!-- 字典表 -->
+	<bean id="dict01Service" class="com.cn.dsyg.service.impl.Dict01ServiceImpl" >
+		<property name="dict01Dao">
+			<ref local="dict01Dao"/>
+		</property>
+	</bean>
+	
+	<bean id="dict01Dao" class="com.cn.dsyg.dao.impl.Dict01DaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
+	<!-- 用户 -->
+	<bean id="userService" class="com.cn.dsyg.service.impl.UserServiceImpl" >
+		<property name="userDao">
+			<ref local="userDao"/>
+		</property>
+	</bean>
+	
+	<bean id="userDao" class="com.cn.dsyg.dao.impl.UserDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<!-- 角色 -->
+	<bean id="roleService" class="com.cn.dsyg.service.impl.RoleServiceImpl" >
+		<property name="roleDao">
+			<ref local="roleDao"/>
+		</property>
+	</bean>
+	
+	<bean id="roleDao" class="com.cn.dsyg.dao.impl.RoleDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+</beans>

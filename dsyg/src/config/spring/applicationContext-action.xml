@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<!-- product01 -->
+	<bean id="product01Action" class="com.cn.dsyg.action.Product01Action" scope="session">
+		<property name="dict01Service">
+			<ref bean="dict01Service"/>
+		</property>
+		<property name="product01Service">
+			<ref bean="product01Service"/>
+		</property>
+	</bean>
+
+	<!-- 首页 -->
+	<bean id="homeAction" class="com.cn.dsyg.action.HomeAction" scope="session">
+		<property name="dict01Service">
+			<ref bean="dict01Service"/>
+		</property>
+	</bean>
+	
+	<!-- 管理员登录 -->
+	<bean id="manageLoginAction" class="com.cn.dsyg.action.ManageLoginAction" scope="session">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="roleService">
+			<ref bean="roleService"/>
+		</property>
+	</bean>
+	
+	<!-- 用户 -->
+	<bean id="userAction" class="com.cn.dsyg.action.UserAction" scope="session">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+		<property name="roleService">
+			<ref bean="roleService"/>
+		</property>
+	</bean>
+	
+	<!-- 验证码 -->
+	<bean id="randomActionBean" class="com.cn.dsyg.action.ValidateCodeAction" />
+	
+	<!-- 登录拦截器 -->
+	<bean id="loginInterceptorBean" class="com.cn.dsyg.interceptor.LoginInterceptor"/>
+
+</beans>
