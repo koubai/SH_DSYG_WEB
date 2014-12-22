@@ -89,6 +89,26 @@
 		<to>/product/turnManageProduct.action</to>
 	</rule>
 	
+	<rule>
+		<from>^/showAddProduct.shtml$</from>
+		<to>/product/showAddProduct.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/addProduct.shtml$</from>
+		<to>/product/addProduct.action</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/product/addProduct.action$</from>
+		<to>/addProduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/showAddProduct.action$</from>
+		<to>/showAddProduct.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/product/turnManageProduct.action$</from>
 		<to>/turnManageProduct.shtml</to>

@@ -31,6 +31,17 @@ public class Constants {
 	//小分类：收缩比
 	public final static String DICT_SUB_TYPE_ITEM04 = "item04";
 	
+	//单位
+	public final static String DICT_UNIT_TYPE = "unit";
+	
+	//properties
+	public final static String PROPERTIES_IMAGES_URL = "images_url";
+	public final static String PROPERTIES_IMAGES_PATH = "images_path";
+	public final static String PROPERTIES_PDF_URL = "pdf_url";
+	public final static String PROPERTIES_PDF_PATH = "pdf_path";
+	
+	//pdf
+	
 	/**
 	 * 验证码
 	 */

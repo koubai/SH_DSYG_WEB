@@ -12,6 +12,7 @@
 		
 		<action name="addProduct" class="product01Action" method="addProduct">
 			<result name="success">/page/product/addproduct.jsp</result>
+			<result name="checkerror">/page/product/addproduct.jsp</result>
 		</action>
 	
 		<action name="showManageProductList" class="product01Action" method="showManageProductList">
