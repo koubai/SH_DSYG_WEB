@@ -79,12 +79,109 @@ public class Product01Action extends BaseAction {
 	private String file03Name;
 	private String file04Name;
 	
+	//删除
+	private String delProduct01Id;
+	
 	//修改
+	private String updProduct01Id;
 	private Product01Dto updProduct01Dto;
 	private File updPicFile01;
 	private File updPicFile02;
 	private File updPicFile03;
 	private File updPdfFile;
+	
+	/**
+	 * 删除产品
+	 * @return
+	 */
+	public String delProduct() {
+		try {
+			this.clearMessages();
+			//当前操作用户ID
+			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
+			product01Service.deleteProduct01(delProduct01Id, username);
+			//重新刷新页面数据
+			startIndex = 0;
+			page = new Page();
+			//大分类列表
+			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			queryData();
+		} catch(Exception e) {
+			log.error("delProduct error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 修改产品页面
+	 * @return
+	 */
+	public String showUpdProduct() {
+		try {
+			this.clearMessages();
+			initData();
+			updProduct01Dto = product01Service.queryProduct01ByID(updProduct01Id);
+			if(updProduct01Dto != null) {
+				//图片和PDF文件显示地址
+				String imageurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_IMAGES_URL);
+				String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
+				updProduct01Dto.setImageurl(imageurl);
+				updProduct01Dto.setPdfurl(pdfurl);
+			}
+		} catch(Exception e) {
+			log.error("showAddProduct error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 修改产品
+	 * @return
+	 */
+	public String updProduct() {
+		try {
+			this.clearMessages();
+			initData();
+			//数据验证
+			if(!checkData(updProduct01Dto)) {
+				return "checkerror";
+			}
+			
+			//文件目录
+			String image_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_IMAGES_PATH);
+			String pdf_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_PATH);
+			
+			//保存文件到指定目录
+			if(updPicFile01 != null) {
+				String newfile01 = FileUtil.uploadFile(updPicFile01, image_path, file01Name);
+				updProduct01Dto.setPic01(newfile01);
+			}
+			if(updPicFile02 != null) {
+				String newfile02 = FileUtil.uploadFile(updPicFile02, image_path, file02Name);
+				updProduct01Dto.setPic02(newfile02);
+			}
+			if(updPicFile03 != null) {
+				String newfile03 = FileUtil.uploadFile(updPicFile03, image_path, file03Name);
+				updProduct01Dto.setPic03(newfile03);
+			}
+			if(updPdfFile != null) {
+				String newfile04 = FileUtil.uploadFile(updPdfFile, pdf_path, file04Name);
+				updProduct01Dto.setPdfpath(newfile04);
+			}
+			
+			//当前操作用户ID
+			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
+			updProduct01Dto.setUpdateuid(username);
+			product01Service.updateProduct01(updProduct01Dto);
+			this.addActionMessage("修改成功！");
+		} catch(Exception e) {
+			log.error("showAddProduct error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
 	
 	/**
 	 * 新增产品页面
@@ -111,16 +208,25 @@ public class Product01Action extends BaseAction {
 			this.clearMessages();
 			initData();
 			//数据验证
-			log.info("item01=" + addProduct01Dto.getItem01());
-			log.info("item02=" + addProduct01Dto.getItem02());
-			log.info("item03=" + addProduct01Dto.getItem03());
-			log.info("item04=" + addProduct01Dto.getItem04());
-			
-			log.info("file01Name=" + file01Name);
-			log.info("file02Name=" + file02Name);
-			log.info("file03Name=" + file03Name);
-			log.info("file04Name=" + file04Name);
 			if(!checkData(addProduct01Dto)) {
+				return "checkerror";
+			}
+			
+			//图片验证
+			if(addPicFile01 == null) {
+				this.addActionMessage("图片不能为空！");
+				return "checkerror";
+			}
+			if(addPicFile02 == null) {
+				this.addActionMessage("特性图片上传不能为空！");
+				return "checkerror";
+			}
+			if(addPicFile03 == null) {
+				this.addActionMessage("尺寸图片上传不能为空！");
+				return "checkerror";
+			}
+			if(addPdfFile == null) {
+				this.addActionMessage("请选择对应PDF文件！");
 				return "checkerror";
 			}
 			
@@ -143,9 +249,11 @@ public class Product01Action extends BaseAction {
 			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
 			addProduct01Dto.setUpdateuid(username);
 			addProduct01Dto.setCreateuid(username);
+			//默认状态=有效
+			addProduct01Dto.setStatus("" + Constants.STATUS_NORMAL);
 			
 			product01Service.insertProduct01(addProduct01Dto);
-			this.addActionMessage("添加产品成功！");
+			this.addActionMessage("添加成功！");
 			addProduct01Dto = new Product01Dto();
 		} catch(Exception e) {
 			log.error("addProduct error:" + e);
@@ -165,7 +273,7 @@ public class Product01Action extends BaseAction {
 			page = new Page();
 			manageProduct01List = new ArrayList<Product01Dto>();
 			//大分类列表
-			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE);
+			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//页面查询条件清空
 			queryProduct01Dto = new Product01Dto();
 		} catch(Exception e) {
@@ -297,24 +405,6 @@ public class Product01Action extends BaseAction {
 			return false;
 		}
 		
-		//图片验证
-		if(addPicFile01 == null) {
-			this.addActionMessage("图片不能为空！");
-			return false;
-		}
-		if(addPicFile02 == null) {
-			this.addActionMessage("特性图片上传不能为空！");
-			return false;
-		}
-		if(addPicFile03 == null) {
-			this.addActionMessage("尺寸图片上传不能为空！");
-			return false;
-		}
-		if(addPdfFile == null) {
-			this.addActionMessage("请选择对应PDF文件！");
-			return false;
-		}
-		
 		//库存编辑
 		if(StringUtil.isBlank(product01.getItem20())) {
 			this.addActionMessage("在库数（整箱）不能为空！");
@@ -344,15 +434,15 @@ public class Product01Action extends BaseAction {
 	 */
 	private void initData() {
 		//大分类列表
-		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE);
+		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		//电线特征列表
-		featureList01 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_01);
+		featureList01 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_01, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		//套管特征列表
-		featureList02 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_02);
+		featureList02 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_02, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		//单位
-		unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE);
+		unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		//产地
-		makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA);
+		makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 	}
 	
 	/**
@@ -361,7 +451,9 @@ public class Product01Action extends BaseAction {
 	@SuppressWarnings("unchecked")
 	private void queryData() {
 		//大分类列表
-		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE);
+		delProduct01Id = "";
+		updProduct01Id = "";
+		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		manageProduct01List = new ArrayList<Product01Dto>();
 		if(page == null) {
 			page = new Page();
@@ -571,5 +663,21 @@ public class Product01Action extends BaseAction {
 
 	public void setFile04Name(String file04Name) {
 		this.file04Name = file04Name;
+	}
+
+	public String getDelProduct01Id() {
+		return delProduct01Id;
+	}
+
+	public void setDelProduct01Id(String delProduct01Id) {
+		this.delProduct01Id = delProduct01Id;
+	}
+
+	public String getUpdProduct01Id() {
+		return updProduct01Id;
+	}
+
+	public void setUpdProduct01Id(String updProduct01Id) {
+		this.updProduct01Id = updProduct01Id;
 	}
 }

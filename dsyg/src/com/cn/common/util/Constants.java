@@ -9,6 +9,9 @@ package com.cn.common.util;
  */
 public class Constants {
 	
+	//多语言
+	public final static String SYSTEM_LANGUAGE = "language";
+	
 	//dict01
 	//商品分类
 	public final static String DICT_GOODS_TYPE = "goods";

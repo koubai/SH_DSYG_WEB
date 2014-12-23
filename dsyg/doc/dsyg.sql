@@ -136,17 +136,17 @@ CREATE TABLE `tbproduct01` (
   `res08` varchar(16) DEFAULT NULL COMMENT '预备项目8',
   `res09` varchar(16) DEFAULT NULL COMMENT '预备项目9',
   `res10` varchar(16) DEFAULT NULL COMMENT '预备项目10',
-  `keyword` varchar(64) DEFAULT NULL COMMENT '关键字，模糊查询用',
+  `keyword` varchar(512) DEFAULT NULL COMMENT '关键字，模糊查询用',
   `createuid` varchar(32) DEFAULT NULL COMMENT '数据创建者',
   `createdate` datetime DEFAULT NULL COMMENT '数据创建时间',
   `updateuid` varchar(32) DEFAULT NULL COMMENT '数据更新者',
   `updatedate` datetime DEFAULT NULL COMMENT '数据更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbproduct01` */
 
-insert  into `tbproduct01`(`id`,`fieldcode`,`cata1`,`cata2`,`cata3`,`nameno`,`typeno`,`typenosub`,`color1`,`color2`,`size01`,`size02`,`makearea`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`item11`,`item12`,`item13`,`item14`,`item15`,`item16`,`item17`,`item18`,`item19`,`item20`,`item21`,`item22`,`item23`,`item24`,`item25`,`item26`,`item27`,`item28`,`item29`,`item30`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`pdfpath`,`rank`,`status`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`keyword`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (6,'02',NULL,NULL,NULL,'11','22','33',NULL,NULL,NULL,NULL,'001','01','006','02','03',NULL,NULL,NULL,NULL,NULL,'44','55','66','77','88','001',NULL,NULL,NULL,NULL,'99','121','001','122',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'20141223022425120f39aa2.jpg','2014122302242512467205d.png','20141223022425136277a41.jpg',NULL,NULL,'201412230224251399ec07c.pdf',60,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'admin','2014-12-23 02:24:25','admin','2014-12-23 02:24:25');
+insert  into `tbproduct01`(`id`,`fieldcode`,`cata1`,`cata2`,`cata3`,`nameno`,`typeno`,`typenosub`,`color1`,`color2`,`size01`,`size02`,`makearea`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`item11`,`item12`,`item13`,`item14`,`item15`,`item16`,`item17`,`item18`,`item19`,`item20`,`item21`,`item22`,`item23`,`item24`,`item25`,`item26`,`item27`,`item28`,`item29`,`item30`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`pdfpath`,`rank`,`status`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`keyword`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (6,'02',NULL,NULL,NULL,'11a','22a','33a',NULL,NULL,NULL,NULL,'003','02','010','01','02',NULL,NULL,NULL,NULL,NULL,'44a','55a','66a','77a','88a','001',NULL,NULL,NULL,NULL,'99a','121a','001','55',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'201412240119375195c85c4.jpg','2014122302242512467205d.png','20141223022425136277a41.jpg',NULL,NULL,'201412230224251399ec07c.pdf',70,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'套管,11a,105℃,1KV及以上,双层绝缘,3:1,22a,33a,44a,55a,66a,77a,77a,苏州,','admin','2014-12-23 02:24:25','admin','2014-12-24 02:17:58');
 
 /*Table structure for table `tbrole` */
 

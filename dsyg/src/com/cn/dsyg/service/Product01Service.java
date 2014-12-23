@@ -31,8 +31,9 @@ public interface Product01Service {
 	/**
 	 * 删除数据
 	 * @param id
+	 * @param userid
 	 */
-	public void deleteProduct01(String id);
+	public void deleteProduct01(String id, String userid);
 	
 	/**
 	 * 新增数据

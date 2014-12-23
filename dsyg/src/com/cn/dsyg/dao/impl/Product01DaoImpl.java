@@ -18,10 +18,11 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 
 	@Override
 	public List<Product01Dto> queryProduct01ByPage(String fieldcode,
-			String keyword, int start, int end) {
+			String keyword, String status, int start, int end) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
 		paramMap.put("keyword", keyword);
+		paramMap.put("status", status);
 		paramMap.put("start", start);
 		paramMap.put("end", end);
 		@SuppressWarnings("unchecked")
@@ -30,10 +31,11 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 	}
 
 	@Override
-	public int queryProduct01CountByPage(String fieldcode, String keyword) {
+	public int queryProduct01CountByPage(String fieldcode, String keyword, String status) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
 		paramMap.put("keyword", keyword);
+		paramMap.put("status", status);
 		return (Integer) getSqlMapClientTemplate().queryForObject("queryProduct01CountByPage", paramMap);
 	}
 
@@ -63,6 +65,6 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 
 	@Override
 	public void updateProduct01(Product01Dto product) {
-		getSqlMapClientTemplate().update("insertProduct01", product);
+		getSqlMapClientTemplate().update("updateProduct01", product);
 	}
 }
