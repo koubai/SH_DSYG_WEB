@@ -1,5 +1,6 @@
 package com.cn.dsyg.action;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +9,16 @@ import org.apache.log4j.Logger;
 
 import com.cn.common.action.BaseAction;
 import com.cn.common.util.Constants;
+import com.cn.common.util.FileUtil;
 import com.cn.common.util.Page;
+import com.cn.common.util.PropertiesConfig;
+import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dto.Dict01Dto;
 import com.cn.dsyg.dto.FeatureDto;
 import com.cn.dsyg.dto.Product01Dto;
 import com.cn.dsyg.service.Dict01Service;
 import com.cn.dsyg.service.Product01Service;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * 库存检索输入
@@ -53,12 +58,33 @@ public class Product01Action extends BaseAction {
 	 */
 	private List<Dict01Dto> goodsList;
 	
-	//新增
-	private Product01Dto addProduct01Dto;
 	//电线特征列表
 	private List<FeatureDto> featureList01;
 	//套管特征列表
 	private List<FeatureDto> featureList02;
+	//单位
+	private List<Dict01Dto> unitList;
+	//产地
+	private List<Dict01Dto> makeareaList;
+	
+	//新增
+	private Product01Dto addProduct01Dto;
+	private File addPicFile01;
+	private File addPicFile02;
+	private File addPicFile03;
+	private File addPdfFile;
+	//对应的文件名
+	private String file01Name;
+	private String file02Name;
+	private String file03Name;
+	private String file04Name;
+	
+	//修改
+	private Product01Dto updProduct01Dto;
+	private File updPicFile01;
+	private File updPicFile02;
+	private File updPicFile03;
+	private File updPdfFile;
 	
 	/**
 	 * 新增产品页面
@@ -67,18 +93,8 @@ public class Product01Action extends BaseAction {
 	public String showAddProduct() {
 		try {
 			this.clearMessages();
-			//大分类列表
-			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE);
+			initData();
 			addProduct01Dto = new Product01Dto();
-			addProduct01Dto.setFieldcode("01");
-			addProduct01Dto.setItem01("01");
-			addProduct01Dto.setItem02("006");
-			addProduct01Dto.setItem03("01");
-			addProduct01Dto.setItem04("03");
-			//电线特征列表
-			featureList01 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_01);
-			//套管特征列表
-			featureList02 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_02);
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
 			return ERROR;
@@ -93,12 +109,46 @@ public class Product01Action extends BaseAction {
 	public String addProduct() {
 		try {
 			this.clearMessages();
-			//电线特征列表
-			featureList01 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_01);
-			//套管特征列表
-			featureList02 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_02);
+			initData();
+			//数据验证
+			log.info("item01=" + addProduct01Dto.getItem01());
+			log.info("item02=" + addProduct01Dto.getItem02());
+			log.info("item03=" + addProduct01Dto.getItem03());
+			log.info("item04=" + addProduct01Dto.getItem04());
+			
+			log.info("file01Name=" + file01Name);
+			log.info("file02Name=" + file02Name);
+			log.info("file03Name=" + file03Name);
+			log.info("file04Name=" + file04Name);
+			if(!checkData(addProduct01Dto)) {
+				return "checkerror";
+			}
+			
+			//文件目录
+			String image_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_IMAGES_PATH);
+			String pdf_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_PATH);
+			
+			//保存文件到指定目录
+			String newfile01 = FileUtil.uploadFile(addPicFile01, image_path, file01Name);
+			String newfile02 = FileUtil.uploadFile(addPicFile02, image_path, file02Name);
+			String newfile03 = FileUtil.uploadFile(addPicFile03, image_path, file03Name);
+			String newfile04 = FileUtil.uploadFile(addPdfFile, pdf_path, file04Name);
+			
+			addProduct01Dto.setPic01(newfile01);
+			addProduct01Dto.setPic02(newfile02);
+			addProduct01Dto.setPic03(newfile03);
+			addProduct01Dto.setPdfpath(newfile04);
+			
+			//当前操作用户ID
+			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
+			addProduct01Dto.setUpdateuid(username);
+			addProduct01Dto.setCreateuid(username);
+			
+			product01Service.insertProduct01(addProduct01Dto);
+			this.addActionMessage("添加产品成功！");
+			addProduct01Dto = new Product01Dto();
 		} catch(Exception e) {
-			log.error("showAddProduct error:" + e);
+			log.error("addProduct error:" + e);
 			return ERROR;
 		}
 		return SUCCESS;
@@ -155,6 +205,154 @@ public class Product01Action extends BaseAction {
 			return ERROR;
 		}
 		return SUCCESS;
+	}
+	
+	/**
+	 * 数据验证
+	 * @param product01
+	 * @return
+	 */
+	private boolean checkData(Product01Dto product01) {
+		if(product01 == null) {
+			this.addActionMessage("请选择商品类型！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getFieldcode())) {
+			this.addActionMessage("请选择商品类型！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getRank())) {
+			this.addActionMessage("数据级别不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getNameno())) {
+			this.addActionMessage("商品名称不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getTypeno())) {
+			this.addActionMessage("商品系列不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getTypenosub())) {
+			this.addActionMessage("商品型号不能为空！");
+			return false;
+		}
+		if(Constants.DICT_GOODS_TYPE_CODE_01.equals(product01.getFieldcode())) {
+			//电线，需要验证单选框数据
+			if(StringUtil.isBlank(product01.getItem01())) {
+				this.addActionMessage("请选择耐温！");
+				return false;
+			}
+			if(StringUtil.isBlank(product01.getItem02())) {
+				this.addActionMessage("请选择耐压！");
+				return false;
+			}
+			if(StringUtil.isBlank(product01.getItem03())) {
+				this.addActionMessage("请选择材质！");
+				return false;
+			}
+		} else if(Constants.DICT_GOODS_TYPE_CODE_02.equals(product01.getFieldcode())) {
+			//套管，需要验证单选框数据
+			if(StringUtil.isBlank(product01.getItem01())) {
+				this.addActionMessage("请选择耐温！");
+				return false;
+			}
+			if(StringUtil.isBlank(product01.getItem02())) {
+				this.addActionMessage("请选择耐压！");
+				return false;
+			}
+			if(StringUtil.isBlank(product01.getItem03())) {
+				this.addActionMessage("请选择绝缘！");
+				return false;
+			}
+			if(StringUtil.isBlank(product01.getItem04())) {
+				this.addActionMessage("请选择收缩比！");
+				return false;
+			}
+		}
+		
+		//尺寸数据验证
+		if(StringUtil.isBlank(product01.getItem10())) {
+			this.addActionMessage("称呼尺寸不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem11())) {
+			this.addActionMessage("内径不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem12())) {
+			this.addActionMessage("壁厚不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem13())) {
+			this.addActionMessage("外径不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem14())) {
+			this.addActionMessage("长度不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem15())) {
+			this.addActionMessage("请选择尺寸编辑单位！");
+			return false;
+		}
+		
+		//图片验证
+		if(addPicFile01 == null) {
+			this.addActionMessage("图片不能为空！");
+			return false;
+		}
+		if(addPicFile02 == null) {
+			this.addActionMessage("特性图片上传不能为空！");
+			return false;
+		}
+		if(addPicFile03 == null) {
+			this.addActionMessage("尺寸图片上传不能为空！");
+			return false;
+		}
+		if(addPdfFile == null) {
+			this.addActionMessage("请选择对应PDF文件！");
+			return false;
+		}
+		
+		//库存编辑
+		if(StringUtil.isBlank(product01.getItem20())) {
+			this.addActionMessage("在库数（整箱）不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem21())) {
+			this.addActionMessage("在库数（乱尺）不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem22())) {
+			this.addActionMessage("请选择库存编辑单位！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getItem23())) {
+			this.addActionMessage("发送天数不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getMakearea())) {
+			this.addActionMessage("请选择产地！");
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * 初始化参数
+	 */
+	private void initData() {
+		//大分类列表
+		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE);
+		//电线特征列表
+		featureList01 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_01);
+		//套管特征列表
+		featureList02 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_02);
+		//单位
+		unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE);
+		//产地
+		makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA);
 	}
 	
 	/**
@@ -253,5 +451,125 @@ public class Product01Action extends BaseAction {
 
 	public void setFeatureList02(List<FeatureDto> featureList02) {
 		this.featureList02 = featureList02;
+	}
+
+	public List<Dict01Dto> getUnitList() {
+		return unitList;
+	}
+
+	public void setUnitList(List<Dict01Dto> unitList) {
+		this.unitList = unitList;
+	}
+
+	public File getAddPicFile01() {
+		return addPicFile01;
+	}
+
+	public void setAddPicFile01(File addPicFile01) {
+		this.addPicFile01 = addPicFile01;
+	}
+
+	public File getAddPicFile02() {
+		return addPicFile02;
+	}
+
+	public void setAddPicFile02(File addPicFile02) {
+		this.addPicFile02 = addPicFile02;
+	}
+
+	public File getAddPicFile03() {
+		return addPicFile03;
+	}
+
+	public void setAddPicFile03(File addPicFile03) {
+		this.addPicFile03 = addPicFile03;
+	}
+
+	public Product01Dto getUpdProduct01Dto() {
+		return updProduct01Dto;
+	}
+
+	public void setUpdProduct01Dto(Product01Dto updProduct01Dto) {
+		this.updProduct01Dto = updProduct01Dto;
+	}
+
+	public File getUpdPicFile01() {
+		return updPicFile01;
+	}
+
+	public void setUpdPicFile01(File updPicFile01) {
+		this.updPicFile01 = updPicFile01;
+	}
+
+	public File getUpdPicFile02() {
+		return updPicFile02;
+	}
+
+	public void setUpdPicFile02(File updPicFile02) {
+		this.updPicFile02 = updPicFile02;
+	}
+
+	public File getUpdPicFile03() {
+		return updPicFile03;
+	}
+
+	public void setUpdPicFile03(File updPicFile03) {
+		this.updPicFile03 = updPicFile03;
+	}
+
+	public File getAddPdfFile() {
+		return addPdfFile;
+	}
+
+	public void setAddPdfFile(File addPdfFile) {
+		this.addPdfFile = addPdfFile;
+	}
+
+	public File getUpdPdfFile() {
+		return updPdfFile;
+	}
+
+	public void setUpdPdfFile(File updPdfFile) {
+		this.updPdfFile = updPdfFile;
+	}
+
+	public List<Dict01Dto> getMakeareaList() {
+		return makeareaList;
+	}
+
+	public void setMakeareaList(List<Dict01Dto> makeareaList) {
+		this.makeareaList = makeareaList;
+	}
+
+	public String getFile01Name() {
+		return file01Name;
+	}
+
+	public void setFile01Name(String file01Name) {
+		this.file01Name = file01Name;
+	}
+
+	public String getFile02Name() {
+		return file02Name;
+	}
+
+	public void setFile02Name(String file02Name) {
+		this.file02Name = file02Name;
+	}
+
+	public String getFile03Name() {
+		return file03Name;
+	}
+
+	public void setFile03Name(String file03Name) {
+		this.file03Name = file03Name;
+	}
+
+	public String getFile04Name() {
+		return file04Name;
+	}
+
+	public void setFile04Name(String file04Name) {
+		this.file04Name = file04Name;
 	}
 }

@@ -7,6 +7,9 @@
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 
 	<constant name="struts.objectFactory" value="spring"/>
+	<!-- 文件上传最大10M -->
+	<constant name="struts.multipart.maxSize" value="10240000"></constant>
+	
 	<!-- 首页 -->
 	<include file="struts-home.xml"></include>
 	<!-- 登录 -->

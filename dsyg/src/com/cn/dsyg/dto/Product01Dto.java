@@ -222,6 +222,18 @@ public class Product01Dto {
 	 * 项目30
 	 */
 	private String item30;
+	
+	//
+	/**
+	 * 图片网络访问地址
+	 */
+	private String imageurl;
+	
+	/**
+	 * PDF文件访问地址
+	 */
+	private String pdfurl;
+	//
 
 	/**
 	 * 图片1路径
@@ -864,5 +876,21 @@ public class Product01Dto {
 
 	public void setFieldcode(String fieldcode) {
 		this.fieldcode = fieldcode;
+	}
+
+	public String getImageurl() {
+		return imageurl;
+	}
+
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+	}
+
+	public String getPdfurl() {
+		return pdfurl;
+	}
+
+	public void setPdfurl(String pdfurl) {
+		this.pdfurl = pdfurl;
 	}
 }
