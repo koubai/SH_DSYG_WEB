@@ -66,9 +66,11 @@ CREATE TABLE `tbnews` (
   `updateuid` varchar(32) DEFAULT NULL COMMENT '数据更新者',
   `updatedate` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbnews` */
+
+insert  into `tbnews`(`id`,`showno`,`title`,`data`,`author`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`res01`,`res02`,`res03`,`res04`,`res05`,`status`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (1,1,'test1','afafdsawfesa','admin',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2014-12-25 00:00:00','admin','2014-12-25 00:00:00');
 
 /*Table structure for table `tbproduct01` */
 
@@ -142,11 +144,11 @@ CREATE TABLE `tbproduct01` (
   `updateuid` varchar(32) DEFAULT NULL COMMENT '数据更新者',
   `updatedate` datetime DEFAULT NULL COMMENT '数据更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbproduct01` */
 
-insert  into `tbproduct01`(`id`,`fieldcode`,`cata1`,`cata2`,`cata3`,`nameno`,`typeno`,`typenosub`,`color1`,`color2`,`size01`,`size02`,`makearea`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`item11`,`item12`,`item13`,`item14`,`item15`,`item16`,`item17`,`item18`,`item19`,`item20`,`item21`,`item22`,`item23`,`item24`,`item25`,`item26`,`item27`,`item28`,`item29`,`item30`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`pdfpath`,`rank`,`status`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`keyword`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (6,'02',NULL,NULL,NULL,'11a','22a','33a',NULL,NULL,NULL,NULL,'003','02','010','01','02',NULL,NULL,NULL,NULL,NULL,'44a','55a','66a','77a','88a','001',NULL,NULL,NULL,NULL,'99a','121a','001','55',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'201412240119375195c85c4.jpg','2014122302242512467205d.png','20141223022425136277a41.jpg',NULL,NULL,'201412230224251399ec07c.pdf',70,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'套管,11a,105℃,1KV及以上,双层绝缘,3:1,22a,33a,44a,55a,66a,77a,77a,苏州,','admin','2014-12-23 02:24:25','admin','2014-12-24 02:17:58');
+insert  into `tbproduct01`(`id`,`fieldcode`,`cata1`,`cata2`,`cata3`,`nameno`,`typeno`,`typenosub`,`color1`,`color2`,`size01`,`size02`,`makearea`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`item11`,`item12`,`item13`,`item14`,`item15`,`item16`,`item17`,`item18`,`item19`,`item20`,`item21`,`item22`,`item23`,`item24`,`item25`,`item26`,`item27`,`item28`,`item29`,`item30`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`pdfpath`,`rank`,`status`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`keyword`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (6,'01',NULL,NULL,NULL,'11aa','22a','33a',NULL,NULL,NULL,NULL,'003','02','003','02','',NULL,NULL,NULL,NULL,NULL,'44a','55a','66a','77a','88a','001',NULL,NULL,NULL,NULL,'99a','121a','001','55',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'201412240119375195c85c4.jpg','2014122302242512467205d.png','20141223022425136277a41.jpg',NULL,NULL,'201412230224251399ec07c.pdf',70,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'电线,11aa,105℃,150V,Halogen Free,22a,33a,44a,55a,66a,77a,77a,苏州,','admin','2014-12-23 02:24:25','admin','2014-12-26 00:50:08'),(9,'03',NULL,NULL,NULL,'11','22','33',NULL,NULL,NULL,NULL,'002','','','','',NULL,NULL,NULL,NULL,NULL,'44','45','66','77','88','001',NULL,NULL,NULL,NULL,'aa','bb','001','21',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'20141226002610904c3de40.jpg','201412260026109089dbf5d.png','20141226002610924c5ddd3.png',NULL,NULL,'2014122600261093899c137.pdf',78,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'扁平线,11,22,33,44,45,66,77,77,马来西亚,','admin','2014-12-26 00:26:11','admin','2014-12-26 00:26:11');
 
 /*Table structure for table `tbrole` */
 
