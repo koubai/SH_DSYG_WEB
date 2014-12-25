@@ -8,11 +8,11 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>库存输入</title>
+<title>库存更新</title>
 <script type="text/javascript">
-	function add() {
+	function upd() {
 		if(checkData()) {
-			document.mainform.action = '<c:url value="/product/addProduct.action"></c:url>';
+			document.mainform.action = '<c:url value="/product/updProduct.action"></c:url>';
 			document.mainform.submit();
 		}
 	}
@@ -160,64 +160,50 @@
 		}
 		
 		//图片验证
-		var file01Name = $("#addPicFile01").val();
-		var file02Name = $("#addPicFile02").val();
-		var file03Name = $("#addPicFile03").val();
-		var file04Name = $("#addPdfFile").val();
+		var file01Name = $("#updPicFile01").val();
+		var file02Name = $("#updPicFile02").val();
+		var file03Name = $("#updPicFile03").val();
+		var file04Name = $("#updPdfFile").val();
 		//图1
-		if(file01Name == "") {
-			alert("图片不能为空！");
-			$("#addPicFile01").focus();
-			return false;
-		}
-		var n = file01Name.substring(file01Name.lastIndexOf("."), file01Name.length).toUpperCase();
-		if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
-			alert("图片只支持JPG、GIF和PNG格式！");
-			$("#addPicFile01").focus();
-			return false;
+		if(file01Name != "") {
+			var n = file01Name.substring(file01Name.lastIndexOf("."), file01Name.length).toUpperCase();
+			if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
+				alert("图片只支持JPG、GIF和PNG格式！");
+				$("#updPicFile01").focus();
+				return false;
+			}
+			$("#file01Name").val(file01Name);
 		}
 		//图2
-		if(file02Name == "") {
-			alert("特性图片上传不能为空！");
-			$("#addPicFile02").focus();
-			return false;
-		}
-		n = file02Name.substring(file02Name.lastIndexOf("."), file02Name.length).toUpperCase();
-		if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
-			alert("图片只支持JPG、GIF和PNG格式！");
-			$("#addPicFile02").focus();
-			return false;
+		if(file02Name != "") {
+			var n = file02Name.substring(file02Name.lastIndexOf("."), file02Name.length).toUpperCase();
+			if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
+				alert("图片只支持JPG、GIF和PNG格式！");
+				$("#updPicFile02").focus();
+				return false;
+			}
+			$("#file02Name").val(file02Name);
 		}
 		//图3
-		if(file03Name == "") {
-			alert("尺寸图片上传不能为空！");
-			$("#addPicFile03").focus();
-			return false;
-		}
-		n = file03Name.substring(file03Name.lastIndexOf("."), file03Name.length).toUpperCase();
-		if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
-			alert("图片只支持JPG、GIF和PNG格式！");
-			$("#addPicFile03").focus();
-			return false;
+		if(file03Name != "") {
+			var n = file03Name.substring(file03Name.lastIndexOf("."), file03Name.length).toUpperCase();
+			if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
+				alert("图片只支持JPG、GIF和PNG格式！");
+				$("#updPicFile03").focus();
+				return false;
+			}
+			$("#file03Name").val(file03Name);
 		}
 		//PDT文件验证
-		if(file04Name == "") {
-			alert("请选择对应PDF文件！");
-			$("#addPdfFile").focus();
-			return false;
+		if(file04Name != "") {
+			var n = file04Name.substring(file04Name.lastIndexOf("."), file04Name.length).toUpperCase();
+			if(n != ".PDF") {
+				alert("请选择正确的PDF文件！");
+				$("#updPdfFile").focus();
+				return false;
+			}
+			$("#file04Name").val(file04Name);
 		}
-		n = file04Name.substring(file04Name.lastIndexOf("."), file04Name.length).toUpperCase();
-		if(n != ".PDF") {
-			alert("请选择正确的PDF文件！");
-			$("#addPdfFile").focus();
-			return false;
-		}
-		
-		//文件名
-		$("#file01Name").val(file01Name);
-		$("#file02Name").val(file02Name);
-		$("#file03Name").val(file03Name);
-		$("#file04Name").val(file04Name);
 		
 		//库存编辑
 		if($("#item20").val() == "") {
@@ -279,10 +265,14 @@
 </head>
 <body style="background: url(''); overflow-x:hidden;overflow-y:scroll;">
 <s:form id="mainform" name="mainform" method="POST" enctype="multipart/form-data">
-	<s:hidden name="addProduct01Dto.item01" id="item01"></s:hidden>
-	<s:hidden name="addProduct01Dto.item02" id="item02"></s:hidden>
-	<s:hidden name="addProduct01Dto.item03" id="item03"></s:hidden>
-	<s:hidden name="addProduct01Dto.item04" id="item04"></s:hidden>
+	<s:hidden name="updProduct01Dto.item01" id="item01"></s:hidden>
+	<s:hidden name="updProduct01Dto.item02" id="item02"></s:hidden>
+	<s:hidden name="updProduct01Dto.item03" id="item03"></s:hidden>
+	<s:hidden name="updProduct01Dto.item04" id="item04"></s:hidden>
+	<s:hidden name="updProduct01Dto.pic01" id="pic01"></s:hidden>
+	<s:hidden name="updProduct01Dto.pic02" id="pic02"></s:hidden>
+	<s:hidden name="updProduct01Dto.pic03" id="pic03"></s:hidden>
+	<s:hidden name="updProduct01Dto.pdfpath" id="pdfpath"></s:hidden>
 	<s:hidden name="file01Name" id="file01Name"></s:hidden>
 	<s:hidden name="file02Name" id="file02Name"></s:hidden>
 	<s:hidden name="file03Name" id="file03Name"></s:hidden>
@@ -294,7 +284,7 @@
 				<div class="tittle_left">
 				</div>
 				<div class="tittle_center" style="width:150px;">
-					库存输入
+					库存更新
 				</div>
 				<div class="tittle_right">
 				</div>
@@ -309,10 +299,10 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<select name="addProduct01Dto.fieldcode" id="fieldcode" style="width: 300px;" onchange="changeFieldcode(this);">
+						<select name="updProduct01Dto.fieldcode" id="fieldcode" style="width: 300px;" onchange="changeFieldcode(this);">
 							<option value="">请选择</option>
 							<s:iterator value="goodsList" id="goodsList" status="st1">
-								<option value="<s:property value="code"/>" <s:if test="%{goodsList[#st1.index].code == addProduct01Dto.fieldcode}">selected</s:if>><s:property value="fieldname"/></option>
+								<option value="<s:property value="code"/>" <s:if test="%{goodsList[#st1.index].code == updProduct01Dto.fieldcode}">selected</s:if>><s:property value="fieldname"/></option>
 							</s:iterator>
 						</select>
 					</div>
@@ -324,7 +314,7 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<s:textfield name="addProduct01Dto.rank" id="rank" cssStyle="width:300px;" maxlength="2" theme="simple"></s:textfield>
+						<s:textfield name="updProduct01Dto.rank" id="rank" cssStyle="width:300px;" maxlength="2" theme="simple"></s:textfield>
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -334,7 +324,7 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<s:textfield name="addProduct01Dto.nameno" id="nameno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						<s:textfield name="updProduct01Dto.nameno" id="nameno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -344,7 +334,7 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<s:textfield name="addProduct01Dto.typeno" id="typeno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						<s:textfield name="updProduct01Dto.typeno" id="typeno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -354,12 +344,12 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<s:textfield name="addProduct01Dto.typenosub" id="typenosub" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						<s:textfield name="updProduct01Dto.typenosub" id="typenosub" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 					</div>
 					<div class="box1_right"></div>
 				</td>
 			</tr>
-			<s:if test='addProduct01Dto.fieldcode == "01"'>
+			<s:if test='updProduct01Dto.fieldcode == "01"'>
 				<tr id="fieldcode01">
 			</s:if>
 			<s:else>
@@ -373,14 +363,14 @@
 							<div>
 								<s:property value="name"/>
 								<s:iterator value="dictList" id="dictList" status="st2">
-									<s:if test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item01" && #st1.index == 0}'>
-										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+									<s:if test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item01" && #st1.index == 0}'>
+										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 									</s:if>
-									<s:elseif test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item02" && #st1.index == 1}'>
-										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+									<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item02" && #st1.index == 1}'>
+										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 									</s:elseif>
-									<s:elseif test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
-										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+									<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
+										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 									</s:elseif>
 									<s:else>
 										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
@@ -392,7 +382,7 @@
 					<div class="box1_right"></div>
 				</td>
 			</tr>
-			<s:if test='addProduct01Dto.fieldcode == "02"'>
+			<s:if test='updProduct01Dto.fieldcode == "02"'>
 				<tr id="fieldcode02">
 			</s:if>
 			<s:else>
@@ -406,17 +396,17 @@
 							<div>
 								<s:property value="name"/>
 								<s:iterator value="dictList" id="dictList" status="st2">
-									<s:if test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item01" && #st1.index == 0}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+									<s:if test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item01" && #st1.index == 0}'>
+										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 									</s:if>
-									<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item02" && #st1.index == 1}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+									<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item02" && #st1.index == 1}'>
+										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 									</s:elseif>
-									<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item03" && #st1.index == 2}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+									<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item03" && #st1.index == 2}'>
+										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 									</s:elseif>
-									<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+									<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
+										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 									</s:elseif>
 									<s:else>
 										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
@@ -433,19 +423,19 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						称呼尺寸<s:textfield name="addProduct01Dto.item10" id="item10" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						称呼尺寸<s:textfield name="updProduct01Dto.item10" id="item10" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 						<br />
-						内径<s:textfield name="addProduct01Dto.item11" id="item11" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						内径<s:textfield name="updProduct01Dto.item11" id="item11" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 						<br />
-						壁厚<s:textfield name="addProduct01Dto.item12" id="item12" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						壁厚<s:textfield name="updProduct01Dto.item12" id="item12" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 						<br />
-						外径<s:textfield name="addProduct01Dto.item13" id="item13" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						外径<s:textfield name="updProduct01Dto.item13" id="item13" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 						<br />
-						长度<s:textfield name="addProduct01Dto.item14" id="item14" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						长度<s:textfield name="updProduct01Dto.item14" id="item14" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 						<br />
-						单位<select name="addProduct01Dto.item15" id="item15" style="width: 300px;">
+						单位<select name="updProduct01Dto.item15" id="item15" style="width: 300px;">
 								<s:iterator value="unitList" id="unitList" status="st2">
-									<option value="<s:property value="code"/>" <s:if test="%{unitList[#st2.index].code == addProduct01Dto.item15}">selected</s:if>><s:property value="fieldname"/></option>
+									<option value="<s:property value="code"/>" <s:if test="%{unitList[#st2.index].code == updProduct01Dto.item15}">selected</s:if>><s:property value="fieldname"/></option>
 								</s:iterator>
 							</select>
 					</div>
@@ -457,7 +447,8 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<input type="file" name="addPicFile01" id="addPicFile01"/>
+						<input type="file" name="updPicFile01" id="updPicFile01"/>
+						<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic01"/>" alt="" />
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -467,7 +458,8 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<input type="file" name="addPicFile02" id="addPicFile02"/>
+						<input type="file" name="updPicFile02" id="updPicFile02"/>
+						<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic02"/>" alt="" />
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -477,7 +469,8 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<input type="file" name="addPicFile03" id="addPicFile03"/>
+						<input type="file" name="updPicFile03" id="updPicFile03"/>
+						<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic03"/>" alt="" />
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -487,7 +480,8 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						<input type="file" name="addPdfFile" id="addPdfFile"/>
+						<input type="file" name="updPdfFile" id="updPdfFile"/>
+						<a target="_blank" href="<s:property value="updProduct01Dto.pdfurl"/><s:property value="updProduct01Dto.pdfpath"/>"><s:property value="updProduct01Dto.pdfpath"/></a>
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -497,21 +491,21 @@
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
-						在库数（整箱）<s:textfield name="addProduct01Dto.item20" id="item20" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						在库数（整箱）<s:textfield name="updProduct01Dto.item20" id="item20" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 						<br />
-						在库数（乱尺）<s:textfield name="addProduct01Dto.item21" id="item21" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+						在库数（乱尺）<s:textfield name="updProduct01Dto.item21" id="item21" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 						<br />
-						单位<select name="addProduct01Dto.item22" id="item22" style="width: 300px;">
+						单位<select name="updProduct01Dto.item22" id="item22" style="width: 300px;">
 								<s:iterator value="unitList" id="unitList" status="st1">
-									<option value="<s:property value="code"/>" <s:if test="%{unitList[#st1.index].code == addProduct01Dto.item22}">selected</s:if>><s:property value="fieldname"/></option>
+									<option value="<s:property value="code"/>" <s:if test="%{unitList[#st1.index].code == updProduct01Dto.item22}">selected</s:if>><s:property value="fieldname"/></option>
 								</s:iterator>
 							</select>
 						<br />
-						发送天数<s:textfield name="addProduct01Dto.item23" id="item23" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>天
+						发送天数<s:textfield name="updProduct01Dto.item23" id="item23" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>天
 						<br />
-						产地<select name="addProduct01Dto.makearea" id="makearea" style="width: 300px;">
+						产地<select name="updProduct01Dto.makearea" id="makearea" style="width: 300px;">
 								<s:iterator value="makeareaList" id="makeareaList" status="st1">
-									<option value="<s:property value="code"/>" <s:if test="%{makeareaList[#st1.index].code == addProduct01Dto.makearea}">selected</s:if>><s:property value="fieldname"/></option>
+									<option value="<s:property value="code"/>" <s:if test="%{makeareaList[#st1.index].code == updProduct01Dto.makearea}">selected</s:if>><s:property value="fieldname"/></option>
 								</s:iterator>
 							</select>
 					</div>
@@ -524,7 +518,7 @@
 					<div class="btn">
 						<div class="box1_left"></div>
 						<div class="box1_center">
-							<input class="input80" type="button" value="保存" onclick="add();"/>
+							<input class="input80" type="button" value="保存" onclick="upd();"/>
 						</div>
 						<div class="box1_right"></div>
 					</div>

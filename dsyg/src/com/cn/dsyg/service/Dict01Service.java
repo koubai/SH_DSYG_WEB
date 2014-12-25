@@ -17,18 +17,20 @@ public interface Dict01Service {
 	/**
 	 * 根据fieldcode查询特征列表
 	 * @param fieldcode
+	 * @param lang
 	 * @return
 	 */
-	public List<FeatureDto> queryFeatureByFieldcode(String fieldcode);
+	public List<FeatureDto> queryFeatureByFieldcode(String fieldcode, String lang);
 
 	/**
 	 * 翻页查询数据
 	 * @param fieldcode
 	 * @param fieldname
+	 * @param lang
 	 * @param page
 	 * @return
 	 */
-	public Page queryDict01CountByPage(String fieldcode, String fieldname, Page page);
+	public Page queryDict01CountByPage(String fieldcode, String fieldname, String lang, Page page);
 	
 	/**
 	 * 根据ID查询数据
@@ -40,9 +42,10 @@ public interface Dict01Service {
 	/**
 	 * 根据大类型code查询所有数据
 	 * @param fieldcode
+	 * @param lang
 	 * @return
 	 */
-	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode);
+	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode, String lang);
 	
 	/**
 	 * 删除数据

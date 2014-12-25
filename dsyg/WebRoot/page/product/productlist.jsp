@@ -27,10 +27,9 @@
 			alert("请选择一条记录！");
 			return;
 		} else {
-			var url = '<c:url value="/user/showUpdUserAction.action"></c:url>'
-					+ "?updUserid=" + id
-					+ "&date=" + new Date();
-			window.showModalDialog(url, window, "dialogheight:460px;dialogwidth:550px;center:yes;status:0;resizable=no;Minimize=no;Maximize=no");
+			$("#updProduct01Id").val(id);
+			document.mainform.action = '<c:url value="/product/showUpdProduct.action"></c:url>';
+			document.mainform.submit();
 		}
 	}
 	
@@ -41,7 +40,7 @@
 			return;
 		} else {
 			if(confirm("确定删除该记录吗？")) {
-				document.mainform.action = '<c:url value="/user/delUserAction.action"></c:url>' + "?delUserid=" + id;
+				document.mainform.action = '<c:url value="/product/delProduct.action"></c:url>' + "?delProduct01Id=" + id;
 				document.mainform.submit();
 			}
 		}
@@ -139,6 +138,8 @@
 			<s:form id="mainform" name="mainform" method="POST">
 				<s:hidden name="startIndex" id="startIndex"/>
 				<s:hidden name="queryProduct01Dto.fieldcode" id="fieldcode"/>
+				<s:hidden name="delProduct01Id" id="delProduct01Id"/>
+				<s:hidden name="updProduct01Id" id="updProduct01Id"/>
 				<div class="searchbox">
 					<div class="box1">
 						<label class="pdf10">关键字检索</label>

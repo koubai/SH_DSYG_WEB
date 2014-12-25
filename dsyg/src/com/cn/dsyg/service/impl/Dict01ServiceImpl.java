@@ -21,11 +21,11 @@ public class Dict01ServiceImpl implements Dict01Service {
 	private Dict01Dao dict01Dao;
 	
 	@Override
-	public List<FeatureDto> queryFeatureByFieldcode(String fieldcode) {
+	public List<FeatureDto> queryFeatureByFieldcode(String fieldcode, String lang) {
 		List<FeatureDto> resultList = new ArrayList<FeatureDto>();
 		//正常只有电线和套管才有特征，这里就按照fieldcode查询
 		for(int i = 1; i <= 4; i++) {
-			List<Dict01Dto> dictList = dict01Dao.queryDict01ByFieldcode(fieldcode + "_item0" + i);
+			List<Dict01Dto> dictList = dict01Dao.queryDict01ByFieldcode(fieldcode + "_item0" + i, lang);
 			String name = "";
 			//ID名
 			String codename = "code" + fieldcode + "_item0" + i;
@@ -43,11 +43,11 @@ public class Dict01ServiceImpl implements Dict01Service {
 	}
 
 	@Override
-	public Page queryDict01CountByPage(String fieldcode, String fieldname,
+	public Page queryDict01CountByPage(String fieldcode, String fieldname, String lang,
 			Page page) {
 		fieldname = StringUtil.replaceDatabaseKeyword_mysql(fieldname);
 		//查询总记录数
-		int totalCount = dict01Dao.queryDict01CountByPage(fieldcode, fieldname);
+		int totalCount = dict01Dao.queryDict01CountByPage(fieldcode, fieldname, lang);
 		page.setTotalCount(totalCount);
 		if(totalCount % page.getPageSize() > 0) {
 			page.setTotalPage(totalCount / page.getPageSize() + 1);
@@ -55,7 +55,7 @@ public class Dict01ServiceImpl implements Dict01Service {
 			page.setTotalPage(totalCount / page.getPageSize());
 		}
 		//翻页查询记录
-		List<Dict01Dto> list = dict01Dao.queryDict01ByPage(fieldcode, fieldname,
+		List<Dict01Dto> list = dict01Dao.queryDict01ByPage(fieldcode, fieldname, lang,
 				page.getStartIndex() * page.getPageSize(), page.getPageSize());
 		page.setItems(list);
 		return page;
@@ -67,8 +67,8 @@ public class Dict01ServiceImpl implements Dict01Service {
 	}
 
 	@Override
-	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode) {
-		return dict01Dao.queryDict01ByFieldcode(fieldcode);
+	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode, String lang) {
+		return dict01Dao.queryDict01ByFieldcode(fieldcode, lang);
 	}
 
 	@Override

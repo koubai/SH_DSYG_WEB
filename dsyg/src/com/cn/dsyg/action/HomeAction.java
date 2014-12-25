@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.struts2.ServletActionContext;
 
 import com.cn.common.action.BaseAction;
+import com.cn.common.util.Constants;
+import com.cn.common.util.PropertiesConfig;
 import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dto.Dict01Dto;
 import com.cn.dsyg.service.Dict01Service;
@@ -47,7 +49,7 @@ public class HomeAction extends BaseAction {
 		String result = "";
 		try {
 			this.clearMessages();
-			List<Dict01Dto> list = dict01Service.queryDict01ByFieldcode(strFieldcode);
+			List<Dict01Dto> list = dict01Service.queryDict01ByFieldcode(strFieldcode, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			if(list != null && list.size() > 0) {
 				result = StringUtil.list2json(list);
 				//去掉前后括号

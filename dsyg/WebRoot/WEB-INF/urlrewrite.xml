@@ -99,6 +99,36 @@
 		<to>/product/addProduct.action</to>
 	</rule>
 	
+	<rule>
+		<from>^/showUpdProduct.shtml$</from>
+		<to>/product/showUpdProduct.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/updProduct.shtml$</from>
+		<to>/product/updProduct.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/delProduct.shtml$</from>
+		<to>/product/delProduct.action</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/product/delProduct.action$</from>
+		<to>/delProduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/updProduct.action$</from>
+		<to>/updProduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/showUpdProduct.action$</from>
+		<to>/showUpdProduct.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/product/addProduct.action$</from>
 		<to>/addProduct.shtml</to>

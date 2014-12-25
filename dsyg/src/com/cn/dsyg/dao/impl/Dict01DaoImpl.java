@@ -18,10 +18,11 @@ public class Dict01DaoImpl extends BaseDao implements Dict01Dao {
 
 	@Override
 	public List<Dict01Dto> queryDict01ByPage(String fieldcode,
-			String fieldname, int start, int end) {
+			String fieldname, String lang, int start, int end) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
 		paramMap.put("fieldname", fieldname);
+		paramMap.put("lang", lang);
 		paramMap.put("start", start);
 		paramMap.put("end", end);
 		@SuppressWarnings("unchecked")
@@ -30,10 +31,11 @@ public class Dict01DaoImpl extends BaseDao implements Dict01Dao {
 	}
 
 	@Override
-	public int queryDict01CountByPage(String fieldcode, String fieldname) {
+	public int queryDict01CountByPage(String fieldcode, String fieldname, String lang) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
 		paramMap.put("fieldname", fieldname);
+		paramMap.put("lang", lang);
 		return (Integer) getSqlMapClientTemplate().queryForObject("queryDict01CountByPage", paramMap);
 	}
 
@@ -48,11 +50,27 @@ public class Dict01DaoImpl extends BaseDao implements Dict01Dao {
 		}
 		return null;
 	}
-
+	
 	@Override
-	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode) {
+	public Dict01Dto queryDict01ByLogicId(String fieldcode, String code,
+			String lang) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
+		paramMap.put("code", code);
+		paramMap.put("lang", lang);
+		@SuppressWarnings("unchecked")
+		List<Dict01Dto> list = getSqlMapClientTemplate().queryForList("queryDict01ByLogicId", paramMap);
+		if(list != null && list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
+
+	@Override
+	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode, String lang) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("fieldcode", fieldcode);
+		paramMap.put("lang", lang);
 		@SuppressWarnings("unchecked")
 		List<Dict01Dto> list = getSqlMapClientTemplate().queryForList("queryDict01ByFieldcode", paramMap);
 		return list;

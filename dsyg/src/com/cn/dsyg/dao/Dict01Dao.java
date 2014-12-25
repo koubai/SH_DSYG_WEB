@@ -20,7 +20,7 @@ public interface Dict01Dao {
 	 * @param end
 	 * @return
 	 */
-	public List<Dict01Dto> queryDict01ByPage(String fieldcode, String fieldname, int start, int end);
+	public List<Dict01Dto> queryDict01ByPage(String fieldcode, String fieldname, String lang, int start, int end);
 	
 	/**
 	 * 查询总记录数
@@ -28,7 +28,7 @@ public interface Dict01Dao {
 	 * @param fieldname
 	 * @return
 	 */
-	public int queryDict01CountByPage(String fieldcode, String fieldname);
+	public int queryDict01CountByPage(String fieldcode, String fieldname, String lang);
 
 	/**
 	 * 根据ID查询数据
@@ -38,11 +38,20 @@ public interface Dict01Dao {
 	public Dict01Dto queryDict01ByID(String id);
 	
 	/**
+	 * 根据逻辑主键查询数据
+	 * @param fieldcode
+	 * @param code
+	 * @param lang
+	 * @return
+	 */
+	public Dict01Dto queryDict01ByLogicId(String fieldcode, String code, String lang);
+	
+	/**
 	 * 根据大类型code查询所有数据
 	 * @param fieldcode
 	 * @return
 	 */
-	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode);
+	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode, String lang);
 	
 	/**
 	 * 删除数据

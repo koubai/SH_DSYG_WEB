@@ -5,7 +5,21 @@
 <struts>
 
 	<package name="product" extends="struts-dsyg" namespace="/product">
-	
+
+		<action name="delProduct" class="product01Action" method="delProduct">
+			<result name="success">/page/product/productlist.jsp</result>
+			<result name="checkerror">/page/product/productlist.jsp</result>
+		</action>
+		
+		<action name="showUpdProduct" class="product01Action" method="showUpdProduct">
+			<result name="success">/page/product/updproduct.jsp</result>
+		</action>
+		
+		<action name="updProduct" class="product01Action" method="updProduct">
+			<result name="success">/page/product/updproduct.jsp</result>
+			<result name="checkerror">/page/product/updproduct.jsp</result>
+		</action>
+		
 		<action name="showAddProduct" class="product01Action" method="showAddProduct">
 			<result name="success">/page/product/addproduct.jsp</result>
 		</action>

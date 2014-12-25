@@ -27,6 +27,9 @@
 		<isNotEmpty prepend="and" property="fieldname">
 			T.fieldname like '%$fieldname$%' ESCAPE '/'
 		</isNotEmpty>
+		<isNotEmpty prepend="and" property="lang">
+			T.lang = #lang#
+		</isNotEmpty>
 	</select>
 	
 	<select id="queryDict01ByPage" parameterClass="java.util.Map" resultMap="Dict01Dto">
@@ -37,6 +40,9 @@
 		<isNotEmpty prepend="and" property="fieldname">
 			T.fieldname like '%$fieldname$%' ESCAPE '/'
 		</isNotEmpty>
+		<isNotEmpty prepend="and" property="lang">
+			T.lang = #lang#
+		</isNotEmpty>
 		order by T.updatedate desc
 		LIMIT #start#, #end#
 	</select>
@@ -46,8 +52,13 @@
 			id = #id#
 	</select>
 	
+	<select id="queryDict01ByLogicId" parameterClass="java.util.Map" resultMap="Dict01Dto">
+		select * from tbdict01 where 
+			fieldcode = #fieldcode# and code = #code# and lang = #lang#
+	</select>
+	
 	<select id="queryDict01ByFieldcode" parameterClass="java.util.Map" resultMap="Dict01Dto">
-		select * from tbdict01 where 1 = 1 and fieldcode = #fieldcode# and status = 1 order by code asc
+		select * from tbdict01 where 1 = 1 and fieldcode = #fieldcode#  and lang = #lang# and status = 1 order by code asc
 	</select>
 	
 	<delete id="deleteDict01" parameterClass="java.util.Map">

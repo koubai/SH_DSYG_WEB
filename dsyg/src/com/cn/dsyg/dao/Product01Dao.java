@@ -16,20 +16,22 @@ public interface Product01Dao {
 	 * 翻页查询数据
 	 * @param fieldcode
 	 * @param keyword 关键字
+	 * @param status
 	 * @param start
 	 * @param end
 	 * @return
 	 */
 	public List<Product01Dto> queryProduct01ByPage(String fieldcode,
-			String keyword, int start, int end);
+			String keyword, String status, int start, int end);
 	
 	/**
 	 * 查询总记录数
 	 * @param fieldcode
 	 * @param keyword
+	 * @param status
 	 * @return
 	 */
-	public int queryProduct01CountByPage(String fieldcode, String keyword);
+	public int queryProduct01CountByPage(String fieldcode, String keyword, String status);
 
 	/**
 	 * 根据ID查询数据
