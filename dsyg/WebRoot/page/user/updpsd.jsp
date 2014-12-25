@@ -40,7 +40,7 @@
 			return;
 		}
 		if(confirm("确定修改吗？")) {
-			document.mainform.action = '<c:url value="/user/updPassword.action"></c:url>';
+			document.mainform.action = '<c:url value="/user/updPasswordAction.action"></c:url>';
 			document.mainform.submit();
 		}
 	}

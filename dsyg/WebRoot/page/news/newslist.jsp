@@ -8,17 +8,17 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>库存检索输入</title>
+<title>新闻一览</title>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var h = screen.availHeight; 
 		$("#container").height(h - 60);
 	});
 	
-	//新增
 	function add() {
-		document.mainform.action = '<c:url value="/product/showAddProductAction.action"></c:url>';
-		document.mainform.submit();
+		var url = '<c:url value="/user/showAddUserAction.action"></c:url>' + "?date=" + new Date();
+		//window.open(url);
+		window.showModalDialog(url, window, "dialogheight:460px;dialogwidth:550px;center:yes;status:0;resizable=no;Minimize=no;Maximize=no");
 	}
 	
 	function upd() {
@@ -27,9 +27,10 @@
 			alert("请选择一条记录！");
 			return;
 		} else {
-			$("#updProduct01Id").val(id);
-			document.mainform.action = '<c:url value="/product/showUpdProductAction.action"></c:url>';
-			document.mainform.submit();
+			var url = '<c:url value="/user/showUpdUserAction.action"></c:url>'
+					+ "?updUserid=" + id
+					+ "&date=" + new Date();
+			window.showModalDialog(url, window, "dialogheight:460px;dialogwidth:550px;center:yes;status:0;resizable=no;Minimize=no;Maximize=no");
 		}
 	}
 	
@@ -40,7 +41,7 @@
 			return;
 		} else {
 			if(confirm("确定删除该记录吗？")) {
-				document.mainform.action = '<c:url value="/product/delProductAction.action"></c:url>' + "?delProduct01Id=" + id;
+				document.mainform.action = '<c:url value="/user/delUserAction.action"></c:url>' + "?delUserid=" + id;
 				document.mainform.submit();
 			}
 		}
@@ -58,22 +59,15 @@
 		return id;
 	}
 	
-	//大分类检索
-	function queryData(fieldcode) {
-		$("#fieldcode").val(fieldcode);
-		query();
-	}
-	
-	//检索
-	function query() {
-		document.mainform.action = '<c:url value="/product/queryManageProductAction.action"></c:url>';
+	function queryList() {
+		document.mainform.action = '<c:url value="/news/queryNewsAction.action"></c:url>';
 		document.mainform.submit();
 	}
 	
 	//翻页
 	function changePage(pageNum) {
 		document.getElementById("startIndex").value = pageNum;
-		document.mainform.action = '<c:url value="/product/turnManageProductAction.action"></c:url>';
+		document.mainform.action = '<c:url value="/news/turnNewsAction.action"></c:url>';
 		document.mainform.submit();
 	}
 
@@ -122,37 +116,34 @@
 				<div class="tittle_left">
 				</div>
 				<div class="tittle_center">
-					商品检索
+					新闻信息一览
 				</div>
 				<div class="tittle_right">
-					<s:iterator value="goodsList" id="goodsList" status="st1">
-						<s:if test="%{goodsList[#st1.index].code == queryProduct01Dto.fieldcode}">
-							<input type="button" value="<s:property value="fieldname"/>" style="background-color: RED;" onclick="queryField('<s:property value="code"/>')"/>
-						</s:if>
-						<s:else>
-							<input type="button" value="<s:property value="fieldname"/>" onclick="queryData('<s:property value="code"/>')"/>
-						</s:else>
-					</s:iterator>
 				</div>
 			</div>
 			<s:form id="mainform" name="mainform" method="POST">
 				<s:hidden name="startIndex" id="startIndex"/>
-				<s:hidden name="queryProduct01Dto.fieldcode" id="fieldcode"/>
-				<s:hidden name="delProduct01Id" id="delProduct01Id"/>
-				<s:hidden name="updProduct01Id" id="updProduct01Id"/>
 				<div class="searchbox">
 					<div class="box1">
-						<label class="pdf10">关键字检索</label>
+						<label class="pdf10">标题</label>
 						<div class="box1_left"></div>
 						<div class="box1_center">
-							<s:textfield name="queryProduct01Dto.keyword" id="keyword" cssStyle="width:135px;" maxlength="16" theme="simple"></s:textfield>
+							<s:textfield name="queryTitle" id="queryTitle" cssStyle="width:135px;" maxlength="16" theme="simple"></s:textfield>
+						</div>
+						<div class="box1_right"></div>
+					</div>
+					<div class="box1">
+						<label class="pdf10">作者</label>
+						<div class="box1_left"></div>
+						<div class="box1_center">
+							<s:textfield name="queryAuthor" id="queryAuthor" cssStyle="width:135px;" maxlength="16" theme="simple"></s:textfield>
 						</div>
 						<div class="box1_right"></div>
 					</div>
 					<div class="btn" style="margin-left: 560px;">
 						<div class="box1_left"></div>
 						<div class="box1_center">
-							<input type="button" class="input40" value="检索" onclick="query();"/>
+							<input type="button" class="input40" value="检索" onclick="queryList();"/>
 						</div>
 						<div class="box1_right"></div>
 					</div>
@@ -174,12 +165,12 @@
 						<table class="info_tab" width="100%" border="1" cellpadding="5" cellspacing="0">
 							<tr class="tittle">
 								<td width="60"></td>
-								<td width="130">商品名称</td>
-								<td width="140">商品型号</td>
-								<td width="100">商品分类</td>
-								<td width="140">创建日期</td>
+								<td width="200">标题</td>
+								<td width="120">作者</td>
+								<td width="130">创建日期</td>
+								<td width="130">更新日期</td>
 							</tr>
-							<s:iterator id="manageProduct01List" value="manageProduct01List" status="st1">
+							<s:iterator id="newsList" value="newsList" status="st1">
 								<s:if test="#st1.odd==true">
 									<tr class="tr_bg">
 								</s:if>
@@ -189,16 +180,10 @@
 									<td>
 										<input name="radioKey" type="radio" value="<s:property value="id"/>"/>
 									</td>
-									<td><s:property value="nameno"/></td>
-									<td><s:property value="typeno"/></td>
-									<td>
-										<s:iterator value="goodsList" id="goodsList" status="st2">
-											<s:if test="%{goodsList[#st2.index].code == manageProduct01List[#st1.index].fieldcode}">
-												<s:property value="fieldname"/>
-											</s:if>
-										</s:iterator>
-									</td>
+									<td><s:property value="title"/></td>
+									<td><s:property value="author"/></td>
 									<td><s:property value="createdate" /></td>
+									<td><s:property value="updatedate" /></td>
 								</tr>
 							</s:iterator>
 						</table>

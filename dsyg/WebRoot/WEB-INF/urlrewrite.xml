@@ -16,7 +16,7 @@
 	
 	<rule>
 		<from>^/managelogout.shtml$</from>
-		<to>/manage/manageLogout.action</to>
+		<to>/manage/manageLogoutAction.action</to>
 	</rule>
 	
 	<rule>
@@ -25,183 +25,213 @@
 	</rule>
 	
 	<rule>
-		<from>^/showUserManager.shtml$</from>
-		<to>/user/showUserManagePage.action</to>
+		<from>^/showusermanager.shtml$</from>
+		<to>/user/showUserManagePageAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/queryUser.shtml$</from>
+		<from>^/queryuser.shtml$</from>
 		<to>/user/queryUserAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/turnUser.shtml$</from>
+		<from>^/turnuser.shtml$</from>
 		<to>/user/turnUserAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/showAddUser.shtml$</from>
+		<from>^/showadduser.shtml$</from>
 		<to>/user/showAddUserAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/addUser.shtml$</from>
+		<from>^/adduser.shtml$</from>
 		<to>/user/addUserAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/showUpdUser.shtml$</from>
+		<from>^/showupduser.shtml$</from>
 		<to>/user/showUpdUserAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/updUser.shtml$</from>
+		<from>^/upduser.shtml$</from>
 		<to>/user/updUserAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/delUser.shtml$</from>
+		<from>^/deluser.shtml$</from>
 		<to>/user/delUserAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/showUpdPassword.shtml$</from>
-		<to>/user/showUpdPassword.action</to>
+		<from>^/showupdpassword.shtml$</from>
+		<to>/user/showUpdPasswordAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/updPassword.shtml$</from>
-		<to>/user/updPassword.action</to>
+		<from>^/updpassword.shtml$</from>
+		<to>/user/updPasswordAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/showManageProductList.shtml$</from>
-		<to>/product/showManageProductList.action</to>
+		<from>^/showmanageproduct.shtml$</from>
+		<to>/product/showManageProductListAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/queryManageProduct.shtml$</from>
-		<to>/product/queryManageProduct.action</to>
+		<from>^/querymanageproduct.shtml$</from>
+		<to>/product/queryManageProductAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/turnManageProduct.shtml$</from>
-		<to>/product/turnManageProduct.action</to>
+		<from>^/turnmanageproduct.shtml$</from>
+		<to>/product/turnManageProductAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/showAddProduct.shtml$</from>
-		<to>/product/showAddProduct.action</to>
+		<from>^/showaddproduct.shtml$</from>
+		<to>/product/showAddProductAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/addProduct.shtml$</from>
-		<to>/product/addProduct.action</to>
+		<from>^/addproduct.shtml$</from>
+		<to>/product/addProductAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/showUpdProduct.shtml$</from>
-		<to>/product/showUpdProduct.action</to>
+		<from>^/showupdproduct.shtml$</from>
+		<to>/product/showUpdProductAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/updProduct.shtml$</from>
-		<to>/product/updProduct.action</to>
+		<from>^/updproduct.shtml$</from>
+		<to>/product/updProductAction.action</to>
 	</rule>
 	
 	<rule>
-		<from>^/delProduct.shtml$</from>
-		<to>/product/delProduct.action</to>
+		<from>^/delproduct.shtml$</from>
+		<to>/product/delProductAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/shownewsmanage.shtml$</from>
+		<to>/news/showNewsManageAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/querynews.shtml$</from>
+		<to>/news/queryNewsAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turnnews.shtml$</from>
+		<to>/news/turnNewsAction.action</to>
 	</rule>
 	
 	<outbound-rule>
-		<from>/product/delProduct.action$</from>
-		<to>/delProduct.shtml</to>
+		<from>/news/turnNewsAction.action$</from>
+		<to>/turnnews.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/product/updProduct.action$</from>
-		<to>/updProduct.shtml</to>
+		<from>/news/queryNewsAction.action$</from>
+		<to>/querynews.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/product/showUpdProduct.action$</from>
-		<to>/showUpdProduct.shtml</to>
+		<from>/news/showNewsManageAction.action$</from>
+		<to>/shownewsmanage.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/product/addProduct.action$</from>
-		<to>/addProduct.shtml</to>
+		<from>/product/delProductAction.action$</from>
+		<to>/delproduct.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/product/showAddProduct.action$</from>
-		<to>/showAddProduct.shtml</to>
+		<from>/product/updProductAction.action$</from>
+		<to>/updproduct.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/product/turnManageProduct.action$</from>
-		<to>/turnManageProduct.shtml</to>
+		<from>/product/showUpdProductAction.action$</from>
+		<to>/showupdproduct.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/product/queryManageProduct.action$</from>
-		<to>/queryManageProduct.shtml</to>
+		<from>/product/addProductAction.action$</from>
+		<to>/addproduct.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/product/showManageProductList.action$</from>
-		<to>/showManageProductList.shtml</to>
+		<from>/product/showAddProductAction.action$</from>
+		<to>/showaddproduct.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/user/updPassword.action$</from>
-		<to>/updPassword.shtml</to>
+		<from>/product/turnManageProductAction.action$</from>
+		<to>/turnmanageproduct.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/user/showUpdPassword.action$</from>
-		<to>/showUpdPassword.shtml</to>
+		<from>/product/queryManageProductAction.action$</from>
+		<to>/querymanageproduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/product/showManageProductListAction.action$</from>
+		<to>/showmanageproduct.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/updPasswordAction.action$</from>
+		<to>/updpassword.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/user/showUpdPasswordAction.action$</from>
+		<to>/showupdpassword.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
 		<from>/user/delUserAction.action$</from>
-		<to>/delUser.shtml</to>
+		<to>/deluser.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
 		<from>/user/updUserAction.action$</from>
-		<to>/updUser.shtml</to>
+		<to>/upduser.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
 		<from>/user/showUpdUserAction.action$</from>
-		<to>/showUpdUser.shtml</to>
+		<to>/showupduser.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
 		<from>/user/addUserAction.action$</from>
-		<to>/addUser.shtml</to>
+		<to>/adduser.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
 		<from>/user/showAddUserAction.action$</from>
-		<to>/showAddUser.shtml</to>
+		<to>/showadduser.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
 		<from>/user/turnUserAction.action$</from>
-		<to>/turnUser.shtml</to>
+		<to>/turnuser.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
 		<from>/user/queryUserAction.action$</from>
-		<to>/queryUser.shtml</to>
+		<to>/queryuser.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/user/showUserManagePage.action$</from>
-		<to>/showUserManager.shtml</to>
+		<from>/user/showUserManagePageAction.action$</from>
+		<to>/showusermanager.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>
@@ -210,7 +240,7 @@
 	</outbound-rule>
 	
 	<outbound-rule>
-		<from>/manage/manageLogout.action$</from>
+		<from>/manage/manageLogoutAction.action$</from>
 		<to>/managelogout.shtml</to>
 	</outbound-rule>
 	

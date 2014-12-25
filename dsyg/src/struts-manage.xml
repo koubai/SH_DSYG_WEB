@@ -15,7 +15,7 @@
 			<result name="error">/page/manage/login.jsp</result>
 		</action>
 		
-		<action name="manageLogout" class="manageLoginAction" method="manageLogout">
+		<action name="manageLogoutAction" class="manageLoginAction" method="manageLogoutAction">
 			<result name="*">/page/manage/login.jsp</result>
 		</action>
 		

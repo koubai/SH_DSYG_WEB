@@ -1,12 +1,16 @@
 package com.cn.dsyg.dto;
 
+import com.cn.common.dto.BaseDto;
+
 /**
  * @name 字典表
  * @author Frank
  * @time 2014-12-15下午11:25:09
  * @version 1.0
  */
-public class Dict01Dto {
+public class Dict01Dto extends BaseDto {
+
+	private static final long serialVersionUID = -4530468223912122242L;
 
 	/**
 	 * ID

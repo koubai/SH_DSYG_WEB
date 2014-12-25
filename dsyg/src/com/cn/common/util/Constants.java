@@ -42,6 +42,8 @@ public class Constants {
 	public final static String PROPERTIES_IMAGES_PATH = "images_path";
 	public final static String PROPERTIES_PDF_URL = "pdf_url";
 	public final static String PROPERTIES_PDF_PATH = "pdf_path";
+	public final static String PROPERTIES_NEW_PIC_URL = "news_img_url";
+	public final static String PROPERTIES_NEW_PIC_PATH = "news_img_path";
 	
 	//pdf
 	

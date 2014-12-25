@@ -94,7 +94,7 @@ public class Product01Action extends BaseAction {
 	 * 删除产品
 	 * @return
 	 */
-	public String delProduct() {
+	public String delProductAction() {
 		try {
 			this.clearMessages();
 			//当前操作用户ID
@@ -117,7 +117,7 @@ public class Product01Action extends BaseAction {
 	 * 修改产品页面
 	 * @return
 	 */
-	public String showUpdProduct() {
+	public String showUpdProductAction() {
 		try {
 			this.clearMessages();
 			initData();
@@ -140,7 +140,7 @@ public class Product01Action extends BaseAction {
 	 * 修改产品
 	 * @return
 	 */
-	public String updProduct() {
+	public String updProductAction() {
 		try {
 			this.clearMessages();
 			initData();
@@ -175,6 +175,7 @@ public class Product01Action extends BaseAction {
 			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
 			updProduct01Dto.setUpdateuid(username);
 			product01Service.updateProduct01(updProduct01Dto);
+			log.info("修改成功");
 			this.addActionMessage("修改成功！");
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
@@ -187,7 +188,7 @@ public class Product01Action extends BaseAction {
 	 * 新增产品页面
 	 * @return
 	 */
-	public String showAddProduct() {
+	public String showAddProductAction() {
 		try {
 			this.clearMessages();
 			initData();
@@ -203,7 +204,7 @@ public class Product01Action extends BaseAction {
 	 * 新增
 	 * @return
 	 */
-	public String addProduct() {
+	public String addProductAction() {
 		try {
 			this.clearMessages();
 			initData();
@@ -254,6 +255,7 @@ public class Product01Action extends BaseAction {
 			
 			product01Service.insertProduct01(addProduct01Dto);
 			this.addActionMessage("添加成功！");
+			log.info("添加成功");
 			addProduct01Dto = new Product01Dto();
 		} catch(Exception e) {
 			log.error("addProduct error:" + e);
@@ -266,7 +268,7 @@ public class Product01Action extends BaseAction {
 	 * 显示库存检索页面
 	 * @return
 	 */
-	public String showManageProductList() {
+	public String showManageProductListAction() {
 		try {
 			this.clearMessages();
 			startIndex = 0;
@@ -287,7 +289,7 @@ public class Product01Action extends BaseAction {
 	 * 查询库存
 	 * @return
 	 */
-	public String queryManageProduct() {
+	public String queryManageProductAction() {
 		try {
 			this.clearMessages();
 			startIndex = 0;
@@ -304,7 +306,7 @@ public class Product01Action extends BaseAction {
 	 * 库存数据翻页
 	 * @return
 	 */
-	public String turnManageProduct() {
+	public String turnManageProductAction() {
 		try {
 			this.clearMessages();
 			queryData();

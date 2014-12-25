@@ -2,6 +2,8 @@ package com.cn.dsyg.dto;
 
 import java.util.List;
 
+import com.cn.common.dto.BaseDto;
+
 /**
  * 特征
  * @name FeatureDto.java
@@ -9,8 +11,10 @@ import java.util.List;
  * @time 2014-12-19上午1:33:28
  * @version 1.0
  */
-public class FeatureDto {
+public class FeatureDto extends BaseDto {
 	
+	private static final long serialVersionUID = 7482404279957317397L;
+
 	/**
 	 * code名称
 	 */

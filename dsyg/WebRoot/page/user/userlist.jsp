@@ -8,7 +8,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>用户息一览</title>
+<title>用户信息一览</title>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var h = screen.availHeight; 
@@ -116,7 +116,7 @@
 				<div class="tittle_left">
 				</div>
 				<div class="tittle_center">
-					用户息一览
+					用户信息一览
 				</div>
 				<div class="tittle_right">
 				</div>
