@@ -72,6 +72,7 @@ ul.pagination li a:hover{background-position: 0px 100%; color: #fff; text-decora
 /**newsSlider end**/
 /**product**/
 .product_header{height:181px; background:url(../images/list_bg.jpg) repeat-x; width:100%;}
+.header_bg{ background:url(../images/list_bg.png) repeat-x; width:100%;}
 .product_header .pagekv{ width:1000px; height:180px; margin:0 auto; padding-top:1px;}
 .page_main{ width:1000px; margin:0 auto;}
 .page_main .page_item{ width:1000px; padding-top:50px; height:53px;}
@@ -195,9 +196,9 @@ ul.pagination li a:hover{background-position: 0px 100%; color: #fff; text-decora
 .product_search{ padding:10px 10px 80px 10px;}
 .product_search .tittle{ width:290px; height:55px; background:url(../images/search_icon.png) no-repeat;}
 .product_search .search_content .search_bgt{ width:1000px; height:20px; background:url(../images/core_bgt.png) no-repeat;}
-.product_search .search_content .search_bgc{ width:1000px; padding:15px 0; background:url(../images/core_bgc.png) repeat-y;}
+.product_search .search_content .search_bgc{ width:1000px; background:url(../images/core_bgc.png) repeat-y;}
 .product_search .search_content .search_bgb{ width:1000px; height:20px; background:url(../images/core_bgb.png) no-repeat;}
-.product_search .search_content .search_bgc .content{ padding:0 25px; width:950px;}
+.product_search .search_content .search_bgc .content{width:950px;}
 .product_search .search_content .search_bgc .content dl{ margin:0; padding:0;}
 .product_search .search_content .search_bgc .content dl dt{ font-size:14px; font-weight:600;}
 .buttons{ text-align:center; margin-top:10px;}
@@ -228,3 +229,4 @@ table.product_tab,table.product_tab tr,table.product_tab td{ border-collapse:col
 .return{ background:url(../images/return.png) 38px 10px no-repeat; padding-right:20px;}
 .inventory_search{ padding:10px 0;}
 .inventory_search input{ margin-right:10px;}
+#tabs{ padding: 0 8px 0 11px;}
