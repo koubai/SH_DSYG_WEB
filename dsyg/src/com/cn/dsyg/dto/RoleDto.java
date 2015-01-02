@@ -1,12 +1,16 @@
 package com.cn.dsyg.dto;
 
+import com.cn.common.dto.BaseDto;
+
 /**
  * 角色表DTO
  * @author Frank
  * @time 2014-12-12下午10:58:55
  * @version 1.0
  */
-public class RoleDto {
+public class RoleDto extends BaseDto {
+
+	private static final long serialVersionUID = -2632758271767170193L;
 
 	/**
 	 * 角色ID

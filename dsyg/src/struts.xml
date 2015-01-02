@@ -18,6 +18,8 @@
 	<include file="struts-user.xml"></include>
 	<!-- product -->
 	<include file="struts-product.xml"></include>
+	<!-- news -->
+	<include file="struts-news.xml"></include>
 	
 	<package name="index" extends="struts-default, json-default" namespace="/index">
 		

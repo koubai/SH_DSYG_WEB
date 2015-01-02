@@ -3,6 +3,20 @@
 
 <beans>
 
+	<!-- news -->
+	<bean id="newsService" class="com.cn.dsyg.service.impl.NewsServiceImpl" >
+		<property name="newsDao">
+			<ref local="newsDao"/>
+		</property>
+	</bean>
+	
+	<bean id="newsDao" class="com.cn.dsyg.dao.impl.NewsDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	
 	<!-- product01 -->
 	<bean id="product01Service" class="com.cn.dsyg.service.impl.Product01ServiceImpl" >
 		<property name="product01Dao">

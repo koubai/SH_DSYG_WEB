@@ -12,7 +12,7 @@
 <script type="text/javascript">
 	function add() {
 		if(checkData()) {
-			document.mainform.action = '<c:url value="/product/addProduct.action"></c:url>';
+			document.mainform.action = '<c:url value="/product/addProductAction.action"></c:url>';
 			document.mainform.submit();
 		}
 	}
@@ -255,7 +255,7 @@
 	}
 	
 	function goBack() {
-		document.mainform.action = '<c:url value="/product/queryManageProduct.action"></c:url>';
+		document.mainform.action = '<c:url value="/product/queryManageProductAction.action"></c:url>';
 		document.mainform.submit();
 	}
 

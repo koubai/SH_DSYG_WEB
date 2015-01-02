@@ -62,7 +62,7 @@ public class UserAction extends BaseAction {
 	 * 显示密码修改页面
 	 * @return
 	 */
-	public String showUpdPassword() {
+	public String showUpdPasswordAction() {
 		try {
 			this.clearMessages();
 			psdUserDto = new UserDto();
@@ -77,7 +77,7 @@ public class UserAction extends BaseAction {
 	 * 密码修改
 	 * @return
 	 */
-	public String updPassword() {
+	public String updPasswordAction() {
 		try {
 			this.clearMessages();
 			if(psdUserDto == null) {
@@ -128,7 +128,7 @@ public class UserAction extends BaseAction {
 	 * 显示用户管理页面
 	 * @return
 	 */
-	public String showUserManagePage() {
+	public String showUserManagePageAction() {
 		try {
 			this.clearMessages();
 			startIndex = 0;
@@ -136,7 +136,7 @@ public class UserAction extends BaseAction {
 			userList = new ArrayList<UserDto>();
 			addUserDto = new UserDto();
 		} catch(Exception e) {
-			log.error("showUserManagePage error:" + e);
+			log.error("showUserManagePageAction error:" + e);
 			return ERROR;
 		}
 		return SUCCESS;

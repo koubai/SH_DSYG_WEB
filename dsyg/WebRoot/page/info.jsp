@@ -4,7 +4,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript">
 	function manageLogout() {
-		window.location.href = '<c:url value="/manage/manageLogout.action"></c:url>';
+		window.location.href = '<c:url value="/manage/manageLogoutAction.action"></c:url>';
 	}
 	
 	function goManageHome() {

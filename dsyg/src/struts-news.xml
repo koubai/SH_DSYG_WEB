@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="news" extends="struts-dsyg" namespace="/news">
+	
+		<action name="showNewsManageAction" class="newsAction" method="showNewsManageAction">
+			<result name="success">/page/news/newslist.jsp</result>
+		</action>
+		
+		<action name="queryNewsAction" class="newsAction" method="queryNewsAction">
+			<result name="success">/page/news/newslist.jsp</result>
+		</action>
+		
+		<action name="turnNewsAction" class="newsAction" method="turnNewsAction">
+			<result name="success">/page/news/newslist.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

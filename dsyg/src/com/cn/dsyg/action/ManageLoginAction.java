@@ -108,13 +108,13 @@ public class ManageLoginAction extends BaseAction {
 	 * 退出登录
 	 * @return
 	 */
-	public String manageLogout() {
+	public String manageLogoutAction() {
 		try {
 			this.clearMessages();
 			ActionContext.getContext().getSession().clear();
 			userDto = new UserDto();
 		} catch(Exception e) {
-			log.error("manageLogout error:" + e);
+			log.error("manageLogoutAction error:" + e);
 			return ERROR;
 		}
 		return SUCCESS;

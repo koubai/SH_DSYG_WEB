@@ -10,19 +10,23 @@
 <title>主页</title>
 <script type="text/javascript">
 function logout() {
-	window.location.href = '<c:url value="/manage/manageLogout.action"></c:url>';
+	window.location.href = '<c:url value="/manage/manageLogoutAction.action"></c:url>';
 }
 
 function showManageProduct() {
-	window.location.href = '<c:url value="/product/showManageProductList.action"></c:url>';
+	window.location.href = '<c:url value="/product/showManageProductListAction.action"></c:url>';
 }
 
 function showUserManage() {
-	window.location.href = '<c:url value="/user/showUserManagePage.action"></c:url>';
+	window.location.href = '<c:url value="/user/showUserManagePageAction.action"></c:url>';
 }
 
 function updPassword() {
-	window.location.href = '<c:url value="/user/showUpdPassword.action"></c:url>';
+	window.location.href = '<c:url value="/user/showUpdPasswordAction.action"></c:url>';
+}
+
+function showNewsManage() {
+	window.location.href = '<c:url value="/news/showNewsManageAction.action"></c:url>';
 }
 </script>
 </head>
@@ -52,8 +56,8 @@ function updPassword() {
 					<td>
 						<div class="menu">
 							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;" onclick="show();">
-								<a href="#">aaaaaa</a>
+							<div class="menu_c" style="cursor: pointer;" onclick="showNewsManage();">
+								<a href="#">新闻管理</a>
 							</div>
 							<div class="menu_r"></div>
 						</div>

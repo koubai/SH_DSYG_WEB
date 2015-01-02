@@ -17,7 +17,7 @@
 	
 	//新增
 	function add() {
-		document.mainform.action = '<c:url value="/product/showAddProduct.action"></c:url>';
+		document.mainform.action = '<c:url value="/product/showAddProductAction.action"></c:url>';
 		document.mainform.submit();
 	}
 	
@@ -28,7 +28,7 @@
 			return;
 		} else {
 			$("#updProduct01Id").val(id);
-			document.mainform.action = '<c:url value="/product/showUpdProduct.action"></c:url>';
+			document.mainform.action = '<c:url value="/product/showUpdProductAction.action"></c:url>';
 			document.mainform.submit();
 		}
 	}
@@ -40,7 +40,7 @@
 			return;
 		} else {
 			if(confirm("确定删除该记录吗？")) {
-				document.mainform.action = '<c:url value="/product/delProduct.action"></c:url>' + "?delProduct01Id=" + id;
+				document.mainform.action = '<c:url value="/product/delProductAction.action"></c:url>' + "?delProduct01Id=" + id;
 				document.mainform.submit();
 			}
 		}
@@ -66,14 +66,14 @@
 	
 	//检索
 	function query() {
-		document.mainform.action = '<c:url value="/product/queryManageProduct.action"></c:url>';
+		document.mainform.action = '<c:url value="/product/queryManageProductAction.action"></c:url>';
 		document.mainform.submit();
 	}
 	
 	//翻页
 	function changePage(pageNum) {
 		document.getElementById("startIndex").value = pageNum;
-		document.mainform.action = '<c:url value="/product/turnManageProduct.action"></c:url>';
+		document.mainform.action = '<c:url value="/product/turnManageProductAction.action"></c:url>';
 		document.mainform.submit();
 	}
 

@@ -6,16 +6,16 @@
 
 	<package name="user" extends="struts-dsyg" namespace="/user">
 	
-		<action name="showUpdPassword" class="userAction" method="showUpdPassword">
+		<action name="showUpdPasswordAction" class="userAction" method="showUpdPasswordAction">
 			<result name="success">/page/user/updpsd.jsp</result>
 		</action>
 		
-		<action name="updPassword" class="userAction" method="updPassword">
+		<action name="updPasswordAction" class="userAction" method="updPasswordAction">
 			<result name="success">/page/user/updpsd.jsp</result>
 			<result name="checkerror">/page/user/updpsd.jsp</result>
 		</action>
 		
-		<action name="showUserManagePage" class="userAction" method="showUserManagePage">
+		<action name="showUserManagePageAction" class="userAction" method="showUserManagePageAction">
 			<result name="success">/page/user/userlist.jsp</result>
 		</action>
 		
