@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
 <title>新闻一览</title>
@@ -16,9 +15,8 @@
 	});
 	
 	function add() {
-		var url = '<c:url value="/user/showAddUserAction.action"></c:url>' + "?date=" + new Date();
-		//window.open(url);
-		window.showModalDialog(url, window, "dialogheight:460px;dialogwidth:550px;center:yes;status:0;resizable=no;Minimize=no;Maximize=no");
+		document.mainform.action = '<c:url value="/news/showAddNewsAction.action"></c:url>';
+		document.mainform.submit();
 	}
 	
 	function upd() {
@@ -27,10 +25,8 @@
 			alert("请选择一条记录！");
 			return;
 		} else {
-			var url = '<c:url value="/user/showUpdUserAction.action"></c:url>'
-					+ "?updUserid=" + id
-					+ "&date=" + new Date();
-			window.showModalDialog(url, window, "dialogheight:460px;dialogwidth:550px;center:yes;status:0;resizable=no;Minimize=no;Maximize=no");
+			document.mainform.action = '<c:url value="/news/showUpdNewsAction.action"></c:url>' + "?updNewsId=" +id;
+			document.mainform.submit();
 		}
 	}
 	
@@ -41,7 +37,7 @@
 			return;
 		} else {
 			if(confirm("确定删除该记录吗？")) {
-				document.mainform.action = '<c:url value="/user/delUserAction.action"></c:url>' + "?delUserid=" + id;
+				document.mainform.action = '<c:url value="/news/delNewsAction.action"></c:url>' + "?delNewsId=" + id;
 				document.mainform.submit();
 			}
 		}
@@ -165,10 +161,11 @@
 						<table class="info_tab" width="100%" border="1" cellpadding="5" cellspacing="0">
 							<tr class="tittle">
 								<td width="60"></td>
-								<td width="200">标题</td>
-								<td width="120">作者</td>
-								<td width="130">创建日期</td>
-								<td width="130">更新日期</td>
+								<td width="160">标题</td>
+								<td width="80">作者</td>
+								<td width="100">新闻日期</td>
+								<td width="120">创建日期</td>
+								<td width="120">更新日期</td>
 							</tr>
 							<s:iterator id="newsList" value="newsList" status="st1">
 								<s:if test="#st1.odd==true">
@@ -182,6 +179,7 @@
 									</td>
 									<td><s:property value="title"/></td>
 									<td><s:property value="author"/></td>
+									<td><s:property value="newsdate"/></td>
 									<td><s:property value="createdate" /></td>
 									<td><s:property value="updatedate" /></td>
 								</tr>

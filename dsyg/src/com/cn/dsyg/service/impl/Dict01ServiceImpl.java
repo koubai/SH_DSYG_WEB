@@ -34,10 +34,10 @@ public class Dict01ServiceImpl implements Dict01Service {
 			if(dictList != null && dictList.size() > 0) {
 				//特征标题
 				name = dictList.get(0).getMean();
+				feature.setName(name);
+				feature.setDictList(dictList);
+				resultList.add(feature);
 			}
-			feature.setName(name);
-			feature.setDictList(dictList);
-			resultList.add(feature);
 		}
 		return resultList;
 	}

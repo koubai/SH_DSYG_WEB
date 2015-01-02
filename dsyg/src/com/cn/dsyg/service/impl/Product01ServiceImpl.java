@@ -10,6 +10,7 @@ import com.cn.dsyg.dao.Dict01Dao;
 import com.cn.dsyg.dao.Product01Dao;
 import com.cn.dsyg.dto.Dict01Dto;
 import com.cn.dsyg.dto.Product01Dto;
+import com.cn.dsyg.dto.Product01SummaryDto;
 import com.cn.dsyg.service.Product01Service;
 
 /**
@@ -22,18 +23,15 @@ public class Product01ServiceImpl implements Product01Service {
 	
 	private Product01Dao product01Dao;
 	private Dict01Dao dict01Dao;
-
+	
 	@Override
-	public Page queryProduct01ByPage(String fieldcode, String keyword, Page page) {
-		keyword = StringUtil.replaceDatabaseKeyword_mysql(keyword);
-		
-		//逗号是分割符号，需要屏蔽掉
-		if(keyword != null && !"".equals(keyword)) {
-			keyword = keyword.replace(";", "");
-		}
+	public Page searchProduct01List(String fieldcode, String item01,
+			String item02, String item03, String item04, String status,
+			String keyword, String rank, Page page, int startIndex) {
+		keyword = StringUtil.searchKeyword(keyword);
 		
 		//查询总记录数（查询有效数据）
-		int totalCount = product01Dao.queryProduct01CountByPage(fieldcode, keyword, "" + Constants.STATUS_NORMAL);
+		int totalCount = product01Dao.searchProduct01ListCountByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank);
 		page.setTotalCount(totalCount);
 		if(totalCount % page.getPageSize() > 0) {
 			page.setTotalPage(totalCount / page.getPageSize() + 1);
@@ -41,21 +39,92 @@ public class Product01ServiceImpl implements Product01Service {
 			page.setTotalPage(totalCount / page.getPageSize());
 		}
 		//翻页查询记录（查询有效数据）
-		List<Product01Dto> list = product01Dao.queryProduct01ByPage(fieldcode, keyword, "" + Constants.STATUS_NORMAL,
+		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank,
+				startIndex * page.getPageSize(), page.getPageSize());
+		//添加PDF文件URL
+		if(list != null && list.size() > 0) {
+			String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
+			for(Product01Dto product : list) {
+				product.setPdfurl(pdfurl);
+			}
+		}
+		page.setItems(list);
+		return page;
+	}
+	
+	@Override
+	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode,
+			String item01, String item02, String item03, String item04,
+			String status, String keyword, String rank) {
+		keyword = StringUtil.searchKeyword(keyword);
+		return product01Dao.searchProduct01Summary(fieldcode, item01, item02, item03, item04, status, keyword, rank);
+	}
+
+	@Override
+	public Page searchProduct01ListByPage(String fieldcode, String item01,
+			String item02, String item03, String item04, String status,
+			String keyword, String rank, Page page) {
+		keyword = StringUtil.searchKeyword(keyword);
+		
+		//查询总记录数（查询有效数据）
+		int totalCount = product01Dao.searchProduct01ListCountByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank);
+		page.setTotalCount(totalCount);
+		if(totalCount % page.getPageSize() > 0) {
+			page.setTotalPage(totalCount / page.getPageSize() + 1);
+		} else {
+			page.setTotalPage(totalCount / page.getPageSize());
+		}
+		//翻页查询记录（查询有效数据）
+		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank,
+				page.getStartIndex() * page.getPageSize(), page.getPageSize());
+		//添加PDF文件URL
+		if(list != null && list.size() > 0) {
+			String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
+			for(Product01Dto product : list) {
+				product.setPdfurl(pdfurl);
+			}
+		}
+		page.setItems(list);
+		return page;
+	}
+
+	@Override
+	public Page queryProduct01ByPage(String fieldcode, String keyword, String rank, Page page) {
+		keyword = StringUtil.searchKeyword(keyword);
+		
+		//查询总记录数（查询有效数据）
+		int totalCount = product01Dao.queryProduct01CountByPage(fieldcode, keyword, "" + Constants.STATUS_NORMAL, rank);
+		page.setTotalCount(totalCount);
+		if(totalCount % page.getPageSize() > 0) {
+			page.setTotalPage(totalCount / page.getPageSize() + 1);
+		} else {
+			page.setTotalPage(totalCount / page.getPageSize());
+		}
+		//翻页查询记录（查询有效数据）
+		List<Product01Dto> list = product01Dao.queryProduct01ByPage(fieldcode, keyword, "" + Constants.STATUS_NORMAL, rank,
 				page.getStartIndex() * page.getPageSize(), page.getPageSize());
 		page.setItems(list);
 		return page;
 	}
 
 	@Override
-	public Product01Dto queryProduct01ByID(String id) {
-		return product01Dao.queryProduct01ByID(id);
+	public Product01Dto queryProduct01ByID(String id, String rank) {
+		Product01Dto product01 = product01Dao.queryProduct01ByID(id, rank);
+		if(product01 != null) {
+			//图片和PDF文件显示地址
+			String imageurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_IMAGES_URL);
+			String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
+			product01.setImageurl(imageurl);
+			product01.setPdfurl(pdfurl);
+			return product01;
+		}
+		return null;
 	}
 
 	@Override
 	public void deleteProduct01(String id, String userid) {
 		//逻辑删除
-		Product01Dto product = product01Dao.queryProduct01ByID(id);
+		Product01Dto product = product01Dao.queryProduct01ByID(id, "");
 		if(product != null) {
 			//状态=无效
 			product.setStatus("" + Constants.STATUS_DEL);

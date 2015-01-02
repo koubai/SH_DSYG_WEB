@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
 <title>库存更新</title>
@@ -25,8 +24,9 @@
 		var nameno = $("#nameno").val().trim();
 		var typeno = $("#typeno").val().trim();
 		var typenosub = $("#typenosub").val().trim();
+		var color1 = $("#color1").val().trim();
 		if(fieldcode == "") {
-			alert("请选择商品类型！");
+			alert("请选择产品类型！");
 			$("#fieldcode").focus();
 			return false;
 		}
@@ -47,18 +47,23 @@
 		}
 		
 		if(nameno == "") {
-			alert("商品名称不能为空！");
+			alert("产品名称不能为空！");
 			$("#nameno").focus();
 			return false;
 		}
 		if(typeno == "") {
-			alert("商品系列不能为空！");
+			alert("产品系列不能为空！");
 			$("#typeno").focus();
 			return false;
 		}
 		if(typenosub == "") {
-			alert("商品型号不能为空！");
+			alert("产品型号不能为空！");
 			$("#typenosub").focus();
+			return false;
+		}
+		if(color1 == "") {
+			alert("颜色不能为空！");
+			$("#color1").focus();
 			return false;
 		}
 		
@@ -297,7 +302,7 @@
 		</div>
 		<table style="margin-left: 50px; margin-top: 30px;" border="0" cellspacing="15" cellpadding="0">
 			<tr>
-				<td width="120px;"><font color="red">*</font>商品类型</td>
+				<td width="120px;"><font color="red">*</font>产品类型</td>
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
@@ -322,7 +327,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><font color="red">*</font>商品名称</td>
+				<td><font color="red">*</font>产品名称</td>
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
@@ -332,7 +337,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><font color="red">*</font>商品系列</td>
+				<td><font color="red">*</font>产品系列</td>
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
@@ -342,11 +347,21 @@
 				</td>
 			</tr>
 			<tr>
-				<td><font color="red">*</font>商品型号</td>
+				<td><font color="red">*</font>产品型号</td>
 				<td>
 					<div class="box1_left"></div>
 					<div class="box1_center">
 						<s:textfield name="updProduct01Dto.typenosub" id="typenosub" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+					</div>
+					<div class="box1_right"></div>
+				</td>
+			</tr>
+			<tr>
+				<td><font color="red">*</font>颜色</td>
+				<td>
+					<div class="box1_left"></div>
+					<div class="box1_center">
+						<s:textfield name="updProduct01Dto.color1" id="color1" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -450,7 +465,9 @@
 					<div class="box1_left"></div>
 					<div class="box1_center">
 						<input type="file" name="updPicFile01" id="updPicFile01"/>
-						<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic01"/>" alt="" />
+						<s:if test='updProduct01Dto.pic01 != null && updProduct01Dto.pic01 != ""'>
+							<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic01"/>" alt="" />
+						</s:if>
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -461,7 +478,9 @@
 					<div class="box1_left"></div>
 					<div class="box1_center">
 						<input type="file" name="updPicFile02" id="updPicFile02"/>
-						<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic02"/>" alt="" />
+						<s:if test='updProduct01Dto.pic02 != null && updProduct01Dto.pic02 != ""'>
+							<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic02"/>" alt="" />
+						</s:if>
 					</div>
 					<div class="box1_right"></div>
 				</td>
@@ -472,7 +491,9 @@
 					<div class="box1_left"></div>
 					<div class="box1_center">
 						<input type="file" name="updPicFile03" id="updPicFile03"/>
-						<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic03"/>" alt="" />
+						<s:if test='updProduct01Dto.pic03 != null && updProduct01Dto.pic03 != ""'>
+							<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic03"/>" alt="" />
+						</s:if>
 					</div>
 					<div class="box1_right"></div>
 				</td>

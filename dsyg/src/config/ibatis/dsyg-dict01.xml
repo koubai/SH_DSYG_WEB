@@ -20,7 +20,7 @@
 	</resultMap>
 	
 	<select id="queryDict01CountByPage" resultClass="int" parameterClass="java.util.Map">
-		select count(*) from tbdict01 T where 1 = 1
+		select count(*) from tbdict01 T where 1 = 1 and status = 1
 		<isNotEmpty prepend="and" property="fieldcode">
 			T.fieldcode = #fieldcode#
 		</isNotEmpty>
@@ -33,7 +33,7 @@
 	</select>
 	
 	<select id="queryDict01ByPage" parameterClass="java.util.Map" resultMap="Dict01Dto">
-		select T.* from tbdict01 T where 1 = 1
+		select T.* from tbdict01 T where 1 = 1 and status = 1
 		<isNotEmpty prepend="and" property="fieldcode">
 			T.fieldcode = #fieldcode#
 		</isNotEmpty>
@@ -53,7 +53,7 @@
 	</select>
 	
 	<select id="queryDict01ByLogicId" parameterClass="java.util.Map" resultMap="Dict01Dto">
-		select * from tbdict01 where 
+		select * from tbdict01 where 1 = 1 and status = 1 and
 			fieldcode = #fieldcode# and code = #code# and lang = #lang#
 	</select>
 	

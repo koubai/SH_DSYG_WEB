@@ -2,7 +2,9 @@ package com.cn.dsyg.service.impl;
 
 import java.util.List;
 
+import com.cn.common.util.Constants;
 import com.cn.common.util.Page;
+import com.cn.common.util.PropertiesConfig;
 import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dao.NewsDao;
 import com.cn.dsyg.dto.NewsDto;
@@ -39,7 +41,23 @@ public class NewsServiceImpl implements NewsService {
 
 	@Override
 	public NewsDto queryNewsByID(String id) {
-		return newsDao.queryNewsByID(id);
+		NewsDto news = newsDao.queryNewsByID(id);
+		if(news != null) {
+			//图片显示路径
+			news.setNewsPicUrl(PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_NEW_PIC_URL));
+			return news;
+		}
+		return null;
+	}
+	
+	@Override
+	public List<NewsDto> queryNewsByYear(String year) {
+		return newsDao.queryNewsByYear(year);
+	}
+	
+	@Override
+	public List<NewsDto> queryHomeNews() {
+		return newsDao.queryHomeNews(0, Constants.SHOW_NEWS_COUNT);
 	}
 
 	@Override
@@ -48,8 +66,16 @@ public class NewsServiceImpl implements NewsService {
 	}
 
 	@Override
-	public void deleteNews(String id) {
-		newsDao.deleteNews(id);
+	public void deleteNews(String id, String userid) {
+		//逻辑删除
+		NewsDto news = newsDao.queryNewsByID(id);
+		if(news != null) {
+			//状态=无效
+			news.setStatus("" + Constants.STATUS_DEL);
+			news.setUpdateuid(userid);
+			newsDao.updateNews(news);
+		}
+		//newsDao.deleteNews(id);
 	}
 
 	@Override

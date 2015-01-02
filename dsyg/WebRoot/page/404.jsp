@@ -24,7 +24,7 @@
 			</div>
 		</div>
 		<div class=content>
-			<p class="session_txt">页面未找到，点击<a href="./home.shtml">回到首页</a>。</p>
+			<p class="session_txt">页面未找到，点击<a href="./managelogin.shtml">回到首页</a>。</p>
 		</div>
 	</div>
 </body>

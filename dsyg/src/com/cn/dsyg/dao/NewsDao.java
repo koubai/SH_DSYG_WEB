@@ -37,11 +37,27 @@ public interface NewsDao {
 	 */
 	public NewsDto queryNewsByID(String id);
 	
+	
+	/**
+	 * 根据年份查询新闻列表
+	 * @param year
+	 * @return
+	 */
+	public List<NewsDto> queryNewsByYear(String year);
+	
 	/**
 	 * 查询所有数据
 	 * @return
 	 */
 	public List<NewsDto> queryAllNews();
+	
+	/**
+	 * 查询首页显示新闻记录
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public List<NewsDto> queryHomeNews(int start, int end);
 	
 	/**
 	 * 删除数据

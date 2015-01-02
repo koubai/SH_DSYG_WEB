@@ -285,7 +285,7 @@ public class UserAction extends BaseAction {
 			}
 			//删除用户
 			userService.deleteUser(delUserid);
-			this.addActionMessage("删除用户成功！");
+			this.addActionMessage("删除成功！");
 			//刷新页面
 			startIndex = 0;
 			queryData();
