@@ -27,6 +27,10 @@ function updPassword() {
 function showNewsManage() {
 	window.location.href = '<c:url value="/news/showNewsManageAction.action"></c:url>';
 }
+
+function showWarehouse() {
+	window.location.href = '<c:url value="/warehouse/showWarehouseManageAction.action"></c:url>';
+}
 </script>
 </head>
 <body>
@@ -77,6 +81,25 @@ function showNewsManage() {
 							<div class="menu_l"></div>
 							<div class="menu_c" style="cursor: pointer;" onclick="showUserManage();">
 								<a href="#">用户管理</a>
+							</div>
+							<div class="menu_r"></div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="menu">
+							<div class="menu_l"></div>
+							<div class="menu_c" style="cursor: pointer;" onclick="showWarehouse();">
+								<a href="#">库存输入检索</a>
+							</div>
+							<div class="menu_r"></div>
+						</div>
+					</td>
+					<td>
+						<div class="menu">
+							<div class="menu_l"></div>
+							<div class="menu_c" style="cursor: pointer;">
 							</div>
 							<div class="menu_r"></div>
 						</div>

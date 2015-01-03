@@ -209,9 +209,9 @@ ul.pagination li a:hover{background-position: 0px 100%; color: #fff; text-decora
 .buttons input:hover{ opacity:0.9;}
 .product_search .search_content h3{ height:30px; line-height:30px; font-size:16px; color:#037eb9;}
 .product_search .search_content .line{ height:5px; border-bottom:1px dashed #dddddd; margin:3px 0 10px 0;}
-.product_search .sort{ height:30px; line-height:30px; background:#eeeeee; padding-left:15px;}
-.product_search .sort span{ margin:0 5px; color:#999999;}
-.product_search .sort a{ color:#037EB9; font-weight:600;}
+.user_bg .user{ height:40px; line-height:40px; background:#eeeeee; padding-left:15px;}
+.user_bg .user span{ margin:0 5px; color:#999999;}
+.user_bg .user a{ color:#037EB9; font-weight:600;}
 .search_result{ height:40px; line-height:40px; font-size:18px; font-weight:600; text-align:center;}
 .red{ color:red;}
 .fw600{ font-weight:600;}
@@ -230,3 +230,6 @@ table.product_tab,table.product_tab tr,table.product_tab td{ border-collapse:col
 .inventory_search{ padding:10px 0;}
 .inventory_search input{ margin-right:10px;}
 #tabs{ padding: 0 8px 0 11px;}
+.mgl5{ margin-left:5px;}
+.s_select{ padding-left:15px; margin-bottom:10px;}
+.s_select select{ width:400px;  height:30px; border:1px solid #dddddd; border-radius:5px;}

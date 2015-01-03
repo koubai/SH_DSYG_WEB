@@ -5,15 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>库存检索输入</title>
+<title>产品一览</title>
 <script type="text/javascript">
-	$(document).ready(function(){
-		var h = screen.availHeight; 
-		$("#container").height(h - 60);
-	});
-	
 	//新增
 	function add() {
 		document.mainform.action = '<c:url value="/product/showAddProductAction.action"></c:url>';
@@ -57,12 +53,6 @@
 		return id;
 	}
 	
-	//大分类检索
-	function queryData(fieldcode) {
-		$("#fieldcode").val(fieldcode);
-		query();
-	}
-	
 	//检索
 	function query() {
 		document.mainform.action = '<c:url value="/product/queryManageProductAction.action"></c:url>';
@@ -77,118 +67,111 @@
 	}
 
 	//页跳转
-	function turnPage() {
+	function turnPage(id) {
 		var totalPage = "${page.totalPage}";
-		var turnPage = document.getElementById("pagenum").value;
+		var turnPage = $("#" +id).val();
 		//判断是否输入页码
 		if ('' != turnPage) {
 			//判断页码是否是大于0的数字
 			if(!iscInteger(turnPage)){
 				alert("页码必须是大于0的整数！");
+				$("#" +id).focus();
 				return;
 			}
 			turnPage = parseInt(turnPage);
 			if(turnPage < 1){
 				alert("页码必须是大于0的整数！");
+				$("#" +id).focus();
 				return;
 			}
 			//判断页码大小是否正确
 			if(turnPage > parseInt(totalPage)){
 				alert("页码不能超过最大页数！");
+				$("#" +id).focus();
 				return;
 			}
 			//换页
 			changePage(turnPage - 1);
 		} else {
 			alert("页码不能为空！");
+			$("#" +id).focus();
 			return;
 		}	
 	}
 </script>
 </head>
 <body>
-	<div id="container">
-		<div id="top">
-			<div class="logobox">
-				<div class="logo_tittle"></div>
-				<div class="logo"></div>
-			</div>
-		</div>
-		<div class="content">
-			<jsp:include page="../info.jsp" flush="true" />
-			<div class="tittle">
-				<div class="icons"><a class="home" href="#" onclick="goManageHome();">返回首页</a>　<a class="quit" href="#" onclick="manageLogout();">退出</a></div>
-				<div class="tittle_left">
-				</div>
-				<div class="tittle_center">
-					产品检索
-				</div>
-				<div class="tittle_right">
-					<s:iterator value="goodsList" id="goodsList" status="st1">
-						<s:if test="%{goodsList[#st1.index].code == queryProduct01Dto.fieldcode}">
-							<input type="button" value="<s:property value="fieldname"/>" style="background-color: RED;" onclick="queryField('<s:property value="code"/>')"/>
-						</s:if>
-						<s:else>
-							<input type="button" value="<s:property value="fieldname"/>" onclick="queryData('<s:property value="code"/>')"/>
-						</s:else>
-					</s:iterator>
-				</div>
-			</div>
-			<s:form id="mainform" name="mainform" method="POST">
-				<s:hidden name="startIndex" id="startIndex"/>
-				<s:hidden name="queryProduct01Dto.fieldcode" id="fieldcode"/>
-				<s:hidden name="delProduct01Id" id="delProduct01Id"/>
-				<s:hidden name="updProduct01Id" id="updProduct01Id"/>
-				<div class="searchbox">
-					<div class="box1">
-						<label class="pdf10">关键字检索</label>
-						<div class="box1_left"></div>
-						<div class="box1_center">
-							<s:textfield name="queryProduct01Dto.keyword" id="keyword" cssStyle="width:135px;" maxlength="16" theme="simple"></s:textfield>
+<jsp:include page="../head_manage.jsp" flush="true" />
+<div id="main">
+	<div class="main">
+		<div>
+			<div class="content">
+				<div class="product_search">
+					<s:form id="mainform" name="mainform" method="POST">
+						<s:hidden name="startIndex" id="startIndex"/>
+						<s:hidden name="delProduct01Id" id="delProduct01Id"/>
+						<s:hidden name="updProduct01Id" id="updProduct01Id"/>
+						<h3 class="s_select">产品检索
+							<select name="queryProduct01Dto.fieldcode" id="fieldcode">
+								<option value="" selected="selected">请选择</option>
+								<s:iterator value="goodsList" id="goodsList" status="st1">
+									<s:if test="%{goodsList[#st1.index].code == queryProduct01Dto.fieldcode}">
+										<option value="<s:property value="code"/>" selected="selected"><s:property value="fieldname"/></option>
+									</s:if>
+									<s:else>
+										<option value="<s:property value="code"/>"><s:property value="fieldname"/></option>
+									</s:else>
+								</s:iterator>
+							</select>
+						</h3>
+				  		<div class="search1">
+							<h3>关键字检索
+								<input class="keyword" name="queryProduct01Dto.keyword" id="keyword" value="<s:property value="queryProduct01Dto.keyword"/>" type="text" />
+								<input type="button" class="search_btn mgl5" value="检索" onclick="query();"/>
+							</h3>
+							<div class="line"></div>
 						</div>
-						<div class="box1_right"></div>
-					</div>
-					<div class="btn" style="margin-left: 560px;">
-						<div class="box1_left"></div>
-						<div class="box1_center">
-							<input type="button" class="input40" value="检索" onclick="query();"/>
+						<div class="page">
+							<div align="left" style="position: absolute; margin-left: -340px; margin-top: 4px;">
+								<a href="javascript:void(0);" onclick="add();">新　增</a>
+								<a href="javascript:void(0);" onclick="upd();">修　改</a>
+								<a href="javascript:void(0);" onclick="del();">删　除</a>
+							</div>
+							<span>第${page.startIndex + 1}页 / 共${page.totalPage==0?1:page.totalPage}页 共${page.totalCount}条记录</span><span>
+							跳转到第<input class="num" id="pagenum1" maxlength="6" type="text" />页</span><a href="javascript:void(0);" onclick="javascript:turnPage('pagenum1');">跳转</a>　　
+							<a href="javascript:void(0);" onclick="changePage(0);">首页</a>
+							<s:if test="%{page.startIndex <= 0}">
+								<a href="javascript:void(0);">上一页</a>
+							</s:if>
+							<s:else>
+								<a href="javascript:void(0);" onclick="changePage('${page.previousIndex}');">上一页</a>
+							</s:else>
+							<s:if test="%{page.nextIndex > page.totalPage - 1}">
+								<a href="javascript:void(0);">下一页</a>
+							</s:if>
+							<s:else>
+								<a href="javascript:void(0);" onclick="changePage('${page.nextIndex}');">下一页</a>
+							</s:else>
+							<a href="javascript:void(0);" onclick="changePage('${page.totalPage - 1}');">末页</a>
 						</div>
-						<div class="box1_right"></div>
-					</div>
-					<div class="box1" style="margin-top:20px; margin-left: 340px; color: red;">
-						<s:actionmessage />
-					</div>
-					<div class="icons thums">
-						<a class="add" onclick="add();">增加</a>
-						<a class="edit" onclick="upd();">修改</a>
-						<a class="delete" onclick="del();">删除</a>
-					</div>
-				</div>
-				<div class="data_table" style="padding:0px;">
-					<div class="tab_tittle">
-						<table width="100%" border="1" cellpadding="5" cellspacing="0">
-						</table>
-					</div>
-					<div class="tab_content">
-						<table class="info_tab" width="100%" border="1" cellpadding="5" cellspacing="0">
-							<tr class="tittle">
-								<td width="60"></td>
+						<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
+							<tr class="tab_tittle">
+								<td width="40">&nbsp;</td>
 								<td width="130">产品名称</td>
-								<td width="140">产品型号</td>
+								<td width="100">产品型号</td>
 								<td width="100">产品分类</td>
 								<td width="100">颜色</td>
+								<td width="100">是否显示</td>
 								<td width="120">创建日期</td>
 							</tr>
 							<s:iterator id="manageProduct01List" value="manageProduct01List" status="st1">
-								<s:if test="#st1.odd==true">
-									<tr class="tr_bg">
-								</s:if>
-								<s:else>
-									<tr>
-								</s:else>
-									<td>
-										<input name="radioKey" type="radio" value="<s:property value="id"/>"/>
-									</td>
+							<s:if test="#st1.odd==true">
+								<tr>
+							</s:if>
+							<s:else>
+								<tr class="bg2">
+							</s:else>
+									<td><input name="radioKey" type="radio" value="<s:property value="id"/>"/></td>
 									<td><s:property value="nameno"/></td>
 									<td><s:property value="typeno"/></td>
 									<td>
@@ -199,45 +182,37 @@
 										</s:iterator>
 									</td>
 									<td><s:property value="color1" /></td>
+									<td>
+										<s:if test='rank == "50"'>显示</s:if>
+										<s:else>不显示</s:else>
+									</td>
 									<td><s:property value="createdate" /></td>
 								</tr>
 							</s:iterator>
 						</table>
-					</div>
-					<div class="pages">
-						<ul>
-							<li>第<strong>${page.startIndex + 1}</strong>页/共<strong>${page.totalPage==0?1:page.totalPage}</strong>页/共<strong>${page.totalCount}</strong>条记录</li>
-							<li class="mgl15">跳转到
-								<input type="text" id="pagenum" class="text" maxlength="4" size="4"/>
-								<input type="button" value="GO" onclick="javascript:turnPage();"/>
-							</li>
-							<li class="mgl15">
-								<a class="first" href="#" onclick="changePage(0);">首页</a>
-							</li>
-							<li>
-								<s:if test="%{page.startIndex <= 0}">
-									<a class="last" href="#">上一页</a>
-								</s:if>
-								<s:else>
-									<a class="next" href="#" onclick="changePage('${page.previousIndex}');">上一页</a>
-								</s:else>
-							</li>
-							<li>
-								<s:if test="%{page.nextIndex > page.totalPage - 1}">
-									<a class="last" href="#">下一页</a>
-								</s:if>
-								<s:else>
-									<a class="next" href="#" onclick="changePage('${page.nextIndex}');">下一页</a>
-								</s:else>
-							</li>
-							<li>
-								<a class="next" href="#" onclick="changePage('${page.totalPage - 1}');">末页</a>
-							</li>
-						</ul>
-					</div>
+						<div class="page">
+							<span>第${page.startIndex + 1}页 / 共${page.totalPage==0?1:page.totalPage}页 共${page.totalCount}条记录</span><span>
+							跳转到第<input class="num" id="pagenum2" maxlength="6" type="text" />页</span><a href="javascript:void(0);" onclick="javascript:turnPage('pagenum2');">跳转</a>　　
+							<a href="javascript:void(0);" onclick="changePage(0);">首页</a>
+							<s:if test="%{page.startIndex <= 0}">
+								<a href="javascript:void(0);">上一页</a>
+							</s:if>
+							<s:else>
+								<a href="javascript:void(0);" onclick="changePage('${page.previousIndex}');">上一页</a>
+							</s:else>
+							<s:if test="%{page.nextIndex > page.totalPage - 1}">
+								<a href="javascript:void(0);">下一页</a>
+							</s:if>
+							<s:else>
+								<a href="javascript:void(0);" onclick="changePage('${page.nextIndex}');">下一页</a>
+							</s:else>
+							<a href="javascript:void(0);" onclick="changePage('${page.totalPage - 1}');">末页</a>
+						</div>
+					</s:form>
 				</div>
-			</s:form>
+			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

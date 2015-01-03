@@ -16,10 +16,14 @@
 	<include file="struts-home.xml"></include>
 	<!-- 登录 -->
 	<include file="struts-manage.xml"></include>
+	<!-- managehome -->
+	<include file="struts-managehome.xml"></include>
 	<!-- 用户 -->
 	<include file="struts-user.xml"></include>
 	<!-- product -->
 	<include file="struts-product.xml"></include>
+	<!-- warehouse -->
+	<include file="struts-warehouse.xml"></include>
 	<!-- news -->
 	<include file="struts-news.xml"></include>
 	<!-- search -->

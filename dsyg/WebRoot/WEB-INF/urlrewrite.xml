@@ -10,6 +10,11 @@
 	</rule>
 	
 	<rule>
+		<from>^/rand.shtml$</from>
+		<to>/index/rand.action</to>
+	</rule>
+	
+	<rule>
 		<from>^/managelogin.shtml$</from>
 		<to>/manage/manageLoginAction.action</to>
 	</rule>
@@ -17,6 +22,11 @@
 	<rule>
 		<from>^/managelogout.shtml$</from>
 		<to>/manage/manageLogoutAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/managehome.shtml$</from>
+		<to>/managehome/showManageHomeAction.action</to>
 	</rule>
 	
 	<rule>
@@ -394,6 +404,36 @@
 		<to>/home/showNewsDetailAction.action\?newsDetailId=$1</to>
 	</rule>
 	
+	<rule>
+		<from>^/showwarehousemanage.shtml$</from>
+		<to>/warehouse/showWarehouseManageAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/querywarehousemanage.shtml$</from>
+		<to>/warehouse/queryWarehouseListAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turnwarehousemanage.shtml$</from>
+		<to>/warehouse/turnWarehouseListAction.action</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/warehouse/turnWarehouseListAction.action$</from>
+		<to>/turnwarehousemanage.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/warehouse/queryWarehouseListAction.action$</from>
+		<to>/querywarehousemanage.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/warehouse/showWarehouseManageAction.action$</from>
+		<to>/showwarehousemanage.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/home/showNewsDetailAction.action\?newsDetailId=([0-9]+)$</from>
 		<to>/newsdetail_id$1.shtml</to>
@@ -770,6 +810,11 @@
 	</outbound-rule>
 	
 	<outbound-rule>
+		<from>/managehome/showManageHomeAction.action$</from>
+		<to>/managehome.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
 		<from>/manage/manageLogoutAction.action$</from>
 		<to>/managelogout.shtml</to>
 	</outbound-rule>
@@ -777,6 +822,11 @@
 	<outbound-rule>
 		<from>/manage/manageLoginAction.action$</from>
 		<to>/managelogin.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/index/rand.action$</from>
+		<to>/rand.shtml</to>
 	</outbound-rule>
 	
 	<outbound-rule>

@@ -3,6 +3,19 @@
 
 <beans>
 
+	<!-- warehouse -->
+	<bean id="warehouseService" class="com.cn.dsyg.service.impl.WarehouseServiceImpl" >
+		<property name="warehouseDao">
+			<ref local="warehouseDao"/>
+		</property>
+	</bean>
+	
+	<bean id="warehouseDao" class="com.cn.dsyg.dao.impl.WarehouseDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
 	<!-- news -->
 	<bean id="newsService" class="com.cn.dsyg.service.impl.NewsServiceImpl" >
 		<property name="newsDao">
@@ -15,7 +28,6 @@
 			<ref bean="sqlMapClient"/>
 		</property>
 	</bean>
-	
 	
 	<!-- product01 -->
 	<bean id="product01Service" class="com.cn.dsyg.service.impl.Product01ServiceImpl" >

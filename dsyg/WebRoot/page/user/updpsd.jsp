@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
 <title>用户信息修改</title>
@@ -47,75 +48,62 @@
 <base target="_self"/>
 </head>
 <body>
-	<div id="container">
-		<div id="top">
-			<div class="logobox">
-				<div class="logo_tittle"></div>
-				<div class="logo"></div>
-			</div>
-		</div>
-		<div class="content">
-			<jsp:include page="../info.jsp" flush="true" />
-			<div class="tittle">
-				<div class="icons"><a class="home" href="#" onclick="goManageHome();">返回首页</a>　<a class="quit" href="#" onclick="manageLogout();">退出</a></div>
-				<div class="tittle_left">
-				</div>
-				<div class="tittle_center">
-					密码修改
-				</div>
-				<div class="tittle_right">
-				</div>
-			</div>
-			<s:form id="mainform" name="mainform" method="POST">
-				<div style="position:absolute; margin-left: 150px; margin-top: -20px; text-align: center; color: red;">
-					<s:actionmessage />
-				</div>
-				<table style="margin-left: 50px; margin-top: 30px;" border="0" cellspacing="15" cellpadding="0">
-					<tr>
-						<td><font color="red">*</font>旧登录密码</td>
-						<td>
-							<div class="box1_left"></div>
-							<div class="box1_center">
-								<s:password name="psdUserDto.oldpassword" id="oldpassword" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
-							</div>
-							<div class="box1_right"></div>
-						</td>
-					</tr>
-					<tr>
-						<td><font color="red">*</font>新登录密码</td>
-						<td>
-							<div class="box1_left"></div>
-							<div class="box1_center">
-								<s:password name="psdUserDto.password" id="password" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
-							</div>
-							<div class="box1_right"></div>
-						</td>
-					</tr>
-					<tr>
-						<td><font color="red">*</font>确认新密码</td>
-						<td>
-							<div class="box1_left"></div>
-							<div class="box1_center">
-								<s:password name="psdUserDto.repassword" id="repassword" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
-							</div>
-							<div class="box1_right"></div>
-						</td>
-					</tr>
-					<tr>
-						<td>&nbsp;</td>
-						<td>
-							<div class="btn">
+<jsp:include page="../head_manage.jsp" flush="true" />
+<div id="main">
+	<div class="main">
+		<div>
+			<div class="content">
+				<s:form id="mainform" name="mainform" method="POST">
+					<div style="position:absolute; margin-left: 150px; margin-top: 50px; text-align: center; color: red;">
+						<s:actionmessage />
+					</div>
+					<table style="margin-left: 50px; margin-top: 80px;" border="0" cellspacing="5" cellpadding="0">
+						<tr>
+							<td><font color="red">*</font>旧登录密码</td>
+							<td>
 								<div class="box1_left"></div>
 								<div class="box1_center">
-									<input class="input80" type="button" value="修改" onclick="upd();"/>
+									<s:password name="psdUserDto.oldpassword" id="oldpassword" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
 								</div>
 								<div class="box1_right"></div>
-							</div>
-						</td>
-					</tr>
-				</table>
-			</s:form>
+							</td>
+						</tr>
+						<tr>
+							<td><font color="red">*</font>新登录密码</td>
+							<td>
+								<div class="box1_left"></div>
+								<div class="box1_center">
+									<s:password name="psdUserDto.password" id="password" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
+								</div>
+								<div class="box1_right"></div>
+							</td>
+						</tr>
+						<tr>
+							<td><font color="red">*</font>确认新密码</td>
+							<td>
+								<div class="box1_left"></div>
+								<div class="box1_center">
+									<s:password name="psdUserDto.repassword" id="repassword" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
+								</div>
+								<div class="box1_right"></div>
+							</td>
+						</tr>
+						<tr>
+							<td>　</td>
+						</tr>
+						<tr>
+							<td align="center" colspan="2">
+								<input class="input80" type="button" value="修　改" onclick="upd();"/>　<input class="input80" type="button" value="返　回" onclick="goHome();"/>
+							</td>
+						</tr>
+						<tr>
+							<td height="80">　</td>
+						</tr>
+					</table>
+				</s:form>
+			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

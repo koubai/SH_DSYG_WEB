@@ -9,7 +9,6 @@
 <meta name="keywords" content="东升盈港" />
 <meta name="description" content="东升盈港" />
 <meta name="author" content="javascript:" />
-<meta http-equiv="x-ua-compatible" content="ie=7" />
 <link href="<%=request.getContextPath()%>/css/jquery-ui.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath()%>/css/style.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.js"></script>
@@ -106,7 +105,8 @@
 	}
 	
 	$(function(){
-		$( "#tabs" ).tabs();
+		$("#tabs").tabs();
+		$("#tabs").tabs("select", '${tabIndex}');
 	});
 </script>
 </head>
@@ -254,7 +254,7 @@
 					<div class="search_bgb">
 					</div>
 				</div>	
-				<div class="buttons"><a href="product_search_info.html">
+				<div class="buttons"><a href="#">
 						<input type="button" class="search_btn" value="检索" onclick="searchSummary();" /></a>
 						<input type="button" class="reset_btn" value="重置" onclick="btnreset();" />
 				  </div>

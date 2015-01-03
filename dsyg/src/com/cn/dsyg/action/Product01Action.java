@@ -125,7 +125,7 @@ public class Product01Action extends BaseAction {
 			updPicFile01 = null;
 			updPicFile02 = null;
 			updPicFile03 = null;
-			updProduct01Dto = product01Service.queryProduct01ByID(updProduct01Id, "" + Constants.ROLE_RANK_NORMAL);
+			updProduct01Dto = product01Service.queryProduct01ByID(updProduct01Id, "");
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
 			return ERROR;
@@ -195,6 +195,8 @@ public class Product01Action extends BaseAction {
 			this.clearMessages();
 			initData();
 			addProduct01Dto = new Product01Dto();
+			//默认显示
+			addProduct01Dto.setRank("" + Constants.ROLE_RANK_NORMAL);
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
 			return ERROR;
@@ -468,7 +470,8 @@ public class Product01Action extends BaseAction {
 		}
 		//翻页查询所有委托公司
 		this.page.setStartIndex(startIndex);
-		page = product01Service.queryProduct01ByPage(queryProduct01Dto.getFieldcode(), queryProduct01Dto.getKeyword(), "" + Constants.ROLE_RANK_NORMAL, page);
+		//page = product01Service.queryProduct01ByPage(queryProduct01Dto.getFieldcode(), queryProduct01Dto.getKeyword(), "" + Constants.ROLE_RANK_NORMAL, page);
+		page = product01Service.queryProduct01ByPage(queryProduct01Dto.getFieldcode(), queryProduct01Dto.getKeyword(), "", page);
 		manageProduct01List = (List<Product01Dto>) page.getItems();
 		this.setStartIndex(page.getStartIndex());
 	}

@@ -2,6 +2,16 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
 	
+	<!-- warehouse -->
+	<bean id="warehouseAction" class="com.cn.dsyg.action.WarehouseAction" scope="session">
+		<property name="dict01Service">
+			<ref bean="dict01Service"/>
+		</property>
+		<property name="warehouseService">
+			<ref bean="warehouseService"/>
+		</property>
+	</bean>
+	
 	<!-- search -->
 	<bean id="searchAction" class="com.cn.dsyg.action.SearchAction" scope="request">
 		<property name="dict01Service">
@@ -37,6 +47,10 @@
 		<property name="newsService">
 			<ref bean="newsService"/>
 		</property>
+	</bean>
+	
+	<!-- 后台管理菜单页面 -->
+	<bean id="manageHomeAction" class="com.cn.dsyg.action.ManageHomeAction" scope="session">
 	</bean>
 	
 	<!-- 管理员登录 -->
