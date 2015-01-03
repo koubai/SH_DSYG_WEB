@@ -10,8 +10,28 @@
 			<result name="success">/page/home/home.jsp</result>
 		</action>
 		
-		<action name="querySubItem" class="homeAction" method="querySubItem">
-			<result type="json"></result>
+		<action name="showCompanyInfoAction" class="homeAction" method="showCompanyInfoAction">
+			<result name="success">/page/home/companyinfo.jsp</result>
+		</action>
+		
+		<action name="showCompanyDistributionAction" class="homeAction" method="showCompanyDistributionAction">
+			<result name="success">/page/home/distribution.jsp</result>
+		</action>
+		
+		<action name="showCompanyHistoryAction" class="homeAction" method="showCompanyHistoryAction">
+			<result name="success">/page/home/history.jsp</result>
+		</action>
+		
+		<action name="showCompanySpeechAction" class="homeAction" method="showCompanySpeechAction">
+			<result name="success">/page/home/speech.jsp</result>
+		</action>
+		
+		<action name="showCompanyNewAction" class="homeAction" method="showCompanyNewAction">
+			<result name="success">/page/home/companynews.jsp</result>
+		</action>
+		
+		<action name="showNewsDetailAction" class="homeAction" method="showNewsDetailAction">
+			<result name="success">/page/home/newsdetail.jsp</result>
 		</action>
 		
 	</package>

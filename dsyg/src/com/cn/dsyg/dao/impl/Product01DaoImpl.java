@@ -7,6 +7,7 @@ import java.util.Map;
 import com.cn.common.dao.BaseDao;
 import com.cn.dsyg.dao.Product01Dao;
 import com.cn.dsyg.dto.Product01Dto;
+import com.cn.dsyg.dto.Product01SummaryDto;
 
 /**
  * @name Product01DaoImpl.java
@@ -15,14 +16,72 @@ import com.cn.dsyg.dto.Product01Dto;
  * @version 1.0
  */
 public class Product01DaoImpl extends BaseDao implements Product01Dao {
+	
+	@Override
+	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode,
+			String item01, String item02, String item03, String item04,
+			String status, String keyword, String rank) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("fieldcode", fieldcode);
+		paramMap.put("item01", item01);
+		paramMap.put("item02", item02);
+		paramMap.put("item03", item03);
+		paramMap.put("item04", item04);
+		paramMap.put("status", status);
+		paramMap.put("keyword", keyword);
+		paramMap.put("rank", rank);
+		@SuppressWarnings("unchecked")
+		List<Product01SummaryDto> list = getSqlMapClientTemplate().queryForList("searchProduct01Summary", paramMap);
+		return list;
+	}
+
+	@Override
+	public List<Product01Dto> searchProduct01ListByPage(
+			String fieldcode, String item01, String item02, String item03,
+			String item04, String status, String keyword, String rank, int start, int end) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("fieldcode", fieldcode);
+		paramMap.put("item01", item01);
+		paramMap.put("item02", item02);
+		paramMap.put("item03", item03);
+		paramMap.put("item04", item04);
+		paramMap.put("status", status);
+		paramMap.put("keyword", keyword);
+		paramMap.put("rank", rank);
+		paramMap.put("start", start);
+		paramMap.put("end", end);
+		@SuppressWarnings("unchecked")
+		List<Product01Dto> list = getSqlMapClientTemplate().queryForList("searchProduct01ListByPage", paramMap);
+		return list;
+	}
+
+	@Override
+	public int searchProduct01ListCountByPage(String fieldcode, String item01,
+			String item02, String item03, String item04, String status,
+			String keyword, String rank) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("fieldcode", fieldcode);
+		paramMap.put("item01", item01);
+		paramMap.put("item02", item02);
+		paramMap.put("item03", item03);
+		paramMap.put("item04", item04);
+		paramMap.put("status", status);
+		paramMap.put("keyword", keyword);
+		paramMap.put("rank", rank);
+		return (Integer) getSqlMapClientTemplate().queryForObject("searchProduct01ListCountByPage", paramMap);
+	}
+	
+	
+	
 
 	@Override
 	public List<Product01Dto> queryProduct01ByPage(String fieldcode,
-			String keyword, String status, int start, int end) {
+			String keyword, String status, String rank, int start, int end) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
 		paramMap.put("keyword", keyword);
 		paramMap.put("status", status);
+		paramMap.put("rank", rank);
 		paramMap.put("start", start);
 		paramMap.put("end", end);
 		@SuppressWarnings("unchecked")
@@ -31,18 +90,20 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 	}
 
 	@Override
-	public int queryProduct01CountByPage(String fieldcode, String keyword, String status) {
+	public int queryProduct01CountByPage(String fieldcode, String keyword, String status, String rank) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
 		paramMap.put("keyword", keyword);
 		paramMap.put("status", status);
+		paramMap.put("rank", rank);
 		return (Integer) getSqlMapClientTemplate().queryForObject("queryProduct01CountByPage", paramMap);
 	}
 
 	@Override
-	public Product01Dto queryProduct01ByID(String id) {
+	public Product01Dto queryProduct01ByID(String id, String rank) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("id", id);
+		paramMap.put("rank", rank);
 		@SuppressWarnings("unchecked")
 		List<Product01Dto> list = getSqlMapClientTemplate().queryForList("queryProduct01ByID", paramMap);
 		if(list != null && list.size() > 0) {

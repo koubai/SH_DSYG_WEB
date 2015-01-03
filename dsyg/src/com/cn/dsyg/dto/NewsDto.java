@@ -16,6 +16,11 @@ public class NewsDto extends BaseDto {
 	 * ID
 	 */
 	private String id;
+	
+	/**
+	 * 新闻图片显示路径
+	 */
+	private String newsPicUrl;
 
 	/**
 	 * 显示顺序号
@@ -86,11 +91,16 @@ public class NewsDto extends BaseDto {
 	 * 预备项目5
 	 */
 	private String res05;
+	
+	/**
+	 * 新闻日期
+	 */
+	private String newsdate;
 
 	/**
 	 * 状态，1为有效，其他为无效
 	 */
-	private Integer status;
+	private String status;
 
 	/**
 	 * 数据创建者
@@ -232,14 +242,6 @@ public class NewsDto extends BaseDto {
 		this.res05 = res05;
 	}
 
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
 	public String getCreateuid() {
 		return createuid;
 	}
@@ -270,5 +272,29 @@ public class NewsDto extends BaseDto {
 
 	public void setUpdatedate(String updatedate) {
 		this.updatedate = updatedate;
+	}
+
+	public String getNewsPicUrl() {
+		return newsPicUrl;
+	}
+
+	public void setNewsPicUrl(String newsPicUrl) {
+		this.newsPicUrl = newsPicUrl;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getNewsdate() {
+		return newsdate;
+	}
+
+	public void setNewsdate(String newsdate) {
+		this.newsdate = newsdate;
 	}
 }

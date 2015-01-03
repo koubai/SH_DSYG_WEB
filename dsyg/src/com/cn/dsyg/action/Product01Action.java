@@ -54,7 +54,7 @@ public class Product01Action extends BaseAction {
 	private Product01Dto queryProduct01Dto;
 	
 	/**
-	 * 大商品分类
+	 * 大产品分类
 	 */
 	private List<Dict01Dto> goodsList;
 	
@@ -106,6 +106,7 @@ public class Product01Action extends BaseAction {
 			//大分类列表
 			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			queryData();
+			this.addActionMessage("删除成功！");
 		} catch(Exception e) {
 			log.error("delProduct error:" + e);
 			return ERROR;
@@ -121,14 +122,10 @@ public class Product01Action extends BaseAction {
 		try {
 			this.clearMessages();
 			initData();
-			updProduct01Dto = product01Service.queryProduct01ByID(updProduct01Id);
-			if(updProduct01Dto != null) {
-				//图片和PDF文件显示地址
-				String imageurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_IMAGES_URL);
-				String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
-				updProduct01Dto.setImageurl(imageurl);
-				updProduct01Dto.setPdfurl(pdfurl);
-			}
+			updPicFile01 = null;
+			updPicFile02 = null;
+			updPicFile03 = null;
+			updProduct01Dto = product01Service.queryProduct01ByID(updProduct01Id, "" + Constants.ROLE_RANK_NORMAL);
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
 			return ERROR;
@@ -177,6 +174,11 @@ public class Product01Action extends BaseAction {
 			product01Service.updateProduct01(updProduct01Dto);
 			log.info("修改成功");
 			this.addActionMessage("修改成功！");
+			//清空数据
+			updPicFile01 = null;
+			updPicFile02 = null;
+			updPicFile03 = null;
+			updPdfFile = null;
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
 			return ERROR;
@@ -324,11 +326,11 @@ public class Product01Action extends BaseAction {
 	 */
 	private boolean checkData(Product01Dto product01) {
 		if(product01 == null) {
-			this.addActionMessage("请选择商品类型！");
+			this.addActionMessage("请选择产品类型！");
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getFieldcode())) {
-			this.addActionMessage("请选择商品类型！");
+			this.addActionMessage("请选择产品类型！");
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getRank())) {
@@ -336,15 +338,19 @@ public class Product01Action extends BaseAction {
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getNameno())) {
-			this.addActionMessage("商品名称不能为空！");
+			this.addActionMessage("产品名称不能为空！");
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getTypeno())) {
-			this.addActionMessage("商品系列不能为空！");
+			this.addActionMessage("产品系列不能为空！");
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getTypenosub())) {
-			this.addActionMessage("商品型号不能为空！");
+			this.addActionMessage("产品型号不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(product01.getColor1())) {
+			this.addActionMessage("颜色不能为空！");
 			return false;
 		}
 		if(Constants.DICT_GOODS_TYPE_CODE_01.equals(product01.getFieldcode())) {
@@ -462,7 +468,7 @@ public class Product01Action extends BaseAction {
 		}
 		//翻页查询所有委托公司
 		this.page.setStartIndex(startIndex);
-		page = product01Service.queryProduct01ByPage(queryProduct01Dto.getFieldcode(), queryProduct01Dto.getKeyword(), page);
+		page = product01Service.queryProduct01ByPage(queryProduct01Dto.getFieldcode(), queryProduct01Dto.getKeyword(), "" + Constants.ROLE_RANK_NORMAL, page);
 		manageProduct01List = (List<Product01Dto>) page.getItems();
 		this.setStartIndex(page.getStartIndex());
 	}

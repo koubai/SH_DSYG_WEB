@@ -11,9 +11,17 @@ public class Constants {
 	
 	//多语言
 	public final static String SYSTEM_LANGUAGE = "language";
+	//URL后缀名
+	public final static String URL_SUFFIX = ".shtml";
+	//首页新闻条数
+	public final static int SHOW_NEWS_COUNT = 6;
+	//公司新闻，初始显示年份显示
+	public final static int SHOW_NEWS_YEAR = 2012;
+	//最多显示N年的新闻
+	public final static int SHOW_NEWS_YEAR_COUNT = 5;
 	
 	//dict01
-	//商品分类
+	//产品分类
 	public final static String DICT_GOODS_TYPE = "goods";
 	public final static String DICT_GOODS_TYPE_CODE_01 = "01";//电线
 	public final static String DICT_GOODS_TYPE_CODE_02 = "02";//套管

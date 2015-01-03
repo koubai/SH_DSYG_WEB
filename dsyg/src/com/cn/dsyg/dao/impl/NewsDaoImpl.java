@@ -47,6 +47,25 @@ public class NewsDaoImpl extends BaseDao implements NewsDao {
 		}
 		return null;
 	}
+	
+	@Override
+	public List<NewsDto> queryNewsByYear(String year) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("year", year);
+		@SuppressWarnings("unchecked")
+		List<NewsDto> list = getSqlMapClientTemplate().queryForList("queryNewsByYear", paramMap);
+		return list;
+	}
+	
+	@Override
+	public List<NewsDto> queryHomeNews(int start, int end) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("start", start);
+		paramMap.put("end", end);
+		@SuppressWarnings("unchecked")
+		List<NewsDto> list = getSqlMapClientTemplate().queryForList("queryHomeNews", paramMap);
+		return list;
+	}
 
 	@Override
 	public List<NewsDto> queryAllNews() {

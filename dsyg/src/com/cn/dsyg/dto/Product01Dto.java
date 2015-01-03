@@ -265,7 +265,7 @@ public class Product01Dto extends BaseDto {
 	private String pic05;
 
 	/**
-	 * PDF文件路径
+	 * PDF文件名
 	 */
 	private String pdfpath;
 

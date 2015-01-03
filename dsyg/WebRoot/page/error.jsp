@@ -24,7 +24,7 @@
 			</div>
 		</div>
 		<div class=content>
-			<p class="session_txt">系统出错了<a href="./home.shtml">回到首页</a>。</p>
+			<p class="session_txt">系统出错了<a href="./managelogin.shtml">回到首页</a>。</p>
 		</div>
 	</div>
 </body>

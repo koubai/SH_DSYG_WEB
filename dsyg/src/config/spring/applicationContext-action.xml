@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
+	
+	<!-- search -->
+	<bean id="searchAction" class="com.cn.dsyg.action.SearchAction" scope="request">
+		<property name="dict01Service">
+			<ref bean="dict01Service"/>
+		</property>
+		<property name="product01Service">
+			<ref bean="product01Service"/>
+		</property>
+	</bean>
+
 	<!-- news -->
 	<bean id="newsAction" class="com.cn.dsyg.action.NewsAction" scope="session">
 		<property name="newsService">
@@ -22,6 +33,9 @@
 	<bean id="homeAction" class="com.cn.dsyg.action.HomeAction" scope="session">
 		<property name="dict01Service">
 			<ref bean="dict01Service"/>
+		</property>
+		<property name="newsService">
+			<ref bean="newsService"/>
 		</property>
 	</bean>
 	

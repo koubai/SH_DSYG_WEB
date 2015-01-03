@@ -10,6 +10,8 @@
 	<!-- 文件上传最大10M -->
 	<constant name="struts.multipart.maxSize" value="10240000"></constant>
 	
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	
 	<!-- 首页 -->
 	<include file="struts-home.xml"></include>
 	<!-- 登录 -->
@@ -20,6 +22,8 @@
 	<include file="struts-product.xml"></include>
 	<!-- news -->
 	<include file="struts-news.xml"></include>
+	<!-- search -->
+	<include file="struts-search.xml"></include>
 	
 	<package name="index" extends="struts-default, json-default" namespace="/index">
 		

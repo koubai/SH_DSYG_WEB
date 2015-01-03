@@ -99,6 +99,20 @@ public class StringUtil {
 	}
 	
 	/**
+	 * 逗号是分割符号，需要屏蔽掉
+	 * @param keyword
+	 * @return
+	 */
+	public static String searchKeyword(String keyword) {
+		keyword = replaceDatabaseKeyword_mysql(keyword);
+		//逗号是分割符号，需要屏蔽掉
+		if(keyword != null && !"".equals(keyword)) {
+			keyword = keyword.replace(";", "");
+		}
+		return keyword;
+	}
+	
+	/**
 	 * 替换数据库关键字符
 	 * @param value
 	 * @return

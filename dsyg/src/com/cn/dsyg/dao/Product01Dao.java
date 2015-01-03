@@ -3,6 +3,7 @@ package com.cn.dsyg.dao;
 import java.util.List;
 
 import com.cn.dsyg.dto.Product01Dto;
+import com.cn.dsyg.dto.Product01SummaryDto;
 
 /**
  * @name Product01Dao.java
@@ -13,32 +14,82 @@ import com.cn.dsyg.dto.Product01Dto;
 public interface Product01Dao {
 	
 	/**
+	 * 检索产品汇总
+	 * @param fieldcode
+	 * @param item01
+	 * @param item02
+	 * @param item03
+	 * @param item04
+	 * @param status
+	 * @param keyword
+	 * @param rank 数据权限
+	 * @return
+	 */
+	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode, String item01, String item02,
+			String item03, String item04, String status, String keyword, String rank);
+	
+	/**
+	 * 产品检索明细列表
+	 * @param fieldcode
+	 * @param item01
+	 * @param item02
+	 * @param item03
+	 * @param item04
+	 * @param status
+	 * @param keyword
+	 * @param rank 数据权限
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public List<Product01Dto> searchProduct01ListByPage(String fieldcode, String item01, String item02,
+			String item03, String item04, String status, String keyword, String rank, int start, int end);
+	
+	/**
+	 * 产品检索明细数据量
+	 * @param fieldcode
+	 * @param item01
+	 * @param item02
+	 * @param item03
+	 * @param item04
+	 * @param status
+	 * @param keyword
+	 * @param rank 数据权限
+	 * @return
+	 */
+	public int searchProduct01ListCountByPage(String fieldcode, String item01, String item02,
+			String item03, String item04, String status, String keyword, String rank);
+	
+	/**
 	 * 翻页查询数据
 	 * @param fieldcode
 	 * @param keyword 关键字
 	 * @param status
+	 * @param rank 数据权限
 	 * @param start
 	 * @param end
 	 * @return
 	 */
 	public List<Product01Dto> queryProduct01ByPage(String fieldcode,
-			String keyword, String status, int start, int end);
+			String keyword, String status, String rank, int start, int end);
 	
 	/**
 	 * 查询总记录数
 	 * @param fieldcode
 	 * @param keyword
 	 * @param status
+	 * @param rank 数据权限
 	 * @return
 	 */
-	public int queryProduct01CountByPage(String fieldcode, String keyword, String status);
+	public int queryProduct01CountByPage(String fieldcode, String keyword, String status, String rank);
 
 	/**
 	 * 根据ID查询数据
 	 * @param id
+	 * @param rank
 	 * @return
 	 */
-	public Product01Dto queryProduct01ByID(String id);
+	public Product01Dto queryProduct01ByID(String id, String rank);
 	
 	/**
 	 * 删除数据

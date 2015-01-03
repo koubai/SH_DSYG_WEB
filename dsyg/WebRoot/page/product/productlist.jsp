@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
 <title>库存检索输入</title>
@@ -122,7 +121,7 @@
 				<div class="tittle_left">
 				</div>
 				<div class="tittle_center">
-					商品检索
+					产品检索
 				</div>
 				<div class="tittle_right">
 					<s:iterator value="goodsList" id="goodsList" status="st1">
@@ -174,10 +173,11 @@
 						<table class="info_tab" width="100%" border="1" cellpadding="5" cellspacing="0">
 							<tr class="tittle">
 								<td width="60"></td>
-								<td width="130">商品名称</td>
-								<td width="140">商品型号</td>
-								<td width="100">商品分类</td>
-								<td width="140">创建日期</td>
+								<td width="130">产品名称</td>
+								<td width="140">产品型号</td>
+								<td width="100">产品分类</td>
+								<td width="100">颜色</td>
+								<td width="120">创建日期</td>
 							</tr>
 							<s:iterator id="manageProduct01List" value="manageProduct01List" status="st1">
 								<s:if test="#st1.odd==true">
@@ -198,6 +198,7 @@
 											</s:if>
 										</s:iterator>
 									</td>
+									<td><s:property value="color1" /></td>
 									<td><s:property value="createdate" /></td>
 								</tr>
 							</s:iterator>

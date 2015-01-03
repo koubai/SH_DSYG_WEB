@@ -27,6 +27,18 @@ public class FileUtil {
 	private static final Logger log = LogManager.getLogger(FileUtil.class);
 	
 	/**
+	 * 删除文件
+	 * @param filename
+	 * @param path
+	 */
+	public static void deleteFile(String filename, String path) {
+		File file = new File(path + filename);
+		if(file.exists()) {
+			file.delete();
+		}
+	}
+	
+	/**
 	 * 上传文件到指定目录，返回新的文件名
 	 * @param file 文件对象
 	 * @param path 文件保存路径

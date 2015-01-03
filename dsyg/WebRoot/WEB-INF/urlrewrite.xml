@@ -129,6 +129,536 @@
 		<to>/news/turnNewsAction.action</to>
 	</rule>
 	
+	<rule>
+		<from>^/addnews.shtml$</from>
+		<to>/news/addNewsAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showaddnews.shtml$</from>
+		<to>/news/showAddNewsAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/updnews.shtml$</from>
+		<to>/news/updNewsAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showupdnews.shtml$</from>
+		<to>/news/showUpdNewsAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/delnews.shtml$</from>
+		<to>/news/delNewsAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchhome.shtml$</from>
+		<to>/search/showSearchAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchcondition_g([0-9]+)_t([0-9]+).shtml$</from>
+		<to>/search/searchConditionAction.action\?goodsId=$1&amp;tabIndex=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchcondition_g([0-9]+).shtml$</from>
+		<to>/search/searchConditionAction.action\?goodsId=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchcondition.shtml$</from>
+		<to>/search/searchConditionAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary.shtml$</from>
+		<to>/search/searchSummaryAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i2([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item02Id=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i3([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item03Id=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item04Id=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+)_i2([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+)_i3([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2&amp;item03Id=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2&amp;item04Id=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i2([0-9]+)_i3([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item02Id=$2&amp;item03Id=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i2([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item02Id=$2&amp;item04Id=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i3([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item03Id=$2&amp;item04Id=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+)_i2([0-9]+)_i3([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3&amp;item03Id=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+)_i2([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3&amp;item04Id=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+)_i3([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2&amp;item03Id=$3&amp;item04Id=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i2([0-9]+)_i3([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item02Id=$2&amp;item03Id=$3&amp;item04Id=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_g([0-9]+)_i1([0-9]+)_i2([0-9]+)_i3([0-9]+)_i4([0-9]+).shtml$</from>
+		<to>/search/searchSummaryAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3&amp;item03Id=$4&amp;item04Id=$5</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchsummary_kw([^/_]*?).shtml$</from>
+		<to>/search/searchSummaryAction.action\?keyword=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?startIndex=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;startIndex=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;startIndex=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i2([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item02Id=$2&amp;startIndex=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i3([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item03Id=$2&amp;startIndex=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item04Id=$2&amp;startIndex=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_i2([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3&amp;startIndex=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_i3([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;item03Id=$3&amp;startIndex=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;item04Id=$3&amp;startIndex=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i2([0-9]+)_i3([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item02Id=$2&amp;item03Id=$3&amp;startIndex=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i2([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item02Id=$2&amp;item04Id=$3&amp;startIndex=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i3([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item03Id=$2&amp;item04Id=$3&amp;startIndex=$4</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_i2([0-9]+)_i3([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3&amp;item03Id=$4&amp;startIndex=$5</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_i2([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3&amp;item04Id=$4&amp;startIndex=$5</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_i3([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;item03Id=$3&amp;item04Id=$4&amp;startIndex=$5</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i2([0-9]+)_i3([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item02Id=$2&amp;item03Id=$3&amp;item04Id=$4&amp;startIndex=$5</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_i1([0-9]+)_i2([0-9]+)_i3([0-9]+)_i4([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;item01Id=$2&amp;item02Id=$3&amp;item03Id=$4&amp;item04Id=$5&amp;startIndex=$6</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchlist_g([0-9]+)_kw([^/_]*?)_p([0-9]+).shtml$</from>
+		<to>/search/searchListAction.action\?goodsId=$1&amp;keyword=$2&amp;startIndex=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/companynews_y([0-9]+).shtml$</from>
+		<to>/home/showCompanyNewAction.action\?newsYear=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/companynews.shtml$</from>
+		<to>/home/showCompanyNewAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/companyinfo.shtml$</from>
+		<to>/home/showCompanyInfoAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/companyspeech.shtml$</from>
+		<to>/home/showCompanySpeechAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/companyhistory.shtml$</from>
+		<to>/home/showCompanyHistoryAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/companydistribution.shtml$</from>
+		<to>/home/showCompanyDistributionAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/newsdetail.shtml$</from>
+		<to>/home/showNewsDetailAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/newsdetail_id([0-9]+).shtml$</from>
+		<to>/home/showNewsDetailAction.action\?newsDetailId=$1</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/home/showNewsDetailAction.action\?newsDetailId=([0-9]+)$</from>
+		<to>/newsdetail_id$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showNewsDetailAction.action$</from>
+		<to>/newsdetail.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showCompanyDistributionAction.action$</from>
+		<to>/companydistribution.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showCompanyHistoryAction.action$</from>
+		<to>/companyhistory.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showCompanySpeechAction.action$</from>
+		<to>/companyspeech.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showCompanyInfoAction.action$</from>
+		<to>/companyinfo.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showCompanyNewAction.action$</from>
+		<to>/companynews.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showCompanyNewAction.action\?newsYear=([0-9]+)$</from>
+		<to>/companynews_y$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;keyword=([^/_]*?)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_kw$2_p$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_i2$3_i3$4_i4$5_p$6.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i2$2_i3$3_i4$4_p$5.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_i3$3_i4$4_p$5.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_i2$3_i4$4_p$5.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_i2$3_i3$4_p$5.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i3$2_i4$3_p$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i2$2_i4$3_p$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i2$2_i3$3_p$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_i4$3_p$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_i3$3_p$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_i2$3_p$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item04Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i4$2_p$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item03Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i3$2_p$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i2$2_p$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_i1$2_p$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?goodsId=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_g$1_p$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchListAction.action\?&amp;startIndex=([0-9]+)$</from>
+		<to>/searchlist_p$1.shtml</to>
+	</outbound-rule>
+
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?keyword=([^/_]*?)$</from>
+		<to>/searchsummary_kw$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2_i2$3_i3$4_i4$5.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i2$2_i3$3_i4$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2_i3$3_i4$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2_i2$3_i4$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2_i2$3_i3$4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item03Id=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i3$2_i4$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i2$2_i4$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)&amp;item03Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i2$2_i3$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2_i4$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item03Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2_i3$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)&amp;item02Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2_i2$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item04Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i4$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item03Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i3$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item02Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i2$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)&amp;item01Id=([0-9]+)$</from>
+		<to>/searchsummary_g$1_i1$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action\?goodsId=([0-9]+)$</from>
+		<to>/searchsummary_g$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchSummaryAction.action$</from>
+		<to>/searchsummary.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchConditionAction.action$</from>
+		<to>/searchcondition.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchConditionAction.action\?goodsId=([0-9]+)$</from>
+		<to>/searchcondition_g$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchConditionAction.action\?goodsId=([0-9]+)&amp;tabIndex=([0-9]+)$</from>
+		<to>/searchcondition_g$1_t$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/showSearchAction.action$</from>
+		<to>/searchhome.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/news/delNewsAction.action$</from>
+		<to>/delnews.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/news/showUpdNewsAction.action$</from>
+		<to>/showupdnews.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/news/updNewsAction.action$</from>
+		<to>/updnews.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/news/showAddNewsAction.action$</from>
+		<to>/showaddnews.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/news/addNewsAction.action$</from>
+		<to>/addnews.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/news/turnNewsAction.action$</from>
 		<to>/turnnews.shtml</to>

@@ -30,6 +30,19 @@ public interface NewsService {
 	public NewsDto queryNewsByID(String id);
 	
 	/**
+	 * 根据年份查询新闻列表
+	 * @param year
+	 * @return
+	 */
+	public List<NewsDto> queryNewsByYear(String year);
+	
+	/**
+	 * 查询首页显示新闻记录
+	 * @return
+	 */
+	public List<NewsDto> queryHomeNews();
+	
+	/**
 	 * 查询所有数据
 	 * @return
 	 */
@@ -38,8 +51,9 @@ public interface NewsService {
 	/**
 	 * 删除数据
 	 * @param id
+	 * @param userid
 	 */
-	public void deleteNews(String id);
+	public void deleteNews(String id, String userid);
 	
 	/**
 	 * 新增数据

@@ -5,7 +5,28 @@
 <struts>
 
 	<package name="news" extends="struts-dsyg" namespace="/news">
-	
+		
+		<action name="delNewsAction" class="newsAction" method="delNewsAction">
+			<result name="success">/page/news/newslist.jsp</result>
+		</action>
+		
+		<action name="updNewsAction" class="newsAction" method="updNewsAction">
+			<result name="success">/page/news/updnews.jsp</result>
+		</action>
+		
+		<action name="showUpdNewsAction" class="newsAction" method="showUpdNewsAction">
+			<result name="success">/page/news/updnews.jsp</result>
+		</action>
+		
+		<action name="showAddNewsAction" class="newsAction" method="showAddNewsAction">
+			<result name="success">/page/news/addnews.jsp</result>
+		</action>
+		
+		<action name="addNewsAction" class="newsAction" method="addNewsAction">
+			<result name="success">/page/news/addnews.jsp</result>
+			<result name="checkerror">/page/news/addnews.jsp</result>
+		</action>
+		
 		<action name="showNewsManageAction" class="newsAction" method="showNewsManageAction">
 			<result name="success">/page/news/newslist.jsp</result>
 		</action>
