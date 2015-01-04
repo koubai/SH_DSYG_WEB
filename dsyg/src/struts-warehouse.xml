@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<package name="warehouse" extends="struts-dsyg" namespace="/warehouse">
+	
+		<action name="showWarehouseManageAction" class="warehouseAction" method="showWarehouseManageAction">
+			<result name="success">/page/warehouse/warehoustlist.jsp</result>
+		</action>
+		
+		<action name="queryWarehouseListAction" class="warehouseAction" method="queryWarehouseListAction">
+			<result name="success">/page/warehouse/warehoustlist.jsp</result>
+		</action>
+		
+		<action name="turnWarehouseListAction" class="warehouseAction" method="turnWarehouseListAction">
+			<result name="success">/page/warehouse/warehoustlist.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>

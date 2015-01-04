@@ -9,7 +9,6 @@
 <meta name="keywords" content="东升盈港" />
 <meta name="description" content="东升盈港" />
 <meta name="author" content="javascript:" />
-<meta http-equiv="x-ua-compatible" content="ie=7" /> 
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>

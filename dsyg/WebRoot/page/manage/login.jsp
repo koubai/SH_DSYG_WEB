@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>登录</title>
+<title>后台登录</title>
 <script type="text/javascript">
 	function login() {
 		document.mainform.action = '<c:url value="/manage/manageLoginAction.action"></c:url>';
@@ -42,82 +42,45 @@
 </script>
 </head>
 <body>
-	<div id="container">
-		<div id="top" style="height:200px;">
-			<div class="logobox" style="margin-top:60px;">
-				<div class="logo_tittle"></div>
-				<div class="logo"></div>
-			</div>
+<div id="container">
+	<div class="header clearfix">
+		<div class="logo cf">
+			<h1>后台登录</h1>
 		</div>
-		<div class="content">
-		<div style="position:absolute; margin-left: 430px; margin-top: 1px; text-align: center; color: red;">
-			<s:actionmessage />
-		</div>
+	</div>
+	<div class="content clearfix">
+		<div class="form-wrapper">
 			<s:form id="mainform" name="mainform" method="POST">
-				<table class="login_tab" border="0" cellpadding="0" cellspacing="15">
-					<tr>
-						<td align="right">用户名</td>
-						<td>
-							<div class="box1">
-								<div class="box1_left"></div>
-								<div class="box1_center">
-									<div>
-										
-									</div>
-									<input name="userDto.userid" type="text" style="width:200px;" maxlength="16" id="userid" value="<s:property value="userDto.userid"/>"/>
-								</div>
-								<div class="box1_right"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td align="right">登录密码</td>
-						<td>
-							<div class="box1">
-								<div class="box1_left"></div>
-								<div class="box1_center">
-									<input name="userDto.password" style="width:200px;" maxlength="16" type="password" id="password" />
-								</div>
-								<div class="box1_right"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td align="right">验证码</td>
-						<td>
-							<div class="box1">
-								<div class="box1_left"></div>
-								<div class="box1_center">
-									<input type="text" name="userDto.verificationcode" style="width:130px;" id="verificationcode" maxlength="4" value="<s:property value="userDto.verificationcode"/>"/>
-								</div>
-								<div class="box1_right"></div>
-							</div>
-							<img title="看不清点我" id="randomImg" name="random" src="<c:url value="/index/rand.action" />" onclick="changeValidateCode(this)" class="yzhm" />
-						</td>
-					</tr>
-					<tr>
-						<td align="right">&nbsp;</td>
-						<td>
-							<div class="btn" style="margin-left:0;">
-								<div class="box1_left"></div>
-								<div class="box1_center">
-									<input name="提交" type="submit" class="input80" value="登录" onclick="login();" />
-								</div>
-								<div class="box1_right"></div>
-							</div>
-							<div class="btn">
-								<div class="box1_left"></div>
-								<div class="box1_center">
-									<input name="重置" type="button" class="input80" value="重置" onclick="reset();" />
-								</div>
-								<div class="box1_right"></div>
-							</div>
-						</td>
-					</tr>
-				</table>
+				<div class="form-item">
+					<div style="position:absolute; margin-left: 0px; margin-top: -45px; text-align: center; color: red; font-size: 12px;">
+						<s:actionmessage />
+					</div>
+					<label class="form-label" for="userName">用户名</label>
+					<div class="form-field">
+						<input type="text" placeholder="请输入用户名" class="form-text" maxlength="16" name="userDto.userid" id="userid" value="<s:property value="userDto.userid"/>">
+					</div>
+				</div>
+				<div class="form-item">
+                   	<label class="form-label" for="password">密码</label>
+                   	<div class="form-field">
+                   		<input type="password" placeholder="请输入密码" class="form-text" maxlength="16" name="userDto.password" id="password">
+                   	</div>
+                   </div>
+				<div id="mobile_vcode_item" class="form-item" style="display: block;">
+					<label class="form-label" for="mobileVcode">验证码</label>
+					<div class="form-field">
+						<div class="mobile-vcode-text">
+							<input type="text" class="form-text" name="userDto.verificationcode" id="verificationcode" maxlength="4" value="<s:property value="userDto.verificationcode"/>">
+							<a id="get_mobile_vcode" class="get-mobile-vcode" href="javascript:void(0);"><img title="看不清点我" id="randomImg" name="random" src="<c:url value="/index/rand.action" />" onclick="changeValidateCode(this)" /></a>
+						</div>
+					</div>
+				</div>
+				<div class="form-action">
+					<button type="submit" id="register_btn" class="register-btn btn btn-blue" onclick="login();">登录</button>
+				</div>
 			</s:form>
 		</div>
-		<div id="footer"></div>
 	</div>
+</div>
 </body>
 </html>

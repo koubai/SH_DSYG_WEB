@@ -325,13 +325,18 @@
 				</td>
 			</tr>
 			<tr>
-				<td><font color="red">*</font>数据级别</td>
+				<td><font color="red">*</font>是否显示</td>
 				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<s:textfield name="addProduct01Dto.rank" id="rank" cssStyle="width:300px;" maxlength="2" theme="simple"></s:textfield>
-					</div>
-					<div class="box1_right"></div>
+					<select name="addProduct01Dto.rank" id="rank" style="width:300px;">
+						<s:if test='addProduct01Dto.rank == "50"'>
+							<option value="50" selected="selected">显示</option>
+							<option value="70">不显示</option>
+						</s:if>
+						<s:else>
+							<option value="50">显示</option>
+							<option value="70" selected="selected">不显示</option>
+						</s:else>
+					</select>
 				</td>
 			</tr>
 			<tr>

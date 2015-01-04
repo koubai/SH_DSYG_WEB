@@ -8,16 +8,12 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>新闻一览</title>
+<title>库存一览</title>
 <script type="text/javascript">
-	$(document).ready(function(){
-		var h = screen.availHeight; 
-		$("#container").height(h - 60);
-	});
-	
+	//新增
 	function add() {
-		document.mainform.action = '<c:url value="/news/showAddNewsAction.action"></c:url>';
-		document.mainform.submit();
+		//document.mainform.action = '<c:url value="/product/showAddProductAction.action"></c:url>';
+		//document.mainform.submit();
 	}
 	
 	function upd() {
@@ -26,8 +22,9 @@
 			alert("请选择一条记录！");
 			return;
 		} else {
-			document.mainform.action = '<c:url value="/news/showUpdNewsAction.action"></c:url>' + "?updNewsId=" +id;
-			document.mainform.submit();
+			$("#updProduct01Id").val(id);
+			//document.mainform.action = '<c:url value="/product/showUpdProductAction.action"></c:url>';
+			//document.mainform.submit();
 		}
 	}
 	
@@ -38,8 +35,8 @@
 			return;
 		} else {
 			if(confirm("确定删除该记录吗？")) {
-				document.mainform.action = '<c:url value="/news/delNewsAction.action"></c:url>' + "?delNewsId=" + id;
-				document.mainform.submit();
+				//document.mainform.action = '<c:url value="/product/delProductAction.action"></c:url>' + "?delProduct01Id=" + id;
+				//document.mainform.submit();
 			}
 		}
 	}
@@ -56,15 +53,16 @@
 		return id;
 	}
 	
-	function queryList() {
-		document.mainform.action = '<c:url value="/news/queryNewsAction.action"></c:url>';
+	//检索
+	function query() {
+		document.mainform.action = '<c:url value="/warehouse/queryWarehouseListAction.action"></c:url>';
 		document.mainform.submit();
 	}
 	
 	//翻页
 	function changePage(pageNum) {
 		document.getElementById("startIndex").value = pageNum;
-		document.mainform.action = '<c:url value="/news/turnNewsAction.action"></c:url>';
+		document.mainform.action = '<c:url value="/warehouse/turnWarehouseListAction.action"></c:url>';
 		document.mainform.submit();
 	}
 
@@ -111,16 +109,23 @@
 				<div class="product_search">
 					<s:form id="mainform" name="mainform" method="POST">
 						<s:hidden name="startIndex" id="startIndex"/>
-						<div class="search1">
-							<h3>新闻标题
-								<input class="keyword" name="queryTitle" id="queryTitle" value="<s:property value="queryTitle"/>" type="text" />
-							</h3>
-							<div class="line"></div>
-						</div>
-				  		<div class="search1" style="margin-top: 10px;">
-							<h3>新闻作者
-								<input class="keyword" name="queryAuthor" id="queryAuthor" value="<s:property value="queryAuthor"/>" type="text" />
-								<input type="button" class="search_btn mgl5" value="检索" onclick="queryList();"/>
+						<h3 class="s_select">产品类型
+							<select name="queryGoodsType" id="queryGoodsType">
+								<option value="" selected="selected">请选择</option>
+								<s:iterator value="goodsList" id="goodsList" status="st1">
+									<s:if test="%{goodsList[#st1.index].code == queryGoodsType}">
+										<option value="<s:property value="code"/>" selected="selected"><s:property value="fieldname"/></option>
+									</s:if>
+									<s:else>
+										<option value="<s:property value="code"/>"><s:property value="fieldname"/></option>
+									</s:else>
+								</s:iterator>
+							</select>
+						</h3>
+				  		<div class="search1">
+							<h3>　产品名称
+								<input class="keyword" name="queryProductnName" id="queryProductnName" value="<s:property value="queryProductnName"/>" type="text" />
+								<input type="button" class="search_btn mgl5" value="检索" onclick="query();"/>
 							</h3>
 							<div class="line"></div>
 						</div>
@@ -149,28 +154,41 @@
 						</div>
 						<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
 							<tr class="tab_tittle">
-								<td width="60"></td>
-								<td width="160">标题</td>
-								<td width="80">作者</td>
-								<td width="100">新闻日期</td>
+								<td width="40">&nbsp;</td>
+								<td width="130">产品名称</td>
+								<td width="100">产品分类</td>
+								<td width="80">入库</td>
+								<td width="80">出库</td>
+								<td width="100">定单单位</td>
+								<td width="80">送货期</td>
+								<td width="80">是否显示</td>
 								<td width="120">创建日期</td>
-								<td width="120">更新日期</td>
 							</tr>
-							<s:iterator id="newsList" value="newsList" status="st1">
+							<s:iterator id="warehouseManageList" value="warehouseManageList" status="st1">
 							<s:if test="#st1.odd==true">
 								<tr>
 							</s:if>
 							<s:else>
 								<tr class="bg2">
 							</s:else>
+									<td><input name="radioKey" type="radio" value="<s:property value="id"/>"/></td>
+									<td><s:property value="productname"/></td>
 									<td>
-										<input name="radioKey" type="radio" value="<s:property value="id"/>"/>
+										<s:iterator value="goodsList" id="goodsList" status="st2">
+											<s:if test="%{goodsList[#st2.index].code == warehouseManageList[#st1.index].producttype}">
+												<s:property value="fieldname"/>
+											</s:if>
+										</s:iterator>
 									</td>
-									<td><s:property value="title"/></td>
-									<td><s:property value="author"/></td>
-									<td><s:property value="newsdate"/></td>
+									<td><s:property value="item01" /></td>
+									<td><s:property value="item02" /></td>
+									<td><s:property value="item03" /></td>
+									<td><s:property value="item04" /></td>
+									<td>
+										<s:if test='rank == "50"'>显示</s:if>
+										<s:else>不显示</s:else>
+									</td>
 									<td><s:property value="createdate" /></td>
-									<td><s:property value="updatedate" /></td>
 								</tr>
 							</s:iterator>
 						</table>

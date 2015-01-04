@@ -101,6 +101,7 @@ public class SearchAction extends BaseAction {
 			initData();
 			product01List = new ArrayList<Product01Dto>();
 			//默认选择条件匹配TAB
+			tabIndex = "2";
 			if(!"1".equals(tabIndex) && !"2".equals(tabIndex)) {
 				tabIndex = "1";
 			}
