@@ -21,6 +21,16 @@
 			<ref bean="product01Service"/>
 		</property>
 	</bean>
+	
+	<!-- search warehouse -->
+	<bean id="warehouseSearchAction" class="com.cn.dsyg.action.WarehouseSearchAction" scope="request">
+		<property name="dict01Service">
+			<ref bean="dict01Service"/>
+		</property>
+		<property name="warehouseService">
+			<ref bean="warehouseService"/>
+		</property>
+	</bean>
 
 	<!-- news -->
 	<bean id="newsAction" class="com.cn.dsyg.action.NewsAction" scope="session">

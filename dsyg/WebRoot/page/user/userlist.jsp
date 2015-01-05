@@ -116,12 +116,12 @@
 							</h3>
 							<div class="line"></div>
 						</div>
+						<div class="tools">
+							<a href="javascript:void(0);" onclick="add();"><img src="<%=request.getContextPath()%>/images/add.png" />增加</a>
+							<a href="javascript:void(0);" onclick="upd();"><img src="<%=request.getContextPath()%>/images/edit.png" />编辑</a>
+							<a href="javascript:void(0);" onclick="del();"><img src="<%=request.getContextPath()%>/images/delete.png" />删除</a>
+						</div>
 						<div class="page">
-							<div align="left" style="position: absolute; margin-left: -340px; margin-top: 4px;">
-								<a href="javascript:void(0);" onclick="add();">新　增</a>
-								<a href="javascript:void(0);" onclick="upd();">修　改</a>
-								<a href="javascript:void(0);" onclick="del();">删　除</a>
-							</div>
 							<span>第${page.startIndex + 1}页 / 共${page.totalPage==0?1:page.totalPage}页 共${page.totalCount}条记录</span><span>
 							跳转到第<input class="num" id="pagenum1" maxlength="6" type="text" />页</span><a href="javascript:void(0);" onclick="javascript:turnPage('pagenum1');">跳转</a>　　
 							<a href="javascript:void(0);" onclick="changePage(0);">首页</a>
@@ -141,7 +141,8 @@
 						</div>
 						<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
 							<tr class="tab_tittle">
-								<td width="50"></td>
+								<td width="40"></td>
+								<td width="40">序号</td>
 								<td width="90">登录ID</td>
 								<td width="120">登录姓名</td>
 								<td width="80">角色Code</td>
@@ -158,6 +159,7 @@
 									<td>
 										<input name="radioKey" type="radio" value="<s:property value="userid"/>"/>
 									</td>
+									<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st1.index + 1"/></td>
 									<td><s:property value="userid"/></td>
 									<td><s:property value="username"/></td>
 									<td><s:property value="rolecode"/></td>

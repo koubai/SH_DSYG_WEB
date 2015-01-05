@@ -419,6 +419,66 @@
 		<to>/warehouse/turnWarehouseListAction.action</to>
 	</rule>
 	
+	<rule>
+		<from>^/showsearchsarehouse.shtml$</from>
+		<to>/search/showSearchWarehouseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchwarehouse_g([0-9]+)_name([^/_]*?)_p([0-9]+).shtml$</from>
+		<to>/search/searchWarehouseListAction.action\?producttype=$1&amp;productname=$2&amp;startIndex=$3</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchwarehouse_g([0-9]+)_p([0-9]+).shtml$</from>
+		<to>/search/searchWarehouseListAction.action\?producttype=$1&amp;startIndex=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchwarehouse_name([^/_]*?)_p([0-9]+).shtml$</from>
+		<to>/search/searchWarehouseListAction.action\?productname=$1&amp;startIndex=$2</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchwarehouse$</from>
+		<to>/search/searchWarehouseListAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/searchwarehouse_p([0-9]+).shtml$</from>
+		<to>/search/searchWarehouseListAction.action\?startIndex=$1</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/search/searchWarehouseListAction.action\?startIndex=([0-9]+)$</from>
+		<to>/searchwarehouse_p$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchWarehouseListAction.action$</from>
+		<to>/searchwarehouse.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchWarehouseListAction.action\?productname=([^/_]*?)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchwarehouse_name$1_p$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchWarehouseListAction.action\?producttype=([0-9]+)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchwarehouse_g$1_p$2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/searchWarehouseListAction.action\?producttype=([0-9]+)&amp;productname=([^/_]*?)&amp;startIndex=([0-9]+)$</from>
+		<to>/searchwarehouse_g$1_name$2_p$3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/search/showSearchWarehouseAction.action$</from>
+		<to>/showsearchsarehouse.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/warehouse/turnWarehouseListAction.action$</from>
 		<to>/turnwarehousemanage.shtml</to>

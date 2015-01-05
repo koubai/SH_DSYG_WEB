@@ -21,7 +21,7 @@
 		var title = $("#title").val().trim();
 		var author = $("#author").val().trim();
 		var tmpnewsdate = $("#tmpnewsdate").val().trim();
-		var tempData = $("#tempData").val().trim();
+		var tempData = $("#tempData").val();
 		if(title == "") {
 			alert("新闻标题不能为空！");
 			$("#title").focus();

@@ -18,7 +18,7 @@
 				<li><a href="<c:url value="/home/showCompanyNewAction.action"></c:url>">公司新闻</a></li>
 				<li><a href="#">咨询信息Q/A</a></li>
 				<li><a href="#">案例介绍</a></li>
-				<li><a href="#">库存信息</a></li>
+				<li><a href="<c:url value="/search/showSearchWarehouseAction.action"></c:url>">库存信息</a></li>
 			</ul>
 		</div>
 		<div class="logo">

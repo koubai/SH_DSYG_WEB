@@ -22,6 +22,17 @@ public interface WarehouseService {
 	public Page queryWarehouseByPage(String productname, String producttype, String rank, Page page);
 	
 	/**
+	 * 检索库存数据
+	 * @param productname
+	 * @param producttype
+	 * @param rank 数据权限
+	 * @param page
+	 * @param startIndex
+	 * @return
+	 */
+	public Page searchWarehouseByPage(String productname, String producttype, String rank, Page page, int startIndex);
+	
+	/**
 	 * 根据ID查询数据
 	 * @param id
 	 * @param rank

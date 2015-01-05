@@ -71,7 +71,7 @@ CREATE TABLE `tbnews` (
 
 /*Data for the table `tbnews` */
 
-insert  into `tbnews`(`id`,`showno`,`title`,`data`,`author`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`res01`,`res02`,`res03`,`res04`,`res05`,`newsdate`,`status`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (4,NULL,'11111','333333333333','2222222222','20141228023856221aa15be.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-01-02',1,'admin','2014-12-27 21:35:45','admin','2015-01-03 01:49:34'),(5,NULL,'ABABABEEE','fasfsa','3wwe','20150103015024559095b95.JPG',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-01-04',1,'admin','2015-01-03 01:50:24','admin','2015-01-03 01:50:24');
+insert  into `tbnews`(`id`,`showno`,`title`,`data`,`author`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`res01`,`res02`,`res03`,`res04`,`res05`,`newsdate`,`status`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (4,NULL,'11111','333333333333','2222222222','20141228023856221aa15be.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-01-02',1,'admin','2014-12-27 21:35:45','admin','2015-01-03 01:49:34'),(5,NULL,'ABABABEEE','        fasfsa\r\n       测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行测试换行\r\nbbbadafdasfdsafdsafdsafdsafdsa\r\n\r\ndafddafddafddafddafddafddafddafddafddafddafddafddafddafddafddafddafddafddafddafddafd\r\nd\r\nfdasaaaaaaaaaaaaaaaaaaaaaaaaaaaa\r\nfdsa','3wwe','20150103015024559095b95.JPG',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015-01-04',1,'admin','2015-01-03 01:50:24','admin','2015-01-06 01:07:01');
 
 /*Table structure for table `tbproduct01` */
 
