@@ -105,7 +105,7 @@ function turn(id) {
 							<s:else>
 								<tr class="bg2">
 							</s:else>
-								<td><s:property value="#st2.index + 1"/></td>
+								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st2.index + 1"/></td>
 								<td>
 									<a href="<s:property value="pdfurl"/><s:property value="pdfpath"/>" target=""><s:property value="nameno"/></a>
 								</td>

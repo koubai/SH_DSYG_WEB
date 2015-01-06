@@ -211,8 +211,8 @@ public class NewsAction extends BaseAction {
 			updNewsDto.setUpdateuid(username);
 			newsService.updateNews(updNewsDto);
 			
-			this.addActionMessage("修改成功！");
-			log.info("修改成功！");
+			this.addActionMessage("更新成功！");
+			log.info("更新成功！");
 			//删除原来图片
 			if(StringUtil.isNotBlank(oldpic1)) {
 				FileUtil.deleteFile(oldpic1, image_path);

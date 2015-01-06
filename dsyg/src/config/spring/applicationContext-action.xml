@@ -10,6 +10,9 @@
 		<property name="warehouseService">
 			<ref bean="warehouseService"/>
 		</property>
+		<property name="product01Service">
+			<ref bean="product01Service"/>
+		</property>
 	</bean>
 	
 	<!-- search -->
@@ -19,6 +22,16 @@
 		</property>
 		<property name="product01Service">
 			<ref bean="product01Service"/>
+		</property>
+	</bean>
+	
+	<!-- search warehouse -->
+	<bean id="warehouseSearchAction" class="com.cn.dsyg.action.WarehouseSearchAction" scope="request">
+		<property name="dict01Service">
+			<ref bean="dict01Service"/>
+		</property>
+		<property name="warehouseService">
+			<ref bean="warehouseService"/>
 		</property>
 	</bean>
 

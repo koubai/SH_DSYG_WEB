@@ -22,6 +22,14 @@
 			<result name="*">/page/search/searchlist.jsp</result>
 		</action>
 		
+		<action name="showSearchWarehouseAction" class="warehouseSearchAction" method="showSearchWarehouseAction">
+			<result name="*">/page/search/searchwarehouselist.jsp</result>
+		</action>
+		
+		<action name="searchWarehouseListAction" class="warehouseSearchAction" method="searchWarehouseListAction">
+			<result name="*">/page/search/searchwarehouselist.jsp</result>
+		</action>
+		
 	</package>
 
 </struts>

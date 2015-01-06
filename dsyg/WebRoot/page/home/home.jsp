@@ -38,7 +38,7 @@
 				<div class="products">
 					<table width="80%" border="0" cellpadding="0" cellspacing="10">
 `						<tr><s:iterator id="homeGoodsList" value="homeGoodsList" status="st1"><s:if test="#st1.index < 3">
-							<td width="33.3%"><a href="<c:url value="/search/showSearchAction.action"></c:url>">
+							<td width="33.3%"><a href="<c:url value="/search/searchConditionAction.action"><c:param name="goodsId" value="${code}"></c:param></c:url>">
 								<div class="product">
 									<p><s:property value="fieldname"/></p>
 									<p class="arial"><s:property value="mean"/></p>
@@ -46,7 +46,7 @@
 							</td>
 						</s:if></s:iterator></tr>
 						<tr><s:iterator id="homeGoodsList" value="homeGoodsList" status="st1"><s:if test="#st1.index >= 3">
-							<td width="33.3%"><a href="<c:url value="/search/showSearchAction.action"></c:url>">
+							<td width="33.3%"><a href="<c:url value="/search/searchConditionAction.action"><c:param name="goodsId" value="${code}"></c:param></c:url>">
 								<div class="product">
 									<p><s:property value="fieldname"/></p>
 									<p class="arial"><s:property value="mean"/></p>

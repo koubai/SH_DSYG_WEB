@@ -18,14 +18,14 @@
 	</resultMap>
 	
 	<select id="queryUserCountByPage" resultClass="int" parameterClass="java.util.Map">
-		select count(*) from tbuser T where 1 = 1 and status = 1
+		select count(*) from tbuser T where 1 = 1
 			<isNotEmpty prepend="and" property="username">
 				T.username like '%$username$%' ESCAPE '/'
 			</isNotEmpty>
 	</select>
 	
 	<select id="queryUserByPage" parameterClass="java.util.Map" resultMap="UserDto">
-		select T.* from tbuser T where 1 = 1 and status = 1
+		select T.* from tbuser T where 1 = 1
 		<isNotEmpty prepend="and" property="username">
 			T.username like '%$username$%' ESCAPE '/'
 		</isNotEmpty>

@@ -10,9 +10,12 @@ import com.cn.common.action.BaseAction;
 import com.cn.common.util.Constants;
 import com.cn.common.util.Page;
 import com.cn.common.util.PropertiesConfig;
+import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dto.Dict01Dto;
+import com.cn.dsyg.dto.Product01Dto;
 import com.cn.dsyg.dto.WarehouseDto;
 import com.cn.dsyg.service.Dict01Service;
+import com.cn.dsyg.service.Product01Service;
 import com.cn.dsyg.service.WarehouseService;
 
 /**
@@ -31,6 +34,8 @@ public class WarehouseAction extends BaseAction {
 	
 	private Dict01Service dict01Service;
 	
+	private Product01Service product01Service;
+	
 	/**
 	 * 页码
 	 */
@@ -44,15 +49,16 @@ public class WarehouseAction extends BaseAction {
 	private List<WarehouseDto> warehouseManageList;
 	
 	//检索条件
-	//产品名
-	private String queryProductnName;
-	//产品大类型
-	private String queryGoodsType;
+	//产品ID
+	private String queryProductId;
 	
 	/**
 	 * 大产品分类
 	 */
 	private List<Dict01Dto> goodsList;
+	
+	//产品信息
+	private Product01Dto showProduct01;
 	
 	/**
 	 * 库存管理页面
@@ -64,8 +70,11 @@ public class WarehouseAction extends BaseAction {
 			//重新刷新页面数据
 			startIndex = 0;
 			page = new Page();
-			queryProductnName = "";
-			queryGoodsType = "";
+			queryProductId = "";
+			showProduct01 = new Product01Dto();
+			if(StringUtil.isNotBlank(queryProductId)) {
+				showProduct01 = product01Service.queryProduct01ByID(queryProductId, "");
+			}
 			warehouseManageList = new ArrayList<WarehouseDto>();
 			//大分类列表
 			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
@@ -114,6 +123,10 @@ public class WarehouseAction extends BaseAction {
 	 */
 	@SuppressWarnings("unchecked")
 	private void queryData() {
+		showProduct01 = new Product01Dto();
+		if(StringUtil.isNotBlank(queryProductId)) {
+			showProduct01 = product01Service.queryProduct01ByID(queryProductId, "");
+		}
 		warehouseManageList = new ArrayList<WarehouseDto>();
 		//大分类列表
 		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
@@ -122,7 +135,7 @@ public class WarehouseAction extends BaseAction {
 		}
 		//翻页查询所有委托公司
 		this.page.setStartIndex(startIndex);
-		page = warehouseService.queryWarehouseByPage(queryProductnName, queryGoodsType, "", page);
+		page = warehouseService.queryWarehouseByPage(queryProductId, "", "", "", page);
 		warehouseManageList = (List<WarehouseDto>) page.getItems();
 		this.setStartIndex(page.getStartIndex());
 	}
@@ -151,22 +164,6 @@ public class WarehouseAction extends BaseAction {
 		this.page = page;
 	}
 
-	public String getQueryProductnName() {
-		return queryProductnName;
-	}
-
-	public void setQueryProductnName(String queryProductnName) {
-		this.queryProductnName = queryProductnName;
-	}
-
-	public String getQueryGoodsType() {
-		return queryGoodsType;
-	}
-
-	public void setQueryGoodsType(String queryGoodsType) {
-		this.queryGoodsType = queryGoodsType;
-	}
-
 	public List<WarehouseDto> getWarehouseManageList() {
 		return warehouseManageList;
 	}
@@ -189,5 +186,29 @@ public class WarehouseAction extends BaseAction {
 
 	public void setGoodsList(List<Dict01Dto> goodsList) {
 		this.goodsList = goodsList;
+	}
+
+	public String getQueryProductId() {
+		return queryProductId;
+	}
+
+	public void setQueryProductId(String queryProductId) {
+		this.queryProductId = queryProductId;
+	}
+
+	public Product01Service getProduct01Service() {
+		return product01Service;
+	}
+
+	public void setProduct01Service(Product01Service product01Service) {
+		this.product01Service = product01Service;
+	}
+
+	public Product01Dto getShowProduct01() {
+		return showProduct01;
+	}
+
+	public void setShowProduct01(Product01Dto showProduct01) {
+		this.showProduct01 = showProduct01;
 	}
 }

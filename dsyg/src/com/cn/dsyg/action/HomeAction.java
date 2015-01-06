@@ -64,7 +64,7 @@ public class HomeAction extends BaseAction {
 	 * 新闻明细
 	 */
 	private NewsDto newsDetail;
-
+	
 	/**
 	 * 回到首页Action
 	 * @return
@@ -181,6 +181,14 @@ public class HomeAction extends BaseAction {
 		try {
 			this.clearMessages();
 			newsDetail = newsService.queryNewsByID(newsDetailId);
+			if(newsDetail != null) {
+				String data = newsDetail.getData();
+				data = data.replace(" ", "&nbsp;");
+				data = data.replace("<", "&lt;");
+				data = data.replace(">", "&gt;");
+				data = data.replace("\r\n", "<br>");
+				newsDetail.setData(data);
+			}
 		} catch(Exception e) {
 			log.error("showNewsDetailAction error:" + e);
 		}

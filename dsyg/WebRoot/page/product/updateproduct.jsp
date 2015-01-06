@@ -5,13 +5,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>库存更新</title>
+<title>产品更新</title>
 <script type="text/javascript">
 	function save() {
 		if(checkData()) {
-			if(confirm("确定修改吗？")) {
+			if(confirm("确定更新吗？")) {
 				document.mainform.action = '<c:url value="/product/updProductAction.action"></c:url>';
 				document.mainform.submit();
 			}
@@ -212,38 +214,6 @@
 			$("#file04Name").val(file04Name);
 		}
 		
-		//库存编辑
-		if($("#item20").val() == "") {
-			alert("在库数（整箱）不能为空！");
-			$("#item20").focus();
-			return false;
-		}
-		if($("#item21").val() == "") {
-			alert("在库数（乱尺）不能为空！");
-			$("#item21").focus();
-			return false;
-		}
-		if($("#item22").val() == "") {
-			alert("请选择库存编辑单位！");
-			$("#item22").focus();
-			return false;
-		}
-		var item23 = $("#item23").val();
-		if(item23 == "") {
-			alert("发送天数不能为空！");
-			$("#item23").focus();
-			return false;
-		}
-		if(!isNumber(item23)) {
-			alert("发送天数必须是大于0的数字！");
-			$("#item23").focus();
-			return false;
-		}
-		if($("#makearea").val() == "") {
-			alert("请选择产地！");
-			$("#makearea").focus();
-			return false;
-		}
 		return true;
 	}
 	
@@ -271,296 +241,229 @@
 </script>
 </head>
 <body style="background: url(''); overflow-x:hidden;overflow-y:scroll;">
-<s:form id="mainform" name="mainform" method="POST" enctype="multipart/form-data">
-	<s:hidden name="updProduct01Dto.item01" id="item01"></s:hidden>
-	<s:hidden name="updProduct01Dto.item02" id="item02"></s:hidden>
-	<s:hidden name="updProduct01Dto.item03" id="item03"></s:hidden>
-	<s:hidden name="updProduct01Dto.item04" id="item04"></s:hidden>
-	<s:hidden name="updProduct01Dto.pic01" id="pic01"></s:hidden>
-	<s:hidden name="updProduct01Dto.pic02" id="pic02"></s:hidden>
-	<s:hidden name="updProduct01Dto.pic03" id="pic03"></s:hidden>
-	<s:hidden name="updProduct01Dto.pdfpath" id="pdfpath"></s:hidden>
-	<s:hidden name="file01Name" id="file01Name"></s:hidden>
-	<s:hidden name="file02Name" id="file02Name"></s:hidden>
-	<s:hidden name="file03Name" id="file03Name"></s:hidden>
-	<s:hidden name="file04Name" id="file04Name"></s:hidden>
-	<div id="container" style="width: 100%; height: 100%;">
-		<div class="content" style="margin-top: 0px;">
-			<div class="tittle">
-				<div class="icons"></div>
-				<div class="tittle_left">
-				</div>
-				<div class="tittle_center" style="width:150px;">
-					库存更新
-				</div>
-				<div class="tittle_right">
+<div id="main" style="margin-top:2px;">
+	<div class="header_bg">
+		<div class="content warehouse_input">
+			<div class="user_bg">
+				<div class="user">
+					<div class="user_tittle">后台管理------产品更新
+					</div>
 				</div>
 			</div>
-		</div>
-		<div style="position:absolute; margin-left: 150px; margin-top: -20px; text-align: center; color: red;">
-			<s:actionmessage />
-		</div>
-		<table style="margin-left: 50px; margin-top: 30px;" border="0" cellspacing="15" cellpadding="0">
-			<tr>
-				<td width="120px;"><font color="red">*</font>产品类型</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<select name="updProduct01Dto.fieldcode" id="fieldcode" style="width: 300px;" onchange="changeFieldcode(this);">
-							<option value="">请选择</option>
-							<s:iterator value="goodsList" id="goodsList" status="st1">
-								<option value="<s:property value="code"/>" <s:if test="%{goodsList[#st1.index].code == updProduct01Dto.fieldcode}">selected</s:if>><s:property value="fieldname"/></option>
-							</s:iterator>
-						</select>
+			<div class="main_body">
+				<s:form id="mainform" name="mainform" method="POST" enctype="multipart/form-data">
+					<s:hidden name="updProduct01Dto.item01" id="item01"></s:hidden>
+					<s:hidden name="updProduct01Dto.item02" id="item02"></s:hidden>
+					<s:hidden name="updProduct01Dto.item03" id="item03"></s:hidden>
+					<s:hidden name="updProduct01Dto.item04" id="item04"></s:hidden>
+					<s:hidden name="file01Name" id="file01Name"></s:hidden>
+					<s:hidden name="file02Name" id="file02Name"></s:hidden>
+					<s:hidden name="file03Name" id="file03Name"></s:hidden>
+					<s:hidden name="file04Name" id="file04Name"></s:hidden>
+					<div style="position:absolute; margin-left: 400px; margin-top: 3px; text-align: center; color: red;">
+						<s:actionmessage />
 					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td><font color="red">*</font>数据级别</td>
-				<td>
-					<select name="updProduct01Dto.rank" id="rank" style="width:300px;">
-						<s:if test='updProduct01Dto.rank == "50"'>
-							<option value="50" selected="selected">显示</option>
-							<option value="70">不显示</option>
+					<table class="input_table" border="0" cellspacing="0" cellpadding="10">
+						<tr>
+							<td class="td_tittle"><span>*</span>产品类型：</td>
+							<td>
+								<select name="updProduct01Dto.fieldcode" id="fieldcode" style="width: 300px;" onchange="changeFieldcode(this);">
+									<option value="">请选择</option>
+									<s:iterator value="goodsList" id="goodsList" status="st1">
+										<option value="<s:property value="code"/>" <s:if test="%{goodsList[#st1.index].code == updProduct01Dto.fieldcode}">selected</s:if>><s:property value="fieldname"/></option>
+									</s:iterator>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>是否显示：</td>
+							<td>
+								<select name="updProduct01Dto.rank" id="rank" style="width:300px;">
+									<s:if test='updProduct01Dto.rank == "50"'>
+										<option value="50" selected="selected">显示</option>
+										<option value="70">不显示</option>
+									</s:if>
+									<s:else>
+										<option value="50">显示</option>
+										<option value="70" selected="selected">不显示</option>
+									</s:else>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>产品名称：</td>
+							<td><s:textfield name="updProduct01Dto.nameno" id="nameno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+						<tr>
+							<td class="td_tittle"><span>*</span>产品系列：</td>
+							<td><s:textfield name="updProduct01Dto.typeno" id="typeno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>产品型号：</td>
+							<td><s:textfield name="updProduct01Dto.typenosub" id="typenosub" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>颜色：</td>
+							<td><s:textfield name="updProduct01Dto.color1" id="color1" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+						</tr>
+						<s:if test='updProduct01Dto.fieldcode == "01"'>
+							<tr id="fieldcode01">
 						</s:if>
 						<s:else>
-							<option value="50">显示</option>
-							<option value="70" selected="selected">不显示</option>
+							<tr style="display: none;" id="fieldcode01">
 						</s:else>
-					</select>
-				</td>
-			</tr>
-			<tr>
-				<td><font color="red">*</font>产品名称</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<s:textfield name="updProduct01Dto.nameno" id="nameno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td><font color="red">*</font>产品系列</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<s:textfield name="updProduct01Dto.typeno" id="typeno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td><font color="red">*</font>产品型号</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<s:textfield name="updProduct01Dto.typenosub" id="typenosub" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td><font color="red">*</font>颜色</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<s:textfield name="updProduct01Dto.color1" id="color1" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<s:if test='updProduct01Dto.fieldcode == "01"'>
-				<tr id="fieldcode01">
-			</s:if>
-			<s:else>
-				<tr style="display: none;" id="fieldcode01">
-			</s:else>
-				<td valign="top"><font color="red">*</font>特征编辑</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<s:iterator value="featureList01" id="featureList01" status="st1">
-							<div>
-								<s:property value="name"/>
-								<s:iterator value="dictList" id="dictList" status="st2">
-									<s:if test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item01" && #st1.index == 0}'>
-										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:if>
-									<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item02" && #st1.index == 1}'>
-										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:elseif>
-									<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
-										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:elseif>
-									<s:else>
-										<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:else>
+							<td class="td_tittle"><span>*</span>特征编辑：</td>
+							<td>
+								<s:iterator value="featureList01" id="featureList01" status="st1">
+									<dl>
+										<dt><s:property value="name"/>：</dt>
+										<dd>
+											<s:iterator value="dictList" id="dictList" status="st2">
+												<s:if test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item01" && #st1.index == 0}'>
+													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+												</s:if>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item02" && #st1.index == 1}'>
+													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+												</s:elseif>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
+													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+												</s:elseif>
+												<s:else>
+													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+												</s:else>
+											</s:iterator>
+										</dd>
+									</dl>
 								</s:iterator>
-							</div>
-						</s:iterator>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<s:if test='updProduct01Dto.fieldcode == "02"'>
-				<tr id="fieldcode02">
-			</s:if>
-			<s:else>
-				<tr style="display: none;" id="fieldcode02">
-			</s:else>
-				<td valign="top"><font color="red">*</font>特征编辑</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<s:iterator value="featureList02" id="featureList02" status="st1">
-							<div>
-								<s:property value="name"/>
-								<s:iterator value="dictList" id="dictList" status="st2">
-									<s:if test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item01" && #st1.index == 0}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:if>
-									<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item02" && #st1.index == 1}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:elseif>
-									<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item03" && #st1.index == 2}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:elseif>
-									<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:elseif>
-									<s:else>
-										<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-									</s:else>
-								</s:iterator>
-							</div>
-						</s:iterator>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top"><font color="red">*</font>尺寸编辑</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						称呼尺寸<s:textfield name="updProduct01Dto.item10" id="item10" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-						<br />
-						内径<s:textfield name="updProduct01Dto.item11" id="item11" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-						<br />
-						壁厚<s:textfield name="updProduct01Dto.item12" id="item12" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-						<br />
-						外径<s:textfield name="updProduct01Dto.item13" id="item13" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-						<br />
-						长度<s:textfield name="updProduct01Dto.item14" id="item14" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-						<br />
-						单位<select name="updProduct01Dto.item15" id="item15" style="width: 300px;">
-								<s:iterator value="unitList" id="unitList" status="st2">
-									<option value="<s:property value="code"/>" <s:if test="%{unitList[#st2.index].code == updProduct01Dto.item15}">selected</s:if>><s:property value="fieldname"/></option>
-								</s:iterator>
-							</select>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top"><font color="red">*</font>图片上传</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<input type="file" name="updPicFile01" id="updPicFile01"/>
-						<s:if test='updProduct01Dto.pic01 != null && updProduct01Dto.pic01 != ""'>
-							<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic01"/>" alt="" />
+							</td>
+						</tr>
+						<s:if test='updProduct01Dto.fieldcode == "02"'>
+							<tr id="fieldcode02">
 						</s:if>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top"><font color="red">*</font>特性图片上传</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<input type="file" name="updPicFile02" id="updPicFile02"/>
-						<s:if test='updProduct01Dto.pic02 != null && updProduct01Dto.pic02 != ""'>
-							<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic02"/>" alt="" />
-						</s:if>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top"><font color="red">*</font>尺寸图片上传</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<input type="file" name="updPicFile03" id="updPicFile03"/>
-						<s:if test='updProduct01Dto.pic03 != null && updProduct01Dto.pic03 != ""'>
-							<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic03"/>" alt="" />
-						</s:if>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top"><font color="red">*</font>pdf片上传</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						<input type="file" name="updPdfFile" id="updPdfFile"/>
-						<a target="_blank" href="<s:property value="updProduct01Dto.pdfurl"/><s:property value="updProduct01Dto.pdfpath"/>"><s:property value="updProduct01Dto.pdfpath"/></a>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top"><font color="red">*</font>库存编辑</td>
-				<td>
-					<div class="box1_left"></div>
-					<div class="box1_center">
-						在库数（整箱）<s:textfield name="updProduct01Dto.item20" id="item20" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-						<br />
-						在库数（乱尺）<s:textfield name="updProduct01Dto.item21" id="item21" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
-						<br />
-						单位<select name="updProduct01Dto.item22" id="item22" style="width: 300px;">
-								<s:iterator value="unitList" id="unitList" status="st1">
-									<option value="<s:property value="code"/>" <s:if test="%{unitList[#st1.index].code == updProduct01Dto.item22}">selected</s:if>><s:property value="fieldname"/></option>
+						<s:else>
+							<tr style="display: none;" id="fieldcode02">
+						</s:else>
+							<td class="td_tittle"><span>*</span>特征编辑：</td>
+							<td>
+								<s:iterator value="featureList02" id="featureList02" status="st1">
+									<dl>
+										<dt><s:property value="name"/>：</dt>
+										<dd>
+											<s:iterator value="dictList" id="dictList" status="st2">
+												<s:if test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item01" && #st1.index == 0}'>
+													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+												</s:if>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item02" && #st1.index == 1}'>
+													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+												</s:elseif>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item03" && #st1.index == 2}'>
+													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+												</s:elseif>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
+													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+												</s:elseif>
+												<s:else>
+													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+												</s:else>
+											</s:iterator>
+										</dd>
+									</dl>
 								</s:iterator>
-							</select>
-						<br />
-						发送天数<s:textfield name="updProduct01Dto.item23" id="item23" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>天
-						<br />
-						产地<select name="updProduct01Dto.makearea" id="makearea" style="width: 300px;">
-								<s:iterator value="makeareaList" id="makeareaList" status="st1">
-									<option value="<s:property value="code"/>" <s:if test="%{makeareaList[#st1.index].code == updProduct01Dto.makearea}">selected</s:if>><s:property value="fieldname"/></option>
-								</s:iterator>
-							</select>
-					</div>
-					<div class="box1_right"></div>
-				</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td>
-					<div class="btn">
-						<div class="box1_left"></div>
-						<div class="box1_center">
-							<input class="input80" type="button" value="保存" onclick="save();"/>
-						</div>
-						<div class="box1_right"></div>
-					</div>
-					<div class="btn">
-						<div class="box1_left"></div>
-						<div class="box1_center">
-							<input class="input80" type="button" value="返回" onclick="goBack();"/>
-						</div>
-						<div class="box1_right"></div>
-					</div>
-				</td>
-			</tr>
-		</table>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>尺寸编辑：</td>
+							<td>
+								<dl>
+									<dt>称呼尺寸：</dt>
+									<dd>
+										<s:textfield name="updProduct01Dto.item10" id="item10" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+									</dd>
+								</dl>
+								<dl>
+									<dt>内径：</dt>
+									<dd>
+										<s:textfield name="updProduct01Dto.item11" id="item11" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+									</dd>
+								</dl>
+								<dl>
+									<dt>壁厚：</dt>
+									<dd>
+										<s:textfield name="updProduct01Dto.item12" id="item12" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+									</dd>
+								</dl>
+								<dl>
+									<dt>外径：</dt>
+									<dd>
+										<s:textfield name="updProduct01Dto.item13" id="item13" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+									</dd>
+								</dl>
+								<dl>
+									<dt>长度：</dt>
+									<dd>
+										<s:textfield name="updProduct01Dto.item14" id="item14" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield>
+									</dd>
+								</dl>
+								<dl>
+									<dt>单位：</dt>
+									<dd>
+										<select name="updProduct01Dto.item15" id="item15" style="width: 300px;">
+											<s:iterator value="unitList" id="unitList" status="st2">
+												<option value="<s:property value="code"/>" <s:if test="%{unitList[#st2.index].code == updProduct01Dto.item15}">selected</s:if>><s:property value="fieldname"/></option>
+											</s:iterator>
+										</select>
+									</dd>
+								</dl>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>图片上传：</td>
+							<td>
+								<input type="file" name="updPicFile01" id="updPicFile01"/><br />
+								<s:if test='updProduct01Dto.pic01 != null && updProduct01Dto.pic01 != ""'>
+									<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic01"/>" alt="" /><br />
+								</s:if>
+								<a href="#">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tittle">特性图片上传：</td>
+							<td>
+								<input type="file" name="updPicFile02" id="updPicFile02"/><br />
+								<s:if test='updProduct01Dto.pic02 != null && updProduct01Dto.pic02 != ""'>
+									<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic02"/>" alt="" /><br />
+								</s:if>
+								<a href="#">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tittle">尺寸图片上传：</td>
+							<td>
+								<input type="file" name="updPicFile03" id="updPicFile03"/><br />
+								<s:if test='updProduct01Dto.pic03 != null && updProduct01Dto.pic03 != ""'>
+									<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic03"/>" alt="" /><br />
+								</s:if>
+								<a href="#">删除</a>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>PDF上传：</td>
+							<td>
+								<input type="file" name="updPdfFile" id="updPdfFile"/><br />
+								<a href="<s:property value="updProduct01Dto.pdfurl"/><s:property value="updProduct01Dto.pdfpath"/>"><s:property value="updProduct01Dto.pdfpath"/></a>
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<input class="btn btn-blue" type="button" value="保存" onclick="save();"/>
+								<input class="btn btn-gray" type="button" value="返回" onclick="goBack();"/>
+							</td>
+						</tr>
+					</table>
+				</s:form>
+			</div>
+		</div>
 	</div>
-</s:form>
+</div>
 </body>
 </html>

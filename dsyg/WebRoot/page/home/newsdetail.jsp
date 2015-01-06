@@ -32,26 +32,33 @@
 		</div>
 	</div>
 	<div class="page_main">
-		<br />
-		<br />
-		<br />
-		<br />
-		<s:if test="newsDetail == null">
-			没有该新闻
-		</s:if>
-		<s:else>
-			此页面是新闻明细页面，等待新闻格式页面<br />
-			此页面是新闻明细页面，等待新闻格式页面<br />
-			此页面是新闻明细页面，等待新闻格式页面<br />
-			此页面是新闻明细页面，等待新闻格式页面<br />
-			此页面是新闻明细页面，等待新闻格式页面<br />
-			此页面是新闻明细页面，等待新闻格式页面<br />
-			此页面是新闻明细页面，等待新闻格式页面<br />
-		</s:else>
-		<br />
-		<br />
-		<br />
-		<br />
+		<div class="page_item">
+			<div class="pro_img">
+				<img src="<%=request.getContextPath()%>/images/news.jpg" alt="新闻">
+			</div>
+			<div class="pro_adress">
+				<a href="#">首页 </a> &gt; 新闻				
+			</div>
+		</div>
+		<div class="item_line">
+			<img src="<%=request.getContextPath()%>/images/page_line.jpg">
+		</div>
+		<div class="pro_content">
+			<div class="pro_list">
+			</div>
+			<div class="news_details">
+				<p class="news_tit"><s:property value="newsDetail.title"/></p>
+				<p class="wire_content">
+					<s:if test='newsDetail.pic01 != null && newsDetail.pic01 != ""'>
+						<img alt="" src="<s:property value="newsDetail.newsPicUrl"/><s:property value="newsDetail.pic01"/>" height="226" width="639"> 
+					</s:if>
+				</p>
+				<div class="newscontent">
+					<p>${newsDetail.data}</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</div>
 	</div>
 </div>
 <jsp:include page="../foot_web.jsp" flush="true" />
