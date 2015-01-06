@@ -5,108 +5,55 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>主页</title>
+<title>后台管理菜单</title>
 <script type="text/javascript">
 function logout() {
-	window.location.href = '<c:url value="/manage/manageLogoutAction.action"></c:url>';
-}
-
-function showManageProduct() {
-	window.location.href = '<c:url value="/product/showManageProductListAction.action"></c:url>';
-}
-
-function showUserManage() {
-	window.location.href = '<c:url value="/user/showUserManagePageAction.action"></c:url>';
-}
-
-function updPassword() {
-	window.location.href = '<c:url value="/user/showUpdPasswordAction.action"></c:url>';
-}
-
-function showNewsManage() {
-	window.location.href = '<c:url value="/news/showNewsManageAction.action"></c:url>';
-}
-
-function showWarehouse() {
-	window.location.href = '<c:url value="/warehouse/showWarehouseManageAction.action"></c:url>';
+	if(confirm("确定退出吗？")) {
+		window.location.href = '<c:url value="/manage/manageLogoutAction.action"></c:url>';
+	}
 }
 </script>
 </head>
 <body>
-	<div id="container">
-		<div id="top">
-			<div class="logobox">
-				<div class="logo_tittle"></div>
-				<div class="logo"></div>
-			</div>
-		</div>
+<div id="main" style="margin-top:2px;">
+	<div  class="header_bg">
 		<div class="content">
-			<div class="tittle">
-				<div class="icons"><a class="quit" href="#" onclick="logout();">退出</a></div>
+			<div class="user_bg">
+				<div class="user">
+					<div class="user_tittle">后台管理菜单
+					</div>
+				</div>
 			</div>
-			<table border="0" cellpadding="0" cellspacing="15" class="menu_tab">
-				<tr>
-					<td>
-						<div class="menu">
-							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;" onclick="showManageProduct();">
-								<a href="#">库存检索输入</a>
-							</div>
-							<div class="menu_r"></div>
-						</div>
-					</td>
-					<td>
-						<div class="menu">
-							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;" onclick="showNewsManage();">
-								<a href="#">新闻管理</a>
-							</div>
-							<div class="menu_r"></div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="menu">
-							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;" onclick="updPassword();">
-								<a href="#">密码修改</a>
-							</div>
-							<div class="menu_r"></div>
-						</div>
-					</td>
-					<td>
-						<div class="menu">
-							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;" onclick="showUserManage();">
-								<a href="#">用户管理</a>
-							</div>
-							<div class="menu_r"></div>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<div class="menu">
-							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;" onclick="showWarehouse();">
-								<a href="#">库存输入检索</a>
-							</div>
-							<div class="menu_r"></div>
-						</div>
-					</td>
-					<td>
-						<div class="menu">
-							<div class="menu_l"></div>
-							<div class="menu_c" style="cursor: pointer;">
-							</div>
-							<div class="menu_r"></div>
-						</div>
-					</td>
-				</tr>
-			</table>
+			<div class="user_info">
+				<span>用户名：<%=session.getAttribute("user_name")%></span>
+				<span>登录时间：<%=session.getAttribute("login_time")%></span>
+				<a class="lgout fr" href="javascript:void(0);" onclick="logout();">退出</a>			
+			</div>
+			<div class="main_body">
+				<table border="0" cellpadding="0" cellspacing="15" align="center" style="height: 200px; font-size: 18px;">
+					<tr>
+						<td width="200">
+							<a href="<c:url value="/product/showManageProductListAction.action"></c:url>">产品管理</a>
+						</td>
+						<td>
+							<a href="<c:url value="/news/showNewsManageAction.action"></c:url>">新闻管理</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="<c:url value="/user/showUpdPasswordAction.action"></c:url>">密码修改</a>
+						</td>
+						<td>
+							<a href="<c:url value="/user/showUserManagePageAction.action"></c:url>">用户管理</a>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 	</div>
+</div>
 </body>
 </html>

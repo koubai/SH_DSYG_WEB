@@ -14,6 +14,7 @@ public interface WarehouseDao {
 
 	/**
 	 * 翻页查询数据
+	 * @param productid
 	 * @param productname
 	 * @param producttype
 	 * @param status
@@ -22,18 +23,19 @@ public interface WarehouseDao {
 	 * @param end
 	 * @return
 	 */
-	public List<WarehouseDto> queryWarehouseByPage(String productname, String producttype,
-			String status, String rank, int start, int end);
+	public List<WarehouseDto> queryWarehouseByPage(String productid, String productname,
+			String producttype, String status, String rank, int start, int end);
 	
 	/**
 	 * 查询总记录数
+	 * @param productid
 	 * @param productname
 	 * @param producttype
 	 * @param status
 	 * @param rank 数据权限
 	 * @return
 	 */
-	public int queryWarehouseCountByPage(String productname, String producttype, String status, String rank);
+	public int queryWarehouseCountByPage(String productid, String productname, String producttype, String status, String rank);
 
 	/**
 	 * 根据ID查询数据

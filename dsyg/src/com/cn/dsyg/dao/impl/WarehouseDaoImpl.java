@@ -17,11 +17,12 @@ import com.cn.dsyg.dto.WarehouseDto;
 public class WarehouseDaoImpl extends BaseDao implements WarehouseDao {
 
 	@Override
-	public List<WarehouseDto> queryWarehouseByPage(String productname, String producttype,
+	public List<WarehouseDto> queryWarehouseByPage(String productid, String productname, String producttype,
 			String status, String rank, int start, int end) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("productname", productname);
 		paramMap.put("producttype", producttype);
+		paramMap.put("productid", productid);
 		paramMap.put("status", status);
 		paramMap.put("rank", rank);
 		paramMap.put("start", start);
@@ -32,11 +33,12 @@ public class WarehouseDaoImpl extends BaseDao implements WarehouseDao {
 	}
 
 	@Override
-	public int queryWarehouseCountByPage(String productname, String producttype, String status,
+	public int queryWarehouseCountByPage(String productid, String productname, String producttype, String status,
 			String rank) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("productname", productname);
 		paramMap.put("producttype", producttype);
+		paramMap.put("productid", productid);
 		paramMap.put("status", status);
 		paramMap.put("rank", rank);
 		return (Integer) getSqlMapClientTemplate().queryForObject("queryWarehouseCountByPage", paramMap);

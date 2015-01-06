@@ -1,0 +1,11 @@
+/* CSS Document */
+@charset "UTF-8";body,button,input,select,textarea{font:12px/20px "Î¢ÈíÑÅºÚ",Arial}
+html{background:#eeeeee}
+body{background:#eeeeee;}
+a{color:#2965b1;text-decoration:none}
+a:hover{text-decoration:underline}
+.main_body{width:1000px;margin:0 auto;border-top:5px solid #4ba0d7;background:#ffffff; padding-bottom:80px;}
+.btn{border:0 none;border-radius:3px;color:#fff;cursor:pointer;display:inline-block;height:30px; padding:0 25px;text-align:center;*display:inline;*zoom:1;vertical-align:middle}
+.btn-blue{background:#4ba0d7}
+.btn-blue:hover{background:#2f8ded}
+.btn-gray{background:#dcdcdc; color:#666666; margin-left:5px;}

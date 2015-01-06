@@ -172,8 +172,8 @@ public class Product01Action extends BaseAction {
 			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
 			updProduct01Dto.setUpdateuid(username);
 			product01Service.updateProduct01(updProduct01Dto);
-			log.info("修改成功");
-			this.addActionMessage("修改成功！");
+			log.info("更新成功");
+			this.addActionMessage("更新成功！");
 			//清空数据
 			updPicFile01 = null;
 			updPicFile02 = null;
@@ -416,26 +416,26 @@ public class Product01Action extends BaseAction {
 		}
 		
 		//库存编辑
-		if(StringUtil.isBlank(product01.getItem20())) {
-			this.addActionMessage("在库数（整箱）不能为空！");
-			return false;
-		}
-		if(StringUtil.isBlank(product01.getItem21())) {
-			this.addActionMessage("在库数（乱尺）不能为空！");
-			return false;
-		}
-		if(StringUtil.isBlank(product01.getItem22())) {
-			this.addActionMessage("请选择库存编辑单位！");
-			return false;
-		}
-		if(StringUtil.isBlank(product01.getItem23())) {
-			this.addActionMessage("发送天数不能为空！");
-			return false;
-		}
-		if(StringUtil.isBlank(product01.getMakearea())) {
-			this.addActionMessage("请选择产地！");
-			return false;
-		}
+//		if(StringUtil.isBlank(product01.getItem20())) {
+//			this.addActionMessage("在库数（整箱）不能为空！");
+//			return false;
+//		}
+//		if(StringUtil.isBlank(product01.getItem21())) {
+//			this.addActionMessage("在库数（乱尺）不能为空！");
+//			return false;
+//		}
+//		if(StringUtil.isBlank(product01.getItem22())) {
+//			this.addActionMessage("请选择库存编辑单位！");
+//			return false;
+//		}
+//		if(StringUtil.isBlank(product01.getItem23())) {
+//			this.addActionMessage("发送天数不能为空！");
+//			return false;
+//		}
+//		if(StringUtil.isBlank(product01.getMakearea())) {
+//			this.addActionMessage("请选择产地！");
+//			return false;
+//		}
 		return true;
 	}
 	

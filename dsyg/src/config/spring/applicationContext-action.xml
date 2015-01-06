@@ -10,6 +10,9 @@
 		<property name="warehouseService">
 			<ref bean="warehouseService"/>
 		</property>
+		<property name="product01Service">
+			<ref bean="product01Service"/>
+		</property>
 	</bean>
 	
 	<!-- search -->
