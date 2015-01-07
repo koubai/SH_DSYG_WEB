@@ -185,29 +185,24 @@
 			$("#addPicFile01").focus();
 			return false;
 		}
+		//图2，3可以为空
 		//图2
-		if(file02Name == "") {
-			alert("特性图片上传不能为空！");
-			$("#addPicFile02").focus();
-			return false;
-		}
-		n = file02Name.substring(file02Name.lastIndexOf("."), file02Name.length).toUpperCase();
-		if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
-			alert("图片只支持JPG、GIF和PNG格式！");
-			$("#addPicFile02").focus();
-			return false;
+		if(file02Name != "") {
+			n = file02Name.substring(file02Name.lastIndexOf("."), file02Name.length).toUpperCase();
+			if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
+				alert("图片只支持JPG、GIF和PNG格式！");
+				$("#addPicFile02").focus();
+				return false;
+			}
 		}
 		//图3
-		if(file03Name == "") {
-			alert("尺寸图片上传不能为空！");
-			$("#addPicFile03").focus();
-			return false;
-		}
-		n = file03Name.substring(file03Name.lastIndexOf("."), file03Name.length).toUpperCase();
-		if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
-			alert("图片只支持JPG、GIF和PNG格式！");
-			$("#addPicFile03").focus();
-			return false;
+		if(file03Name != "") {
+			n = file03Name.substring(file03Name.lastIndexOf("."), file03Name.length).toUpperCase();
+			if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
+				alert("图片只支持JPG、GIF和PNG格式！");
+				$("#addPicFile03").focus();
+				return false;
+			}
 		}
 		//PDT文件验证
 		if(file04Name == "") {

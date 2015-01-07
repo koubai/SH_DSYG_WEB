@@ -9,23 +9,28 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
 <title>没有权限</title>
 <script type="text/javascript">
-	$(document).ready(function(){
-		var h=document.documentElement.clientHeight;
-		$("#container").css("height",h);
-	});
 </script>
 </head>
 <body bgcolor="#ffffff">
-	<div id="container">
-		<div id="top">
-			<div class="logobox">
-				<div class="logo_tittle"></div>
-				<div class="logo"></div>
+<div id="main" style="margin-top:2px;">
+	<div  class="header_bg">
+		<div class="content">
+			<div class="user_bg">
+				<div class="user">
+					<div class="user_tittle">后台管理
+					</div>
+				</div>
+			</div>
+			<jsp:include page="../head_manage.jsp" flush="true" />
+			<div class="main_body">
+				<div class="error">
+					<img src="<%=request.getContextPath()%>/images/error.png" />
+					<p style="padding-top:20px;"><span class="gray">ERROR</span><span class="red">错误</span></p>
+					<p>您没有权限访问！<a class="return1" href="./managehome.shtml">返回</a></p>
+				</div>
 			</div>
 		</div>
-		<div class=content>
-			<p class="session_txt">对不起，您没有权限，<a href="./managelogin.shtml">回到首页</a>。</p>
-		</div>
 	</div>
+</div>
 </body>
 </html>

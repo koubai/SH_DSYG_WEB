@@ -33,9 +33,9 @@ function logout() {
 				<a class="lgout fr" href="javascript:void(0);" onclick="logout();">退出</a>			
 			</div>
 			<div class="main_body">
-				<table border="0" cellpadding="0" cellspacing="15" align="center" style="height: 200px; font-size: 18px;">
+				<table class="menu_tab" border="0" cellspacing="0" cellpadding="20">
 					<tr>
-						<td width="200">
+						<td>
 							<a href="<c:url value="/product/showManageProductListAction.action"></c:url>">产品管理</a>
 						</td>
 						<td>
@@ -47,7 +47,9 @@ function logout() {
 							<a href="<c:url value="/user/showUpdPasswordAction.action"></c:url>">密码修改</a>
 						</td>
 						<td>
-							<a href="<c:url value="/user/showUserManagePageAction.action"></c:url>">用户管理</a>
+							<s:if test='#session.user_rank >= 90'>
+								<a href="<c:url value="/user/showUserManagePageAction.action"></c:url>">用户管理</a>
+							</s:if>
 						</td>
 					</tr>
 				</table>

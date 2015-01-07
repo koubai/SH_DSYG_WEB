@@ -44,19 +44,16 @@
 		//图片验证
 		var file01Name = $("#addPicFile01").val();
 		//图1
-		if(file01Name == "") {
-			alert("图片不能为空！");
-			$("#addPicFile01").focus();
-			return false;
+		if(file01Name != "") {
+			var n = file01Name.substring(file01Name.lastIndexOf("."), file01Name.length).toUpperCase();
+			if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
+				alert("图片只支持JPG、GIF和PNG格式！");
+				$("#addPicFile01").focus();
+				return false;
+			}
+			//文件名
+			$("#file01Name").val(file01Name);
 		}
-		var n = file01Name.substring(file01Name.lastIndexOf("."), file01Name.length).toUpperCase();
-		if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
-			alert("图片只支持JPG、GIF和PNG格式！");
-			$("#addPicFile01").focus();
-			return false;
-		}
-		//文件名
-		$("#file01Name").val(file01Name);
 		
 		if(tempData == "") {
 			alert("新闻内容不能为空！");
@@ -121,7 +118,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="td_tittle"><span>*</span>图片上传：</td>
+							<td class="td_tittle"><span></span>图片上传：</td>
 							<td>
 								<input type="file" name="addPicFile01" id="addPicFile01"/>
 							</td>

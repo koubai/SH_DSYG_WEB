@@ -119,10 +119,10 @@ public class NewsAction extends BaseAction {
 			}
 			
 			//图片验证
-			if(addPicFile01 == null) {
-				this.addActionMessage("图片不能为空！");
-				return "checkerror";
-			}
+//			if(addPicFile01 == null) {
+//				this.addActionMessage("图片不能为空！");
+//				return "checkerror";
+//			}
 //			if(addPicFile02 == null) {
 //				this.addActionMessage("图片2不能为空！");
 //				return "checkerror";
@@ -136,17 +136,10 @@ public class NewsAction extends BaseAction {
 			String image_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_NEW_PIC_PATH);
 			
 			//保存文件到指定目录
-			String newfile01 = FileUtil.uploadFile(addPicFile01, image_path, file01Name);
-			addNewsDto.setPic01(newfile01);
-			
-//			if(updPicFile02 != null) {
-//				String newfile02 = FileUtil.uploadFile(updPicFile02, image_path, file02Name);
-//				updNewsDto.setPic02(newfile02);
-//			}
-//			if(updPicFile03 != null) {
-//				String newfile03 = FileUtil.uploadFile(updPicFile03, image_path, file03Name);
-//				updNewsDto.setPic03(newfile03);
-//			}
+			if(addPicFile01 != null) {
+				String newfile01 = FileUtil.uploadFile(addPicFile01, image_path, file01Name);
+				addNewsDto.setPic01(newfile01);
+			}
 			
 			//当前操作用户ID
 			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
@@ -213,6 +206,11 @@ public class NewsAction extends BaseAction {
 			
 			this.addActionMessage("更新成功！");
 			log.info("更新成功！");
+			
+			//如果更新前有图片，更新后没有图片，则删除原图片
+			if(StringUtil.isNotBlank(oldNews.getPic01()) && StringUtil.isBlank(updNewsDto.getPic01())) {
+				oldpic1 = oldNews.getPic01();
+			}
 			//删除原来图片
 			if(StringUtil.isNotBlank(oldpic1)) {
 				FileUtil.deleteFile(oldpic1, image_path);

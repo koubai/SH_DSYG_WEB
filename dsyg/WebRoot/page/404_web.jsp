@@ -12,23 +12,13 @@
 </script>
 </head>
 <body bgcolor="#ffffff">
-<div id="main" style="margin-top:2px;">
-	<div  class="header_bg">
-		<div class="content">
-			<div class="user_bg">
-				<div class="user">
-					<div class="user_tittle">后台管理
-					</div>
-				</div>
-			</div>
-			<jsp:include page="../head_manage.jsp" flush="true" />
-			<div class="main_body">
-				<div class="error">
-					<img src="<%=request.getContextPath()%>/images/error.png" />
-					<p style="padding-top:20px;"><span class="gray">ERROR</span><span class="red">404</span></p>
-					<p>您访问的页面不存在，<a class="return1" href="./managehome.shtml">返回首页</a></p>
-				</div>
-			</div>
+<jsp:include page="./head_web.jsp" flush="true" />
+<div id="main">
+	<div class="content">
+		<div class="error">
+			<img src="<%=request.getContextPath()%>/images/error.png" />
+			<p style="padding-top:20px;"><span class="gray">ERROR</span><span class="red">404</span></p>
+			<p>您访问的页面不存在，<a class="return1" href="<%=request.getContextPath()%>/home.shtml">返回首页</a></p>
 		</div>
 	</div>
 </div>
