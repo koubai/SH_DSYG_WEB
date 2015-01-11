@@ -12887,7 +12887,7 @@ var tabs = $.widget( "ui.tabs", {
 			anchorUrl = anchor.href.replace( rhash, "" );
 			locationUrl = location.href.replace( rhash, "" );
 
-			// decoding may throw an error if the URL isn't UTF-8 (#9518)
+			// decoding may throw an error if the URL isn't utf-8 (#9518)
 			try {
 				anchorUrl = decodeURIComponent( anchorUrl );
 			} catch ( error ) {}
