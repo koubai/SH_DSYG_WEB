@@ -169,11 +169,18 @@
 		}
 		
 		//图片验证
+		var tmppic01 = $("#pic01").val();
 		var file01Name = $("#updPicFile01").val();
 		var file02Name = $("#updPicFile02").val();
 		var file03Name = $("#updPicFile03").val();
 		var file04Name = $("#updPdfFile").val();
 		//图1
+		if(tmppic01 == "" && file01Name == "") {
+			alert("图片不能为空！");
+			$("#updPicFile01").focus();
+			return false;
+		}
+		//图片格式
 		if(file01Name != "") {
 			var n = file01Name.substring(file01Name.lastIndexOf("."), file01Name.length).toUpperCase();
 			if(n != ".JPG" && n != ".GIF" && n != ".PNG") {
@@ -213,7 +220,6 @@
 			}
 			$("#file04Name").val(file04Name);
 		}
-		
 		return true;
 	}
 	
@@ -238,6 +244,14 @@
 			$("#fieldcode02").hide();
 		}
 	}
+	
+	//删除图片
+	function delPic(id1, id2, id3) {
+		$("#" + id1).remove();
+		$("#" + id2).remove();
+		//清空图片地址
+		$("#" + id3).val("");
+	}
 </script>
 </head>
 <body style="background: url(''); overflow-x:hidden;overflow-y:scroll;">
@@ -256,6 +270,9 @@
 					<s:hidden name="updProduct01Dto.item02" id="item02"></s:hidden>
 					<s:hidden name="updProduct01Dto.item03" id="item03"></s:hidden>
 					<s:hidden name="updProduct01Dto.item04" id="item04"></s:hidden>
+					<s:hidden name="updProduct01Dto.pic01" id="pic01"></s:hidden>
+					<s:hidden name="updProduct01Dto.pic02" id="pic02"></s:hidden>
+					<s:hidden name="updProduct01Dto.pic03" id="pic03"></s:hidden>
 					<s:hidden name="file01Name" id="file01Name"></s:hidden>
 					<s:hidden name="file02Name" id="file02Name"></s:hidden>
 					<s:hidden name="file03Name" id="file03Name"></s:hidden>
@@ -420,9 +437,9 @@
 							<td>
 								<input type="file" name="updPicFile01" id="updPicFile01"/><br />
 								<s:if test='updProduct01Dto.pic01 != null && updProduct01Dto.pic01 != ""'>
-									<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic01"/>" alt="" /><br />
+									<img id="tmppic01" src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic01"/>" alt="" /><br />
+									<a id="tmpdel1" href="javascript:void(0);" onclick="delPic('tmppic01', 'tmpdel1', 'pic01')">删除</a>
 								</s:if>
-								<a href="#">删除</a>
 							</td>
 						</tr>
 						<tr>
@@ -430,9 +447,9 @@
 							<td>
 								<input type="file" name="updPicFile02" id="updPicFile02"/><br />
 								<s:if test='updProduct01Dto.pic02 != null && updProduct01Dto.pic02 != ""'>
-									<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic02"/>" alt="" /><br />
+									<img id="tmppic02" src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic02"/>" alt="" /><br />
+									<a id="tmpdel2" href="javascript:void(0);" onclick="delPic('tmppic02', 'tmpdel2', 'pic02')">删除</a>
 								</s:if>
-								<a href="#">删除</a>
 							</td>
 						</tr>
 						<tr>
@@ -440,9 +457,9 @@
 							<td>
 								<input type="file" name="updPicFile03" id="updPicFile03"/><br />
 								<s:if test='updProduct01Dto.pic03 != null && updProduct01Dto.pic03 != ""'>
-									<img src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic03"/>" alt="" /><br />
+									<img id="tmppic03" src="<s:property value="updProduct01Dto.imageurl"/><s:property value="updProduct01Dto.pic03"/>" alt="" /><br />
+									<a id="tmpdel3" href="javascript:void(0);" onclick="delPic('tmppic03', 'tmpdel3', 'pic03')">删除</a>
 								</s:if>
-								<a href="#">删除</a>
 							</td>
 						</tr>
 						<tr>

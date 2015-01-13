@@ -151,21 +151,31 @@ public class Product01Action extends BaseAction {
 			String pdf_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_PATH);
 			
 			//保存文件到指定目录
+			String oldpic1 = "";
+			String oldpic2 = "";
+			String oldpic3 = "";
+			String oldpdf = "";
+			Product01Dto oldProduct01 = product01Service.queryProduct01ByID(updProduct01Id, "");
+			
 			if(updPicFile01 != null) {
 				String newfile01 = FileUtil.uploadFile(updPicFile01, image_path, file01Name);
 				updProduct01Dto.setPic01(newfile01);
+				oldpic1 = oldProduct01.getPic01();
 			}
 			if(updPicFile02 != null) {
 				String newfile02 = FileUtil.uploadFile(updPicFile02, image_path, file02Name);
 				updProduct01Dto.setPic02(newfile02);
+				oldpic2 = oldProduct01.getPic02();
 			}
 			if(updPicFile03 != null) {
 				String newfile03 = FileUtil.uploadFile(updPicFile03, image_path, file03Name);
 				updProduct01Dto.setPic03(newfile03);
+				oldpic3 = oldProduct01.getPic03();
 			}
 			if(updPdfFile != null) {
 				String newfile04 = FileUtil.uploadFile(updPdfFile, pdf_path, file04Name);
 				updProduct01Dto.setPdfpath(newfile04);
+				oldpdf = oldProduct01.getPdfpath();
 			}
 			
 			//当前操作用户ID
@@ -179,6 +189,31 @@ public class Product01Action extends BaseAction {
 			updPicFile02 = null;
 			updPicFile03 = null;
 			updPdfFile = null;
+			
+			//如果更新前有图片，更新后没有图片，则删除原图片
+			if(StringUtil.isNotBlank(oldProduct01.getPic01()) && StringUtil.isBlank(updProduct01Dto.getPic01())) {
+				oldpic1 = oldProduct01.getPic01();
+			}
+			if(StringUtil.isNotBlank(oldProduct01.getPic02()) && StringUtil.isBlank(updProduct01Dto.getPic02())) {
+				oldpic2 = oldProduct01.getPic02();
+			}
+			if(StringUtil.isNotBlank(oldProduct01.getPic03()) && StringUtil.isBlank(updProduct01Dto.getPic03())) {
+				oldpic3 = oldProduct01.getPic03();
+			}
+			
+			//判断是否需要删除原来文件
+			if(StringUtil.isNotBlank(oldpic1)) {
+				FileUtil.deleteFile(oldpic1, image_path);
+			}
+			if(StringUtil.isNotBlank(oldpic2)) {
+				FileUtil.deleteFile(oldpic2, image_path);
+			}
+			if(StringUtil.isNotBlank(oldpic3)) {
+				FileUtil.deleteFile(oldpic3, image_path);
+			}
+			if(StringUtil.isNotBlank(oldpdf)) {
+				FileUtil.deleteFile(oldpdf, pdf_path);
+			}
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
 			return ERROR;
@@ -222,14 +257,6 @@ public class Product01Action extends BaseAction {
 				this.addActionMessage("图片不能为空！");
 				return "checkerror";
 			}
-			if(addPicFile02 == null) {
-				this.addActionMessage("特性图片上传不能为空！");
-				return "checkerror";
-			}
-			if(addPicFile03 == null) {
-				this.addActionMessage("尺寸图片上传不能为空！");
-				return "checkerror";
-			}
 			if(addPdfFile == null) {
 				this.addActionMessage("请选择对应PDF文件！");
 				return "checkerror";
@@ -241,13 +268,18 @@ public class Product01Action extends BaseAction {
 			
 			//保存文件到指定目录
 			String newfile01 = FileUtil.uploadFile(addPicFile01, image_path, file01Name);
-			String newfile02 = FileUtil.uploadFile(addPicFile02, image_path, file02Name);
-			String newfile03 = FileUtil.uploadFile(addPicFile03, image_path, file03Name);
-			String newfile04 = FileUtil.uploadFile(addPdfFile, pdf_path, file04Name);
-			
 			addProduct01Dto.setPic01(newfile01);
-			addProduct01Dto.setPic02(newfile02);
-			addProduct01Dto.setPic03(newfile03);
+			
+			if(addPicFile02 != null) {
+				String newfile02 = FileUtil.uploadFile(addPicFile02, image_path, file02Name);
+				addProduct01Dto.setPic02(newfile02);
+			}
+			if(addPicFile03 != null) {
+				String newfile03 = FileUtil.uploadFile(addPicFile03, image_path, file03Name);
+				addProduct01Dto.setPic03(newfile03);
+			}
+			
+			String newfile04 = FileUtil.uploadFile(addPdfFile, pdf_path, file04Name);
 			addProduct01Dto.setPdfpath(newfile04);
 			
 			//当前操作用户ID

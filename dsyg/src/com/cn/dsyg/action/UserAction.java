@@ -131,6 +131,11 @@ public class UserAction extends BaseAction {
 	public String showUserManagePageAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			startIndex = 0;
 			page = new Page();
 			userList = new ArrayList<UserDto>();
@@ -149,6 +154,11 @@ public class UserAction extends BaseAction {
 	public String queryUserAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			startIndex = 0;
 			page = new Page();
 			queryData();
@@ -166,6 +176,11 @@ public class UserAction extends BaseAction {
 	public String turnUserAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			queryData();
 		} catch(Exception e) {
 			log.error("turnUserAction error:" + e);
@@ -182,6 +197,11 @@ public class UserAction extends BaseAction {
 	public String showAddUserAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			addUserDto = new UserDto();
 			addUserDto.setRolecode(Constants.ROLE_CODE_EMPLOYEE);
 			addUserDto.setStatus(Constants.STATUS_NORMAL);
@@ -200,6 +220,11 @@ public class UserAction extends BaseAction {
 	public String addUserAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			showRoleDtoList = roleService.queryAllRole();
 			//数据check
 			if(!checkData(addUserDto, false)) {
@@ -234,6 +259,11 @@ public class UserAction extends BaseAction {
 	public String showUpdUserAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			showRoleDtoList = roleService.queryAllRole();
 			//查询用户信息
 			updUserDto = userService.queryUserByID(updUserid);
@@ -251,6 +281,11 @@ public class UserAction extends BaseAction {
 	public String updUserAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			showRoleDtoList = roleService.queryAllRole();
 			//数据校验
 			if(!checkData(updUserDto, true)) {
@@ -275,6 +310,11 @@ public class UserAction extends BaseAction {
 	public String delUserAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+				return "noauthority";
+			}
 			if(StringUtil.isBlank(delUserid)) {
 				this.addActionMessage("用户登录ID不能为空！");
 				return "checkerror";

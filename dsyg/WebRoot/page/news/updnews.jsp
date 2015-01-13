@@ -72,6 +72,14 @@
 		document.mainform.action = '<c:url value="/news/queryNewsAction.action"></c:url>';
 		document.mainform.submit();
 	}
+	
+	//删除图片
+	function delPic(id1, id2, id3) {
+		$("#" + id1).remove();
+		$("#" + id2).remove();
+		//清空图片地址
+		$("#" + id3).val("");
+	}
 </script>
 </head>
 <body style="background: url(''); overflow-x:hidden;overflow-y:scroll;">
@@ -88,6 +96,7 @@
 				<s:form id="mainform" name="mainform" method="POST" enctype="multipart/form-data">
 					<s:hidden name="updNewsDto.newsdate" id="newsdate"></s:hidden>
 					<s:hidden name="updNewsDto.data" id="data"></s:hidden>
+					<s:hidden name="updNewsDto.pic01" id="pic01"></s:hidden>
 					<s:hidden name="file01Name" id="file01Name"></s:hidden>
 					<div style="position:absolute; margin-left: 400px; margin-top: 3px; text-align: center; color: red;">
 						<s:actionmessage />
@@ -116,13 +125,13 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="td_tittle"><span>*</span>图片上传：</td>
+							<td class="td_tittle"><span></span>图片上传：</td>
 							<td>
 								<input type="file" name="updPicFile01" id="updPicFile01"/><br />
 								<s:if test='updNewsDto.pic01 != null && updNewsDto.pic01 != ""'>
-									<img src="<s:property value="updNewsDto.newsPicUrl"/><s:property value="updNewsDto.pic01"/>" alt="" /><br />
+									<img id="tmppic01" src="<s:property value="updNewsDto.newsPicUrl"/><s:property value="updNewsDto.pic01"/>" alt="" /><br />
+									<a id="tmpdel1" href="javascript:void(0);" onclick="delPic('tmppic01', 'tmpdel1', 'pic01')">删除</a>
 								</s:if>
-								<a href="#">删除</a>
 							</td>
 						</tr>
 						<tr>
