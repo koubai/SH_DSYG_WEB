@@ -197,6 +197,7 @@ ul.pagination li a:hover{background-position: 0px 100%; color: #fff; text-decora
 /**capital end**/
 .product_search{ padding:10px 10px 40px 10px;}
 .product_search .tittle{ width:290px; height:55px; background:url(../images/search_icon.png) no-repeat;}
+.product_search .tittle1{ width:290px; height:55px; background:url(../images/search_icon1.png) no-repeat;}
 .product_search .search_content .search_bgt{ width:1000px; height:20px; background:url(../images/core_bgt.png) no-repeat;}
 .product_search .search_content .search_bgc{ width:1000px; background:url(../images/core_bgc.png) repeat-y;}
 .product_search .search_content .search_bgb{ width:1000px; height:20px; background:url(../images/core_bgb.png) no-repeat;}
@@ -259,6 +260,10 @@ table.product_tab,table.product_tab tr,table.product_tab td{ border-collapse:col
 .input_table dl{ margin:0; padding:2px 0; }
 .input_table dl dt{ float:left; height:20px; line-height:20px; width:120px; text-align:right;}
 .input_table img{ width:325px; height:244px;}
+.date_input{ border:1px solid #cccccc; width:170px; line-height:14px;}
+.date_input input{ border:none;}
+.input_table .date_input input{ width:140px;}
+.input_table .date_input img{ margin:2px; width:16px; height:16px;}
 .error{ padding:80px 200px;}
 .error img{ float:left; padding:20px;}
 .error p{color:#292929; font-family:"微软雅黑"; font-size:18px;}
@@ -273,3 +278,4 @@ h1.ttl{color:#2074bd; font-size:30px; font-family:"微软雅黑"; font-weight:no
 #blue-mat .item{color: #fff;font-size: 21px;text-align: left;padding-bottom: 15px;line-height: 1.5 !important;padding-left: 0px;padding-right: 0px;padding-top: 18px;}
 .caseBox{width: 324px;float: left;}
 .caseBox h2{border-bottom: medium none;border-left: medium none;padding-bottom: 0px;margin: 34px 0px 0px;padding-left: 0px;padding-right: 0px;border-top: medium none;border-right: medium none;padding-top: 0px;}
+.fBox_tittle p{ margin:0; padding:0; line-height:30px; font-size:16px; text-indent:2em; color:#333333; font-family:"微软雅黑";}
