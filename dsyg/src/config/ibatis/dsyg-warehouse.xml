@@ -9,6 +9,8 @@
 		<result property="productid" column="productid" />
 		<result property="productname" column="productname" />
 		<result property="producttype" column="producttype" />
+		<result property="ulcode" column="ulcode" />
+		<result property="productrank" column="productrank" />
 		<result property="item01" column="item01" />
 		<result property="item02" column="item02" />
 		<result property="item03" column="item03" />
@@ -43,6 +45,8 @@
 				item09,item10,rank,res01,res02,res03,res04,res05,res06,res07,res08,res09,
 				res10,status,createuid,createdate,updateuid,updatedate,
 				(select P.nameno from tbproduct01 P where P.id = W.productid) as productname,
+				(select P.item09 from tbproduct01 P where P.id = W.productid) as ulcode,
+				(select P.rank from tbproduct01 P where P.id = W.productid) as productrank,
 				(select P.fieldcode from tbproduct01 P where P.id = W.productid) as producttype
 				from tbwarehouse W) T where 1 = 1
 		<isNotEmpty prepend="and" property="productname">
@@ -59,6 +63,9 @@
 		</isNotEmpty>
 		<isNotEmpty prepend="and" property="rank">
 			T.rank <![CDATA[<=]]> #rank#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="rank">
+			T.productrank <![CDATA[<=]]> #rank#
 		</isNotEmpty>
 		order by T.updatedate desc, productname desc
 		LIMIT #start#, #end#
@@ -70,6 +77,8 @@
 				item09,item10,rank,res01,res02,res03,res04,res05,res06,res07,res08,res09,
 				res10,status,createuid,createdate,updateuid,updatedate,
 				(select P.nameno from tbproduct01 P where P.id = W.productid) as productname,
+				(select P.item09 from tbproduct01 P where P.id = W.productid) as ulcode,
+				(select P.rank from tbproduct01 P where P.id = W.productid) as productrank,
 				(select P.fieldcode from tbproduct01 P where P.id = W.productid) as producttype
 				from tbwarehouse W) T where 1 = 1
 		<isNotEmpty prepend="and" property="productname">
@@ -87,12 +96,26 @@
 		<isNotEmpty prepend="and" property="rank">
 			T.rank <![CDATA[<=]]> #rank#
 		</isNotEmpty>
+		<isNotEmpty prepend="and" property="rank">
+			T.productrank <![CDATA[<=]]> #rank#
+		</isNotEmpty>
 	</select>
 	
 	<select id="queryWarehouseByID" parameterClass="java.util.Map" resultMap="WarehouseDto">
-		select * from tbwarehouse T where T.id = #id#
+		select * from (
+		select id,productid,item01,item02,item03,item04,item05,item06,item07,item08,
+			item09,item10,rank,res01,res02,res03,res04,res05,res06,res07,res08,res09,
+			res10,status,createuid,createdate,updateuid,updatedate,
+			(select P.nameno from tbproduct01 P where P.id = W.productid) as productname,
+			(select P.item09 from tbproduct01 P where P.id = W.productid) as ulcode,
+			(select P.rank from tbproduct01 P where P.id = W.productid) as productrank,
+			(select P.fieldcode from tbproduct01 P where P.id = W.productid) as producttype
+			from tbwarehouse W where W.id = #id#) T
 		<isNotEmpty prepend="and" property="rank">
 			T.rank <![CDATA[<=]]> #rank#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="rank">
+			T.productrank <![CDATA[<=]]> #rank#
 		</isNotEmpty>
 	</select>
 	

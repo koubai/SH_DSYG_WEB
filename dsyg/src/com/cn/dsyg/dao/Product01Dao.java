@@ -20,13 +20,17 @@ public interface Product01Dao {
 	 * @param item02
 	 * @param item03
 	 * @param item04
+	 * @param item05
+	 * @param item06
+	 * @param ulCode
 	 * @param status
 	 * @param keyword
 	 * @param rank 数据权限
 	 * @return
 	 */
-	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode, String item01, String item02,
-			String item03, String item04, String status, String keyword, String rank);
+	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode, String item01,
+			String item02, String item03, String item04, String item05, String item06, String ulCode,
+			String status, String keyword, String rank);
 	
 	/**
 	 * 产品检索明细列表
@@ -35,6 +39,9 @@ public interface Product01Dao {
 	 * @param item02
 	 * @param item03
 	 * @param item04
+	 * @param item05
+	 * @param item06
+	 * @param ulCode
 	 * @param status
 	 * @param keyword
 	 * @param rank 数据权限
@@ -42,8 +49,9 @@ public interface Product01Dao {
 	 * @param end
 	 * @return
 	 */
-	public List<Product01Dto> searchProduct01ListByPage(String fieldcode, String item01, String item02,
-			String item03, String item04, String status, String keyword, String rank, int start, int end);
+	public List<Product01Dto> searchProduct01ListByPage(String fieldcode, String item01,
+			String item02, String item03, String item04, String item05, String item06,
+			String ulCode, String status, String keyword, String rank, int start, int end);
 	
 	/**
 	 * 产品检索明细数据量
@@ -52,13 +60,17 @@ public interface Product01Dao {
 	 * @param item02
 	 * @param item03
 	 * @param item04
+	 * @param item05
+	 * @param item06
+	 * @param ulCode
 	 * @param status
 	 * @param keyword
 	 * @param rank 数据权限
 	 * @return
 	 */
-	public int searchProduct01ListCountByPage(String fieldcode, String item01, String item02,
-			String item03, String item04, String status, String keyword, String rank);
+	public int searchProduct01ListCountByPage(String fieldcode, String item01,
+			String item02, String item03, String item04, String item05, String item06,
+			String ulCode, String status, String keyword, String rank);
 	
 	/**
 	 * 翻页查询数据
@@ -90,6 +102,15 @@ public interface Product01Dao {
 	 * @return
 	 */
 	public Product01Dto queryProduct01ByID(String id, String rank);
+	
+	/**
+	 * 根据产品名称，型号，颜色（逻辑主键）查询产品
+	 * @param nameno
+	 * @param typeno
+	 * @param color1
+	 * @return
+	 */
+	public Product01Dto queryProduct01ByLogicId(String nameno, String typeno, String color1);
 	
 	/**
 	 * 删除数据

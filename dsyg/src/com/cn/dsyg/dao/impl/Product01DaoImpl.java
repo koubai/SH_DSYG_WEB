@@ -18,8 +18,8 @@ import com.cn.dsyg.dto.Product01SummaryDto;
 public class Product01DaoImpl extends BaseDao implements Product01Dao {
 	
 	@Override
-	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode,
-			String item01, String item02, String item03, String item04,
+	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode, String item01,
+			String item02, String item03, String item04, String item05, String item06, String ulCode,
 			String status, String keyword, String rank) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
@@ -27,6 +27,10 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 		paramMap.put("item02", item02);
 		paramMap.put("item03", item03);
 		paramMap.put("item04", item04);
+		paramMap.put("item05", item05);
+		paramMap.put("item06", item06);
+		//ulCode
+		paramMap.put("item09", ulCode);
 		paramMap.put("status", status);
 		paramMap.put("keyword", keyword);
 		paramMap.put("rank", rank);
@@ -36,15 +40,19 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 	}
 
 	@Override
-	public List<Product01Dto> searchProduct01ListByPage(
-			String fieldcode, String item01, String item02, String item03,
-			String item04, String status, String keyword, String rank, int start, int end) {
+	public List<Product01Dto> searchProduct01ListByPage(String fieldcode, String item01,
+			String item02, String item03, String item04, String item05, String item06,
+			String ulCode, String status, String keyword, String rank, int start, int end) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
 		paramMap.put("item01", item01);
 		paramMap.put("item02", item02);
 		paramMap.put("item03", item03);
 		paramMap.put("item04", item04);
+		paramMap.put("item05", item05);
+		paramMap.put("item06", item06);
+		//ulCode
+		paramMap.put("item09", ulCode);
 		paramMap.put("status", status);
 		paramMap.put("keyword", keyword);
 		paramMap.put("rank", rank);
@@ -56,8 +64,8 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 	}
 
 	@Override
-	public int searchProduct01ListCountByPage(String fieldcode, String item01,
-			String item02, String item03, String item04, String status,
+	public int searchProduct01ListCountByPage(String fieldcode, String item01, String item02,
+			String item03, String item04, String item05, String item06, String ulCode, String status,
 			String keyword, String rank) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("fieldcode", fieldcode);
@@ -65,15 +73,16 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 		paramMap.put("item02", item02);
 		paramMap.put("item03", item03);
 		paramMap.put("item04", item04);
+		paramMap.put("item05", item05);
+		paramMap.put("item06", item06);
+		//ulCode
+		paramMap.put("item09", ulCode);
 		paramMap.put("status", status);
 		paramMap.put("keyword", keyword);
 		paramMap.put("rank", rank);
 		return (Integer) getSqlMapClientTemplate().queryForObject("searchProduct01ListCountByPage", paramMap);
 	}
 	
-	
-	
-
 	@Override
 	public List<Product01Dto> queryProduct01ByPage(String fieldcode,
 			String keyword, String status, String rank, int start, int end) {
@@ -106,6 +115,21 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 		paramMap.put("rank", rank);
 		@SuppressWarnings("unchecked")
 		List<Product01Dto> list = getSqlMapClientTemplate().queryForList("queryProduct01ByID", paramMap);
+		if(list != null && list.size() > 0) {
+			return list.get(0);
+		}
+		return null;
+	}
+	
+	@Override
+	public Product01Dto queryProduct01ByLogicId(String nameno, String typeno,
+			String color1) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("nameno", nameno);
+		paramMap.put("typeno", typeno);
+		paramMap.put("color1", color1);
+		@SuppressWarnings("unchecked")
+		List<Product01Dto> list = getSqlMapClientTemplate().queryForList("queryProduct01ByLogicId", paramMap);
 		if(list != null && list.size() > 0) {
 			return list.get(0);
 		}

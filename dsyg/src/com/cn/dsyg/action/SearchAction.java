@@ -78,6 +78,12 @@ public class SearchAction extends BaseAction {
 	private String item03Id;
 	//小分类4ID
 	private String item04Id;
+	//小分类4ID
+	private String item05Id;
+	//小分类4ID
+	private String item06Id;
+	//UL编码
+	private String ulCode;
 	//关键字
 	private String keyword;
 	//1为条件检索，2为关键字检索
@@ -92,10 +98,13 @@ public class SearchAction extends BaseAction {
 			this.clearMessages();
 			//页面数据初期化
 			goodsId = "";
+			ulCode = "";
 			item01Id = "";
 			item02Id = "";
 			item03Id = "";
 			item04Id = "";
+			item05Id = "";
+			item06Id = "";
 			keyword = "";
 			featureList = new ArrayList<FeatureDto>();
 			initData();
@@ -158,6 +167,12 @@ public class SearchAction extends BaseAction {
 				keyword = "";
 				//汇总图片点击URL参数
 				//summaryUrl = "searchlist_g" + goodsId;
+				if(StringUtil.isNotBlank(ulCode)) {
+					summaryUrl += "_ul" + ulCode;
+				} else {
+					//空字符
+					summaryUrl += "_ul" + Constants.UL_EMPTY;
+				}
 				if(StringUtil.isNotBlank(item01Id)) {
 					summaryUrl += "_i1" + item01Id;
 				}
@@ -170,8 +185,16 @@ public class SearchAction extends BaseAction {
 				if(StringUtil.isNotBlank(item04Id)) {
 					summaryUrl += "_i4" + item04Id;
 				}
+				if(StringUtil.isNotBlank(item05Id)) {
+					summaryUrl += "_i5" + item05Id;
+				}
+				if(StringUtil.isNotBlank(item06Id)) {
+					summaryUrl += "_i6" + item06Id;
+				}
 				summaryUrl += "_p0" + Constants.URL_SUFFIX;
-				product01SummaryList = product01Service.searchProduct01Summary(goodsId, item01Id, item02Id, item03Id, item04Id, "" + Constants.STATUS_NORMAL, keyword, "" + Constants.ROLE_RANK_NORMAL);
+				product01SummaryList = product01Service.searchProduct01Summary(goodsId, item01Id, item02Id,
+						item03Id, item04Id, item05Id, item06Id, this.getUlCode(), "" + Constants.STATUS_NORMAL,
+						keyword, "" + Constants.ROLE_RANK_OPERATOR);
 			} else if(StringUtil.isNotBlank(keyword)) {
 				//关键字检索
 				goodsId = "";
@@ -179,9 +202,14 @@ public class SearchAction extends BaseAction {
 				item02Id = "";
 				item03Id = "";
 				item04Id = "";
+				item05Id = "";
+				item06Id = "";
+				ulCode = "";
 				//汇总图片点击URL参数
 				summaryUrl = "_kw" + keyword + "_p0" + Constants.URL_SUFFIX;
-				product01SummaryList = product01Service.searchProduct01Summary(goodsId, item01Id, item02Id, item03Id, item04Id, "" + Constants.STATUS_NORMAL, keyword, "" + Constants.ROLE_RANK_NORMAL);
+				product01SummaryList = product01Service.searchProduct01Summary(goodsId, item01Id, item02Id,
+						item03Id, item04Id, item05Id, item06Id, this.getUlCode(), "" + Constants.STATUS_NORMAL,
+						keyword, "" + Constants.ROLE_RANK_OPERATOR);
 			} else {
 				//什么都不做
 			}
@@ -217,7 +245,7 @@ public class SearchAction extends BaseAction {
 			
 			listUrl = "";
 			//产品类型
-			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			goodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//查询汇总页面
 			if(StringUtil.isNotBlank(goodsId)) {
 				//小分类
@@ -236,10 +264,14 @@ public class SearchAction extends BaseAction {
 					item02Id = "";
 					item03Id = "";
 					item04Id = "";
+					item05Id = "";
+					item06Id = "";
+					ulCode = "";
 					//翻页时URL参数
 					listUrl = "_g" + goodsId + "_kw" + keyword;
 					page = product01Service.searchProduct01List(goodsId, item01Id, item02Id, item03Id,
-							item04Id, "" + Constants.STATUS_NORMAL, keyword, "" + Constants.ROLE_RANK_NORMAL, page, startIndex);
+							item04Id, item05Id, item06Id, this.getUlCode(), "" + Constants.STATUS_NORMAL, keyword,
+							"" + Constants.ROLE_RANK_OPERATOR, page, startIndex);
 					product01List = (List<Product01Dto>) page.getItems();
 					page.setStartIndex(startIndex);
 					this.setStartIndex(page.getStartIndex());
@@ -247,6 +279,12 @@ public class SearchAction extends BaseAction {
 					//条件检索，关键字赋空
 					keyword = "";
 					listUrl = "_g" + goodsId;
+					if(StringUtil.isNotBlank(ulCode)) {
+						listUrl += "_ul" + ulCode;
+					} else {
+						//空字符
+						listUrl += "_ul" + Constants.UL_EMPTY;
+					}
 					//翻页时URL参数
 					if(StringUtil.isNotBlank(item01Id)) {
 						listUrl += "_i1" + item01Id;
@@ -260,8 +298,15 @@ public class SearchAction extends BaseAction {
 					if(StringUtil.isNotBlank(item04Id)) {
 						listUrl += "_i4" + item04Id;
 					}
-					page = product01Service.searchProduct01List(goodsId, item01Id, item02Id, item03Id, item04Id,
-							"" + Constants.STATUS_NORMAL, keyword, "" + Constants.ROLE_RANK_NORMAL, page, startIndex);
+					if(StringUtil.isNotBlank(item05Id)) {
+						listUrl += "_i5" + item05Id;
+					}
+					if(StringUtil.isNotBlank(item06Id)) {
+						listUrl += "_i6" + item06Id;
+					}
+					page = product01Service.searchProduct01List(goodsId, item01Id, item02Id, item03Id,
+							item04Id, item05Id, item06Id, this.getUlCode(), "" + Constants.STATUS_NORMAL,
+							keyword, "" + Constants.ROLE_RANK_OPERATOR, page, startIndex);
 					product01List = (List<Product01Dto>) page.getItems();
 					page.setStartIndex(startIndex);
 					this.setStartIndex(page.getStartIndex());
@@ -275,7 +320,7 @@ public class SearchAction extends BaseAction {
 		}
 		return SUCCESS;
 	}
-	
+
 	/**
 	 * 页面数据初期化
 	 */
@@ -283,7 +328,7 @@ public class SearchAction extends BaseAction {
 		startIndex = 0;
 		page = new Page();
 		//大分类列表
-		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+		goodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 	}
 
 	public Dict01Service getDict01Service() {
@@ -429,5 +474,32 @@ public class SearchAction extends BaseAction {
 
 	public void setListUrl(String listUrl) {
 		this.listUrl = listUrl;
+	}
+
+	public String getItem05Id() {
+		return item05Id;
+	}
+
+	public void setItem05Id(String item05Id) {
+		this.item05Id = item05Id;
+	}
+
+	public String getItem06Id() {
+		return item06Id;
+	}
+
+	public void setItem06Id(String item06Id) {
+		this.item06Id = item06Id;
+	}
+
+	public String getUlCode() {
+		if(Constants.UL_EMPTY.equals(ulCode)) {
+			ulCode = null;
+		}
+		return ulCode;
+	}
+
+	public void setUlCode(String ulCode) {
+		this.ulCode = ulCode;
 	}
 }

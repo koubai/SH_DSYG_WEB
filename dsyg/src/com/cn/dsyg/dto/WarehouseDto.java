@@ -31,9 +31,19 @@ public class WarehouseDto extends BaseDto {
 	 * 产品大类型
 	 */
 	private String producttype;
+	
+	/**
+	 * UL编号
+	 */
+	private String ulcode;
+	
+	/**
+	 * 产品数据权限
+	 */
+	private String productrank;
 
 	/**
-	 * 入库
+	 * 在库数
 	 */
 	private String item01;
 
@@ -43,12 +53,12 @@ public class WarehouseDto extends BaseDto {
 	private String item02;
 
 	/**
-	 * 定单单位
+	 * 发送天数
 	 */
 	private String item03;
 
 	/**
-	 * 送货期
+	 * 项目4
 	 */
 	private String item04;
 
@@ -88,22 +98,22 @@ public class WarehouseDto extends BaseDto {
 	private String rank;
 
 	/**
-	 * 预备项目1
+	 * 单位
 	 */
 	private String res01;
 
 	/**
-	 * 预备项目2
+	 * 产地
 	 */
 	private String res02;
 
 	/**
-	 * 预备项目3
+	 * 整箱OR乱尺（1整箱0乱尺）
 	 */
 	private String res03;
 
 	/**
-	 * 预备项目4
+	 * 期货OR现货（1期货0现货）
 	 */
 	private String res04;
 
@@ -400,6 +410,22 @@ public class WarehouseDto extends BaseDto {
 
 	public void setProducttype(String producttype) {
 		this.producttype = producttype;
+	}
+
+	public String getUlcode() {
+		return ulcode;
+	}
+
+	public void setUlcode(String ulcode) {
+		this.ulcode = ulcode;
+	}
+
+	public String getProductrank() {
+		return productrank;
+	}
+
+	public void setProductrank(String productrank) {
+		this.productrank = productrank;
 	}
 
 }

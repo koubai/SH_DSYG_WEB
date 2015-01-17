@@ -75,11 +75,24 @@ public class HomeAction extends BaseAction {
 			newsDetailId = "";
 			newsDetail = new NewsDto();
 			//大分类列表
-			homeGoodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			homeGoodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//查询新闻
 			homeNewsList = newsService.queryHomeNews();
 		} catch(Exception e) {
 			log.error("goHomeAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 在线购买
+	 * @return
+	 */
+	public String showOnlineAction() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showOnlineAction error:" + e);
 		}
 		return SUCCESS;
 	}

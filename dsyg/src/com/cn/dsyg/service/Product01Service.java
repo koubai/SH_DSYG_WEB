@@ -21,13 +21,17 @@ public interface Product01Service {
 	 * @param item02
 	 * @param item03
 	 * @param item04
+	 * @param item05
+	 * @param item06
+	 * @param ulCode
 	 * @param status
 	 * @param keyword
 	 * @param rank 数据权限
 	 * @return
 	 */
-	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode, String item01, String item02,
-			String item03, String item04, String status, String keyword, String rank);
+	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode,
+			String item01, String item02, String item03, String item04, String item05,
+			String item06, String ulCode, String status, String keyword, String rank);
 	
 	/**
 	 * 产品检索明细列表
@@ -36,6 +40,9 @@ public interface Product01Service {
 	 * @param item02
 	 * @param item03
 	 * @param item04
+	 * @param item05
+	 * @param item06
+	 * @param ulCode
 	 * @param status
 	 * @param keyword
 	 * @param rank 数据权限
@@ -43,7 +50,8 @@ public interface Product01Service {
 	 * @return
 	 */
 	public Page searchProduct01ListByPage(String fieldcode, String item01, String item02,
-			String item03, String item04, String status, String keyword, String rank, Page page);
+			String item03, String item04, String item05, String item06, String ulCode,
+			String status, String keyword, String rank, Page page);
 	
 	/**
 	 * 产品检索明细列表（for search page）
@@ -54,6 +62,9 @@ public interface Product01Service {
 	 * @param item02
 	 * @param item03
 	 * @param item04
+	 * @param item05
+	 * @param item06
+	 * @param ulCode
 	 * @param status
 	 * @param keyword
 	 * @param rank 数据权限
@@ -62,7 +73,8 @@ public interface Product01Service {
 	 * @return
 	 */
 	public Page searchProduct01List(String fieldcode, String item01, String item02,
-			String item03, String item04, String status, String keyword, String rank, Page page, int startIndex);
+			String item03, String item04, String item05, String item06, String ulCode, String status,
+			String keyword, String rank, Page page, int startIndex);
 	
 	/**
 	 * 翻页查询数据
@@ -82,6 +94,15 @@ public interface Product01Service {
 	 * @return
 	 */
 	public Product01Dto queryProduct01ByID(String id, String rank);
+	
+	/**
+	 * 根据产品名称，型号，颜色（逻辑主键）查询产品
+	 * @param nameno
+	 * @param typeno
+	 * @param color1
+	 * @return
+	 */
+	public Product01Dto queryProduct01ByLogicId(String nameno, String typeno, String color1);
 	
 	/**
 	 * 删除数据

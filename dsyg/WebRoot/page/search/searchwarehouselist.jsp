@@ -55,7 +55,7 @@ function search() {
 		url = "_g" + producttype;
 	}
 	if(productname != "") {
-		url = "_kw" + productname;
+		url = "_name" + productname;
 	}
 	window.location.href = '<%=request.getContextPath()%>' + "/searchwarehouse" + url + "_p0" + ".shtml";
 }
@@ -113,6 +113,13 @@ function search() {
 						<s:textfield name="productname" id="productname" cssClass="keyword" maxlength="16" theme="simple"></s:textfield>
 						<input type="button" class="search_btn" value="检索" onclick="search();" />
 					</div>
+					<div class="annotation">
+						<span class="red">*</span>说明：
+						<img src="<%=request.getContextPath()%>/images/instock.png" />表示现货
+						<img src="<%=request.getContextPath()%>/images/futures.png" />表示期货
+						<img src="<%=request.getContextPath()%>/images/zheng.png" />表示整箱
+						<img src="<%=request.getContextPath()%>/images/luan.png" />表示乱尺
+					</div>
 					<div class="page">
 						<span>第${page.startIndex + 1}页/共${page.totalPage==0?1:page.totalPage}页　共${page.totalCount}条记录</span>
 						<span>跳转到第<input class="num" id="pagenum1" type="text" maxlength="6" />页</span><a href="javascript:void(0);" onclick="turn('pagenum1');">跳转</a>　　
@@ -139,12 +146,13 @@ function search() {
 					<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
 						<tr class="tab_tittle">
 							<td>&nbsp;</td>
-							<td>产品名称</td>
-							<td>产品类型</td>
-							<td>入库</td>
-							<td>出库</td>
-							<td>定单单位</td>
-							<td>送货期</td>
+							<td width="160">产品类型</td>
+							<td width="120">UL编号</td>
+							<td width="180">产品名称</td>
+							<td width="80">数量</td>
+							<td width="80">单位</td>
+							<td width="80">产地</td>
+							<td width="80">发货天数</td>
 						</tr>
 						<s:iterator value="searchWarehouseList" id="searchWarehouseList" status="st2">
 							<s:if test="#st2.odd==true">
@@ -155,19 +163,34 @@ function search() {
 							</s:else>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st2.index + 1"/></td>
 								<td>
-									<s:property value="productname"/>
-								</td>
-								<td>
+									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:if>
+									<s:else><img src="<%=request.getContextPath()%>/images/luan.png" /></s:else>
+									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
+									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
 									<s:iterator id="goodsList" value="goodsList" status="st3">
 										<s:if test="%{goodsList[#st3.index].code == searchWarehouseList[#st2.index].producttype}">
 											<s:property value="fieldname"/>
 										</s:if>
 									</s:iterator>
 								</td>
+								<td><s:property value="ulcode"/></td>
+								<td><s:property value="productname"/></td>
 								<td><s:property value="item01"/></td>
-								<td><s:property value="item02"/></td>
+								<td>
+									<s:iterator value="unitList" id="unitList" status="st1">
+										<s:if test="%{unitList[#st1.index].code == searchWarehouseList[#st2.index].res01}">
+											<s:property value="fieldname"/>
+										</s:if>
+									</s:iterator>
+								</td>
+								<td>
+									<s:iterator value="makeareaList" id="makeareaList" status="st1">
+										<s:if test="%{makeareaList[#st1.index].code == searchWarehouseList[#st2.index].res02}">
+											<s:property value="fieldname"/>
+										</s:if>
+									</s:iterator>
+								</td>
 								<td><s:property value="item03"/></td>
-								<td><s:property value="item04"/></td>
 							</tr>
 						</s:iterator>
 					</table>

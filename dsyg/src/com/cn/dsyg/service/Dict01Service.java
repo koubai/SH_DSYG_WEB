@@ -48,6 +48,13 @@ public interface Dict01Service {
 	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode, String lang);
 	
 	/**
+	 * 查询大分类数据（没有其他）
+	 * @param lang
+	 * @return
+	 */
+	public List<Dict01Dto> queryGoodsNoOther(String lang);
+	
+	/**
 	 * 删除数据
 	 * @param id
 	 */

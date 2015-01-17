@@ -3,6 +3,7 @@ package com.cn.dsyg.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cn.common.util.Constants;
 import com.cn.common.util.Page;
 import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dao.Dict01Dao;
@@ -24,7 +25,7 @@ public class Dict01ServiceImpl implements Dict01Service {
 	public List<FeatureDto> queryFeatureByFieldcode(String fieldcode, String lang) {
 		List<FeatureDto> resultList = new ArrayList<FeatureDto>();
 		//正常只有电线和套管才有特征，这里就按照fieldcode查询
-		for(int i = 1; i <= 4; i++) {
+		for(int i = 1; i <= 6; i++) {
 			List<Dict01Dto> dictList = dict01Dao.queryDict01ByFieldcode(fieldcode + "_item0" + i, lang);
 			String name = "";
 			//ID名
@@ -69,6 +70,21 @@ public class Dict01ServiceImpl implements Dict01Service {
 	@Override
 	public List<Dict01Dto> queryDict01ByFieldcode(String fieldcode, String lang) {
 		return dict01Dao.queryDict01ByFieldcode(fieldcode, lang);
+	}
+	
+	@Override
+	public List<Dict01Dto> queryGoodsNoOther(String lang) {
+		List<Dict01Dto> list = dict01Dao.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, lang);
+		if(list != null && list.size() > 0) {
+			for(int i = 0; i < list.size(); i++) {
+				Dict01Dto dict = list.get(i);
+				//列表中去掉
+				if("其他".equals(dict.getFieldname())) {
+					list.remove(i);
+				}
+			}
+		}
+		return list;
 	}
 
 	@Override

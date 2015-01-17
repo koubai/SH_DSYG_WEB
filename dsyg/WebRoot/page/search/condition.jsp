@@ -25,7 +25,7 @@
 				return;
 			}
 			if(goodsId == "01") {
-				for(var i = 1; i <= 3; i++) {
+				for(var i = 1; i <= 4; i++) {
 					var name = "code01_item0" + i;
 					//var v = $("input[name='" + name + "'][@checked]").val();
 					var list = document.getElementsByName(name);
@@ -37,37 +37,19 @@
 						}
 					}
 				}
-				var url = "_g" + goodsId;
-				var item01 = $("#tempItem01").val().trim();
-				var item02 = $("#tempItem02").val().trim();
-				var item03 = $("#tempItem03").val().trim();
-				if(item01 != "") {
-					url += "_" + "i1" + item01;
-				}
-				if(item02 != "") {
-					url += "_" + "i2" + item02;
-				}
-				if(item03 != "") {
-					url += "_" + "i3" + item03;
-				}
-				window.location.href = '<%=request.getContextPath()%>' + "/searchsummary" + url + ".shtml";
-			} else if(goodsId == "02") {
-				for(var i = 1; i <= 4; i++) {
-					var name = "code02_item0" + i;
-					var list = document.getElementsByName(name);
-					for(var j = 0; j < list.length; j++) {
-						if(list[j].checked) {
-							var v = list[j].value;
-							$("#" + "tempItem0" + i).val(v);
-							break;
-						}
-					}
-				}
-				var url = "_g" + goodsId;
 				var item01 = $("#tempItem01").val().trim();
 				var item02 = $("#tempItem02").val().trim();
 				var item03 = $("#tempItem03").val().trim();
 				var item04 = $("#tempItem04").val().trim();
+				var ulCode = $("#ulCode").val().trim();
+				
+				var url = "";
+				if(ulCode != "") {
+					url = "_g" + goodsId + "_ul" + ulCode;
+				} else {
+					url = "_g" + goodsId + "_ulempty";
+				}
+				
 				if(item01 != "") {
 					url += "_" + "i1" + item01;
 				}
@@ -79,6 +61,51 @@
 				}
 				if(item04 != "") {
 					url += "_" + "i4" + item04;
+				}
+				window.location.href = '<%=request.getContextPath()%>' + "/searchsummary" + url + ".shtml";
+			} else if(goodsId == "02") {
+				for(var i = 1; i <= 6; i++) {
+					var name = "code02_item0" + i;
+					var list = document.getElementsByName(name);
+					for(var j = 0; j < list.length; j++) {
+						if(list[j].checked) {
+							var v = list[j].value;
+							$("#" + "tempItem0" + i).val(v);
+							break;
+						}
+					}
+				}
+				var item01 = $("#tempItem01").val().trim();
+				var item02 = $("#tempItem02").val().trim();
+				var item03 = $("#tempItem03").val().trim();
+				var item04 = $("#tempItem04").val().trim();
+				var item05 = $("#tempItem05").val().trim();
+				var item06 = $("#tempItem06").val().trim();
+				
+				var ulCode = $("#ulCode").val().trim();
+				var url = "";
+				if(ulCode != "") {
+					url = "_g" + goodsId + "_ul" + ulCode;
+				} else {
+					url = "_g" + goodsId + "_ulempty";
+				}
+				if(item01 != "") {
+					url += "_" + "i1" + item01;
+				}
+				if(item02 != "") {
+					url += "_" + "i2" + item02;
+				}
+				if(item03 != "") {
+					url += "_" + "i3" + item03;
+				}
+				if(item04 != "") {
+					url += "_" + "i4" + item04;
+				}
+				if(item05 != "") {
+					url += "_" + "i5" + item05;
+				}
+				if(item06 != "") {
+					url += "_" + "i6" + item06;
 				}
 				window.location.href = '<%=request.getContextPath()%>' + "/searchsummary" + url + ".shtml";
 			} else {
@@ -118,6 +145,8 @@
 	<input type="hidden" id="tempItem02" value="<s:property value="item02"/>"/>
 	<input type="hidden" id="tempItem03" value="<s:property value="item03"/>"/>
 	<input type="hidden" id="tempItem04" value="<s:property value="item04"/>"/>
+	<input type="hidden" id="tempItem05" value="<s:property value="item05"/>"/>
+	<input type="hidden" id="tempItem06" value="<s:property value="item06"/>"/>
 	<div class="header_bg">
 		<div class="content">
 			<div class="product_search">
@@ -197,6 +226,9 @@
 																	<s:elseif test='%{featureList[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
 																		<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
 																	</s:elseif>
+																	<s:elseif test='%{featureList[#st1.index].codename == "code01_item04" && #st1.index == 3}'>
+																		<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+																	</s:elseif>
 																	<s:else>
 																		<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
 																	</s:else>
@@ -214,6 +246,12 @@
 																	<s:elseif test='%{featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
 																		<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
 																	</s:elseif>
+																	<s:elseif test='%{featureList02[#st1.index].codename == "code02_item05" && #st1.index == 4}'>
+																		<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == item05}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+																	</s:elseif>
+																	<s:elseif test='%{featureList02[#st1.index].codename == "code02_item06" && #st1.index == 5}'>
+																		<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == item06}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+																	</s:elseif>
 																	<s:else>
 																		<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
 																	</s:else>
@@ -224,6 +262,8 @@
 												</div>
 											</s:iterator>
 										</s:if>
+										<br />
+										UL编号：<input name="ulCode" id="ulCode" style="width: 180px;" maxlength="18" value="<s:property value="ulCode"/>"/>
 										<div class="line"></div>
 									</div>
 								</s:if>

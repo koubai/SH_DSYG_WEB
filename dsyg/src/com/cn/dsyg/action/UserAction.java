@@ -133,7 +133,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			startIndex = 0;
@@ -156,7 +156,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			startIndex = 0;
@@ -178,7 +178,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			queryData();
@@ -199,7 +199,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			addUserDto = new UserDto();
@@ -222,7 +222,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			showRoleDtoList = roleService.queryAllRole();
@@ -261,7 +261,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			showRoleDtoList = roleService.queryAllRole();
@@ -283,7 +283,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			showRoleDtoList = roleService.queryAllRole();
@@ -312,7 +312,7 @@ public class UserAction extends BaseAction {
 			this.clearMessages();
 			//只有管理员才有权限
 			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
-			if(rank == null || rank < Constants.ROLE_RANK_MANAGER) {
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
 			if(StringUtil.isBlank(delUserid)) {
@@ -393,6 +393,7 @@ public class UserAction extends BaseAction {
 	 */
 	@SuppressWarnings("unchecked")
 	private void queryData() {
+		showRoleDtoList = roleService.queryAllRole();
 		userList = new ArrayList<UserDto>();
 		if(page == null) {
 			page = new Page();

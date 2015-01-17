@@ -25,13 +25,15 @@ public class Product01ServiceImpl implements Product01Service {
 	private Dict01Dao dict01Dao;
 	
 	@Override
-	public Page searchProduct01List(String fieldcode, String item01,
-			String item02, String item03, String item04, String status,
-			String keyword, String rank, Page page, int startIndex) {
+	public Page searchProduct01List(String fieldcode, String item01, String item02,
+			String item03, String item04, String item05, String item06, String ulCode,
+			String status, String keyword, String rank, Page page, int startIndex) {
 		keyword = StringUtil.searchKeyword(keyword);
+		ulCode = StringUtil.searchKeyword(ulCode);
 		
 		//查询总记录数（查询有效数据）
-		int totalCount = product01Dao.searchProduct01ListCountByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank);
+		int totalCount = product01Dao.searchProduct01ListCountByPage(fieldcode, item01, item02,
+				item03, item04, item05, item06, ulCode, status, keyword, rank);
 		page.setTotalCount(totalCount);
 		if(totalCount % page.getPageSize() > 0) {
 			page.setTotalPage(totalCount / page.getPageSize() + 1);
@@ -39,7 +41,8 @@ public class Product01ServiceImpl implements Product01Service {
 			page.setTotalPage(totalCount / page.getPageSize());
 		}
 		//翻页查询记录（查询有效数据）
-		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank,
+		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode, item01,
+				item02, item03, item04, item05, item06, ulCode, status, keyword, rank,
 				startIndex * page.getPageSize(), page.getPageSize());
 		//添加PDF文件URL
 		if(list != null && list.size() > 0) {
@@ -53,21 +56,25 @@ public class Product01ServiceImpl implements Product01Service {
 	}
 	
 	@Override
-	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode,
-			String item01, String item02, String item03, String item04,
+	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode, String item01,
+			String item02, String item03, String item04, String item05, String item06, String ulCode,
 			String status, String keyword, String rank) {
 		keyword = StringUtil.searchKeyword(keyword);
-		return product01Dao.searchProduct01Summary(fieldcode, item01, item02, item03, item04, status, keyword, rank);
+		ulCode = StringUtil.searchKeyword(ulCode);
+		return product01Dao.searchProduct01Summary(fieldcode, item01, item02,
+				item03, item04, item05, item06, ulCode, status, keyword, rank);
 	}
 
 	@Override
-	public Page searchProduct01ListByPage(String fieldcode, String item01,
-			String item02, String item03, String item04, String status,
-			String keyword, String rank, Page page) {
+	public Page searchProduct01ListByPage(String fieldcode, String item01, String item02,
+			String item03, String item04, String item05, String item06, String ulCode,
+			String status, String keyword, String rank, Page page) {
 		keyword = StringUtil.searchKeyword(keyword);
+		ulCode = StringUtil.searchKeyword(ulCode);
 		
 		//查询总记录数（查询有效数据）
-		int totalCount = product01Dao.searchProduct01ListCountByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank);
+		int totalCount = product01Dao.searchProduct01ListCountByPage(fieldcode, item01,
+				item02, item03, item04, item05, item06, ulCode, status, keyword, rank);
 		page.setTotalCount(totalCount);
 		if(totalCount % page.getPageSize() > 0) {
 			page.setTotalPage(totalCount / page.getPageSize() + 1);
@@ -75,7 +82,8 @@ public class Product01ServiceImpl implements Product01Service {
 			page.setTotalPage(totalCount / page.getPageSize());
 		}
 		//翻页查询记录（查询有效数据）
-		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode, item01, item02, item03, item04, status, keyword, rank,
+		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode,
+				item01, item02, item03, item04, item05, item06, ulCode, status, keyword, rank,
 				page.getStartIndex() * page.getPageSize(), page.getPageSize());
 		//添加PDF文件URL
 		if(list != null && list.size() > 0) {
@@ -110,6 +118,21 @@ public class Product01ServiceImpl implements Product01Service {
 	@Override
 	public Product01Dto queryProduct01ByID(String id, String rank) {
 		Product01Dto product01 = product01Dao.queryProduct01ByID(id, rank);
+		if(product01 != null) {
+			//图片和PDF文件显示地址
+			String imageurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_IMAGES_URL);
+			String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
+			product01.setImageurl(imageurl);
+			product01.setPdfurl(pdfurl);
+			return product01;
+		}
+		return null;
+	}
+	
+	@Override
+	public Product01Dto queryProduct01ByLogicId(String nameno, String typeno,
+			String color1) {
+		Product01Dto product01 = product01Dao.queryProduct01ByLogicId(nameno, typeno, color1);
 		if(product01 != null) {
 			//图片和PDF文件显示地址
 			String imageurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_IMAGES_URL);
@@ -165,6 +188,8 @@ public class Product01ServiceImpl implements Product01Service {
 		}
 		//名称
 		keyword += product.getNameno() + ",";
+		//UL编号
+		keyword += product.getItem09() + ",";
 		//item01
 		if(StringUtil.isNotBlank(product.getItem01())) {
 			dict = dict01Dao.queryDict01ByLogicId(product.getFieldcode() + "_" + Constants.DICT_SUB_TYPE_ITEM01,
@@ -197,6 +222,22 @@ public class Product01ServiceImpl implements Product01Service {
 				keyword += dict.getFieldname() + ",";
 			}
 		}
+		//item05
+		if(StringUtil.isNotBlank(product.getItem05())) {
+			dict = dict01Dao.queryDict01ByLogicId(product.getFieldcode() + "_" + Constants.DICT_SUB_TYPE_ITEM05,
+					product.getItem05(), PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			if(dict != null) {
+				keyword += dict.getFieldname() + ",";
+			}
+		}
+		//item06
+		if(StringUtil.isNotBlank(product.getItem06())) {
+			dict = dict01Dao.queryDict01ByLogicId(product.getFieldcode() + "_" + Constants.DICT_SUB_TYPE_ITEM06,
+					product.getItem06(), PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			if(dict != null) {
+				keyword += dict.getFieldname() + ",";
+			}
+		}
 		//型号
 		if(StringUtil.isNotBlank(product.getTypeno())) {
 			keyword += product.getTypeno() + ",";
@@ -205,28 +246,36 @@ public class Product01ServiceImpl implements Product01Service {
 		if(StringUtil.isNotBlank(product.getTypenosub())) {
 			keyword += product.getTypenosub() + ",";
 		}
+		//颜色
+		if(StringUtil.isNotBlank(product.getColor1())) {
+			dict = dict01Dao.queryDict01ByLogicId(Constants.DICT_COLOR_TYPE,
+					product.getColor1(), PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			if(dict != null) {
+				keyword += dict.getFieldname() + ",";
+			}
+		}
 		
-		//尺寸
-		//称呼尺寸
-		if(StringUtil.isNotBlank(product.getItem10())) {
-			keyword += product.getItem10() + ",";
-		}
-		//内径
-		if(StringUtil.isNotBlank(product.getItem11())) {
-			keyword += product.getItem11() + ",";
-		}
-		//壁厚
-		if(StringUtil.isNotBlank(product.getItem12())) {
-			keyword += product.getItem12() + ",";
-		}
-		//外径
-		if(StringUtil.isNotBlank(product.getItem13())) {
-			keyword += product.getItem13() + ",";
-		}
-		//长度
-		if(StringUtil.isNotBlank(product.getItem13())) {
-			keyword += product.getItem13() + ",";
-		}
+//		//尺寸
+//		//称呼尺寸
+//		if(StringUtil.isNotBlank(product.getItem10())) {
+//			keyword += product.getItem10() + ",";
+//		}
+//		//内径
+//		if(StringUtil.isNotBlank(product.getItem11())) {
+//			keyword += product.getItem11() + ",";
+//		}
+//		//壁厚
+//		if(StringUtil.isNotBlank(product.getItem12())) {
+//			keyword += product.getItem12() + ",";
+//		}
+//		//外径
+//		if(StringUtil.isNotBlank(product.getItem13())) {
+//			keyword += product.getItem13() + ",";
+//		}
+//		//长度
+//		if(StringUtil.isNotBlank(product.getItem13())) {
+//			keyword += product.getItem13() + ",";
+//		}
 		
 		//产地
 		if(StringUtil.isNotBlank(product.getMakearea())) {

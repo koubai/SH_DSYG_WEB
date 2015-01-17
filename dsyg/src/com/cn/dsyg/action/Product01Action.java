@@ -62,10 +62,8 @@ public class Product01Action extends BaseAction {
 	private List<FeatureDto> featureList01;
 	//套管特征列表
 	private List<FeatureDto> featureList02;
-	//单位
-	private List<Dict01Dto> unitList;
-	//产地
-	private List<Dict01Dto> makeareaList;
+	//颜色
+	private List<Dict01Dto> colorList;
 	
 	//新增
 	private Product01Dto addProduct01Dto;
@@ -97,6 +95,11 @@ public class Product01Action extends BaseAction {
 	public String delProductAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限删除
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
+				return "noauthority";
+			}
 			//当前操作用户ID
 			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
 			product01Service.deleteProduct01(delProduct01Id, username);
@@ -121,6 +124,11 @@ public class Product01Action extends BaseAction {
 	public String showUpdProductAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			initData();
 			updPicFile01 = null;
 			updPicFile02 = null;
@@ -140,9 +148,22 @@ public class Product01Action extends BaseAction {
 	public String updProductAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			initData();
 			//数据验证
 			if(!checkData(updProduct01Dto)) {
+				return "checkerror";
+			}
+			
+			//判断逻辑主键是否唯一
+			Product01Dto pro = product01Service.queryProduct01ByLogicId(updProduct01Dto.getNameno(),
+					updProduct01Dto.getTypeno(), updProduct01Dto.getColor1());
+			if(pro != null && !pro.getId().equals(updProduct01Dto.getId())) {
+				this.addActionMessage("已存在相同产品名称、产品型号和颜色的产品！");
 				return "checkerror";
 			}
 			
@@ -228,10 +249,15 @@ public class Product01Action extends BaseAction {
 	public String showAddProductAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			initData();
 			addProduct01Dto = new Product01Dto();
 			//默认显示
-			addProduct01Dto.setRank("" + Constants.ROLE_RANK_NORMAL);
+			addProduct01Dto.setRank("" + Constants.ROLE_RANK_OPERATOR);
 		} catch(Exception e) {
 			log.error("showAddProduct error:" + e);
 			return ERROR;
@@ -246,17 +272,30 @@ public class Product01Action extends BaseAction {
 	public String addProductAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			initData();
 			//数据验证
 			if(!checkData(addProduct01Dto)) {
 				return "checkerror";
 			}
 			
-			//图片验证
-			if(addPicFile01 == null) {
-				this.addActionMessage("图片不能为空！");
+			//判断逻辑主键是否唯一（产品名称、产品型号和颜色）
+			Product01Dto pro = product01Service.queryProduct01ByLogicId(addProduct01Dto.getNameno(),
+					addProduct01Dto.getTypeno(), addProduct01Dto.getColor1());
+			if(pro != null) {
+				this.addActionMessage("已存在相同产品名称、产品型号和颜色的产品！");
 				return "checkerror";
 			}
+			
+//			//图片验证
+//			if(addPicFile01 == null) {
+//				this.addActionMessage("图片不能为空！");
+//				return "checkerror";
+//			}
 			if(addPdfFile == null) {
 				this.addActionMessage("请选择对应PDF文件！");
 				return "checkerror";
@@ -267,9 +306,10 @@ public class Product01Action extends BaseAction {
 			String pdf_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_PATH);
 			
 			//保存文件到指定目录
-			String newfile01 = FileUtil.uploadFile(addPicFile01, image_path, file01Name);
-			addProduct01Dto.setPic01(newfile01);
-			
+			if(addPicFile01 != null) {
+				String newfile01 = FileUtil.uploadFile(addPicFile01, image_path, file01Name);
+				addProduct01Dto.setPic01(newfile01);
+			}
 			if(addPicFile02 != null) {
 				String newfile02 = FileUtil.uploadFile(addPicFile02, image_path, file02Name);
 				addProduct01Dto.setPic02(newfile02);
@@ -376,10 +416,6 @@ public class Product01Action extends BaseAction {
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getTypeno())) {
-			this.addActionMessage("产品系列不能为空！");
-			return false;
-		}
-		if(StringUtil.isBlank(product01.getTypenosub())) {
 			this.addActionMessage("产品型号不能为空！");
 			return false;
 		}
@@ -387,6 +423,11 @@ public class Product01Action extends BaseAction {
 			this.addActionMessage("颜色不能为空！");
 			return false;
 		}
+		//UL编号
+				if(StringUtil.isBlank(product01.getItem09())) {
+					this.addActionMessage("UL编号不能为空！");
+					return false;
+				}
 		if(Constants.DICT_GOODS_TYPE_CODE_01.equals(product01.getFieldcode())) {
 			//电线，需要验证单选框数据
 			if(StringUtil.isBlank(product01.getItem01())) {
@@ -399,6 +440,10 @@ public class Product01Action extends BaseAction {
 			}
 			if(StringUtil.isBlank(product01.getItem03())) {
 				this.addActionMessage("请选择材质！");
+				return false;
+			}
+			if(StringUtil.isBlank(product01.getItem04())) {
+				this.addActionMessage("请选择环保！");
 				return false;
 			}
 		} else if(Constants.DICT_GOODS_TYPE_CODE_02.equals(product01.getFieldcode())) {
@@ -419,9 +464,17 @@ public class Product01Action extends BaseAction {
 				this.addActionMessage("请选择收缩比！");
 				return false;
 			}
+			if(StringUtil.isBlank(product01.getItem05())) {
+				this.addActionMessage("请选择材质！");
+				return false;
+			}
+			if(StringUtil.isBlank(product01.getItem06())) {
+				this.addActionMessage("请选择环保！");
+				return false;
+			}
 		}
 		
-		//尺寸数据验证
+		/*/尺寸数据验证
 		if(StringUtil.isBlank(product01.getItem10())) {
 			this.addActionMessage("称呼尺寸不能为空！");
 			return false;
@@ -445,7 +498,7 @@ public class Product01Action extends BaseAction {
 		if(StringUtil.isBlank(product01.getItem15())) {
 			this.addActionMessage("请选择尺寸编辑单位！");
 			return false;
-		}
+		}//*/
 		
 		//库存编辑
 //		if(StringUtil.isBlank(product01.getItem20())) {
@@ -481,10 +534,8 @@ public class Product01Action extends BaseAction {
 		featureList01 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_01, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		//套管特征列表
 		featureList02 = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_02, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
-		//单位
-		unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
-		//产地
-		makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+		//颜色
+		colorList = dict01Service.queryDict01ByFieldcode(Constants.DICT_COLOR_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 	}
 	
 	/**
@@ -496,6 +547,8 @@ public class Product01Action extends BaseAction {
 		delProduct01Id = "";
 		updProduct01Id = "";
 		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+		//颜色
+		colorList = dict01Service.queryDict01ByFieldcode(Constants.DICT_COLOR_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		manageProduct01List = new ArrayList<Product01Dto>();
 		if(page == null) {
 			page = new Page();
@@ -588,14 +641,6 @@ public class Product01Action extends BaseAction {
 		this.featureList02 = featureList02;
 	}
 
-	public List<Dict01Dto> getUnitList() {
-		return unitList;
-	}
-
-	public void setUnitList(List<Dict01Dto> unitList) {
-		this.unitList = unitList;
-	}
-
 	public File getAddPicFile01() {
 		return addPicFile01;
 	}
@@ -668,14 +713,6 @@ public class Product01Action extends BaseAction {
 		this.updPdfFile = updPdfFile;
 	}
 
-	public List<Dict01Dto> getMakeareaList() {
-		return makeareaList;
-	}
-
-	public void setMakeareaList(List<Dict01Dto> makeareaList) {
-		this.makeareaList = makeareaList;
-	}
-
 	public String getFile01Name() {
 		return file01Name;
 	}
@@ -722,5 +759,13 @@ public class Product01Action extends BaseAction {
 
 	public void setUpdProduct01Id(String updProduct01Id) {
 		this.updProduct01Id = updProduct01Id;
+	}
+
+	public List<Dict01Dto> getColorList() {
+		return colorList;
+	}
+
+	public void setColorList(List<Dict01Dto> colorList) {
+		this.colorList = colorList;
 	}
 }
