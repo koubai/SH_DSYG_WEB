@@ -96,11 +96,20 @@
 			<isNotEmpty prepend="and" property="item04">
 				T.item04 = #item04#
 			</isNotEmpty>
+			<isNotEmpty prepend="and" property="item05">
+				T.item05 = #item05#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="item06">
+				T.item06 = #item06#
+			</isNotEmpty>
 			<isNotEmpty prepend="and" property="rank">
 				T.rank <![CDATA[<=]]> #rank#
 			</isNotEmpty>
 			<isNotEmpty prepend="and" property="status">
 				T.status = #status#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="item09">
+				T.item09 = #item09#
 			</isNotEmpty>
 			<isNotEmpty prepend="and" property="keyword">
 				T.keyword like '%$keyword$%' ESCAPE '/'
@@ -127,6 +136,15 @@
 		</isNotEmpty>
 		<isNotEmpty prepend="and" property="item04">
 			T.item04 = #item04#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="item05">
+			T.item05 = #item05#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="item06">
+			T.item06 = #item06#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="item09">
+			T.item09 = #item09#
 		</isNotEmpty>
 		<isNotEmpty prepend="and" property="rank">
 			T.rank <![CDATA[<=]]> #rank#
@@ -156,6 +174,15 @@
 		<isNotEmpty prepend="and" property="item04">
 			T.item04 = #item04#
 		</isNotEmpty>
+		<isNotEmpty prepend="and" property="item05">
+			T.item05 = #item05#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="item06">
+			T.item06 = #item06#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="item09">
+			T.item09 = #item09#
+		</isNotEmpty>
 		<isNotEmpty prepend="and" property="rank">
 			T.rank <![CDATA[<=]]> #rank#
 		</isNotEmpty>
@@ -165,7 +192,7 @@
 		<isNotEmpty prepend="and" property="keyword">
 			T.keyword like '%$keyword$%' ESCAPE '/'
 		</isNotEmpty>
-		order by T.updatedate desc
+		order by T.item09 desc, T.updatedate desc
 		LIMIT #start#, #end#
 	</select>
 	<!-- searchProduct01List -->
@@ -184,7 +211,7 @@
 		<isNotEmpty prepend="and" property="keyword">
 			T.keyword like '%$keyword$%' ESCAPE '/'
 		</isNotEmpty>
-		order by T.updatedate desc
+		order by T.item09 desc, T.updatedate desc
 		LIMIT #start#, #end#
 	</select>
 	
@@ -208,6 +235,19 @@
 		select * from tbproduct01 T where T.id = #id#
 		<isNotEmpty prepend="and" property="rank">
 			T.rank <![CDATA[<=]]> #rank#
+		</isNotEmpty>
+	</select>
+	
+	<select id="queryProduct01ByLogicId" parameterClass="java.util.Map" resultMap="Product01Dto">
+		select * from tbproduct01 T where 1 = 1
+		<isNotEmpty prepend="and" property="nameno">
+			T.nameno = #nameno#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="typeno">
+			T.typeno = #typeno#
+		</isNotEmpty>
+		<isNotEmpty prepend="and" property="color1">
+			T.color1 = #color1#
 		</isNotEmpty>
 	</select>
 	

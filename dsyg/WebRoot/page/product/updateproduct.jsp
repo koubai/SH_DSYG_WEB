@@ -25,8 +25,9 @@
 		var rank = $("#rank").val().trim();
 		var nameno = $("#nameno").val().trim();
 		var typeno = $("#typeno").val().trim();
-		var typenosub = $("#typenosub").val().trim();
 		var color1 = $("#color1").val().trim();
+		//UL编号
+		var item09 = $("#item09").val().trim();
 		if(fieldcode == "") {
 			alert("请选择产品类型！");
 			$("#fieldcode").focus();
@@ -54,18 +55,18 @@
 			return false;
 		}
 		if(typeno == "") {
-			alert("产品系列不能为空！");
-			$("#typeno").focus();
-			return false;
-		}
-		if(typenosub == "") {
 			alert("产品型号不能为空！");
-			$("#typenosub").focus();
+			$("#typeno").focus();
 			return false;
 		}
 		if(color1 == "") {
 			alert("颜色不能为空！");
 			$("#color1").focus();
+			return false;
+		}
+		if(item09 == "") {
+			alert("UL编号不能为空！");
+			$("#item09").focus();
 			return false;
 		}
 		
@@ -74,8 +75,10 @@
 		$("#item02").val("");
 		$("#item03").val("");
 		$("#item04").val("");
+		$("#item05").val("");
+		$("#item06").val("");
 		if(fieldcode == "01") {
-			for(var i = 1; i <= 3; i++) {
+			for(var i = 1; i <= 4; i++) {
 				var name = "code01_item0" + i;
 				//var v = $("input[name='" + name + "'][@checked]").val();
 				var list = document.getElementsByName(name);
@@ -102,8 +105,13 @@
 				$("#code01_03").focus();
 				return false;
 			}
+			if($("#item04").val() == "") {
+				alert("请选择环保！");
+				$("#code01_04").focus();
+				return false;
+			}
 		} else if(fieldcode == "02") {
-			for(var i = 1; i <= 4; i++) {
+			for(var i = 1; i <= 6; i++) {
 				var name = "code02_item0" + i;
 				var list = document.getElementsByName(name);
 				for(var j = 0; j < list.length; j++) {
@@ -134,9 +142,20 @@
 				$("#code02_04").focus();
 				return false;
 			}
+			if($("#item05").val() == "") {
+				alert("请选择材质！");
+				$("#code02_05").focus();
+				return false;
+			}
+			if($("#item06").val() == "") {
+				alert("请选择环保！");
+				$("#code02_06").focus();
+				return false;
+			}
 		}
 		
 		//尺寸数据验证
+		/*
 		if($("#item10").val() == "") {
 			alert("称呼尺寸不能为空！");
 			$("#item10").focus();
@@ -167,19 +186,13 @@
 			$("#item15").focus();
 			return false;
 		}
+		//*/
 		
 		//图片验证
-		var tmppic01 = $("#pic01").val();
 		var file01Name = $("#updPicFile01").val();
 		var file02Name = $("#updPicFile02").val();
 		var file03Name = $("#updPicFile03").val();
 		var file04Name = $("#updPdfFile").val();
-		//图1
-		if(tmppic01 == "" && file01Name == "") {
-			alert("图片不能为空！");
-			$("#updPicFile01").focus();
-			return false;
-		}
 		//图片格式
 		if(file01Name != "") {
 			var n = file01Name.substring(file01Name.lastIndexOf("."), file01Name.length).toUpperCase();
@@ -270,6 +283,8 @@
 					<s:hidden name="updProduct01Dto.item02" id="item02"></s:hidden>
 					<s:hidden name="updProduct01Dto.item03" id="item03"></s:hidden>
 					<s:hidden name="updProduct01Dto.item04" id="item04"></s:hidden>
+					<s:hidden name="updProduct01Dto.item05" id="item05"></s:hidden>
+					<s:hidden name="updProduct01Dto.item06" id="item06"></s:hidden>
 					<s:hidden name="updProduct01Dto.pic01" id="pic01"></s:hidden>
 					<s:hidden name="updProduct01Dto.pic02" id="pic02"></s:hidden>
 					<s:hidden name="updProduct01Dto.pic03" id="pic03"></s:hidden>
@@ -310,18 +325,25 @@
 						<tr>
 							<td class="td_tittle"><span>*</span>产品名称：</td>
 							<td><s:textfield name="updProduct01Dto.nameno" id="nameno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
-						<tr>
-							<td class="td_tittle"><span>*</span>产品系列：</td>
-							<td><s:textfield name="updProduct01Dto.typeno" id="typeno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
 						</tr>
 						<tr>
 							<td class="td_tittle"><span>*</span>产品型号：</td>
-							<td><s:textfield name="updProduct01Dto.typenosub" id="typenosub" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+							<td><s:textfield name="updProduct01Dto.typeno" id="typeno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
 						</tr>
 						<tr>
 							<td class="td_tittle"><span>*</span>颜色：</td>
-							<td><s:textfield name="updProduct01Dto.color1" id="color1" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+							<td>
+								<select name="updProduct01Dto.color1" id="color1" style="width:300px;">
+									<s:iterator id="colorList" value="colorList" status="st1">
+										<option value="<s:property value="code"/>" <s:if test='colorList[#st1.index].code == updProduct01Dto.color1'>selected</s:if>><s:property value="fieldname"/></option>
+									</s:iterator>
+								</select>
+							</td>
 						</tr>
+						<tr>
+							<td class="td_tittle"><span>*</span>UL编号：</td>
+							<td><s:textfield name="updProduct01Dto.item09" id="item09" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+						<tr>
 						<s:if test='updProduct01Dto.fieldcode == "01"'>
 							<tr id="fieldcode01">
 						</s:if>
@@ -343,6 +365,9 @@
 												</s:elseif>
 												<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
 													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+												</s:elseif>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item04" && #st1.index == 3}'>
+													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
 												</s:elseif>
 												<s:else>
 													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
@@ -378,6 +403,12 @@
 												<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
 													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 												</s:elseif>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item05" && #st1.index == 4}'>
+													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item05}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+												</s:elseif>
+												<s:elseif test='%{updProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item06" && #st1.index == 5}'>
+													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == updProduct01Dto.item06}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+												</s:elseif>
 												<s:else>
 													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
 												</s:else>
@@ -387,6 +418,7 @@
 								</s:iterator>
 							</td>
 						</tr>
+						<!--
 						<tr>
 							<td class="td_tittle"><span>*</span>尺寸编辑：</td>
 							<td>
@@ -432,8 +464,9 @@
 								</dl>
 							</td>
 						</tr>
+						-->
 						<tr>
-							<td class="td_tittle"><span>*</span>图片上传：</td>
+							<td class="td_tittle"><span></span>图片上传：</td>
 							<td>
 								<input type="file" name="updPicFile01" id="updPicFile01"/><br />
 								<s:if test='updProduct01Dto.pic01 != null && updProduct01Dto.pic01 != ""'>

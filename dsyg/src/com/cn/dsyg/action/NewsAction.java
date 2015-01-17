@@ -74,6 +74,11 @@ public class NewsAction extends BaseAction {
 	public String delNewsAction() {
 		try {
 			this.clearMessages();
+			//只有管理员才有权限删除
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
+				return "noauthority";
+			}
 			//当前操作用户ID
 			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
 			newsService.deleteNews(delNewsId, username);
@@ -96,6 +101,11 @@ public class NewsAction extends BaseAction {
 	public String showAddNewsAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			addNewsDto = new NewsDto();
 			//默认新闻日期为今天
 			addNewsDto.setNewsdate(DateUtil.dateToShortStr(new Date()));
@@ -113,6 +123,11 @@ public class NewsAction extends BaseAction {
 	public String addNewsAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			//数据验证
 			if(!checkData(addNewsDto)) {
 				return "checkerror";
@@ -166,6 +181,11 @@ public class NewsAction extends BaseAction {
 	public String showUpdNewsAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			updPicFile01 = null;
 			updNewsDto = newsService.queryNewsByID(updNewsId);
 		} catch(Exception e) {
@@ -182,6 +202,11 @@ public class NewsAction extends BaseAction {
 	public String updNewsAction() {
 		try {
 			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
 			//数据验证
 			if(!checkData(updNewsDto)) {
 				return "checkerror";

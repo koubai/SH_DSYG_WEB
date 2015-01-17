@@ -110,11 +110,10 @@
 						<tr>
 							<td class="td_tittle"><span>*</span>新闻日期：</td>
 							<td>
-								<input type="text" id="tmpnewsdate" disabled="disabled" value="<s:property value="addNewsDto.newsdate"/>"/>
-								<a href="javascript:;" onclick="new Calendar().show(document.getElementById('tmpnewsdate'));">日历</a>
-								<!--
-								<a href="javascript:;"><img src="<%=request.getContextPath()%>/images/date.png" border="0" onclick="new Calendar().show(document.getElementById('tmpnewsdate'));" /></a>
-								-->
+								<div class="date_input">
+									<input type="text" id="tmpnewsdate" disabled="disabled" value="<s:property value="addNewsDto.newsdate"/>"/>
+									<a href="javascript:;" onclick="new Calendar().show(document.getElementById('tmpnewsdate'));"><img src="<%=request.getContextPath()%>/images/date.png" border="0" /></a>
+								</div>
 							</td>
 						</tr>
 						<tr>

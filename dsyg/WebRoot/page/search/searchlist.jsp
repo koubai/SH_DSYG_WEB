@@ -89,6 +89,7 @@ function turn(id) {
 							<td>产品名称</td>
 							<td>产品类型</td>
 							<td>产品型号</td>
+							<td>UL编号</td>
 							<s:if test='goodsId == "01" || goodsId == "02"'>
 								<s:if test='featureList.size() > 0'>
 									<s:iterator value="featureList" id="featureList" status="st1">
@@ -117,6 +118,7 @@ function turn(id) {
 									</s:iterator>
 								</td>
 								<td><s:property value="typeno"/></td>
+								<td><s:property value="item09"/></td>
 								<s:if test='goodsId == "01"'>
 									<s:iterator value="featureList" id="featureList" status="st4">
 										<s:iterator value="dictList" id="dictList" status="st5">
@@ -127,6 +129,9 @@ function turn(id) {
 												<td><s:property value="fieldname"/></td>
 											</s:if>
 											<s:if test="%{dictList[#st5.index].code == item03 && #st4.index == 2}">
+												<td><s:property value="fieldname"/></td>
+											</s:if>
+											<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
 												<td><s:property value="fieldname"/></td>
 											</s:if>
 										</s:iterator>
@@ -145,6 +150,12 @@ function turn(id) {
 												<td><s:property value="fieldname"/></td>
 											</s:if>
 											<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
+												<td><s:property value="fieldname"/></td>
+											</s:if>
+											<s:if test="%{dictList[#st5.index].code == item05 && #st4.index == 4}">
+												<td><s:property value="fieldname"/></td>
+											</s:if>
+											<s:if test="%{dictList[#st5.index].code == item06 && #st4.index == 5}">
 												<td><s:property value="fieldname"/></td>
 											</s:if>
 										</s:iterator>

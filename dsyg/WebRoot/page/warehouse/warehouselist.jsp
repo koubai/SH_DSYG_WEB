@@ -13,8 +13,8 @@
 <script type="text/javascript">
 	//新增
 	function add() {
-		//document.mainform.action = '<c:url value="/product/showAddProductAction.action"></c:url>';
-		//document.mainform.submit();
+		document.mainform.action = '<c:url value="/warehouse/showAddWarehouseAction.action"></c:url>';
+		document.mainform.submit();
 	}
 	
 	function upd() {
@@ -23,9 +23,9 @@
 			alert("请选择一条记录！");
 			return;
 		} else {
-			$("#updProduct01Id").val(id);
-			//document.mainform.action = '<c:url value="/product/showUpdProductAction.action"></c:url>';
-			//document.mainform.submit();
+			$("#updWarehouseId").val(id);
+			document.mainform.action = '<c:url value="/warehouse/showUpdWarehouseAction.action"></c:url>';
+			document.mainform.submit();
 		}
 	}
 	
@@ -36,8 +36,8 @@
 			return;
 		} else {
 			if(confirm("确定删除该记录吗？")) {
-				//document.mainform.action = '<c:url value="/product/delProductAction.action"></c:url>' + "?delProduct01Id=" + id;
-				//document.mainform.submit();
+				document.mainform.action = '<c:url value="/warehouse/delWarehouseAction.action"></c:url>' + "?delWarehouseId=" + id;
+				document.mainform.submit();
 			}
 		}
 	}
@@ -121,14 +121,19 @@
 				<s:form id="mainform" name="mainform" method="POST">
 					<s:hidden name="startIndex" id="startIndex"/>
 					<s:hidden name="queryProductId" id="queryProductId"/>
+					<s:hidden name="updWarehouseId" id="updWarehouseId"/>
 					<div class="search1" style="margin-bottom:10px;">
 						<h3>产品名称：<s:property value="showProduct01.nameno"/></h3>
 						<div class="line"></div>
 					</div>
 					<div class="tools">
-						<a href="javascript:void(0);" onclick="add();"><img src="<%=request.getContextPath()%>/images/add.png" />增加</a>
-						<a href="javascript:void(0);" onclick="upd();"><img src="<%=request.getContextPath()%>/images/edit.png" />编辑</a>
-						<a href="javascript:void(0);" onclick="del();"><img src="<%=request.getContextPath()%>/images/delete.png" />删除</a>
+						<s:if test='#session.user_rank >= 70'>
+							<a href="javascript:void(0);" onclick="add();"><img src="<%=request.getContextPath()%>/images/add.png" />增加</a>
+							<a href="javascript:void(0);" onclick="upd();"><img src="<%=request.getContextPath()%>/images/edit.png" />编辑</a>
+						</s:if>
+						<s:if test='#session.user_rank >= 90'>
+							<a href="javascript:void(0);" onclick="del();"><img src="<%=request.getContextPath()%>/images/delete.png" />删除</a>
+						</s:if>
 					</div>
 					<div class="page">
 						<span>第${page.startIndex + 1}页 / 共${page.totalPage==0?1:page.totalPage}页 共${page.totalCount}条记录</span><span>
@@ -154,12 +159,11 @@
 							<td width="40">序号</td>
 							<td width="130">产品名称</td>
 							<td width="100">产品分类</td>
-							<td width="80">入库</td>
+							<td width="80">在库数</td>
 							<td width="80">出库</td>
 							<td width="100">定单单位</td>
 							<td width="80">送货期</td>
-							<td width="80">是否显示</td>
-							<td width="120">创建日期</td>
+							<td width="140">创建日期</td>
 						</tr>
 						<s:iterator id="warehouseManageList" value="warehouseManageList" status="st1">
 						<s:if test="#st1.odd==true">
@@ -180,12 +184,14 @@
 								</td>
 								<td><s:property value="item01" /></td>
 								<td><s:property value="item02" /></td>
-								<td><s:property value="item03" /></td>
-								<td><s:property value="item04" /></td>
 								<td>
-									<s:if test='rank == "50"'>显示</s:if>
-									<s:else>不显示</s:else>
+									<s:iterator value="unitList" id="unitList" status="st2">
+										<s:if test="%{unitList[#st2.index].code == warehouseManageList[#st1.index].res01}">
+											<s:property value="fieldname"/>
+										</s:if>
+									</s:iterator>
 								</td>
+								<td><s:property value="item04" /></td>
 								<td><s:property value="createdate" /></td>
 							</tr>
 						</s:iterator>

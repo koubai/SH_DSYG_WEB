@@ -17,6 +17,7 @@ import com.cn.dsyg.dto.WarehouseDto;
 import com.cn.dsyg.service.Dict01Service;
 import com.cn.dsyg.service.Product01Service;
 import com.cn.dsyg.service.WarehouseService;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * @name WarehouseAction.java
@@ -57,8 +58,156 @@ public class WarehouseAction extends BaseAction {
 	 */
 	private List<Dict01Dto> goodsList;
 	
+	//单位
+	private List<Dict01Dto> unitList;
+	//产地
+	private List<Dict01Dto> makeareaList;
+	
 	//产品信息
 	private Product01Dto showProduct01;
+	
+	//新增
+	private WarehouseDto addWarehouseDto;
+	
+	//修改
+	private String updWarehouseId;
+	private WarehouseDto updWarehouseDto;
+	
+	//删除
+	private String delWarehouseId;
+	
+	/**
+	 * 显示新增库存页面
+	 * @return
+	 */
+	public String showAddWarehouseAction() {
+		try {
+			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
+			initData();
+			addWarehouseDto = new WarehouseDto();
+			//产品ID
+			addWarehouseDto.setProductid(queryProductId);
+		} catch(Exception e) {
+			log.error("showAddWarehouseAction error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 新增库存
+	 * @return
+	 */
+	public String addWarehouseAction() {
+		try {
+			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
+			initData();
+			//数据验证
+			if(!checkData(addWarehouseDto)) {
+				return "checkerror";
+			}
+			//当前操作用户ID
+			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
+			addWarehouseDto.setUpdateuid(username);
+			addWarehouseDto.setCreateuid(username);
+			//默认状态=有效
+			addWarehouseDto.setStatus("" + Constants.STATUS_NORMAL);
+			//数据权限
+			addWarehouseDto.setRank("" + Constants.ROLE_RANK_OPERATOR);
+			
+			//新增
+			warehouseService.insertWarehouse(addWarehouseDto);
+			
+			this.addActionMessage("添加成功！");
+			addWarehouseDto = new WarehouseDto();
+		} catch(Exception e) {
+			log.error("addWarehouseAction error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 显示修改库存页面
+	 * @return
+	 */
+	public String showUpdWarehouseAction() {
+		try {
+			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
+			initData();
+			updWarehouseDto = warehouseService.queryWarehouseByID(updWarehouseId, "");
+		} catch(Exception e) {
+			log.error("showAddWarehouseAction error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 修改库存
+	 * @return
+	 */
+	public String updWarehouseAction() {
+		try {
+			this.clearMessages();
+			//只有一般用户及以上才有权限
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_NORMAL) {
+				return "noauthority";
+			}
+			initData();
+			
+			//数据验证
+			if(!checkData(updWarehouseDto)) {
+				return "checkerror";
+			}
+			//当前操作用户ID
+			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
+			updWarehouseDto.setUpdateuid(username);
+			warehouseService.updateWarehouse(updWarehouseDto);
+			this.addActionMessage("更新成功！");
+		} catch(Exception e) {
+			log.error("updWarehouseAction error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 删除库存
+	 * @return
+	 */
+	public String delWarehouseAction() {
+		try {
+			this.clearMessages();
+			//只有管理员才有权限删除
+			Integer rank = (Integer) ActionContext.getContext().getSession().get(Constants.ROLE_RANK);
+			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
+				return "noauthority";
+			}
+			//queryData();
+			//this.addActionMessage("删除成功！");
+		} catch(Exception e) {
+			log.error("delProduct error:" + e);
+			return ERROR;
+		}
+		return SUCCESS;
+	}
 	
 	/**
 	 * 库存管理页面
@@ -76,6 +225,7 @@ public class WarehouseAction extends BaseAction {
 				showProduct01 = product01Service.queryProduct01ByID(queryProductId, "");
 			}
 			warehouseManageList = new ArrayList<WarehouseDto>();
+			initData();
 			//大分类列表
 			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		} catch(Exception e) {
@@ -119,6 +269,49 @@ public class WarehouseAction extends BaseAction {
 	}
 	
 	/**
+	 * 数据check
+	 * @param warehouse
+	 * @return
+	 */
+	private boolean checkData(WarehouseDto warehouse) {
+		if(warehouse == null) {
+			this.addActionMessage("在库数不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(warehouse.getItem01())) {
+			this.addActionMessage("在库数不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(warehouse.getItem02())) {
+			this.addActionMessage("出库不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(warehouse.getRes01())) {
+			this.addActionMessage("请选择单位！");
+			return false;
+		}
+		if(StringUtil.isBlank(warehouse.getItem03())) {
+			this.addActionMessage("发送天数不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(warehouse.getRes02())) {
+			this.addActionMessage("请选择产地！");
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * 初期化数据
+	 */
+	private void initData() {
+		//单位
+		unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+		//产地
+		makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+	}
+	
+	/**
 	 * 数据查询
 	 */
 	@SuppressWarnings("unchecked")
@@ -128,6 +321,7 @@ public class WarehouseAction extends BaseAction {
 			showProduct01 = product01Service.queryProduct01ByID(queryProductId, "");
 		}
 		warehouseManageList = new ArrayList<WarehouseDto>();
+		initData();
 		//大分类列表
 		goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		if(page == null) {
@@ -210,5 +404,53 @@ public class WarehouseAction extends BaseAction {
 
 	public void setShowProduct01(Product01Dto showProduct01) {
 		this.showProduct01 = showProduct01;
+	}
+
+	public WarehouseDto getAddWarehouseDto() {
+		return addWarehouseDto;
+	}
+
+	public void setAddWarehouseDto(WarehouseDto addWarehouseDto) {
+		this.addWarehouseDto = addWarehouseDto;
+	}
+
+	public String getUpdWarehouseId() {
+		return updWarehouseId;
+	}
+
+	public void setUpdWarehouseId(String updWarehouseId) {
+		this.updWarehouseId = updWarehouseId;
+	}
+
+	public WarehouseDto getUpdWarehouseDto() {
+		return updWarehouseDto;
+	}
+
+	public void setUpdWarehouseDto(WarehouseDto updWarehouseDto) {
+		this.updWarehouseDto = updWarehouseDto;
+	}
+
+	public List<Dict01Dto> getUnitList() {
+		return unitList;
+	}
+
+	public void setUnitList(List<Dict01Dto> unitList) {
+		this.unitList = unitList;
+	}
+
+	public List<Dict01Dto> getMakeareaList() {
+		return makeareaList;
+	}
+
+	public void setMakeareaList(List<Dict01Dto> makeareaList) {
+		this.makeareaList = makeareaList;
+	}
+
+	public String getDelWarehouseId() {
+		return delWarehouseId;
+	}
+
+	public void setDelWarehouseId(String delWarehouseId) {
+		this.delWarehouseId = delWarehouseId;
 	}
 }

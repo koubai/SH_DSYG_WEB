@@ -64,6 +64,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void insertUser(UserDto user) {
+		//MD5加密密码
+		user.setPassword(MD5Util.md5(user.getPassword()));
 		userDao.insertUser(user);
 	}
 

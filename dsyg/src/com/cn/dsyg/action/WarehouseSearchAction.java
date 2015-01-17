@@ -12,7 +12,6 @@ import com.cn.common.util.Page;
 import com.cn.common.util.PropertiesConfig;
 import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dto.Dict01Dto;
-import com.cn.dsyg.dto.Product01Dto;
 import com.cn.dsyg.dto.WarehouseDto;
 import com.cn.dsyg.service.Dict01Service;
 import com.cn.dsyg.service.WarehouseService;
@@ -46,6 +45,11 @@ public class WarehouseSearchAction extends BaseAction {
 	 * 大产品分类
 	 */
 	private List<Dict01Dto> goodsList;
+
+	//单位
+	private List<Dict01Dto> unitList;
+	//产地
+	private List<Dict01Dto> makeareaList;
 	
 	//大分类ID
 	private String producttype;
@@ -70,7 +74,11 @@ public class WarehouseSearchAction extends BaseAction {
 			page = new Page();
 			searchWarehouseList = new ArrayList<WarehouseDto>();
 			//产品类型
-			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			goodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			//单位
+			unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			//产地
+			makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		} catch(Exception e) {
 			log.error("showSearchWarehouseAction error:" + e);
 			//return ERROR;
@@ -87,7 +95,11 @@ public class WarehouseSearchAction extends BaseAction {
 		try {
 			this.clearMessages();
 			//产品类型
-			goodsList = dict01Service.queryDict01ByFieldcode(Constants.DICT_GOODS_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			goodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			//单位
+			unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			//产地
+			makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//库存检索，初期化数据
 			searchWarehouseList = new ArrayList<WarehouseDto>();
 			if(page == null) {
@@ -103,12 +115,12 @@ public class WarehouseSearchAction extends BaseAction {
 				listUrl = "_g" + producttype;
 			}
 			if(StringUtil.isNotBlank(productname)) {
-				listUrl = "_kw" + productname;
+				listUrl = "_name" + productname;
 			}
 			
 			this.page.setStartIndex(startIndex);
 			
-			page = warehouseService.searchWarehouseByPage(productname, producttype, "" + Constants.ROLE_RANK_NORMAL, page, startIndex);
+			page = warehouseService.searchWarehouseByPage(productname, producttype, "" + Constants.ROLE_RANK_OPERATOR, page, startIndex);
 			searchWarehouseList = (List<WarehouseDto>) page.getItems();
 			page.setStartIndex(startIndex);
 			this.setStartIndex(page.getStartIndex());
@@ -188,5 +200,21 @@ public class WarehouseSearchAction extends BaseAction {
 
 	public void setListUrl(String listUrl) {
 		this.listUrl = listUrl;
+	}
+
+	public List<Dict01Dto> getUnitList() {
+		return unitList;
+	}
+
+	public void setUnitList(List<Dict01Dto> unitList) {
+		this.unitList = unitList;
+	}
+
+	public List<Dict01Dto> getMakeareaList() {
+		return makeareaList;
+	}
+
+	public void setMakeareaList(List<Dict01Dto> makeareaList) {
+		this.makeareaList = makeareaList;
 	}
 }

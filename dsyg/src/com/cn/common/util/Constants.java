@@ -13,6 +13,8 @@ public class Constants {
 	public final static String SYSTEM_LANGUAGE = "language";
 	//URL后缀名
 	public final static String URL_SUFFIX = ".shtml";
+	//ul编码为空字符串
+	public final static String UL_EMPTY = "empty";
 	//首页新闻条数
 	public final static int SHOW_NEWS_COUNT = 6;
 	//公司新闻，初始显示年份显示
@@ -39,11 +41,18 @@ public class Constants {
 	public final static String DICT_SUB_TYPE_ITEM02 = "item02";
 	//小分类：材质（电线）/绝缘（套管）
 	public final static String DICT_SUB_TYPE_ITEM03 = "item03";
-	//小分类：收缩比
+	//小分类：环保（电线）/收缩比（套管）
 	public final static String DICT_SUB_TYPE_ITEM04 = "item04";
+	//小分类：材质（套管）
+	public final static String DICT_SUB_TYPE_ITEM05 = "item05";
+	//小分类：环保（套管）
+	public final static String DICT_SUB_TYPE_ITEM06 = "item06";
 	
 	//单位
 	public final static String DICT_UNIT_TYPE = "unit";
+	
+	//颜色
+	public final static String DICT_COLOR_TYPE = "color";
 	
 	//properties
 	public final static String PROPERTIES_IMAGES_URL = "images_url";
@@ -96,14 +105,10 @@ public class Constants {
 	public final static String ROLE_RANK = "user_rank";
 	//用户权限级别（公司用户99=超级管理员）
 	public final static int ROLE_RANK_ADMIN = 99;
-	//用户权限级别（公司用户90=公司领导）
-	public final static int ROLE_RANK_MANAGER = 90;
-	//用户权限级别（公司用户80=仓库管理员）
-	public final static int ROLE_RANK_WAREHOUSE = 80;
-	//用户权限级别（公司用户70=公司职员）
-	public final static int ROLE_RANK_EMPLOYEE = 70;
-	//普通浏览用户（非公司用户50=一般用户）
-	public final static int ROLE_RANK_NORMAL = 50;
+	//用户权限级别（公司用户70=一般用户）只能输入和更新产品、库存和新闻，不能删除产品、库存和新闻
+	public final static int ROLE_RANK_NORMAL = 70;
+	//普通浏览用户（非公司用户50=操作员）只能输入和更新产品和库存，不能删除产品和库存，可以看新闻
+	public final static int ROLE_RANK_OPERATOR = 50;
 	
 	//角色code
 	public final static String ROLE_CODE_ADMIN = "admin";

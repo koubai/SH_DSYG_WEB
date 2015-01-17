@@ -143,9 +143,13 @@
 						<div class="line"></div>
 					</div>
 					<div class="tools">
-						<a href="javascript:void(0);" onclick="add();"><img src="<%=request.getContextPath()%>/images/add.png" />增加</a>
-						<a href="javascript:void(0);" onclick="upd();"><img src="<%=request.getContextPath()%>/images/edit.png" />编辑</a>
-						<a href="javascript:void(0);" onclick="del();"><img src="<%=request.getContextPath()%>/images/delete.png" />删除</a>
+						<s:if test='#session.user_rank >= 70'>
+							<a href="javascript:void(0);" onclick="add();"><img src="<%=request.getContextPath()%>/images/add.png" />增加</a>
+							<a href="javascript:void(0);" onclick="upd();"><img src="<%=request.getContextPath()%>/images/edit.png" />编辑</a>
+						</s:if>
+						<s:if test='#session.user_rank >= 90'>
+							<a href="javascript:void(0);" onclick="del();"><img src="<%=request.getContextPath()%>/images/delete.png" />删除</a>
+						</s:if>
 					</div>
 					<div class="page">
 						<span>第${page.startIndex + 1}页 / 共${page.totalPage==0?1:page.totalPage}页 共${page.totalCount}条记录</span><span>
@@ -168,13 +172,13 @@
 					<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
 						<tr class="tab_tittle">
 							<td width="40">&nbsp;</td>
-							<td width="60">序号</td>
+							<td width="40">序号</td>
 							<td width="130">产品名称</td>
 							<td width="120">产品型号</td>
 							<td width="80">产品分类</td>
 							<td width="100">颜色</td>
 							<td width="80">是否显示</td>
-							<td width="120">创建日期</td>
+							<td width="140">创建日期</td>
 							<td width="80"></td>
 						</tr>
 						<s:iterator id="manageProduct01List" value="manageProduct01List" status="st1">
@@ -195,7 +199,13 @@
 										</s:if>
 									</s:iterator>
 								</td>
-								<td><s:property value="color1" /></td>
+								<td>
+									<s:iterator value="colorList" id="colorList" status="st2">
+										<s:if test="%{colorList[#st2.index].code == manageProduct01List[#st1.index].color1}">
+											<s:property value="fieldname"/>
+										</s:if>
+									</s:iterator>
+								</td>
 								<td>
 									<s:if test='rank == "50"'>显示</s:if>
 									<s:else>不显示</s:else>

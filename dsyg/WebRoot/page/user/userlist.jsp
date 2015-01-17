@@ -148,7 +148,7 @@
 							<td width="40">序号</td>
 							<td width="90">登录ID</td>
 							<td width="120">登录姓名</td>
-							<td width="80">角色Code</td>
+							<td width="80">角色</td>
 							<td width="80">状态</td>
 							<td width="130">创建日期</td>
 							<td width="130">更新日期</td>
@@ -166,8 +166,13 @@
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st1.index + 1"/></td>
 								<td><s:property value="userid"/></td>
 								<td><s:property value="username"/></td>
-								<td><s:property value="rolecode"/></td>
-								
+								<td>
+									<s:iterator value="showRoleDtoList" id="showRoleDtoList" status="st2">
+										<s:if test="%{showRoleDtoList[#st2.index].rolecode == userList[#st1.index].rolecode}">
+											<s:property value="rolename"/>
+										</s:if>
+									</s:iterator>
+								</td>
 								<td>
 									<s:if test="status == 1">
 										有效

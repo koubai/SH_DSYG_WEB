@@ -81,7 +81,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="main_body">
+			<div class="main_body" style="height: 400px;">
 				<s:form id="mainform" name="mainform" method="POST" enctype="multipart/form-data">
 					<s:hidden name="addUserDto.note" id="note"></s:hidden>
 					<div style="position:absolute; margin-left: 400px; margin-top: 3px; text-align: center; color: red;">

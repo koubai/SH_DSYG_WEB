@@ -59,7 +59,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="main_body">
+			<div class="main_body" style="height: 400px;">
 				<s:form id="mainform" name="mainform" method="POST" enctype="multipart/form-data">
 					<s:hidden name="updUserDto.note" id="note"></s:hidden>
 					<div style="position:absolute; margin-left: 400px; margin-top: 3px; text-align: center; color: red;">
@@ -76,18 +76,6 @@
 							<td class="td_tittle"><span>*</span>用户姓名：</td>
 							<td>
 								<s:textfield name="updUserDto.username" id="username" cssStyle="width:300px;" maxlength="16" theme="simple"></s:textfield>
-							</td>
-						</tr>
-						<tr>
-							<td class="td_tittle"><span>*</span>登录密码：</td>
-							<td>
-								<s:password name="updUserDto.password" id="password" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
-							</td>
-						</tr>
-						<tr>
-							<td class="td_tittle"><span>*</span>确认密码：</td>
-							<td>
-								<s:password name="updUserDto.repassword" id="repassword" cssStyle="width:300px;" theme="simple" maxlength="16"></s:password>
 							</td>
 						</tr>
 						<tr>
