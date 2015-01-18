@@ -30,7 +30,7 @@
 				<img src="<%=request.getContextPath()%>/images/news.jpg" alt="新闻">
 			</div>
 			<div class="pro_adress">
-				<a href="../index.html">首页 </a> &gt; 新闻				</div>
+				<a href="../index.html">首页 </a> &gt; 新闻</div>
 		</div>
 		<div class="item_line">
 			<img src="<%=request.getContextPath()%>/images/page_line.jpg">

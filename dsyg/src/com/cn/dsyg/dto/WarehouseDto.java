@@ -43,12 +43,12 @@ public class WarehouseDto extends BaseDto {
 	private String productrank;
 
 	/**
-	 * 在库数
+	 * 库存
 	 */
 	private String item01;
 
 	/**
-	 * 出库
+	 * 出库（作废）
 	 */
 	private String item02;
 
@@ -108,7 +108,7 @@ public class WarehouseDto extends BaseDto {
 	private String res02;
 
 	/**
-	 * 整箱OR乱尺（1整箱0乱尺）
+	 * 整箱OR乱尺（0整箱1乱尺）
 	 */
 	private String res03;
 

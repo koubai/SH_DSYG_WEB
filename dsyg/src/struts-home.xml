@@ -38,6 +38,35 @@
 			<result name="success">/page/home/newsdetail.jsp</result>
 		</action>
 		
+		<!-- 相关技术情报 -->
+		<action name="showInformationAction" class="homeAction" method="showInformationAction">
+			<result name="success">/page/information/infomation.jsp</result>
+		</action>
+		
+		<action name="showInformationDetail1Action" class="homeAction" method="showInformationDetail1Action">
+			<result name="success">/page/information/infomation_detail1.jsp</result>
+		</action>
+		
+		<action name="showInformationDetail2Action" class="homeAction" method="showInformationDetail2Action">
+			<result name="success">/page/information/infomation_detail2.jsp</result>
+		</action>
+		
+		<action name="showInformationDetail3Action" class="homeAction" method="showInformationDetail3Action">
+			<result name="success">/page/information/infomation_detail3.jsp</result>
+		</action>
+		
+		<action name="showInformationDetail4Action" class="homeAction" method="showInformationDetail4Action">
+			<result name="success">/page/information/infomation_detail4.jsp</result>
+		</action>
+		
+		<action name="showInformationDetail5Action" class="homeAction" method="showInformationDetail5Action">
+			<result name="success">/page/information/infomation_detail5.jsp</result>
+		</action>
+		
+		<action name="showInformationDetail6Action" class="homeAction" method="showInformationDetail6Action">
+			<result name="success">/page/information/infomation_detail6.jsp</result>
+		</action>
+		
 	</package>
 
 </struts>

@@ -113,7 +113,7 @@ function search() {
 						<s:textfield name="productname" id="productname" cssClass="keyword" maxlength="16" theme="simple"></s:textfield>
 						<input type="button" class="search_btn" value="检索" onclick="search();" />
 					</div>
-					<div class="annotation">
+					<div class="annotation" style="margin-top: 14px;">
 						<span class="red">*</span>说明：
 						<img src="<%=request.getContextPath()%>/images/instock.png" />表示现货
 						<img src="<%=request.getContextPath()%>/images/futures.png" />表示期货
@@ -163,8 +163,8 @@ function search() {
 							</s:else>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st2.index + 1"/></td>
 								<td>
-									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:if>
-									<s:else><img src="<%=request.getContextPath()%>/images/luan.png" /></s:else>
+									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
+									<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>
 									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
 									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
 									<s:iterator id="goodsList" value="goodsList" status="st3">

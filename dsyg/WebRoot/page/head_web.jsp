@@ -13,7 +13,7 @@
 			<ul>
 				<li><a href="<c:url value="/home/goHomeAction.action"></c:url>">首页</a></li>
 				<li><a href="<c:url value="/search/showSearchAction.action"></c:url>">产品信息</a></li>
-				<li><a href="#">相关技术情报</a></li>
+				<li><a href="<c:url value="/home/showInformationAction.action"></c:url>">相关技术情报</a></li>
 				<li><a href="<c:url value="/home/showCompanyInfoAction.action"></c:url>">公司信息</a></li>
 				<li><a href="<c:url value="/home/showCompanyNewAction.action"></c:url>">公司新闻</a></li>
 				<li><a href="#">咨询信息Q/A</a></li>
@@ -25,5 +25,6 @@
 		<div class="logo">
 			<a href="<c:url value="/home/goHomeAction.action"></c:url>"></a>			
 		</div>
+		<div class="test fr">试运行中...</div>
 	</div>
 </div>
