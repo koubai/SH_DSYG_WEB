@@ -22,28 +22,12 @@
 	
 	function checkData() {
 		var item01 = $("#item01").val().trim();
-		var item02 = $("#item02").val().trim();
 		var res01 = $("#res01").val().trim();
 		var item03 = $("#item03").val().trim();
 		var res02 = $("#res02").val().trim();
-		if(item01 == "") {
-			alert("在库数不能为空！");
-			$("#item01").focus();
-			return false;
-		}
-		if(!isReal(item01)) {
+		if(item01 != "" && !isReal(item01)) {
 			alert("在库数必须是大于0的数字！");
 			$("#item01").focus();
-			return false;
-		}
-		if(item02 == "") {
-			alert("出库不能为空！");
-			$("#item02").focus();
-			return false;
-		}
-		if(!isReal(item02)) {
-			alert("出库必须是大于0的数字！");
-			$("#item02").focus();
 			return false;
 		}
 		if(res01 == "") {
@@ -57,7 +41,7 @@
 			return false;
 		}
 		if(!isNumber(item03)) {
-			alert("发送天数必须是大于0的数字！");
+			alert("发送天数必须是大于0的整数！");
 			$("#item03").focus();
 			return false;
 		}
@@ -111,13 +95,13 @@
 							<td class="td_tittle"><span>*</span>库存编辑：</td>
 							<td>
 								<dl>
-									<dt>在库数：</dt>
+									<dt>数量：</dt>
 									<dd>
 										<s:textfield name="updWarehouseDto.item01" id="item01" cssStyle="width:300px;" maxlength="10" theme="simple"></s:textfield>
 									</dd>
 								</dl>
 								<dl>
-									<dt>整箱：</dt>
+									<dt>乱尺：</dt>
 									<dd>
 										<s:if test='updWarehouseDto.res03 == "1"'>
 											<input id="tmpRes03" type="checkbox" checked="checked" value="1" />
@@ -125,12 +109,6 @@
 										<s:else>
 											<input id="tmpRes03" type="checkbox" value="1" />
 										</s:else>
-									</dd>
-								</dl>
-								<dl>
-									<dt>出库：</dt>
-									<dd>
-										<s:textfield name="updWarehouseDto.item02" id="item02" cssStyle="width:300px;" maxlength="10" theme="simple"></s:textfield>
 									</dd>
 								</dl>
 								<dl>

@@ -85,6 +85,97 @@ public class HomeAction extends BaseAction {
 	}
 	
 	/**
+	 * 相关技术情报
+	 * @return
+	 */
+	public String showInformationAction() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showInformationAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 相关技术情报1
+	 * @return
+	 */
+	public String showInformationDetail1Action() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showInformationDetail1Action error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 相关技术情报2
+	 * @return
+	 */
+	public String showInformationDetail2Action() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showInformationDetail2Action error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 相关技术情报3
+	 * @return
+	 */
+	public String showInformationDetail3Action() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showInformationDetail3Action error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 相关技术情报4
+	 * @return
+	 */
+	public String showInformationDetail4Action() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showInformationDetail4Action error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 相关技术情报5
+	 * @return
+	 */
+	public String showInformationDetail5Action() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showInformationDetail5Action error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 相关技术情报6
+	 * @return
+	 */
+	public String showInformationDetail6Action() {
+		try {
+			this.clearMessages();
+		} catch(Exception e) {
+			log.error("showInformationDetail6Action error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
 	 * 在线购买
 	 * @return
 	 */

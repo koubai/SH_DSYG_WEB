@@ -124,6 +124,10 @@ public class WarehouseAction extends BaseAction {
 			addWarehouseDto.setStatus("" + Constants.STATUS_NORMAL);
 			//数据权限
 			addWarehouseDto.setRank("" + Constants.ROLE_RANK_OPERATOR);
+			//库存为空时，默认库存为0
+			if(StringUtil.isBlank(addWarehouseDto.getItem01())) {
+				addWarehouseDto.setItem01("0.00");
+			}
 			
 			//新增
 			warehouseService.insertWarehouse(addWarehouseDto);
@@ -176,6 +180,11 @@ public class WarehouseAction extends BaseAction {
 			if(!checkData(updWarehouseDto)) {
 				return "checkerror";
 			}
+			//库存为空时，默认库存为0
+			if(StringUtil.isBlank(updWarehouseDto.getItem01())) {
+				updWarehouseDto.setItem01("0.00");
+			}
+			
 			//当前操作用户ID
 			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
 			updWarehouseDto.setUpdateuid(username);
@@ -275,17 +284,13 @@ public class WarehouseAction extends BaseAction {
 	 */
 	private boolean checkData(WarehouseDto warehouse) {
 		if(warehouse == null) {
-			this.addActionMessage("在库数不能为空！");
+			this.addActionMessage("库存不能为空！");
 			return false;
 		}
-		if(StringUtil.isBlank(warehouse.getItem01())) {
-			this.addActionMessage("在库数不能为空！");
-			return false;
-		}
-		if(StringUtil.isBlank(warehouse.getItem02())) {
-			this.addActionMessage("出库不能为空！");
-			return false;
-		}
+//		if(StringUtil.isBlank(warehouse.getItem01())) {
+//			this.addActionMessage("数量不能为空！");
+//			return false;
+//		}
 		if(StringUtil.isBlank(warehouse.getRes01())) {
 			this.addActionMessage("请选择单位！");
 			return false;

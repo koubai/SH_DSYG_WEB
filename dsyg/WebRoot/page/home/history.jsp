@@ -21,7 +21,7 @@
 <div class="main">
 	<div class="product_header">
 		<div class="pagekv">
-			<img src="<%=request.getContextPath()%>/images/news_bg.png" />
+			<img src="<%=request.getContextPath()%>/images/banner1.png" />
 		</div>
 	</div>
 	<div class="page_main">

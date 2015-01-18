@@ -939,6 +939,76 @@
 		<to>/home/showOnlineAction.action</to>
 	</rule>
 	
+	<rule>
+		<from>^/showInformation.shtml$</from>
+		<to>/home/showInformationAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showInformationDetail1.shtml$</from>
+		<to>/home/showInformationDetail1Action.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showInformationDetail2.shtml$</from>
+		<to>/home/showInformationDetail2Action.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showInformationDetail3.shtml$</from>
+		<to>/home/showInformationDetail3Action.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showInformationDetail4.shtml$</from>
+		<to>/home/showInformationDetail4Action.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showInformationDetail5.shtml$</from>
+		<to>/home/showInformationDetail5Action.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showInformationDetail6.shtml$</from>
+		<to>/home/showInformationDetail6Action.action</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/home/showInformationDetail6Action.action$</from>
+		<to>/showInformationDetail6.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showInformationDetail5Action.action$</from>
+		<to>/showInformationDetail5.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showInformationDetail4Action.action$</from>
+		<to>/showInformationDetail4.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showInformationDetail3Action.action$</from>
+		<to>/showInformationDetail3.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showInformationDetail2Action.action$</from>
+		<to>/showInformationDetail2.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showInformationDetail1Action.action$</from>
+		<to>/showInformationDetail1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showInformationAction.action$</from>
+		<to>/showInformation.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/home/showOnlineAction.action$</from>
 		<to>/showOnline.shtml</to>

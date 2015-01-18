@@ -159,8 +159,7 @@
 							<td width="40">序号</td>
 							<td width="130">产品名称</td>
 							<td width="100">产品分类</td>
-							<td width="80">在库数</td>
-							<td width="80">出库</td>
+							<td width="80">数量</td>
 							<td width="100">定单单位</td>
 							<td width="80">送货期</td>
 							<td width="140">创建日期</td>
@@ -183,7 +182,6 @@
 									</s:iterator>
 								</td>
 								<td><s:property value="item01" /></td>
-								<td><s:property value="item02" /></td>
 								<td>
 									<s:iterator value="unitList" id="unitList" status="st2">
 										<s:if test="%{unitList[#st2.index].code == warehouseManageList[#st1.index].res01}">
