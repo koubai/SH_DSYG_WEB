@@ -113,7 +113,7 @@ function search() {
 						<s:textfield name="productname" id="productname" cssClass="keyword" maxlength="16" theme="simple"></s:textfield>
 						<input type="button" class="search_btn" value="检索" onclick="search();" />
 					</div>
-					<div class="annotation">
+					<div class="annotation" style="margin-top: 14px;">
 						<span class="red">*</span>说明：
 						<img src="<%=request.getContextPath()%>/images/instock.png" />表示现货
 						<img src="<%=request.getContextPath()%>/images/futures.png" />表示期货

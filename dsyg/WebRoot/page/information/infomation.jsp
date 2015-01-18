@@ -28,13 +28,13 @@
 		<div class="products_info">
 			<table width="80%" border="0" cellpadding="0" cellspacing="10">
 			  <tbody><tr>
-				<td width="33.3%"><a href="<c:url value="/home/showInformationDetail1Action.action"></c:url>">
+				<td width="33.3%"><a href="#">
 					<div class="product">
 						<p>電子線</p>
 						<p class="arial">Electronic Wire</p>
 					</div>		</a>					
 				</td>
-				<td width="33.3%"><a href="#">
+				<td width="33.3%"><a href="<c:url value="/home/showInformationDetail2Action.action"></c:url>">
 					<div class="product">
 						<p>熱収束套管</p>
 						<p class="arial">Heat-Shrink-Tube</p>

@@ -90,6 +90,8 @@ public class WarehouseAction extends BaseAction {
 			}
 			initData();
 			addWarehouseDto = new WarehouseDto();
+			//默认单位为箱
+			addWarehouseDto.setRes01("004");
 			//产品ID
 			addWarehouseDto.setProductid(queryProductId);
 		} catch(Exception e) {

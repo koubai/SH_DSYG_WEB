@@ -126,7 +126,14 @@
 						<h3>产品名称：<s:property value="showProduct01.nameno"/></h3>
 						<div class="line"></div>
 					</div>
-					<div class="tools">
+					<div class="annotation" style="float: right;">
+						<span class="red">*</span>说明：
+						<img src="<%=request.getContextPath()%>/images/instock.png" />表示现货
+						<img src="<%=request.getContextPath()%>/images/futures.png" />表示期货
+						<img src="<%=request.getContextPath()%>/images/zheng.png" />表示整箱
+						<img src="<%=request.getContextPath()%>/images/luan.png" />表示乱尺
+					</div>
+					<div class="tools" style="margin-top: 45px;">
 						<s:if test='#session.user_rank >= 70'>
 							<a href="javascript:void(0);" onclick="add();"><img src="<%=request.getContextPath()%>/images/add.png" />增加</a>
 							<a href="javascript:void(0);" onclick="upd();"><img src="<%=request.getContextPath()%>/images/edit.png" />编辑</a>
@@ -163,6 +170,7 @@
 							<td width="100">定单单位</td>
 							<td width="80">送货期</td>
 							<td width="140">创建日期</td>
+							<td width="60">状况</td>
 						</tr>
 						<s:iterator id="warehouseManageList" value="warehouseManageList" status="st1">
 						<s:if test="#st1.odd==true">
@@ -191,6 +199,11 @@
 								</td>
 								<td><s:property value="item04" /></td>
 								<td><s:property value="createdate" /></td>
+								<td><s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
+									<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>
+									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
+									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
+								</td>
 							</tr>
 						</s:iterator>
 					</table>
