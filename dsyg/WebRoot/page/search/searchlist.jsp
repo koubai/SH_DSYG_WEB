@@ -88,7 +88,7 @@ function turn(id) {
 							<td>&nbsp;</td>
 							<td>产品名称</td>
 							<td>产品类型</td>
-							<td>产品型号</td>
+							<td>产品规格</td>
 							<td>UL编号</td>
 							<s:if test='goodsId == "01" || goodsId == "02"'>
 								<s:if test='featureList.size() > 0'>

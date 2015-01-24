@@ -174,7 +174,7 @@
 							<td width="40">&nbsp;</td>
 							<td width="40">序号</td>
 							<td width="130">产品名称</td>
-							<td width="120">产品型号</td>
+							<td width="120">产品规格</td>
 							<td width="80">产品分类</td>
 							<td width="100">颜色</td>
 							<td width="80">是否显示</td>

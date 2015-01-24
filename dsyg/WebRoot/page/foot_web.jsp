@@ -8,7 +8,7 @@
 	}
 </script>
 <div class="yzk_bottom">
-	<p>上海东東盈港企業发展有限公司 <span style=" margin-left:40px; font-weight:normal; font-size:12px; color:#959595;">Copyright＠ D.S.Y.G Trade LTD. ALL Rights Reserved.</span></p>
+	<p>上海東升盈港企業发展有限公司 <span style=" margin-left:40px; font-weight:normal; font-size:12px; color:#959595;">Copyright＠ D.S.Y.G Trade LTD. ALL Rights Reserved.</span></p>
 	<div class="contactus">
 		<ul>
 			<li><a href="#">联系我们</a><span><img src="images/line.jpg" /></span></li>

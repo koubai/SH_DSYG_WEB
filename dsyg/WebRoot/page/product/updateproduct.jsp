@@ -327,7 +327,7 @@
 							<td><s:textfield name="updProduct01Dto.nameno" id="nameno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
 						</tr>
 						<tr>
-							<td class="td_tittle"><span>*</span>产品型号：</td>
+							<td class="td_tittle"><span>*</span>产品规格：</td>
 							<td><s:textfield name="updProduct01Dto.typeno" id="typeno" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
 						</tr>
 						<tr>
@@ -341,7 +341,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="td_tittle"><span>*</span>UL编号：</td>
+							<td class="td_tittle"><span>*</span>UL 型号/编号：</td>
 							<td><s:textfield name="updProduct01Dto.item09" id="item09" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
 						<tr>
 						<s:if test='updProduct01Dto.fieldcode == "01"'>
