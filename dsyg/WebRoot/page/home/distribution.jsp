@@ -82,6 +82,14 @@
 									<td class="cap_tab2">电话：021－65388038－0（总机）<br />
 传真：021－65387551</td>
 								</tr>
+								<tr>
+									<td class="cap_tab1">
+									电邮方式									</td>
+									<td class="cap_tab3">
+										<br>									</td>
+									<td class="cap_tab2">Mail：---@---.com<br /></td>
+								</tr>
+								
 							</tbody>
 						</table>
 					</div>
@@ -104,12 +112,19 @@
 								</tr>
 								<tr>
 									<td class="cap_tab1">
-										联系方式（总公司）									</td>
+										联系方式									</td>
 									<td class="cap_tab3">
 										<br>									</td>
 									<td class="cap_tab2">电话：021－65388038－0（总机）<br />
 传真：021－65387551</td>
 								</tr>
+								<tr>
+									<td class="cap_tab1">
+										电邮方式									</td>
+									<td class="cap_tab3">
+										<br>									</td>
+									<td class="cap_tab2">Mail：---@---.com<br /></td>
+							</tr>
 							</tbody>
 						</table>
 					</div>
@@ -132,11 +147,18 @@
 								</tr>
 								<tr>
 									<td class="cap_tab1">
-										联系方式（总公司）									</td>
+										联系方式									</td>
 									<td class="cap_tab3">
 										<br>									</td>
 									<td class="cap_tab2">电话：0755－61524301－0（总机）<br />
 传真：0755－61524300</td>
+								</tr>
+								<tr>
+									<td class="cap_tab1">
+										电邮方式									</td>
+									<td class="cap_tab3">
+										<br>									</td>
+									<td class="cap_tab2">Mail：---@---.com<br /></td>
 								</tr>
 							</tbody>
 						</table>
