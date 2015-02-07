@@ -3,6 +3,45 @@
 
 <beans>
 
+	<!-- Qa -->
+	<bean id="qaService" class="com.cn.dsyg.service.impl.QaServiceImpl" >
+		<property name="qaDao">
+			<ref local="qaDao"/>
+		</property>
+	</bean>
+	
+	<bean id="qaDao" class="com.cn.dsyg.dao.impl.QaDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+	
+	<!-- Recruit -->
+	<bean id="recruitService" class="com.cn.dsyg.service.impl.RecruitServiceImpl" >
+		<property name="recruitDao">
+			<ref local="recruitDao"/>
+		</property>
+	</bean>
+	
+	<bean id="recruitDao" class="com.cn.dsyg.dao.impl.RecruitDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
+	<!-- case -->
+	<bean id="caseService" class="com.cn.dsyg.service.impl.CaseServiceImpl" >
+		<property name="caseDao">
+			<ref local="caseDao"/>
+		</property>
+	</bean>
+	
+	<bean id="caseDao" class="com.cn.dsyg.dao.impl.CaseDaoImpl">
+		<property name="sqlMapClient">
+			<ref bean="sqlMapClient"/>
+		</property>
+	</bean>
+
 	<!-- warehouse -->
 	<bean id="warehouseService" class="com.cn.dsyg.service.impl.WarehouseServiceImpl" >
 		<property name="warehouseDao">

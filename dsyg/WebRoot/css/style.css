@@ -78,7 +78,7 @@ ul.pagination li a:hover{background-position: 0px 100%; color: #fff; text-decora
 .product_header .pagekv{ width:1000px; height:180px; margin:0 auto; padding-top:1px;}
 .page_main{ width:1000px; margin:0 auto;}
 .page_main .page_item{ width:1000px; padding-top:50px; height:53px;}
-.page_main .page_item .pro_img{ width:162px; height:29px; float:left;}
+.page_main .page_item .pro_img{ width:162px; height:29px; float:left; color:#636363; font-size:30px; font-family:"微软雅黑"}
 .page_main .page_item .pro_adress{ float:right; margin-top:35px;color:#666;}
 .page_main .page_item .pro_adress a{color:#666; text-decoration:none;}
 .page_main .page_item .pro_adress a:hover{color:#e60012;}
@@ -235,7 +235,7 @@ table.product_tab,table.product_tab tr,table.product_tab td{ border-collapse:col
 .tools img{ margin-right:5px;}
 .tools a{ padding:8px 10px; border:1px solid #dddddd; background:#efefef; color:#333333; border-radius:5px;}
 .tools a:hover{ border:1px solid #cccccc; background:#dddddd;}
-.annotation{ float:left; margin-top:20px; line-height:16px;}
+.annotation{ float:left; /*margin-top:20px;*/margin-left: 650px; line-height:16px;}
 .page{ float:right;  margin:10px 0;}
 .page span{ margin-right:15px;}
 .page a{ padding:5px 10px; border:1px solid #dddddd; background:#eeeeee; margin:0 5px; color:#333333;}

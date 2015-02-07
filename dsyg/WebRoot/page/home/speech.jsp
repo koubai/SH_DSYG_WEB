@@ -52,7 +52,7 @@
 						<a href="<c:url value="/home/showCompanyDistributionAction.action"></c:url>">公司分布</a>
 					</li>
 					<li id="list5">
-						<a href="#">招聘信息</a>
+						<a href="<c:url value="/home/showCompanyRecruitAction.action"></c:url>">招聘信息</a>
 					</li>
 				</ul>
 			</div>

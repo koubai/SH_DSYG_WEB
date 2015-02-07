@@ -52,7 +52,7 @@
 						<a href="<c:url value="/home/showCompanyDistributionAction.action"></c:url>" class="cur">公司分布</a>
 					</li>
 					<li id="list5">
-						<a href="#">招聘信息</a>
+						<a href="<c:url value="/home/showCompanyRecruitAction.action"></c:url>">招聘信息</a>
 					</li>
 				</ul>
 			</div>
@@ -89,7 +89,6 @@
 										<br>									</td>
 									<td class="cap_tab2">Mail：---@---.com<br /></td>
 								</tr>
-								
 							</tbody>
 						</table>
 					</div>
@@ -124,7 +123,7 @@
 									<td class="cap_tab3">
 										<br>									</td>
 									<td class="cap_tab2">Mail：---@---.com<br /></td>
-							</tr>
+								</tr>
 							</tbody>
 						</table>
 					</div>

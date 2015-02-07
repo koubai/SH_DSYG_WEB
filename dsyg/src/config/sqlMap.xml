@@ -11,5 +11,8 @@
 	<sqlMap resource="/config/ibatis/dsyg-dict01.xml" />
 	<sqlMap resource="/config/ibatis/dsyg-news.xml" />
 	<sqlMap resource="/config/ibatis/dsyg-warehouse.xml" />
+	<sqlMap resource="/config/ibatis/dsyg-qa.xml" />
+	<sqlMap resource="/config/ibatis/dsyg-recruit.xml" />
+	<sqlMap resource="/config/ibatis/dsyg-case.xml" />
 	
 </sqlMapConfig>

@@ -125,7 +125,7 @@
 						<tr>
 							<td class="td_tittle"><span>*</span>内容：</td>
 							<td>
-								<textarea rows="10" cols="50" id="tempData"><s:property value="addNewsDto.data"/></textarea>
+								<textarea rows="10" cols="50" style="width:300px;" id="tempData"><s:property value="addNewsDto.data"/></textarea>
 							</td>
 						</tr>
 						<tr>

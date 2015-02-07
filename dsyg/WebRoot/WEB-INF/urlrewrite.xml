@@ -974,6 +974,286 @@
 		<to>/home/showInformationDetail6Action.action</to>
 	</rule>
 	
+	<rule>
+		<from>^/pdf_f([^/_]*?).shtml$</from>
+		<to>/home/showPdfAction.action\?pdfFileName=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/qa.shtml$</from>
+		<to>/home/showQaAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/addqa.shtml$</from>
+		<to>/home/addQaAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showqa.shtml$</from>
+		<to>/qa/showQaAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/queryqa.shtml$</from>
+		<to>/qa/queryQaAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turnqa.shtml$</from>
+		<to>/qa/turnQaAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/delqa.shtml$</from>
+		<to>/qa/delQaAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showcase.shtml$</from>
+		<to>/case/showCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/querycase.shtml$</from>
+		<to>/case/queryCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turncase.shtml$</from>
+		<to>/case/turnCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showAddCase.shtml$</from>
+		<to>/case/showAddCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/addCase.shtml$</from>
+		<to>/case/addCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/delCase.shtml$</from>
+		<to>/case/delCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showUpdCase.shtml$</from>
+		<to>/case/showUpdCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/updCase.shtml$</from>
+		<to>/case/updCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showAddRecruit.shtml$</from>
+		<to>/recruit/showAddRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/addRecruit.shtml$</from>
+		<to>/recruit/addRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showUpdRecruit.shtml$</from>
+		<to>/recruit/showUpdRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/updRecruit.shtml$</from>
+		<to>/recruit/updRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/delRecruit.shtml$</from>
+		<to>/recruit/delRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/showRecruit.shtml$</from>
+		<to>/recruit/showRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/queryRecruit.shtml$</from>
+		<to>/recruit/queryRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/turnRecruit.shtml$</from>
+		<to>/recruit/turnRecruitAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/case_p([0-9]+).shtml$</from>
+		<to>/home/showHomeCaseAction.action\?caseFieldcode=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/case.shtml$</from>
+		<to>/home/showHomeCaseAction.action</to>
+	</rule>
+	
+	<rule>
+		<from>^/caseDetail_id([0-9]+).shtml$</from>
+		<to>/home/showHomeCaseDetailAction.action\?caseDetailId=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/recruitDetail_id([0-9]+).shtml$</from>
+		<to>/home/showRecruitDetailAction.action\?recruitDetailId=$1</to>
+	</rule>
+	
+	<rule>
+		<from>^/recruit.shtml$</from>
+		<to>/home/showCompanyRecruitAction.action</to>
+	</rule>
+	
+	<outbound-rule>
+		<from>/home/showCompanyRecruitAction.action$</from>
+		<to>/recruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showRecruitDetailAction.action\?recruitDetailId=([0-9]+)$</from>
+		<to>/recruitDetail_id$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showHomeCaseDetailAction.action\?caseDetailId=([0-9]+)$</from>
+		<to>/caseDetail_id$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showHomeCaseAction.action$</from>
+		<to>/case.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showHomeCaseAction.action\?caseFieldcode=([0-9]+)$</from>
+		<to>/case_p$1.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/turnRecruitAction.action$</from>
+		<to>/turnRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/queryRecruitAction.action$</from>
+		<to>/queryRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/showRecruitAction.action$</from>
+		<to>/showRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/delRecruitAction.action$</from>
+		<to>/delRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/updRecruitAction.action$</from>
+		<to>/updRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/showUpdRecruitAction.action$</from>
+		<to>/showUpdRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/addRecruitAction.action$</from>
+		<to>/addRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/recruit/showAddRecruitAction.action$</from>
+		<to>/showAddRecruit.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/updCaseAction.action$</from>
+		<to>/updCase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/showUpdCaseAction.action$</from>
+		<to>/showUpdCase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/delCaseAction.action$</from>
+		<to>/delCase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/addCaseAction.action$</from>
+		<to>/addCase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/showAddCaseAction.action$</from>
+		<to>/showAddCase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/turnCaseAction.action$</from>
+		<to>/turncase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/queryCaseAction.action$</from>
+		<to>/querycase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/case/showCaseAction.action$</from>
+		<to>/showcase.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/qa/delQaAction.action$</from>
+		<to>/delqa.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/qa/turnQaAction.action$</from>
+		<to>/turnqa.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/qa/queryQaAction.action$</from>
+		<to>/queryqa.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/qa/showQaAction.action$</from>
+		<to>/showqa.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/addQaAction.action$</from>
+		<to>/addqa.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showQaAction.action$</from>
+		<to>/qa.shtml</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/home/showPdfAction.action\?pdfFileName=([^/_]*?)$</from>
+		<to>/pdf_f$1.shtml</to>
+	</outbound-rule>
+	
 	<outbound-rule>
 		<from>/home/showInformationDetail6Action.action$</from>
 		<to>/showInformationDetail6.shtml</to>

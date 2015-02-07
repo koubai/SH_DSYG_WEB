@@ -1,5 +1,6 @@
 package com.cn.dsyg.action;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,10 +13,16 @@ import com.cn.common.action.BaseAction;
 import com.cn.common.util.Constants;
 import com.cn.common.util.PropertiesConfig;
 import com.cn.common.util.StringUtil;
+import com.cn.dsyg.dto.CaseDto;
 import com.cn.dsyg.dto.Dict01Dto;
 import com.cn.dsyg.dto.NewsDto;
+import com.cn.dsyg.dto.QaDto;
+import com.cn.dsyg.dto.RecruitDto;
+import com.cn.dsyg.service.CaseService;
 import com.cn.dsyg.service.Dict01Service;
 import com.cn.dsyg.service.NewsService;
+import com.cn.dsyg.service.QaService;
+import com.cn.dsyg.service.RecruitService;
 
 /**
  * @name HomeAction.java
@@ -32,6 +39,12 @@ public class HomeAction extends BaseAction {
 	private Dict01Service dict01Service;
 	
 	private NewsService newsService;
+	
+	private QaService qaService;
+	
+	private RecruitService recruitService;
+	
+	private CaseService caseService;
 	
 	private String strFieldcode;
 	
@@ -66,6 +79,143 @@ public class HomeAction extends BaseAction {
 	private NewsDto newsDetail;
 	
 	/**
+	 * PDF文件名
+	 */
+	private String pdfFileName;
+
+	//QA
+	private QaDto addQaDto;
+	
+	//Case
+	private List<CaseDto> homeCaseList;
+	private String caseFieldcode;
+	private String caseDetailId;
+	private CaseDto caseDetail;
+	
+	//Recruit
+	private List<RecruitDto> homeRecruitList;
+	private String recruitDetailId;
+	private RecruitDto recruitDetail;
+	
+	/**
+	 * 招聘信息列表
+	 * @return
+	 */
+	public String showCompanyRecruitAction() {
+		try {
+			this.clearMessages();
+			recruitDetailId = "";
+			recruitDetail = new RecruitDto();
+			homeRecruitList = recruitService.queryAllRecruit();
+		} catch(Exception e) {
+			log.error("showCompanyRecruitAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 招聘信息明细
+	 * @return
+	 */
+	public String showRecruitDetailAction() {
+		try {
+			this.clearMessages();
+			recruitDetail = recruitService.queryRecruitByID(recruitDetailId);
+			if(recruitDetail != null) {
+				String data = recruitDetail.getData();
+				data = data.replace(" ", "&nbsp;");
+				data = data.replace("<", "&lt;");
+				data = data.replace(">", "&gt;");
+				data = data.replace("\r\n", "<br>");
+				recruitDetail.setData(data);
+			}
+		} catch(Exception e) {
+			log.error("showCompanyRecruitAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 案例介绍明细
+	 * @return
+	 */
+	public String showHomeCaseDetailAction() {
+		try {
+			this.clearMessages();
+			caseDetail = caseService.queryCaseByID(caseDetailId);
+			if(caseDetail != null) {
+				String data = caseDetail.getData();
+				data = data.replace(" ", "&nbsp;");
+				data = data.replace("<", "&lt;");
+				data = data.replace(">", "&gt;");
+				data = data.replace("\r\n", "<br>");
+				caseDetail.setData(data);
+			}
+		} catch(Exception e) {
+			log.error("showHomeCaseDetail error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 案例介绍
+	 * @return
+	 */
+	public String showHomeCaseAction() {
+		try {
+			this.clearMessages();
+			caseDetailId = "";
+			//大分类列表
+			homeGoodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			if(StringUtil.isBlank(caseFieldcode)) {
+				//默认选择第一个电线
+				caseFieldcode = Constants.DICT_GOODS_TYPE_CODE_01;
+			}
+			homeCaseList = caseService.queryCaseByType(caseFieldcode);
+		} catch(Exception e) {
+			log.error("showHomeCaseAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * QA页面
+	 * @return
+	 */
+	public String showQaAction() {
+		try {
+			this.clearMessages();
+			addQaDto = new QaDto();
+		} catch(Exception e) {
+			log.error("showQaAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 新增QA记录
+	 * @return
+	 */
+	public String addQaAction() {
+		try {
+			this.clearMessages();
+			//数据验证
+			if(!checkData(addQaDto)) {
+				return "checkerror";
+			}
+			addQaDto.setStatus("" + Constants.STATUS_NORMAL);
+			addQaDto.setIp(getIP());
+			qaService.insertQa(addQaDto);
+			
+			this.addActionMessage("添加成功！");
+			addQaDto = new QaDto();
+		} catch(Exception e) {
+			log.error("addQaAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
 	 * 回到首页Action
 	 * @return
 	 */
@@ -80,6 +230,28 @@ public class HomeAction extends BaseAction {
 			homeNewsList = newsService.queryHomeNews();
 		} catch(Exception e) {
 			log.error("goHomeAction error:" + e);
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * PDF明细
+	 * @return
+	 */
+	public String showPdfAction() {
+		try {
+			this.clearMessages();
+			//判断PDF文件是否存在
+			String pdf_path = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_PATH);
+			String pdf_url = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
+			File file = new File(pdf_path + pdfFileName);
+			if(!file.exists()) {
+				return "notfound";
+			}
+			pdfFileName = pdf_url + pdfFileName;
+		} catch(Exception e) {
+			log.error("showPdfAction error:" + e);
+			return ERROR;
 		}
 		return SUCCESS;
 	}
@@ -299,6 +471,55 @@ public class HomeAction extends BaseAction {
 		return SUCCESS;
 	}
 	
+	/**
+	 * 数据check
+	 * @param news
+	 * @return
+	 */
+	private boolean checkData(QaDto qa) {
+		if(qa == null) {
+			this.addActionMessage("标题不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getTitle())) {
+			this.addActionMessage("标题不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getData())) {
+			this.addActionMessage("内容不能为空！");
+			return false;
+		}
+		if(qa.getData().length() > 2500) {
+			this.addActionMessage("内容不能超过2500个字！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getFullname())) {
+			this.addActionMessage("姓名不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getCompany())) {
+			this.addActionMessage("公司名称不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getAddress())) {
+			this.addActionMessage("地址不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getTell())) {
+			this.addActionMessage("电话不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getFax())) {
+			this.addActionMessage("传真不能为空！");
+			return false;
+		}
+		if(StringUtil.isBlank(qa.getEmail())) {
+			this.addActionMessage("邮件不能为空！");
+			return false;
+		}
+		return true;
+	}
+	
 	public String getStrFieldcode() {
 		return strFieldcode;
 	}
@@ -369,5 +590,101 @@ public class HomeAction extends BaseAction {
 
 	public void setNewsDetail(NewsDto newsDetail) {
 		this.newsDetail = newsDetail;
+	}
+
+	public String getPdfFileName() {
+		return pdfFileName;
+	}
+
+	public void setPdfFileName(String pdfFileName) {
+		this.pdfFileName = pdfFileName;
+	}
+
+	public QaService getQaService() {
+		return qaService;
+	}
+
+	public void setQaService(QaService qaService) {
+		this.qaService = qaService;
+	}
+
+	public QaDto getAddQaDto() {
+		return addQaDto;
+	}
+
+	public void setAddQaDto(QaDto addQaDto) {
+		this.addQaDto = addQaDto;
+	}
+
+	public RecruitService getRecruitService() {
+		return recruitService;
+	}
+
+	public void setRecruitService(RecruitService recruitService) {
+		this.recruitService = recruitService;
+	}
+
+	public CaseService getCaseService() {
+		return caseService;
+	}
+
+	public void setCaseService(CaseService caseService) {
+		this.caseService = caseService;
+	}
+
+	public List<CaseDto> getHomeCaseList() {
+		return homeCaseList;
+	}
+
+	public void setHomeCaseList(List<CaseDto> homeCaseList) {
+		this.homeCaseList = homeCaseList;
+	}
+
+	public String getCaseFieldcode() {
+		return caseFieldcode;
+	}
+
+	public void setCaseFieldcode(String caseFieldcode) {
+		this.caseFieldcode = caseFieldcode;
+	}
+
+	public String getCaseDetailId() {
+		return caseDetailId;
+	}
+
+	public void setCaseDetailId(String caseDetailId) {
+		this.caseDetailId = caseDetailId;
+	}
+
+	public CaseDto getCaseDetail() {
+		return caseDetail;
+	}
+
+	public void setCaseDetail(CaseDto caseDetail) {
+		this.caseDetail = caseDetail;
+	}
+
+	public List<RecruitDto> getHomeRecruitList() {
+		return homeRecruitList;
+	}
+
+	public void setHomeRecruitList(List<RecruitDto> homeRecruitList) {
+		this.homeRecruitList = homeRecruitList;
+	}
+
+	public String getRecruitDetailId() {
+		return recruitDetailId;
+	}
+
+	public void setRecruitDetailId(String recruitDetailId) {
+		this.recruitDetailId = recruitDetailId;
+	}
+
+	public RecruitDto getRecruitDetail() {
+		return recruitDetail;
+	}
+
+	public void setRecruitDetail(RecruitDto recruitDetail) {
+		this.recruitDetail = recruitDetail;
 	}
 }

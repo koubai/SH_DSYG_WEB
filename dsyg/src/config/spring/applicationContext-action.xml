@@ -2,6 +2,30 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 <beans>
 	
+	<!-- recruit -->
+	<bean id="recruitAction" class="com.cn.dsyg.action.RecruitAction" scope="session">
+		<property name="recruitService">
+			<ref bean="recruitService"/>
+		</property>
+	</bean>
+	
+	<!-- case -->
+	<bean id="caseAction" class="com.cn.dsyg.action.CaseAction" scope="session">
+		<property name="caseService">
+			<ref bean="caseService"/>
+		</property>
+		<property name="dict01Service">
+			<ref bean="dict01Service"/>
+		</property>
+	</bean>
+	
+	<!-- QA -->
+	<bean id="qaAction" class="com.cn.dsyg.action.QaAction" scope="session">
+		<property name="qaService">
+			<ref bean="qaService"/>
+		</property>
+	</bean>
+	
 	<!-- warehouse -->
 	<bean id="warehouseAction" class="com.cn.dsyg.action.WarehouseAction" scope="session">
 		<property name="dict01Service">
@@ -59,6 +83,15 @@
 		</property>
 		<property name="newsService">
 			<ref bean="newsService"/>
+		</property>
+		<property name="qaService">
+			<ref bean="qaService"/>
+		</property>
+		<property name="recruitService">
+			<ref bean="recruitService"/>
+		</property>
+		<property name="caseService">
+			<ref bean="caseService"/>
 		</property>
 	</bean>
 	

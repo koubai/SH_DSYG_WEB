@@ -43,7 +43,7 @@ public class Product01Dto extends BaseDto {
 	private String nameno;
 
 	/**
-	 * 型号
+	 * 产品规格
 	 */
 	private String typeno;
 

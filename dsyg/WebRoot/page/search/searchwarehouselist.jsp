@@ -146,13 +146,14 @@ function search() {
 					<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
 						<tr class="tab_tittle">
 							<td>&nbsp;</td>
-							<td width="160">产品类型</td>
-							<td width="120">UL编号</td>
+							<td width="100">产品类型</td>
 							<td width="180">产品名称</td>
+							<td width="120">产品规格</td>
 							<td width="80">数量</td>
 							<td width="80">单位</td>
 							<td width="80">产地</td>
 							<td width="80">发货天数</td>
+							<td width="60"></td>
 						</tr>
 						<s:iterator value="searchWarehouseList" id="searchWarehouseList" status="st2">
 							<s:if test="#st2.odd==true">
@@ -163,18 +164,14 @@ function search() {
 							</s:else>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st2.index + 1"/></td>
 								<td>
-									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
-									<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>
-									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
-									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
 									<s:iterator id="goodsList" value="goodsList" status="st3">
 										<s:if test="%{goodsList[#st3.index].code == searchWarehouseList[#st2.index].producttype}">
 											<s:property value="fieldname"/>
 										</s:if>
 									</s:iterator>
 								</td>
-								<td><s:property value="ulcode"/></td>
 								<td><s:property value="productname"/></td>
+								<td><s:property value="typeno"/></td>
 								<td><s:property value="item01"/></td>
 								<td>
 									<s:iterator value="unitList" id="unitList" status="st1">
@@ -191,6 +188,12 @@ function search() {
 									</s:iterator>
 								</td>
 								<td><s:property value="item03"/></td>
+								<td>
+									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
+									<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>
+									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
+									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
+								</td>
 							</tr>
 						</s:iterator>
 					</table>

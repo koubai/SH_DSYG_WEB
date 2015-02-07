@@ -210,10 +210,10 @@
 														<dt><s:property value="name"/>：</dt>
 														<dd>
 															<s:if test='goodsId == "01"'>
-																<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value="" type="radio" /><label>无</label>
+																<input checked="checked" id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value="" type="radio" /><label>无</label>
 															</s:if>
 															<s:elseif test='goodsId == "02"'>
-																<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value="" type="radio" /><label>无</label>
+																<input checked="checked" id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value="" type="radio" /><label>无</label>
 															</s:elseif>
 															<s:iterator value="dictList" id="dictList" status="st2">
 																<s:if test='goodsId == "01"'>
@@ -263,7 +263,7 @@
 											</s:iterator>
 										</s:if>
 										<br />
-										UL 型号/编号：<input name="ulCode" id="ulCode" style="width: 180px;" maxlength="18" value="<s:property value="ulCode"/>"/>
+										UL编号：<input name="ulCode" id="ulCode" style="width: 180px;" maxlength="18" value="<s:property value="ulCode"/>"/>
 										<div class="line"></div>
 									</div>
 								</s:if>

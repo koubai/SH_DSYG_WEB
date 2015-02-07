@@ -38,6 +38,11 @@ public class WarehouseDto extends BaseDto {
 	private String ulcode;
 	
 	/**
+	 * 产品型号（规格）
+	 */
+	private String typeno;
+	
+	/**
 	 * 产品数据权限
 	 */
 	private String productrank;
@@ -426,6 +431,14 @@ public class WarehouseDto extends BaseDto {
 
 	public void setProductrank(String productrank) {
 		this.productrank = productrank;
+	}
+
+	public String getTypeno() {
+		return typeno;
+	}
+
+	public void setTypeno(String typeno) {
+		this.typeno = typeno;
 	}
 
 }

@@ -28,6 +28,12 @@
 	<include file="struts-news.xml"></include>
 	<!-- search -->
 	<include file="struts-search.xml"></include>
+	<!-- qa -->
+	<include file="struts-qa.xml"></include>
+	<!-- case -->
+	<include file="struts-case.xml"></include>
+	<!-- recruit -->
+	<include file="struts-recruit.xml"></include>
 	
 	<package name="index" extends="struts-default, json-default" namespace="/index">
 		

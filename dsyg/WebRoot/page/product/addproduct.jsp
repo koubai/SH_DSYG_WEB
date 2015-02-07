@@ -55,7 +55,7 @@
 			return false;
 		}
 		if(typeno == "") {
-			alert("产品型号不能为空！");
+			alert("产品规格不能为空！");
 			$("#typeno").focus();
 			return false;
 		}
@@ -65,7 +65,7 @@
 			return false;
 		}
 		if(item09 == "") {
-			alert("UL编号不能为空！");
+			alert("UL型号/编号不能为空！");
 			$("#item09").focus();
 			return false;
 		}
@@ -370,7 +370,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td class="td_tittle"><span>*</span>UL 型号/编号：</td>
+							<td class="td_tittle"><span>*</span>UL型号/编号：</td>
 							<td><s:textfield name="addProduct01Dto.item09" id="item09" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
 						<tr>
 						<s:if test='addProduct01Dto.fieldcode == "01"'>

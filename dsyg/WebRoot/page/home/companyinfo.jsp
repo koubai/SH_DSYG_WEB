@@ -52,7 +52,7 @@
 						<a href="<c:url value="/home/showCompanyDistributionAction.action"></c:url>">公司分布</a>
 					</li>
 					<li id="list5">
-						<a href="#">招聘信息</a>
+						<a href="<c:url value="/home/showCompanyRecruitAction.action"></c:url>">招聘信息</a>
 					</li>
 				</ul>
 			</div>
@@ -87,10 +87,44 @@
 						</li>
 					</ul>
 				</div>
+				<!--
+				<div class="capital_details nostyle">
+					<ul>
+						<p class="basic_rules">
+							多样事业的展开
+						</p>
+						<li>
+							汽车机器部门<br>
+				汽车线束、仪表盘、车载机器
+						</li>
+						<li>
+							生活环境机器部门<br>
+				电线、燃气设备、环境系统机器、住宅设备机器
+						</li>
+						<li>
+							新事业<br>
+				废品再利用事业、看护事业、农业事业
+						</li>
+					</ul>
+				</div>
+				<div class="capital_details nostyle">
+					<ul>
+						<p class="basic_rules">
+							国际化的事业展开
+						</p>
+						<li>
+							43个国家，160个法人，444据点（包含日本）（2013年6月20日）
+						</li>
+					</ul>
+				</div>
+				-->
 				<div class="capital_heights2">
 				</div>
 				<p class="tabletit">
 					公司简介
+				</p>
+				<p class="basic_rules">
+					20多年来東升盈港遵循住友的经营理念：万事入精，信用确实，不趋浮利。
 				</p>
 			  <div class="cap_table">
 					<table class="ke-zeroborder" cellpadding="0" cellspacing="0" border="0" width="660">

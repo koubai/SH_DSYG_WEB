@@ -89,7 +89,7 @@ function turn(id) {
 							<td>产品名称</td>
 							<td>产品类型</td>
 							<td>产品规格</td>
-							<td>UL编号</td>
+							<td>UL型号/编号</td>
 							<s:if test='goodsId == "01" || goodsId == "02"'>
 								<s:if test='featureList.size() > 0'>
 									<s:iterator value="featureList" id="featureList" status="st1">
@@ -108,7 +108,11 @@ function turn(id) {
 							</s:else>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st2.index + 1"/></td>
 								<td>
-									<a href="<s:property value="pdfurl"/><s:property value="pdfpath"/>" target=""><s:property value="nameno"/></a>
+									<!--
+									<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target="parent"><s:property value="nameno"/></a>
+									-->
+									<a href="<s:property value="pdfurl"/><s:property value="pdfpath"/>" target="_blank"><s:property value="nameno"/></a>
+									<!--<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target=""><s:property value="nameno"/></a>-->
 								</td>
 								<td>
 									<s:iterator id="goodsList" value="goodsList" status="st3">
@@ -161,7 +165,13 @@ function turn(id) {
 										</s:iterator>
 									</s:iterator>
 								</s:elseif>
-								<td><s:property value="color1"/></td>
+								<td>
+									<s:iterator value="colorList" id="colorList" status="st1">
+										<s:if test="%{colorList[#st1.index].code == product01List[#st2.index].color1}">
+											<s:property value="fieldname"/>
+										</s:if>
+									</s:iterator>
+								</td>
 							</tr>
 						</s:iterator>
 					</table>

@@ -50,7 +50,7 @@
 			<table class="product_tab font16" width="100%" border="1" cellspacing="5" cellpadding="5">
 				<s:iterator id="product01SummaryList" value="product01SummaryList" status="st1">
 					<tr>
-						<td class="bgeee" width="145"><a href="<%=request.getContextPath()%>/searchlist_g<s:property value="fieldcode"/><s:property value="summaryUrl"/>"><img src="<%=request.getContextPath()%>/images/product<s:property value="fieldcode"/>.png" border="0" alt="" /></a></td>
+						<td class="bgeee" width="145"><a href="<%=request.getContextPath()%>/searchlist_g<s:property value="fieldcode"/><s:property value="summaryUrl"/>"><img src="<%=request.getContextPath()%>/images/product<s:property value="fieldcode"/>.jpg" border="0" alt="" /></a></td>
 						<td class="bgefe">
 							<s:iterator value="goodsList" id="goodsList" status="st2">
 								<s:if test="%{goodsList[#st2.index].code == product01SummaryList[#st1.index].fieldcode}">

@@ -163,7 +163,7 @@ public class Product01Action extends BaseAction {
 			Product01Dto pro = product01Service.queryProduct01ByLogicId(updProduct01Dto.getNameno(),
 					updProduct01Dto.getTypeno(), updProduct01Dto.getColor1());
 			if(pro != null && !pro.getId().equals(updProduct01Dto.getId())) {
-				this.addActionMessage("已存在相同产品名称、产品型号和颜色的产品！");
+				this.addActionMessage("已存在相同产品名称、产品规格和颜色的产品！");
 				return "checkerror";
 			}
 			
@@ -283,11 +283,11 @@ public class Product01Action extends BaseAction {
 				return "checkerror";
 			}
 			
-			//判断逻辑主键是否唯一（产品名称、产品型号和颜色）
+			//判断逻辑主键是否唯一（产品名称、产品规格和颜色）
 			Product01Dto pro = product01Service.queryProduct01ByLogicId(addProduct01Dto.getNameno(),
 					addProduct01Dto.getTypeno(), addProduct01Dto.getColor1());
 			if(pro != null) {
-				this.addActionMessage("已存在相同产品名称、产品型号和颜色的产品！");
+				this.addActionMessage("已存在相同产品名称、产品规格和颜色的产品！");
 				return "checkerror";
 			}
 			
@@ -416,18 +416,18 @@ public class Product01Action extends BaseAction {
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getTypeno())) {
-			this.addActionMessage("产品型号不能为空！");
+			this.addActionMessage("产品规格不能为空！");
 			return false;
 		}
 		if(StringUtil.isBlank(product01.getColor1())) {
 			this.addActionMessage("颜色不能为空！");
 			return false;
 		}
-		//UL编号
-				if(StringUtil.isBlank(product01.getItem09())) {
-					this.addActionMessage("UL编号不能为空！");
-					return false;
-				}
+		//UL型号/编号
+		if(StringUtil.isBlank(product01.getItem09())) {
+			this.addActionMessage("UL型号/编号不能为空！");
+			return false;
+		}
 		if(Constants.DICT_GOODS_TYPE_CODE_01.equals(product01.getFieldcode())) {
 			//电线，需要验证单选框数据
 			if(StringUtil.isBlank(product01.getItem01())) {

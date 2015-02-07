@@ -88,6 +88,8 @@ public class SearchAction extends BaseAction {
 	private String keyword;
 	//1为条件检索，2为关键字检索
 	private String tabIndex;
+	//颜色
+	private List<Dict01Dto> colorList;
 
 	/**
 	 * 显示搜索
@@ -246,6 +248,8 @@ public class SearchAction extends BaseAction {
 			listUrl = "";
 			//产品类型
 			goodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			//颜色
+			colorList = dict01Service.queryDict01ByFieldcode(Constants.DICT_COLOR_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//查询汇总页面
 			if(StringUtil.isNotBlank(goodsId)) {
 				//小分类
@@ -329,6 +333,8 @@ public class SearchAction extends BaseAction {
 		page = new Page();
 		//大分类列表
 		goodsList = dict01Service.queryGoodsNoOther(PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+		//颜色
+		colorList = dict01Service.queryDict01ByFieldcode(Constants.DICT_COLOR_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 	}
 
 	public Dict01Service getDict01Service() {
@@ -501,5 +507,13 @@ public class SearchAction extends BaseAction {
 
 	public void setUlCode(String ulCode) {
 		this.ulCode = ulCode;
+	}
+
+	public List<Dict01Dto> getColorList() {
+		return colorList;
+	}
+
+	public void setColorList(List<Dict01Dto> colorList) {
+		this.colorList = colorList;
 	}
 }

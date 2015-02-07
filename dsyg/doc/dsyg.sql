@@ -16,6 +16,37 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`dsyg` /*!40100 DEFAULT CHARACTER SET ut
 
 USE `dsyg`;
 
+/*Table structure for table `tbcase` */
+
+DROP TABLE IF EXISTS `tbcase`;
+
+CREATE TABLE `tbcase` (
+  `id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `title` varchar(128) DEFAULT NULL COMMENT '标题',
+  `fieldcode` varchar(8) DEFAULT NULL COMMENT '产品类型',
+  `data` varchar(5000) DEFAULT NULL COMMENT '内容',
+  `pic01` varchar(64) DEFAULT NULL COMMENT '图片1路径',
+  `pic02` varchar(64) DEFAULT NULL COMMENT '图片2路径',
+  `pic03` varchar(64) DEFAULT NULL COMMENT '图片3路径',
+  `pic04` varchar(64) DEFAULT NULL COMMENT '图片4路径',
+  `pic05` varchar(64) DEFAULT NULL COMMENT '图片5路径',
+  `res01` varchar(512) DEFAULT NULL COMMENT '预备项目1',
+  `res02` varchar(512) DEFAULT NULL COMMENT '预备项目2',
+  `res03` varchar(512) DEFAULT NULL COMMENT '预备项目3',
+  `res04` varchar(512) DEFAULT NULL COMMENT '预备项目4',
+  `res05` varchar(512) DEFAULT NULL COMMENT '预备项目5',
+  `status` int(4) DEFAULT NULL COMMENT '状态，1为有效，其他为无效',
+  `createuid` varchar(32) DEFAULT NULL COMMENT '数据创建者',
+  `createdate` datetime DEFAULT NULL COMMENT '创建时间',
+  `updateuid` varchar(32) DEFAULT NULL COMMENT '数据更新者',
+  `updatedate` datetime DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbcase` */
+
+insert  into `tbcase`(`id`,`title`,`fieldcode`,`data`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`res01`,`res02`,`res03`,`res04`,`res05`,`status`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (8,'test1aba23111','06','afdafdafdsaddd\r\n\r\nfdafd\r\nfda\r\nfda\r\nfdsa\r\nfdsafdsafdsafdsafdsafd\r\nfd\r\nsaf\r\nds\r\naffdsafdsafdsafd','20150207164600221399294.jpg',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'admin11','2015-01-01 00:00:00','admin','2015-02-07 16:46:00');
+
 /*Table structure for table `tbdict01` */
 
 DROP TABLE IF EXISTS `tbdict01`;
@@ -151,6 +182,65 @@ CREATE TABLE `tbproduct01` (
 
 insert  into `tbproduct01`(`id`,`fieldcode`,`cata1`,`cata2`,`cata3`,`nameno`,`typeno`,`typenosub`,`color1`,`color2`,`size01`,`size02`,`makearea`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`item11`,`item12`,`item13`,`item14`,`item15`,`item16`,`item17`,`item18`,`item19`,`item20`,`item21`,`item22`,`item23`,`item24`,`item25`,`item26`,`item27`,`item28`,`item29`,`item30`,`pic01`,`pic02`,`pic03`,`pic04`,`pic05`,`pdfpath`,`rank`,`status`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`keyword`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (35,'01',NULL,NULL,NULL,'test11','aa',NULL,'03',NULL,NULL,NULL,NULL,'01','002','02','01','','',NULL,NULL,'12',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2015011223121938444e3cd.pdf',50,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'電子線,test11,11,80℃,60V,PE,LEAD Free,aa,bb,黄,','admin','2015-01-12 23:12:19','admin','2015-01-12 23:12:19'),(36,'01',NULL,NULL,NULL,'test11','cc',NULL,'03',NULL,NULL,NULL,NULL,'02','002','02','02','','',NULL,NULL,'11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'','','',NULL,NULL,'2015011223132387211f2c2.pdf',50,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'電子線,test11,11,105℃,60V,PE,Halogen Free,cc,黄,','admin','2015-01-12 23:13:23','admin','2015-01-12 23:27:57'),(37,'02',NULL,NULL,NULL,'test222','22',NULL,'06',NULL,NULL,NULL,NULL,'03','010','02','02','02','02',NULL,NULL,'afad',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'20150112232859778d40f37.pdf',50,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'熱収束套管,test222,afad,150℃,1KV及以上,单层绝缘,3:1,其他,Halogen Free,22,靛,','admin','2015-01-12 23:28:59','admin','2015-01-12 23:28:59');
 
+/*Table structure for table `tbqa` */
+
+DROP TABLE IF EXISTS `tbqa`;
+
+CREATE TABLE `tbqa` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(64) DEFAULT NULL,
+  `Data` varchar(5000) DEFAULT NULL,
+  `fullname` varchar(32) DEFAULT NULL,
+  `company` varchar(64) DEFAULT NULL,
+  `address` varchar(128) DEFAULT NULL,
+  `tell` varchar(32) DEFAULT NULL,
+  `fax` varchar(32) DEFAULT NULL,
+  `email` varchar(64) DEFAULT NULL,
+  `ip` varchar(64) DEFAULT NULL,
+  `Res01` varchar(128) DEFAULT NULL,
+  `Res02` varchar(128) DEFAULT NULL,
+  `Res03` varchar(128) DEFAULT NULL,
+  `Res04` varchar(128) DEFAULT NULL,
+  `Res05` varchar(128) DEFAULT NULL,
+  `status` int(4) DEFAULT NULL,
+  `CreateUid` varchar(32) DEFAULT NULL,
+  `CreateDate` datetime DEFAULT NULL,
+  `UpdateUid` varchar(32) DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbqa` */
+
+insert  into `tbqa`(`id`,`Title`,`Data`,`fullname`,`company`,`address`,`tell`,`fax`,`email`,`ip`,`Res01`,`Res02`,`Res03`,`Res04`,`Res05`,`status`,`CreateUid`,`CreateDate`,`UpdateUid`,`UpdateDate`) values (5,'aaa','bbb','ccc','ddd','eee','fff','gg','hhh','127.0.0.1',NULL,NULL,NULL,NULL,NULL,0,NULL,'2015-02-07 00:26:42','admin','2015-02-07 00:30:07');
+
+/*Table structure for table `tbrecruit` */
+
+DROP TABLE IF EXISTS `tbrecruit`;
+
+CREATE TABLE `tbrecruit` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `Title` varchar(50) DEFAULT NULL,
+  `recruittype` char(2) DEFAULT NULL,
+  `Data` varchar(5000) DEFAULT NULL,
+  `Persons` int(10) DEFAULT NULL,
+  `Res01` varchar(1000) DEFAULT NULL,
+  `Res02` varchar(1000) DEFAULT NULL,
+  `Res03` varchar(1000) DEFAULT NULL,
+  `Res04` varchar(1000) DEFAULT NULL,
+  `Res05` varchar(1000) DEFAULT NULL,
+  `status` int(4) DEFAULT NULL,
+  `CreateUid` varchar(32) DEFAULT NULL,
+  `CreateDate` datetime DEFAULT NULL,
+  `UpdateUid` varchar(32) DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbrecruit` */
+
+insert  into `tbrecruit`(`id`,`Title`,`recruittype`,`Data`,`Persons`,`Res01`,`Res02`,`Res03`,`Res04`,`Res05`,`status`,`CreateUid`,`CreateDate`,`UpdateUid`,`UpdateDate`) values (2,'testt111',NULL,'fdsafdafa\r\nfdafdsa',1,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-02-07 15:48:30','admin','2015-02-07 15:48:30');
+
 /*Table structure for table `tbrole` */
 
 DROP TABLE IF EXISTS `tbrole`;
@@ -229,11 +319,11 @@ CREATE TABLE `tbwarehouse` (
   `updateuid` varchar(32) DEFAULT NULL COMMENT '数据更新者',
   `updatedate` datetime DEFAULT NULL COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbwarehouse` */
 
-insert  into `tbwarehouse`(`id`,`productid`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`rank`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`status`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (1,6,'11.00','22.00','33','44',NULL,NULL,NULL,NULL,NULL,NULL,50,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-01-03 00:00:00','admin','2015-01-03 00:00:00'),(2,37,'120.10','12.22','32',NULL,NULL,NULL,NULL,NULL,NULL,NULL,50,'006','002','1','1',NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-01-17 23:38:15','admin','2015-01-18 00:39:00'),(3,35,'321.00','12.00','4',NULL,NULL,NULL,NULL,NULL,NULL,NULL,50,'002','003','1','0',NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-01-18 00:57:14','admin','2015-01-18 00:57:14');
+insert  into `tbwarehouse`(`id`,`productid`,`item01`,`item02`,`item03`,`item04`,`item05`,`item06`,`item07`,`item08`,`item09`,`item10`,`rank`,`res01`,`res02`,`res03`,`res04`,`res05`,`res06`,`res07`,`res08`,`res09`,`res10`,`status`,`createuid`,`createdate`,`updateuid`,`updatedate`) values (1,6,'11.00','22.00','33','44',NULL,NULL,NULL,NULL,NULL,NULL,50,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-01-03 00:00:00','admin','2015-01-03 00:00:00'),(2,37,'0.00','12.22','32',NULL,NULL,NULL,NULL,NULL,NULL,NULL,50,'006','002','1','1',NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-01-17 23:38:15','admin','2015-01-18 19:46:01'),(3,35,'321.00','12.00','4',NULL,NULL,NULL,NULL,NULL,NULL,NULL,50,'002','003','1','0',NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-01-18 00:57:14','admin','2015-01-18 00:57:14'),(4,37,'0.00',NULL,'54',NULL,NULL,NULL,NULL,NULL,NULL,NULL,50,'008','002','1','1',NULL,NULL,NULL,NULL,NULL,NULL,1,'admin','2015-01-18 19:46:46','admin','2015-01-18 21:52:31');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

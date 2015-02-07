@@ -6,8 +6,36 @@
 
 	<package name="home" extends="struts-default, json-default" namespace="/home">
 	
+		<action name="showCompanyRecruitAction" class="homeAction" method="showCompanyRecruitAction">
+			<result name="success">/page/home/companyrecruit.jsp</result>
+		</action>
+		
+		<action name="showRecruitDetailAction" class="homeAction" method="showRecruitDetailAction">
+			<result name="success">/page/home/companyrecruitdetail.jsp</result>
+		</action>
+		
+		<action name="showHomeCaseDetailAction" class="homeAction" method="showHomeCaseDetailAction">
+			<result name="success">/page/home/casedetail.jsp</result>
+		</action>
+		
+		<action name="showHomeCaseAction" class="homeAction" method="showHomeCaseAction">
+			<result name="success">/page/home/case.jsp</result>
+		</action>
+		
+		<action name="showQaAction" class="homeAction" method="showQaAction">
+			<result name="success">/page/home/addqa.jsp</result>
+		</action>
+		
+		<action name="addQaAction" class="homeAction" method="addQaAction">
+			<result name="success">/page/home/addqa.jsp</result>
+		</action>
+		
 		<action name="goHomeAction" class="homeAction" method="goHomeAction">
 			<result name="success">/page/home/home.jsp</result>
+		</action>
+		
+		<action name="showPdfAction" class="homeAction" method="showPdfAction">
+			<result name="success">/page/home/pdfdetail.jsp</result>
 		</action>
 		
 		<action name="showOnlineAction" class="homeAction" method="showOnlineAction">

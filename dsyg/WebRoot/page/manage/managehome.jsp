@@ -44,12 +44,27 @@ function logout() {
 					</tr>
 					<tr>
 						<td>
+							<a href="<c:url value="/case/showCaseAction.action"></c:url>">案例介绍一览</a>
+						</td>
+						<td>
+							<a href="<c:url value="/recruit/showRecruitAction.action"></c:url>">招聘信息一览</a>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<a href="<c:url value="/qa/showQaAction.action"></c:url>">咨询信息Q/A一览</a>
+						</td>
+						<td>
 							<a href="<c:url value="/user/showUpdPasswordAction.action"></c:url>">密码修改</a>
 						</td>
+					</tr>
+					<tr>
 						<td>
 							<s:if test='#session.user_rank >= 90'>
 								<a href="<c:url value="/user/showUserManagePageAction.action"></c:url>">用户管理</a>
 							</s:if>
+						</td>
+						<td>
 						</td>
 					</tr>
 				</table>
