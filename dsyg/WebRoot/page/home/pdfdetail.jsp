@@ -12,7 +12,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
-<title><s:property value="pdfpath"/></title>
+<title>东升盈港-<s:property value="pdfpath"/></title>
 </head>
 <body>
 <table>

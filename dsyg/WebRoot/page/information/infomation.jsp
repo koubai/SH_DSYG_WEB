@@ -12,7 +12,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
-<title>相关技术情报</title>
+<title>东升盈港-相关技术情报</title>
 <script type="text/javascript">
 </script>
 </head>
@@ -28,7 +28,7 @@
 		<div class="products_info">
 			<table width="80%" border="0" cellpadding="0" cellspacing="10">
 			  <tbody><tr>
-				<td width="33.3%"><a href="#">
+				<td width="33.3%"><a href="<c:url value="/home/showInformationDetail1Action.action"></c:url>">
 					<div class="product">
 						<p>電子線</p>
 						<p class="arial">Electronic Wire</p>
@@ -40,7 +40,7 @@
 						<p class="arial">Heat-Shrink-Tube</p>
 					</div>	</a>						
 				</td>
-				<td width="33.3%"><a href="#">
+				<td width="33.3%"><a href="<c:url value="/home/showInformationDetail1Action.action"></c:url>">
 					<div class="product">
 						<p>柔軟扁平電纜</p>
 						<p class="arial">Flexible Flat Cable</p>

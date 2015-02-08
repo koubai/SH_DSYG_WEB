@@ -113,12 +113,12 @@ public class Product01Dto extends BaseDto {
 	private String item07;
 
 	/**
-	 * 项目8
+	 * 项目8（品牌）
 	 */
 	private String item08;
 
 	/**
-	 * 项目9
+	 * 项目9（U/L编号）
 	 */
 	private String item09;
 

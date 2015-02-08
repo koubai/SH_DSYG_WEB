@@ -14,10 +14,10 @@
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
 <title>
 <s:if test="recruitDetail != null">
-招聘信息明细-<s:property value="recruitDetail.title"/>
+东升盈港-招聘信息明细-<s:property value="recruitDetail.title"/>
 </s:if>
 <s:else>
-招聘信息明细
+东升盈港-招聘信息明细
 </s:else>
 </title>
 <script type="text/javascript">

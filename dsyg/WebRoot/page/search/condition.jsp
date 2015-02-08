@@ -14,7 +14,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
-<title>产品检索</title>
+<title>东升盈港-产品检索</title>
 <script type="text/javascript">
 	//检索
 	function searchSummary() {

@@ -12,7 +12,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>库存检索列表</title>
+<title>东升盈港-库存检索列表</title>
 <script type="text/javascript">
 function turn(id) {
 	var totalPage = "${page.totalPage}";
@@ -117,7 +117,7 @@ function search() {
 						<span class="red">*</span>说明：
 						<img src="<%=request.getContextPath()%>/images/instock.png" />表示现货
 						<img src="<%=request.getContextPath()%>/images/futures.png" />表示期货
-						<img src="<%=request.getContextPath()%>/images/zheng.png" />表示整箱
+						<!--img src="<%=request.getContextPath()%>/images/zheng.png" />表示整箱 -->
 						<img src="<%=request.getContextPath()%>/images/luan.png" />表示乱尺
 					</div>
 					<div class="page">
@@ -146,13 +146,15 @@ function search() {
 					<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
 						<tr class="tab_tittle">
 							<td>&nbsp;</td>
-							<td width="100">产品类型</td>
-							<td width="180">产品名称</td>
+							<td width="100">品牌</td>
+							<td width="80">产品类型</td>
+							<td width="160">产品名称</td>
 							<td width="120">产品规格</td>
-							<td width="80">数量</td>
-							<td width="80">单位</td>
-							<td width="80">产地</td>
-							<td width="80">发货天数</td>
+							<td width="60">颜色</td>
+							<td width="60">数量</td>
+							<td width="60">单位</td>
+							<td width="70">产地</td>
+							<td width="70">发货天数</td>
 							<td width="60"></td>
 						</tr>
 						<s:iterator value="searchWarehouseList" id="searchWarehouseList" status="st2">
@@ -163,6 +165,7 @@ function search() {
 								<tr class="bg2">
 							</s:else>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st2.index + 1"/></td>
+								<td><s:property value="brand"/></td>
 								<td>
 									<s:iterator id="goodsList" value="goodsList" status="st3">
 										<s:if test="%{goodsList[#st3.index].code == searchWarehouseList[#st2.index].producttype}">
@@ -172,6 +175,13 @@ function search() {
 								</td>
 								<td><s:property value="productname"/></td>
 								<td><s:property value="typeno"/></td>
+								<td>
+									<s:iterator value="colorList" id="colorList" status="st1">
+										<s:if test="%{colorList[#st1.index].code == searchWarehouseList[#st2.index].color}">
+											<s:property value="fieldname"/>
+										</s:if>
+									</s:iterator>
+								</td>
 								<td><s:property value="item01"/></td>
 								<td>
 									<s:iterator value="unitList" id="unitList" status="st1">
@@ -190,7 +200,7 @@ function search() {
 								<td><s:property value="item03"/></td>
 								<td>
 									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
-									<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>
+									<!--<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>-->
 									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
 									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
 								</td>

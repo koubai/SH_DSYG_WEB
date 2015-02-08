@@ -12,7 +12,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
-<title>相关技术情报</title>
+<title>东升盈港-相关技术情报</title>
 <script type="text/javascript">
 </script>
 </head>

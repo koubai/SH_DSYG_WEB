@@ -12,7 +12,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
-<title>公司分布</title>
+<title>东升盈港-公司分布</title>
 <script type="text/javascript">
 </script>
 </head>

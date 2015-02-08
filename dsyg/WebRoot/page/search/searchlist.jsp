@@ -12,7 +12,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>产品检索列表</title>
+<title>东升盈港-产品检索列表</title>
 <script type="text/javascript">
 function turn(id) {
 	var totalPage = "${page.totalPage}";
@@ -86,10 +86,11 @@ function turn(id) {
 					<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
 						<tr class="tab_tittle">
 							<td>&nbsp;</td>
-							<td>产品名称</td>
+							<td>品牌</td>
 							<td>产品类型</td>
+							<td>产品名称</td>
 							<td>产品规格</td>
-							<td>UL型号/编号</td>
+							<td>颜色</td>
 							<s:if test='goodsId == "01" || goodsId == "02"'>
 								<s:if test='featureList.size() > 0'>
 									<s:iterator value="featureList" id="featureList" status="st1">
@@ -97,7 +98,6 @@ function turn(id) {
 									</s:iterator>
 								</s:if>
 							</s:if>
-							<td>颜色</td>
 						</tr>
 						<s:iterator value="product01List" id="product01List" status="st2">
 							<s:if test="#st2.odd==true">
@@ -107,13 +107,7 @@ function turn(id) {
 								<tr class="bg2">
 							</s:else>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st2.index + 1"/></td>
-								<td>
-									<!--
-									<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target="parent"><s:property value="nameno"/></a>
-									-->
-									<a href="<s:property value="pdfurl"/><s:property value="pdfpath"/>" target="_blank"><s:property value="nameno"/></a>
-									<!--<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target=""><s:property value="nameno"/></a>-->
-								</td>
+								<td><s:property value="item08"/></td>
 								<td>
 									<s:iterator id="goodsList" value="goodsList" status="st3">
 										<s:if test="%{goodsList[#st3.index].code == product01List[#st2.index].fieldcode}">
@@ -121,8 +115,21 @@ function turn(id) {
 										</s:if>
 									</s:iterator>
 								</td>
+								<td>
+									<!--
+									<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target="parent"><s:property value="nameno"/></a>
+									-->
+									<a href="<s:property value="pdfurl"/><s:property value="pdfpath"/>" target="_blank"><s:property value="nameno"/></a>
+									<!--<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target=""><s:property value="nameno"/></a>-->
+								</td>
 								<td><s:property value="typeno"/></td>
-								<td><s:property value="item09"/></td>
+								<td>
+									<s:iterator value="colorList" id="colorList" status="st1">
+										<s:if test="%{colorList[#st1.index].code == product01List[#st2.index].color1}">
+											<s:property value="fieldname"/>
+										</s:if>
+									</s:iterator>
+								</td>
 								<s:if test='goodsId == "01"'>
 									<s:iterator value="featureList" id="featureList" status="st4">
 										<s:iterator value="dictList" id="dictList" status="st5">
@@ -165,13 +172,6 @@ function turn(id) {
 										</s:iterator>
 									</s:iterator>
 								</s:elseif>
-								<td>
-									<s:iterator value="colorList" id="colorList" status="st1">
-										<s:if test="%{colorList[#st1.index].code == product01List[#st2.index].color1}">
-											<s:property value="fieldname"/>
-										</s:if>
-									</s:iterator>
-								</td>
 							</tr>
 						</s:iterator>
 					</table>

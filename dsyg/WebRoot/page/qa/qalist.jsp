@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>咨询信息Q/A一览</title>
+<title>东升盈港-咨询信息Q/A一览</title>
 <script type="text/javascript">
 	function del() {
 		var id = getSelectedID();

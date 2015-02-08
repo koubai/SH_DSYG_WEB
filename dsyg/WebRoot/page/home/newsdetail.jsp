@@ -14,10 +14,10 @@
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
 <title>
 <s:if test="newsDetail != null">
-新闻明细-<s:property value="newsDetail.title"/>
+东升盈港-新闻明细-<s:property value="newsDetail.title"/>
 </s:if>
 <s:else>
-新闻明细
+东升盈港-新闻明细
 </s:else>
 </title>
 <script type="text/javascript">

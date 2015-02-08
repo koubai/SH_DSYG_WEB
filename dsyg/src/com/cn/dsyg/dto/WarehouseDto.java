@@ -38,6 +38,11 @@ public class WarehouseDto extends BaseDto {
 	private String ulcode;
 	
 	/**
+	 * 品牌
+	 */
+	private String brand;
+	
+	/**
 	 * 产品型号（规格）
 	 */
 	private String typeno;
@@ -46,6 +51,11 @@ public class WarehouseDto extends BaseDto {
 	 * 产品数据权限
 	 */
 	private String productrank;
+	
+	/**
+	 * 颜色
+	 */
+	private String color;
 
 	/**
 	 * 库存
@@ -439,6 +449,22 @@ public class WarehouseDto extends BaseDto {
 
 	public void setTypeno(String typeno) {
 		this.typeno = typeno;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
 	}
 
 }

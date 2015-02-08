@@ -12,7 +12,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
-<title>首页</title>
+<title>东升盈港-首页</title>
 <script type="text/javascript">
 	$(function(){
 		$('#newsSlider').loopedSlider({

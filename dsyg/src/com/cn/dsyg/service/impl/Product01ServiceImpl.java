@@ -184,10 +184,12 @@ public class Product01ServiceImpl implements Product01Service {
 		//大分类
 		Dict01Dto dict = dict01Dao.queryDict01ByLogicId(Constants.DICT_GOODS_TYPE, product.getFieldcode(), PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		if(dict != null) {
-			keyword += dict.getFieldname() + ",";
+			keyword += dict.getFieldname() + "," + dict.getNote() + ",";
 		}
 		//名称
 		keyword += product.getNameno() + ",";
+		//品牌
+		keyword += product.getItem08() + ",";
 		//UL编号
 		keyword += product.getItem09() + ",";
 		//item01

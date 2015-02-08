@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>产品检索结果一览</title>
+<title>东升盈港-产品检索结果一览</title>
 <script type="text/javascript">
 	//新增
 	function add() {
@@ -173,11 +173,12 @@
 						<tr class="tab_tittle">
 							<td width="40">&nbsp;</td>
 							<td width="40">序号</td>
+							<td width="120">品牌</td>
+							<td width="80">产品分类</td>
 							<td width="130">产品名称</td>
 							<td width="120">产品规格</td>
-							<td width="80">产品分类</td>
-							<td width="100">颜色</td>
-							<td width="80">是否显示</td>
+							<td width="60">颜色</td>
+							<td width="60">是否显示</td>
 							<td width="140">创建日期</td>
 							<td width="80"></td>
 						</tr>
@@ -190,8 +191,7 @@
 							</s:else>
 								<td><input name="radioKey" type="radio" value="<s:property value="id"/>"/></td>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st1.index + 1"/></td>
-								<td><s:property value="nameno"/></td>
-								<td><s:property value="typeno"/></td>
+								<td><s:property value="item08"/></td>
 								<td>
 									<s:iterator value="goodsList" id="goodsList" status="st2">
 										<s:if test="%{goodsList[#st2.index].code == manageProduct01List[#st1.index].fieldcode}">
@@ -199,6 +199,8 @@
 										</s:if>
 									</s:iterator>
 								</td>
+								<td><s:property value="nameno"/></td>
+								<td><s:property value="typeno"/></td>
 								<td>
 									<s:iterator value="colorList" id="colorList" status="st2">
 										<s:if test="%{colorList[#st2.index].code == manageProduct01List[#st1.index].color1}">

@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>修改密码</title>
+<title>东升盈港-修改密码</title>
 <script type="text/javascript">
 function goHome() {
 	window.location.href = '<c:url value="/managehome/showManageHomeAction.action"></c:url>';

@@ -8,7 +8,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>后台管理菜单</title>
+<title>东升盈港-后台管理菜单</title>
 <script type="text/javascript">
 function logout() {
 	if(confirm("确定退出吗？")) {

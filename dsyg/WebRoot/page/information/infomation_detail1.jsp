@@ -12,89 +12,88 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
-<title>相关技术情报</title>
+<title>东升盈港-相关技术情报</title>
 <script type="text/javascript">
 </script>
 </head>
 <body>
 <jsp:include page="../head_web.jsp" flush="true" />
 <div class="main">
-	<div id="contents">
-		<!--////////// main start -->
-		<h1 class="ttl w960">活用事例</h1>
-		<div class="borderTop">
-			<div id="blue-mat">
-				<div class="w960">
-					<p class="item">东升盈港所销售的产品广泛运用于電子机械・运输・航空等各行各业。</p>
+		<div id="contents">
+			<!--////////// main start -->
+			<h1 class="ttl w960">活用事例</h1>
+			<div class="borderTop">
+				<div id="blue-mat">
+					<div class="w960">
+						<p class="item">东升盈港所销售的产品广泛运用于電子机械・运输・航空等各行各业。</p>
+					</div>
 				</div>
 			</div>
+			<!--////////// 説明部分 start -->
+				<div class="content">
+					<div class="fBox">
+						<div class="caseBox">
+							<h2>
+								<img alt="絶縁・保護" src="<%=request.getContextPath()%>/images/img1_01.png" width="324" height="181">
+							</h2>
+							<p>绝缘电线作为内部配线被应用于电器/电子机器的马达,传感器,电源等地方.
+ 我们可提供以UL,CSA等规格为中心的产品.</p>
+						</div>
+						<div class="caseBox">
+							<h2>
+								<img alt="防水チューブ/キャップ" src="<%=request.getContextPath()%>/images/img1_02.png" width="324" height="181">
+							</h2>
+							<p> 横卷屏蔽线作为内部配线被应用于液晶电视等设备内.
+ 我们可提供UL规格品,无铅品等不同类型产品.</p>
+						</div>
+						<div class="caseBox">
+							<h2>
+								<img alt="塗装の代替・装飾 /防食" src="<%=request.getContextPath()%>/images/img1_03.png" width="324" height="181">
+							</h2>
+							<p>我们有机动车,通信器材等设备上的天线所采用的高频同轴电缆(LVCX®）.
+ 在宽频带中实现低损失,低反射.</p>
+						</div>
+						<div class="caseBox">
+							<h2>
+								<img alt="ゆるみ防止・固定" src="<%=request.getContextPath()%>/images/img1_04.png" width="324" height="181">
+							</h2>
+							<p>我们可提供机动车,机器等设备内部布线所使用的耐高温电线.</p>
+						</div>
+						<div class="caseBox">
+							<h2>
+								<img alt="識別用途" src="<%=request.getContextPath()%>/images/img1_05.png" width="324" height="181">
+							</h2>
+							<p>我们可提供笔记本电脑,智能手机等适合于连接主板到显示屏间的极细的同轴电缆.</p>
+						</div>
+						<div class="caseBox">
+							<h2>
+								<img alt="耐薬品性/耐油性" src="<%=request.getContextPath()%>/images/img1_06.png" width="324" height="181">
+							</h2>
+							<p> 我们有广泛使用在电子机器，机动车内的配线材料。
+ 也有和连接器间采用触摸式插拔方式，用于平角线导体的薄壁集合式配线的SUMI CARD。
+ 有对应于高频信号的SUMI CARD®，以及高规格的无卤素SUMI CARD。</p>
+						</div>
+						<div class="caseBox">
+							<h2>
+								<img alt="識別用途" src="<%=request.getContextPath()%>/images/img1_07.png" width="324" height="181">
+							</h2>
+							<p> Thunderbolt是INTEL和苹果公司共同制定的高速数据传输标准。我们可提供从0.3M～30M的产品（带两端连接头）</p>
+						</div>
+						<div class="caseBox">
+							<h2>
+								<img alt="耐薬品性/耐油性" src="<%=request.getContextPath()%>/images/img1_08.png" width="324" height="181">
+							</h2>
+							<p>具有轻薄，柔软，耐高温等优良特性的柔软印刷电路板可以实现高密度配线，高密度安装，
+  被广泛运用在制作短小轻薄的配线产品和模块之中。特别是智能手机，硬盘等小型移动设备所不可缺少的电子部件。</p>
+						</div>
+						<!--fBox -->
+						<div class="clear"></div>
+					</div>
+				</div>
+			<!--////////// 説明部分 end -->
+			<!--contents -->
 		</div>
-		<!--////////// 説明部分 start -->
-			<div class="content">
-				<div class="fBox">
-					<div class="caseBox">
-						<h2>
-							<img alt="絶縁・保護" src="<%=request.getContextPath()%>/images/img01.jpg" width="324" height="181">						</h2>
-						<p>广泛使用在电线的绝缘,保护等方面。其中最具代表的是SUMITUBE-A,F(Z)等系列,也可以根据您使用场合的需要选择其它各种类型的套管。</p>
-						<!--caseBox -->
-					</div>
-					<div class="caseBox">
-						<h2>
-							<img alt="防水チューブ/キャップ" src="<%=request.getContextPath()%>/images/img02.jpg" width="324" height="181">
-						</h2>
-						<p>主要使用在汽车线路的线套上,有W3B2,SA3,附带粘接层的套管,以及多层套管等各种类型可供选择。</p>
-						<!--caseBox -->
-					</div>
-					<div class="caseBox">
-						<h2>
-							<img alt="塗装の代替・装飾 /防食" src="<%=request.getContextPath()%>/images/img03.jpg" width="324" height="181">
-						</h2>
-						<p>能应用于金属棒的防腐,既能表现出和喷涂相同的质感,而且也能在使用套管后继续进行弯曲加工。可以使用单层套管,如果您有防水需求的话,我们更建议使用带粘接层的多层套管。</p>
-						<!--caseBox -->
-					</div>
-					<div class="caseBox">
-						<h2>
-							<img alt="ゆるみ防止・固定" src="<%=request.getContextPath()%>/images/img04.jpg" width="324" height="181">
-						</h2>
-						<p>能有效防止螺丝螺栓的松动,照片上的是使用厚壁套管的效果例子。</p>
-						<!--caseBox -->
-					</div>
-					<div class="caseBox">
-						<h2>
-							<img alt="識別用途" src="<%=request.getContextPath()%>/images/img05.jpg" width="324" height="181">
-						</h2>
-						<p>管套可以使用于电线的识别。①有透明的作保护作用的套管、②也提供印有文字信息的套管以供选择。</p>
-						<!--caseBox -->
-					</div>
-					<div class="caseBox">
-						<h2>
-							<img alt="耐薬品性/耐油性" src="<%=request.getContextPath()%>/images/img06.jpg" width="324" height="181">
-						</h2>
-						<p>也有对化学品,油有防护作用的材料所制成的套管。SUMITUBE-K,K2就是其中的代表,对于耐油性和耐化学品性在各产品的介绍页均有记载,尽请参照。</p>
-						<!--caseBox -->
-					</div>
-					<div class="caseBox">
-						<h2>
-							<img alt="スミチューブSTS" src="<%=request.getContextPath()%>/images/img07.jpg" width="324" height="181">
-						</h2>
-						<p>航空领域使用的带有焊料圈的热收缩连接部件。</p>
-						<!--caseBox -->
-					</div>
-					<div class="caseBox">
-						<h2>
-							<img alt="その他" src="<%=request.getContextPath()%>/images/img08.jpg" width="324" height="181">
-						</h2>
-						<p>出于防滑,防静电的目的,在高空作业剪刀,工具等的手柄处使用的例子也有很多。请与本公司联系,我们会根据您所使用的场合,为您建议最适合的套管品种。</p>
-						<!--caseBox -->
-					</div>
-					<!--fBox -->
-					<div class="clear"></div>
-				</div>
-			</div>
-		<!--////////// 説明部分 end -->
-		<!--contents -->
 	</div>
-</div>
 <jsp:include page="../foot_web.jsp" flush="true" />
 </body>
 </html>

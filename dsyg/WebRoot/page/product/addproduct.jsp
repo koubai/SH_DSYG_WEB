@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>产品输入</title>
+<title>东升盈港-产品输入</title>
 <script type="text/javascript">
 	function add() {
 		if(checkData()) {
@@ -26,6 +26,8 @@
 		var nameno = $("#nameno").val().trim();
 		var typeno = $("#typeno").val().trim();
 		var color1 = $("#color1").val().trim();
+		//品牌
+		var item08 = $("#item08").val().trim();
 		//UL编号
 		var item09 = $("#item09").val().trim();
 		if(fieldcode == "") {
@@ -64,11 +66,17 @@
 			$("#color1").focus();
 			return false;
 		}
+		if(item08 == "") {
+			alert("品牌不能为空！");
+			$("#item08").focus();
+			return false;
+		}
+		/*
 		if(item09 == "") {
 			alert("UL型号/编号不能为空！");
 			$("#item09").focus();
 			return false;
-		}
+		}//*/
 		
 		//特征编辑值设定
 		$("#item01").val("");
@@ -370,6 +378,10 @@
 							</td>
 						</tr>
 						<tr>
+							<td class="td_tittle"><span>*</span>品牌：</td>
+							<td><s:textfield name="addProduct01Dto.item08" id="item08" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
+						<tr>
+						<tr style="display: none;">
 							<td class="td_tittle"><span>*</span>UL型号/编号：</td>
 							<td><s:textfield name="addProduct01Dto.item09" id="item09" cssStyle="width:300px;" maxlength="32" theme="simple"></s:textfield></td>
 						<tr>

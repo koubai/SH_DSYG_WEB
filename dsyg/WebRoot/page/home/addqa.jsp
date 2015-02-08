@@ -13,7 +13,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/admin.css" />
 <script src="<%=request.getContextPath()%>/js/jquery.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/js/loopedslider.min.js" type="text/javascript"></script>
-<title>QA</title>
+<title>东升盈港-咨询信息Q/A</title>
 <script type="text/javascript">
 function add() {
 	if(checkData()) {

@@ -423,11 +423,16 @@ public class Product01Action extends BaseAction {
 			this.addActionMessage("颜色不能为空！");
 			return false;
 		}
-		//UL型号/编号
-		if(StringUtil.isBlank(product01.getItem09())) {
-			this.addActionMessage("UL型号/编号不能为空！");
+		//品牌
+		if(StringUtil.isBlank(product01.getItem08())) {
+			this.addActionMessage("品牌不能为空！");
 			return false;
 		}
+		//UL型号/编号
+//		if(StringUtil.isBlank(product01.getItem09())) {
+//			this.addActionMessage("UL型号/编号不能为空！");
+//			return false;
+//		}
 		if(Constants.DICT_GOODS_TYPE_CODE_01.equals(product01.getFieldcode())) {
 			//电线，需要验证单选框数据
 			if(StringUtil.isBlank(product01.getItem01())) {

@@ -9,7 +9,7 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>库存检索结果一览</title>
+<title>东升盈港-库存检索结果一览</title>
 <script type="text/javascript">
 	//新增
 	function add() {
@@ -130,7 +130,7 @@
 						<span class="red">*</span>说明：
 						<img src="<%=request.getContextPath()%>/images/instock.png" />表示现货
 						<img src="<%=request.getContextPath()%>/images/futures.png" />表示期货
-						<img src="<%=request.getContextPath()%>/images/zheng.png" />表示整箱
+						<!--<img src="<%=request.getContextPath()%>/images/zheng.png" />表示整箱-->
 						<img src="<%=request.getContextPath()%>/images/luan.png" />表示乱尺
 					</div>
 					<div class="tools" style="margin-top: 45px;">
@@ -164,11 +164,12 @@
 						<tr class="tab_tittle">
 							<td width="40">&nbsp;</td>
 							<td width="40">序号</td>
+							<td width="120">品牌</td>
 							<td width="130">产品名称</td>
-							<td width="100">产品分类</td>
-							<td width="80">数量</td>
-							<td width="100">定单单位</td>
-							<td width="80">送货期</td>
+							<td width="80">产品分类</td>
+							<td width="70">数量</td>
+							<td width="70">定单单位</td>
+							<td width="70">送货期</td>
 							<td width="140">创建日期</td>
 							<td width="60">状况</td>
 						</tr>
@@ -181,6 +182,7 @@
 						</s:else>
 								<td><input name="radioKey" type="radio" value="<s:property value="id"/>"/></td>
 								<td><s:property value="page.pageSize * (page.nextIndex - 1) + #st1.index + 1"/></td>
+								<td><s:property value="brand"/></td>
 								<td><s:property value="productname"/></td>
 								<td>
 									<s:iterator value="goodsList" id="goodsList" status="st2">
@@ -200,7 +202,7 @@
 								<td><s:property value="item04" /></td>
 								<td><s:property value="createdate" /></td>
 								<td><s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
-									<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>
+									<!--<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>-->
 									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
 									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
 								</td>

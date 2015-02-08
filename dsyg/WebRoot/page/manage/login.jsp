@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/css/login.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
-<title>后台登录</title>
+<title>东升盈港-后台登录</title>
 <script type="text/javascript">
 	function login() {
 		document.mainform.action = '<c:url value="/manage/manageLoginAction.action"></c:url>';

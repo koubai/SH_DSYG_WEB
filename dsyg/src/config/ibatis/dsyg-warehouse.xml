@@ -12,6 +12,8 @@
 		<result property="ulcode" column="ulcode" />
 		<result property="typeno" column="typeno" />
 		<result property="productrank" column="productrank" />
+		<result property="brand" column="brand" />
+		<result property="color" column="color" />
 		<result property="item01" column="item01" />
 		<result property="item02" column="item02" />
 		<result property="item03" column="item03" />
@@ -47,6 +49,8 @@
 				res10,status,createuid,createdate,updateuid,updatedate,
 				(select P.nameno from tbproduct01 P where P.id = W.productid) as productname,
 				(select P.item09 from tbproduct01 P where P.id = W.productid) as ulcode,
+				(select P.color1 from tbproduct01 P where P.id = W.productid) as color,
+				(select P.item08 from tbproduct01 P where P.id = W.productid) as brand,
 				(select P.typeno from tbproduct01 P where P.id = W.productid) as typeno,
 				(select P.rank from tbproduct01 P where P.id = W.productid) as productrank,
 				(select P.fieldcode from tbproduct01 P where P.id = W.productid) as producttype
@@ -80,6 +84,8 @@
 				res10,status,createuid,createdate,updateuid,updatedate,
 				(select P.nameno from tbproduct01 P where P.id = W.productid) as productname,
 				(select P.item09 from tbproduct01 P where P.id = W.productid) as ulcode,
+				(select P.color1 from tbproduct01 P where P.id = W.productid) as color,
+				(select P.item08 from tbproduct01 P where P.id = W.productid) as brand,
 				(select P.typeno from tbproduct01 P where P.id = W.productid) as typeno,
 				(select P.rank from tbproduct01 P where P.id = W.productid) as productrank,
 				(select P.fieldcode from tbproduct01 P where P.id = W.productid) as producttype
@@ -111,6 +117,8 @@
 			res10,status,createuid,createdate,updateuid,updatedate,
 			(select P.nameno from tbproduct01 P where P.id = W.productid) as productname,
 			(select P.item09 from tbproduct01 P where P.id = W.productid) as ulcode,
+			(select P.color1 from tbproduct01 P where P.id = W.productid) as color,
+			(select P.item08 from tbproduct01 P where P.id = W.productid) as brand,
 			(select P.typeno from tbproduct01 P where P.id = W.productid) as typeno,
 			(select P.rank from tbproduct01 P where P.id = W.productid) as productrank,
 			(select P.fieldcode from tbproduct01 P where P.id = W.productid) as producttype

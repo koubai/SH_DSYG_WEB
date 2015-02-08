@@ -10,7 +10,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/common.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.1.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/Calendar3.js"></script>
-<title>新闻输入</title>
+<title>东升盈港-新闻输入</title>
 <script type="text/javascript">
 	function add() {
 		if(checkData()) {

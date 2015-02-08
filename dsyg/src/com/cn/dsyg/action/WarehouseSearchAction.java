@@ -50,6 +50,8 @@ public class WarehouseSearchAction extends BaseAction {
 	private List<Dict01Dto> unitList;
 	//产地
 	private List<Dict01Dto> makeareaList;
+	//颜色
+	private List<Dict01Dto> colorList;
 	
 	//大分类ID
 	private String producttype;
@@ -79,6 +81,8 @@ public class WarehouseSearchAction extends BaseAction {
 			unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//产地
 			makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			//颜色
+			colorList = dict01Service.queryDict01ByFieldcode(Constants.DICT_COLOR_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 		} catch(Exception e) {
 			log.error("showSearchWarehouseAction error:" + e);
 			//return ERROR;
@@ -100,6 +104,8 @@ public class WarehouseSearchAction extends BaseAction {
 			unitList = dict01Service.queryDict01ByFieldcode(Constants.DICT_UNIT_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//产地
 			makeareaList = dict01Service.queryDict01ByFieldcode(Constants.DICT_MAKEAREA, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+			//颜色
+			colorList = dict01Service.queryDict01ByFieldcode(Constants.DICT_COLOR_TYPE, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
 			//库存检索，初期化数据
 			searchWarehouseList = new ArrayList<WarehouseDto>();
 			if(page == null) {
@@ -216,5 +222,13 @@ public class WarehouseSearchAction extends BaseAction {
 
 	public void setMakeareaList(List<Dict01Dto> makeareaList) {
 		this.makeareaList = makeareaList;
+	}
+
+	public List<Dict01Dto> getColorList() {
+		return colorList;
+	}
+
+	public void setColorList(List<Dict01Dto> colorList) {
+		this.colorList = colorList;
 	}
 }
