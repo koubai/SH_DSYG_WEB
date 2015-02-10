@@ -91,7 +91,7 @@ function checkData() {
 	<div class="main">
 		<div class="product_header">
 			<div class="pagekv">
-				<img src="<%=request.getContextPath()%>/images/banner5.png">
+				<img src="<%=request.getContextPath()%>/images/banner9.png">
 			</div>
 		</div>
 		<div class="content">
