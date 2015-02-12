@@ -153,7 +153,7 @@ function search() {
 							<td width="60">颜色</td>
 							<td width="60">数量</td>
 							<td width="60">单位</td>
-							<td width="70">产地</td>
+							<!-- <td width="70">产地</td>  -->
 							<td width="70">发货天数</td>
 							<td width="60"></td>
 						</tr>
@@ -190,13 +190,13 @@ function search() {
 										</s:if>
 									</s:iterator>
 								</td>
-								<td>
+								<!-- <td>
 									<s:iterator value="makeareaList" id="makeareaList" status="st1">
 										<s:if test="%{makeareaList[#st1.index].code == searchWarehouseList[#st2.index].res02}">
 											<s:property value="fieldname"/>
 										</s:if>
 									</s:iterator>
-								</td>
+								</td> -->
 								<td><s:property value="item03"/></td>
 								<td>
 									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
