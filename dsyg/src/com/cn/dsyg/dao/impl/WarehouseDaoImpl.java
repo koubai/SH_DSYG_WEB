@@ -73,4 +73,13 @@ public class WarehouseDaoImpl extends BaseDao implements WarehouseDao {
 	public void updateWarehouse(WarehouseDto warehouse) {
 		getSqlMapClientTemplate().update("updateWarehouse", warehouse);
 	}
+	
+	@Override
+	public void deleteWarehouseByProductid(String productid, String status, String userid) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("productid", productid);
+		paramMap.put("updateuid", userid);
+		paramMap.put("status", status);
+		getSqlMapClientTemplate().update("deleteWarehouseByProductid", paramMap);
+	}
 }

@@ -62,4 +62,12 @@ public interface WarehouseDao {
 	 * @param warehouse
 	 */
 	public void updateWarehouse(WarehouseDto warehouse);
+	
+	/**
+	 * 根据产品ID逻辑删除库存信息数据
+	 * @param productid
+	 * @param status
+	 * @param userid
+	 */
+	public void deleteWarehouseByProductid(String productid, String status, String userid);
 }

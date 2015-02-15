@@ -57,7 +57,9 @@ function search() {
 	if(productname != "") {
 		url = "_name" + productname;
 	}
-	window.location.href = '<%=request.getContextPath()%>' + "/searchwarehouse" + url + "_p0" + ".shtml";
+	if(confirm("1.我司库存信息每日根据客户订单变化，网页显示信息可能存在延迟。\r\n2.未得到我司书面确认的订单，因交货期延误而造成的损失我司不负任何责任，敬请谅解。\r\n※库存信息仅供参考，如需确认库存信息请与我司营业联系。")) {
+		window.location.href = '<%=request.getContextPath()%>' + "/searchwarehouse" + url + "_p0" + ".shtml";
+	}
 }
 </script>
 </head>
@@ -153,7 +155,7 @@ function search() {
 							<td width="60">颜色</td>
 							<td width="60">数量</td>
 							<td width="60">单位</td>
-							<!-- <td width="70">产地</td>  -->
+							<!-- <td width="70">产地</td> -->
 							<td width="70">发货天数</td>
 							<td width="60"></td>
 						</tr>
@@ -190,13 +192,15 @@ function search() {
 										</s:if>
 									</s:iterator>
 								</td>
-								<!-- <td>
+								<!--
+								<td>
 									<s:iterator value="makeareaList" id="makeareaList" status="st1">
 										<s:if test="%{makeareaList[#st1.index].code == searchWarehouseList[#st2.index].res02}">
 											<s:property value="fieldname"/>
 										</s:if>
 									</s:iterator>
-								</td> -->
+								</td>
+								-->
 								<td><s:property value="item03"/></td>
 								<td>
 									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>

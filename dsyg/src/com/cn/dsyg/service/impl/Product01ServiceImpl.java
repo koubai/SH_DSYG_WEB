@@ -8,6 +8,7 @@ import com.cn.common.util.PropertiesConfig;
 import com.cn.common.util.StringUtil;
 import com.cn.dsyg.dao.Dict01Dao;
 import com.cn.dsyg.dao.Product01Dao;
+import com.cn.dsyg.dao.WarehouseDao;
 import com.cn.dsyg.dto.Dict01Dto;
 import com.cn.dsyg.dto.Product01Dto;
 import com.cn.dsyg.dto.Product01SummaryDto;
@@ -21,6 +22,7 @@ import com.cn.dsyg.service.Product01Service;
  */
 public class Product01ServiceImpl implements Product01Service {
 	
+	private WarehouseDao warehouseDao;
 	private Product01Dao product01Dao;
 	private Dict01Dao dict01Dao;
 	
@@ -153,8 +155,9 @@ public class Product01ServiceImpl implements Product01Service {
 			product.setStatus("" + Constants.STATUS_DEL);
 			product.setUpdateuid(userid);
 			product01Dao.updateProduct01(product);
+			//逻辑删除库存
+			warehouseDao.deleteWarehouseByProductid(id, "" + Constants.STATUS_DEL, userid);
 		}
-		//product01Dao.deleteProduct01(id);
 	}
 
 	@Override
@@ -304,5 +307,13 @@ public class Product01ServiceImpl implements Product01Service {
 
 	public void setDict01Dao(Dict01Dao dict01Dao) {
 		this.dict01Dao = dict01Dao;
+	}
+
+	public WarehouseDao getWarehouseDao() {
+		return warehouseDao;
+	}
+
+	public void setWarehouseDao(WarehouseDao warehouseDao) {
+		this.warehouseDao = warehouseDao;
 	}
 }

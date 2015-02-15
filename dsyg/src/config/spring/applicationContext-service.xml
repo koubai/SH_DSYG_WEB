@@ -76,6 +76,9 @@
 		<property name="dict01Dao">
 			<ref local="dict01Dao"/>
 		</property>
+		<property name="warehouseDao">
+			<ref local="warehouseDao"/>
+		</property>
 	</bean>
 	
 	<bean id="product01Dao" class="com.cn.dsyg.dao.impl.Product01DaoImpl">

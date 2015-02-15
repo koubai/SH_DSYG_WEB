@@ -263,7 +263,8 @@
 											</s:iterator>
 										</s:if>
 										<br />
-										UL编号：<input name="ulCode" id="ulCode" style="width: 180px;" maxlength="18" value="<s:property value="ulCode"/>"/>
+										<!-- UL编号： -->
+										<input name="ulCode" id="ulCode" style="width: 180px; display: none;" maxlength="18" value="<s:property value="ulCode"/>"/>
 										<div class="line"></div>
 									</div>
 								</s:if>

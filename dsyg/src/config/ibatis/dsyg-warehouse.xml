@@ -131,6 +131,14 @@
 		</isNotEmpty>
 	</select>
 	
+	<update id="deleteWarehouseByProductid" parameterClass="java.util.Map">
+		update tbwarehouse
+		set status = #status#,
+			updateuid = #updateuid#,
+			updatedate = NOW()
+		where productid = #productid#
+	</update>
+	
 	<delete id="deleteWarehouse" parameterClass="java.util.Map">
 		delete from tbwarehouse where id = #id#
 	</delete>
