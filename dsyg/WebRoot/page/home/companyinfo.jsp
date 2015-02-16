@@ -169,7 +169,7 @@
 									电邮方式									</td>
 								<td class="cap_tab3">
 									<br>									</td>
-								<td class="cap_tab2">Mail：---@---.com<br /></td>
+								<td class="cap_tab2">Mail：sales@shdsyg.com<br /></td>
 							</tr>
 						</tbody>
 					</table>
@@ -223,7 +223,7 @@
 									电邮方式									</td>
 								<td class="cap_tab3">
 									<br>									</td>
-								<td class="cap_tab2">Mail：---@---.com<br /></td>
+								<td class="cap_tab2">Mail：sales@shdsyg.com<br /></td>
 							</tr>
 						</tbody>
 					</table>
@@ -277,7 +277,7 @@
 									电邮方式									</td>
 								<td class="cap_tab3">
 									<br>									</td>
-								<td class="cap_tab2">Mail：---@---.com<br /></td>
+								<td class="cap_tab2">Mail：sales@shdsyg.com<br /></td>
 							</tr>
 						</tbody>
 					</table>
