@@ -65,8 +65,15 @@ public class WarehouseServiceImpl implements WarehouseService {
 	}
 
 	@Override
-	public void deleteWarehouse(String id) {
-		warehouseDao.deleteWarehouse(id);
+	public void deleteWarehouse(String id, String rank, String userid) {
+		WarehouseDto warehouse = warehouseDao.queryWarehouseByID(id, rank);
+		if(warehouse != null) {
+			//逻辑删除
+			warehouse.setStatus("" + Constants.STATUS_DEL);
+			warehouse.setUpdateuid(userid);
+			warehouseDao.updateWarehouse(warehouse);
+			//warehouseDao.deleteWarehouse(id);
+		}
 	}
 
 	@Override

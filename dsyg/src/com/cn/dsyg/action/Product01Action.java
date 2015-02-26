@@ -447,10 +447,10 @@ public class Product01Action extends BaseAction {
 				this.addActionMessage("请选择材质！");
 				return false;
 			}
-			if(StringUtil.isBlank(product01.getItem04())) {
-				this.addActionMessage("请选择环保！");
-				return false;
-			}
+//			if(StringUtil.isBlank(product01.getItem04())) {
+//				this.addActionMessage("请选择环保！");
+//				return false;
+//			}
 		} else if(Constants.DICT_GOODS_TYPE_CODE_02.equals(product01.getFieldcode())) {
 			//套管，需要验证单选框数据
 			if(StringUtil.isBlank(product01.getItem01())) {
@@ -473,10 +473,10 @@ public class Product01Action extends BaseAction {
 				this.addActionMessage("请选择材质！");
 				return false;
 			}
-			if(StringUtil.isBlank(product01.getItem06())) {
-				this.addActionMessage("请选择环保！");
-				return false;
-			}
+//			if(StringUtil.isBlank(product01.getItem06())) {
+//				this.addActionMessage("请选择环保！");
+//				return false;
+//			}
 		}
 		
 		/*/尺寸数据验证

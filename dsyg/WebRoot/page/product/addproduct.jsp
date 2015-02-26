@@ -113,11 +113,13 @@
 				$("#code01_03").focus();
 				return false;
 			}
+			//环保可以为空
+			/*
 			if($("#item04").val() == "") {
 				alert("请选择环保！");
 				$("#code01_04").focus();
 				return false;
-			}
+			}//*/
 		} else if(fieldcode == "02") {
 			for(var i = 1; i <= 6; i++) {
 				var name = "code02_item0" + i;
@@ -155,11 +157,13 @@
 				$("#code02_05").focus();
 				return false;
 			}
+			//环保可以为空
+			/*
 			if($("#item06").val() == "") {
 				alert("请选择环保！");
 				$("#code02_06").focus();
 				return false;
-			}
+			}//*/
 		}
 		
 		/*
@@ -397,23 +401,33 @@
 									<dl>
 										<dt><s:property value="name"/>：</dt>
 										<dd>
-											<s:iterator value="dictList" id="dictList" status="st2">
-												<s:if test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item01" && #st1.index == 0}'>
-													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
-												</s:if>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item02" && #st1.index == 1}'>
-													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
-												</s:elseif>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
-													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
-												</s:elseif>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item04" && #st1.index == 3}'>
-													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
-												</s:elseif>
-												<s:else>
-													<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
-												</s:else>
-											</s:iterator>
+											<s:if test='%{featureList01[#st1.index].codename == "code01_item04" && #st1.index == 3}'>
+												<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' checked value='' type="radio" /><label>无</label>
+												<s:iterator value="dictList" id="dictList" status="st2">
+													<s:if test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item04" && #st1.index == 3}'>
+														<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+													</s:if>
+													<s:else>
+														<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+													</s:else>
+												</s:iterator>
+											</s:if>
+											<s:else>
+												<s:iterator value="dictList" id="dictList" status="st2">
+													<s:if test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item01" && #st1.index == 0}'>
+														<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+													</s:if>
+													<s:elseif test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item02" && #st1.index == 1}'>
+														<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+													</s:elseif>
+													<s:elseif test='%{addProduct01Dto.fieldcode == "01" && featureList01[#st1.index].codename == "code01_item03" && #st1.index == 2}'>
+														<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+													</s:elseif>
+													<s:else>
+														<input id="code01_0<s:property value="#st1.index + 1"/>" name='code01_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><label><s:property value="fieldname"/></label>
+													</s:else>
+												</s:iterator>
+											</s:else>
 										</dd>
 									</dl>
 								</s:iterator>
@@ -431,29 +445,39 @@
 									<dl>
 										<dt><s:property value="name"/>：</dt>
 										<dd>
-											<s:iterator value="dictList" id="dictList" status="st2">
-												<s:if test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item01" && #st1.index == 0}'>
-													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-												</s:if>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item02" && #st1.index == 1}'>
-													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-												</s:elseif>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item03" && #st1.index == 2}'>
-													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-												</s:elseif>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
-													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-												</s:elseif>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item05" && #st1.index == 4}'>
-													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item05}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-												</s:elseif>
-												<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item06" && #st1.index == 5}'>
-													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item06}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-												</s:elseif>
-												<s:else>
-													<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
-												</s:else>
-											</s:iterator>
+											<s:if test='%{featureList02[#st1.index].codename == "code02_item06" && #st1.index == 5}'>
+												<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' checked value='' type="radio" /><label>无</label>
+												<s:iterator value="dictList" id="dictList" status="st2">
+													<s:if test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item06" && #st1.index == 5}'>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item06}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:if>
+													<s:else>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:else>
+												</s:iterator>
+											</s:if>
+											<s:else>
+												<s:iterator value="dictList" id="dictList" status="st2">
+													<s:if test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item01" && #st1.index == 0}'>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item01}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:if>
+													<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item02" && #st1.index == 1}'>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item02}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:elseif>
+													<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item03" && #st1.index == 2}'>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item03}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:elseif>
+													<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item04" && #st1.index == 3}'>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item04}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:elseif>
+													<s:elseif test='%{addProduct01Dto.fieldcode == "02" && featureList02[#st1.index].codename == "code02_item05" && #st1.index == 4}'>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' <s:if test='%{dictList[#st2.index].code == addProduct01Dto.item05}'>checked</s:if> value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:elseif>
+													<s:else>
+														<input id="code02_0<s:property value="#st1.index + 1"/>" name='code02_item0<s:property value="#st1.index + 1"/>' value='<s:property value="code"/>' type="radio" /><s:property value="fieldname"/>
+													</s:else>
+												</s:iterator>
+											</s:else>
 										</dd>
 									</dl>
 								</s:iterator>

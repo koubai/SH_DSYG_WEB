@@ -85,7 +85,7 @@
 								<li style="position: absolute; left: 650px; display: block;"><a href="#"><img src="<%=request.getContextPath()%>/images/3.jpg"></a></li>								
 								<li style="position: absolute; left: 975px; display: block;"><a href="#"><img src="<%=request.getContextPath()%>/images/4.jpg"></a></li>
 								<li style="position: absolute; left: 1300px; display: block;"><a href="#"><img src="<%=request.getContextPath()%>/images/5.jpg"></a></li>
-								<!--<li style="position: absolute; left: -325px; display: block;"><a href="#"><img src="<%=request.getContextPath()%>/images/6.jpg"></a></li> -->
+								<li style="position: absolute; left: -325px; display: block;"><a href="#"><img src="<%=request.getContextPath()%>/images/6.jpg"></a></li>
 							</ul>
 						</div>
 						<div class="validate_Slider"></div>
@@ -95,7 +95,7 @@
 						  <li class=""><a href="#" rel="3">3</a></li>
 						  <li class=""><a href="#" rel="4">4</a></li>
 						  <li class=""><a href="#" rel="5">5</a></li>
-						  <!-- <li class=""><a href="#" rel="6">6</a></li>  -->
+						  <li class=""><a href="#" rel="6">6</a></li>
 						</ul>
 					</div>
 				</div>

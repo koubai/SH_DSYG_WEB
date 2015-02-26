@@ -122,7 +122,7 @@
 			(select P.typeno from tbproduct01 P where P.id = W.productid) as typeno,
 			(select P.rank from tbproduct01 P where P.id = W.productid) as productrank,
 			(select P.fieldcode from tbproduct01 P where P.id = W.productid) as producttype
-			from tbwarehouse W where W.id = #id#) T
+			from tbwarehouse W where W.id = #id#) T where 1 = 1
 		<isNotEmpty prepend="and" property="rank">
 			T.rank <![CDATA[<=]]> #rank#
 		</isNotEmpty>

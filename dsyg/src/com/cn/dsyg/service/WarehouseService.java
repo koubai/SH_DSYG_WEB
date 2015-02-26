@@ -44,8 +44,10 @@ public interface WarehouseService {
 	/**
 	 * 删除数据
 	 * @param id
+	 * @param rank
+	 * @param userid
 	 */
-	public void deleteWarehouse(String id);
+	public void deleteWarehouse(String id, String rank, String userid);
 	
 	/**
 	 * 新增数据

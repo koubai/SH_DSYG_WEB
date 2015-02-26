@@ -211,8 +211,11 @@ public class WarehouseAction extends BaseAction {
 			if(rank == null || rank < Constants.ROLE_RANK_ADMIN) {
 				return "noauthority";
 			}
-			//queryData();
-			//this.addActionMessage("删除成功！");
+			//当前操作用户ID
+			String username = (String) ActionContext.getContext().getSession().get(Constants.USER_ID);
+			warehouseService.deleteWarehouse(delWarehouseId, "" + rank, username);
+			queryData();
+			this.addActionMessage("删除成功！");
 		} catch(Exception e) {
 			log.error("delProduct error:" + e);
 			return ERROR;
