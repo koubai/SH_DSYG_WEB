@@ -132,44 +132,54 @@ function turn(id) {
 								</td>
 								<s:if test='goodsId == "01"'>
 									<s:iterator value="featureList" id="featureList" status="st4">
-										<s:iterator value="dictList" id="dictList" status="st5">
-											<s:if test="%{dictList[#st5.index].code == item01 && #st4.index == 0}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item02 && #st4.index == 1}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item03 && #st4.index == 2}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-										</s:iterator>
+										<s:if test='#st4.index == 3 && featureList[#st4.index].codename == "code01_item04" && (item04 == null || item04 == "")'>
+											<td>无</td>
+										</s:if>
+										<s:else>
+											<s:iterator value="dictList" id="dictList" status="st5">
+												<s:if test="%{dictList[#st5.index].code == item01 && #st4.index == 0}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item02 && #st4.index == 1}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item03 && #st4.index == 2}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+											</s:iterator>
+										</s:else>
 									</s:iterator>
 								</s:if>
 								<s:elseif test='goodsId == "02"'>
 									<s:iterator value="featureList" id="featureList" status="st4">
-										<s:iterator value="dictList" id="dictList" status="st5">
-											<s:if test="%{dictList[#st5.index].code == item01 && #st4.index == 0}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item02 && #st4.index == 1}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item03 && #st4.index == 2}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item05 && #st4.index == 4}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-											<s:if test="%{dictList[#st5.index].code == item06 && #st4.index == 5}">
-												<td><s:property value="fieldname"/></td>
-											</s:if>
-										</s:iterator>
+										<s:if test='#st4.index == 5 && featureList[#st4.index].codename == "code02_item06" && (item06 == null || item06 == "")'>
+											<td>无</td>
+										</s:if>
+										<s:else>
+											<s:iterator value="dictList" id="dictList" status="st5">
+												<s:if test="%{dictList[#st5.index].code == item01 && #st4.index == 0}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item02 && #st4.index == 1}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item03 && #st4.index == 2}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item05 && #st4.index == 4}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+												<s:if test="%{dictList[#st5.index].code == item06 && #st4.index == 5}">
+													<td><s:property value="fieldname"/></td>
+												</s:if>
+											</s:iterator>
+										</s:else>
 									</s:iterator>
 								</s:elseif>
 							</tr>
