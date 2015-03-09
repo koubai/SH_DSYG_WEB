@@ -1,5 +1,6 @@
 package com.cn.dsyg.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cn.common.util.Constants;
@@ -12,6 +13,7 @@ import com.cn.dsyg.dao.WarehouseDao;
 import com.cn.dsyg.dto.Dict01Dto;
 import com.cn.dsyg.dto.Product01Dto;
 import com.cn.dsyg.dto.Product01SummaryDto;
+import com.cn.dsyg.dto.Product01TmpDto;
 import com.cn.dsyg.service.Product01Service;
 
 /**
@@ -43,14 +45,21 @@ public class Product01ServiceImpl implements Product01Service {
 			page.setTotalPage(totalCount / page.getPageSize());
 		}
 		//翻页查询记录（查询有效数据）
-		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode, item01,
+		List<Product01TmpDto> tmpList = product01Dao.searchProduct01ListByPage(fieldcode, item01,
 				item02, item03, item04, item05, item06, ulCode, status, keyword, rank,
 				startIndex * page.getPageSize(), page.getPageSize());
-		//添加PDF文件URL
-		if(list != null && list.size() > 0) {
+		
+		//循环查询数据
+		List<Product01Dto> list = new ArrayList<Product01Dto>();
+		if(tmpList != null && tmpList.size() > 0) {
+			//PDF文件URL
 			String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
-			for(Product01Dto product : list) {
-				product.setPdfurl(pdfurl);
+			for(Product01TmpDto tmp : tmpList) {
+				//逐个查询数据
+				Product01Dto p = product01Dao.queryProduct01ByID(tmp.getId(), "");
+				//添加PDF文件URL
+				p.setPdfurl(pdfurl);
+				list.add(p);
 			}
 		}
 		page.setItems(list);
@@ -83,15 +92,23 @@ public class Product01ServiceImpl implements Product01Service {
 		} else {
 			page.setTotalPage(totalCount / page.getPageSize());
 		}
+		
 		//翻页查询记录（查询有效数据）
-		List<Product01Dto> list = product01Dao.searchProduct01ListByPage(fieldcode,
+		List<Product01TmpDto> tmpList = product01Dao.searchProduct01ListByPage(fieldcode,
 				item01, item02, item03, item04, item05, item06, ulCode, status, keyword, rank,
 				page.getStartIndex() * page.getPageSize(), page.getPageSize());
-		//添加PDF文件URL
-		if(list != null && list.size() > 0) {
+		
+		//循环查询数据
+		List<Product01Dto> list = new ArrayList<Product01Dto>();
+		if(tmpList != null && tmpList.size() > 0) {
+			//PDF文件URL
 			String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
-			for(Product01Dto product : list) {
-				product.setPdfurl(pdfurl);
+			for(Product01TmpDto tmp : tmpList) {
+				//逐个查询数据
+				Product01Dto p = product01Dao.queryProduct01ByID(tmp.getId(), "");
+				//添加PDF文件URL
+				p.setPdfurl(pdfurl);
+				list.add(p);
 			}
 		}
 		page.setItems(list);

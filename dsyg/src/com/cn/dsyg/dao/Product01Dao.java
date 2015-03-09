@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.cn.dsyg.dto.Product01Dto;
 import com.cn.dsyg.dto.Product01SummaryDto;
+import com.cn.dsyg.dto.Product01TmpDto;
 
 /**
  * @name Product01Dao.java
@@ -49,7 +50,7 @@ public interface Product01Dao {
 	 * @param end
 	 * @return
 	 */
-	public List<Product01Dto> searchProduct01ListByPage(String fieldcode, String item01,
+	public List<Product01TmpDto> searchProduct01ListByPage(String fieldcode, String item01,
 			String item02, String item03, String item04, String item05, String item06,
 			String ulCode, String status, String keyword, String rank, int start, int end);
 	

@@ -90,7 +90,9 @@ function turn(id) {
 							<td>产品类型</td>
 							<td>产品名称</td>
 							<td>产品规格</td>
+							<!--
 							<td>颜色</td>
+							-->
 							<s:if test='goodsId == "01" || goodsId == "02"'>
 								<s:if test='featureList.size() > 0'>
 									<s:iterator value="featureList" id="featureList" status="st1">
@@ -123,6 +125,7 @@ function turn(id) {
 									<!--<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target=""><s:property value="nameno"/></a>-->
 								</td>
 								<td><s:property value="typeno"/></td>
+								<!--
 								<td>
 									<s:iterator value="colorList" id="colorList" status="st1">
 										<s:if test="%{colorList[#st1.index].code == product01List[#st2.index].color1}">
@@ -130,6 +133,7 @@ function turn(id) {
 										</s:if>
 									</s:iterator>
 								</td>
+								-->
 								<s:if test='goodsId == "01"'>
 									<s:iterator value="featureList" id="featureList" status="st4">
 										<s:if test='#st4.index == 3 && featureList[#st4.index].codename == "code01_item04" && (item04 == null || item04 == "")'>

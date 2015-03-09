@@ -8,6 +8,7 @@ import com.cn.common.dao.BaseDao;
 import com.cn.dsyg.dao.Product01Dao;
 import com.cn.dsyg.dto.Product01Dto;
 import com.cn.dsyg.dto.Product01SummaryDto;
+import com.cn.dsyg.dto.Product01TmpDto;
 
 /**
  * @name Product01DaoImpl.java
@@ -40,7 +41,7 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 	}
 
 	@Override
-	public List<Product01Dto> searchProduct01ListByPage(String fieldcode, String item01,
+	public List<Product01TmpDto> searchProduct01ListByPage(String fieldcode, String item01,
 			String item02, String item03, String item04, String item05, String item06,
 			String ulCode, String status, String keyword, String rank, int start, int end) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -59,7 +60,7 @@ public class Product01DaoImpl extends BaseDao implements Product01Dao {
 		paramMap.put("start", start);
 		paramMap.put("end", end);
 		@SuppressWarnings("unchecked")
-		List<Product01Dto> list = getSqlMapClientTemplate().queryForList("searchProduct01ListByPage", paramMap);
+		List<Product01TmpDto> list = getSqlMapClientTemplate().queryForList("searchProduct01ListByPage", paramMap);
 		return list;
 	}
 
