@@ -205,7 +205,12 @@
 										<h3>条件检索</h3>
 										<s:if test="featureList.size() > 0">
 											<s:iterator value="featureList" id="featureList" status="st1">
-												<div>
+												<s:if test='%{goodsId == "02" && featureList[#st1.index].codename == "code02_item06" && #st1.index == 5}'>
+													<div style="display: none;">
+												</s:if>
+												<s:else>
+													<div>
+												</s:else>
 													<dl>
 														<dt><s:property value="name"/>：</dt>
 														<dd>
