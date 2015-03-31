@@ -27,11 +27,6 @@ public class Product01TmpDto extends BaseDto {
 	 */
 	private String nameno;
 
-	/**
-	 * 产品规格
-	 */
-	private String typeno;
-
 	public String getId() {
 		return id;
 	}
@@ -54,13 +49,5 @@ public class Product01TmpDto extends BaseDto {
 
 	public void setNameno(String nameno) {
 		this.nameno = nameno;
-	}
-
-	public String getTypeno() {
-		return typeno;
-	}
-
-	public void setTypeno(String typeno) {
-		this.typeno = typeno;
 	}
 }

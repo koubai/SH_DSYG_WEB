@@ -89,7 +89,6 @@ function turn(id) {
 							<td>品牌</td>
 							<td>产品类型</td>
 							<td>产品名称</td>
-							<td>产品规格</td>
 							<!--
 							<td>颜色</td>
 							-->
@@ -124,7 +123,6 @@ function turn(id) {
 									<a href="<s:property value="pdfurl"/><s:property value="pdfpath"/>" target="_blank"><s:property value="nameno"/></a>
 									<!--<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target=""><s:property value="nameno"/></a>-->
 								</td>
-								<td><s:property value="typeno"/></td>
 								<!--
 								<td>
 									<s:iterator value="colorList" id="colorList" status="st1">

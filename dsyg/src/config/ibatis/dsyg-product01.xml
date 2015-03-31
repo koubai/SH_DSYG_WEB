@@ -81,13 +81,12 @@
 		<result property="id" column="id" />
 		<result property="fieldcode" column="fieldcode" />
 		<result property="nameno" column="nameno" />
-		<result property="typeno" column="typeno" />
 	</resultMap>
 	
 	<!-- searchProduct01Summary -->
 	<select id="searchProduct01Summary" parameterClass="java.util.Map" resultMap="Product01SummaryDto">
 		select A.fieldcode,COUNT(A.fieldcode) as num from (
-			SELECT T.fieldcode,T.nameno,T.typeno,MIN(T.id) AS id FROM tbproduct01 T where 1 = 1
+			SELECT T.fieldcode,T.nameno,MIN(T.id) AS id FROM tbproduct01 T where 1 = 1
 			<isNotEmpty prepend="and" property="fieldcode">
 				T.fieldcode = #fieldcode#
 			</isNotEmpty>
@@ -121,7 +120,7 @@
 			<isNotEmpty prepend="and" property="keyword">
 				T.keyword like '%$keyword$%' ESCAPE '/'
 			</isNotEmpty>
-			GROUP BY T.fieldcode,T.nameno,T.typeno
+			GROUP BY T.fieldcode,T.nameno
 		) A group by A.fieldcode
 		order by A.fieldcode asc
 	</select>
@@ -130,7 +129,7 @@
 	<!-- searchProduct01List -->
 	<select id="searchProduct01ListCountByPage" resultClass="int" parameterClass="java.util.Map">
 		select count(*) from (
-			SELECT T.fieldcode,T.nameno,T.typeno,MIN(T.id) AS id FROM tbproduct01 T where 1 = 1
+			SELECT T.fieldcode,T.nameno,MIN(T.id) AS id FROM tbproduct01 T where 1 = 1
 			<isNotEmpty prepend="and" property="fieldcode">
 				T.fieldcode = #fieldcode#
 			</isNotEmpty>
@@ -164,13 +163,13 @@
 			<isNotEmpty prepend="and" property="keyword">
 				T.keyword like '%$keyword$%' ESCAPE '/'
 			</isNotEmpty>
-			GROUP BY T.fieldcode,T.nameno,T.typeno
+			GROUP BY T.fieldcode,T.nameno
 		) A
 	</select>
 	
 	<select id="searchProduct01ListByPage" parameterClass="java.util.Map" resultMap="Product01TmpDto">
 		select A.* from (
-			SELECT T.fieldcode,T.nameno,T.typeno,MIN(T.id) AS id FROM tbproduct01 T where 1 = 1
+			SELECT T.fieldcode,T.nameno,MIN(T.id) AS id FROM tbproduct01 T where 1 = 1
 			<isNotEmpty prepend="and" property="fieldcode">
 				T.fieldcode = #fieldcode#
 			</isNotEmpty>
@@ -204,7 +203,7 @@
 			<isNotEmpty prepend="and" property="keyword">
 				T.keyword like '%$keyword$%' ESCAPE '/'
 			</isNotEmpty>
-			GROUP BY T.fieldcode,T.nameno,T.typeno
+			GROUP BY T.fieldcode,T.nameno
 		) A where 1 = 1 order by A.id desc
 		LIMIT #start#, #end#
 	</select>
