@@ -60,6 +60,7 @@ function turn(id) {
 					<div class="search_result">
 						<a class="return fr" href="<c:url value="/search/showSearchAction.action"></c:url>">返回</a>					
 					</div>
+					点击产品名称查看详细信息（含规格信息）， 如未能找到产品请点击“咨询信息Q/A”
 					<div class="page">
 						<span>第${page.startIndex + 1}页/共${page.totalPage==0?1:page.totalPage}页　共${page.totalCount}条记录</span>
 						<span>跳转到第<input class="num" id="pagenum1" type="text" maxlength="6" />页</span><a href="javascript:void(0);" onclick="turn('pagenum1');">跳转</a>　　
@@ -88,8 +89,9 @@ function turn(id) {
 							<td>&nbsp;</td>
 							<td>品牌</td>
 							<td>产品类型</td>
-							<td>产品名称</td>
+							<td>产品名称  (含各种规格信息)</td>
 							<!--
+							<td>产品规格</td>
 							<td>颜色</td>
 							-->
 							<s:if test='goodsId == "01" || goodsId == "02"'>
@@ -124,6 +126,7 @@ function turn(id) {
 									<!--<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target=""><s:property value="nameno"/></a>-->
 								</td>
 								<!--
+								<td><s:property value="typeno"/></td>
 								<td>
 									<s:iterator value="colorList" id="colorList" status="st1">
 										<s:if test="%{colorList[#st1.index].code == product01List[#st2.index].color1}">

@@ -64,28 +64,25 @@
 					<img alt="董事长 " src="<%=request.getContextPath()%>/images/chief.jpg" height="209" width="621"> 
 				</p>
 				<p>
-					東升盈港集团诞生于1941年，以“与世界同步”，“为社会贡献”为宗旨，秉承“制造为本，贡献社会”的经营理念，从上个世纪四十年代风雨春秋一路走来。如今，東升盈港集团已成为以汽车电线束为主，覆盖汽车配件产业，电缆，空调，燃气产业的全球型跨国企业。
+&nbsp&nbsp&nbsp&nbsp做为一家著名品牌的专业代理商，背靠住友电工强大产品的综合优势。二十多年来，在中国经济强劲增长的背景下，东升盈港公司脚踏实地地稳步发展、前进着。
 				</p>
 				<p>
-					“与世界同步”，“为社会贡献”。在今后的岁月中，東升盈港将一如既往把“感恩”融入每一个产品，精心奉献到全球每一位東升盈港的客户手中。
+2014年我们荣获《住友电工优秀海外代理商》荣誉和奖杯，这是对东升公司二十多年来努力的肯定，是对住友电工二十多年来支持、帮助的回报，更是对我们公司今后二十年、三十年的期待，我们将一如既往地努力工作，积极配合住友电工的市场发展策略，努力工作，锐意进取！
 				</p>
 				<p>
-					東升盈港集团和中国的缘分始于1988年在天津设立第一家工厂，如今的東升盈港在中国已是一个拥有13家公司，23个分支机构的大家庭。
+谢谢广大用户多年来的支持！
 				</p>
 				<p>
-					中国已成为全球汽车生产和销售第一的大市场。对全球第一大汽车电线束生产公司的東升盈港集团来说，在中国的事业具有不可取代的重要战略意义。東升盈港（中国）投资有限公司是研发，生产，销售，售后服务一体的区域性总部。不久的将来，其规模和功能将超过東升盈港在美国和欧洲区域总部，一定能为广大的中国客户提供更加便捷优质的服务。
+谢谢住友电工多年来的支持！
 				</p>
 				<p>
-					在中国的第十二个五年计划中，中国政府提出了节能环保的一系列政策和具体目标。为此，東升盈港（中国）投资有限公司也将竭诚奉献我们多年积累的技术和经验参与中国的社会发展和建设。除了汽车电线束和汽车仪表，東升盈港还将自己多年精心培育起来的太阳能产品等信心产品推荐给中国，東升盈港集团愿为中国的环境保护做出贡献。
+谢谢东升盈港全体员工多年来的努力！
 				</p>
 				<p>
-					地球资源是有限的，我们制造产品的前提是环境保护和资源有限利用，这样我们才能与地球共生存。
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp徐敏嘉
 				</p>
 				<p>
-					“保护环境”，“爱护地球”
-				</p>
-				<p>
-					東升盈港（中国）与您携手，東升盈港“与世界同步，为社会贡献”。
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2015年3月31日
 				</p>
 				</div>
 			<div class="clear"></div>

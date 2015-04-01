@@ -101,11 +101,21 @@ function checkData() {
 					<div style="position:absolute; margin-left: 400px; margin-top: 3px; text-align: center; color: red;">
 						<s:actionmessage />
 					</div>
+					<br><p>&nbsp&nbsp对于产品方面如果您有任何问题，请联系我司营业专员，请留下您的信息，我们会及时与您取得联系！</p>
+					<p>&nbsp&nbsp我司将对您的预留信息进行保密，任何情况下均不会向第三方提供。</p>
+					<p>&nbsp&nbsp我们的工作时间为： 周一至周五  上午 9：00 - 下午 5：00 （节假日休息）</p>
+					<p>&nbsp&nbsp我们将在收到您的咨询信息后2个工作日内回复， 届时请留意预留邮箱或电话回复。</p>
+					</br>
 					<table class="input_table" border="0" cellspacing="0" cellpadding="10">
 						<tr>
 							<td class="td_tittle"><span>*</span>标题：</td>
 							<td>
-								<s:textfield name="addQaDto.title" id="title" maxlength="64" theme="simple"></s:textfield>
+								<!--<s:textfield name="addQaDto.title" id="title" maxlength="64" theme="simple"></s:textfield>-->
+								<select name="addQaDto.title" id="title" style="width:300px;">
+									<option value="产品咨询">产品咨询</option>
+									<option value="申请价格">申请价格</option>
+									<option value="其他">其他</option>
+								</select>
 							</td>
 						<tr>
 							<td class="td_tittle"><span>*</span>内容：</td>

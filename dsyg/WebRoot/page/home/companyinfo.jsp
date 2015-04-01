@@ -169,7 +169,7 @@
 									电邮方式									</td>
 								<td class="cap_tab3">
 									<br>									</td>
-								<td class="cap_tab2">Mail：---@---.com<br /></td>
+								<td class="cap_tab2">Mail：sales@shdsyg.com<br /></td>
 							</tr>
 						</tbody>
 					</table>
@@ -223,7 +223,7 @@
 									电邮方式									</td>
 								<td class="cap_tab3">
 									<br>									</td>
-								<td class="cap_tab2">Mail：---@---.com<br /></td>
+								<td class="cap_tab2">Mail：sales@shdsyg.com<br /></td>
 							</tr>
 						</tbody>
 					</table>
@@ -270,14 +270,14 @@
 									联系方式									</td>
 								<td class="cap_tab3">
 									<br>									</td>
-								<td class="cap_tab2">电话：0755－61524301－0（总机）<br />传真：0755－61524300</td>
+								<td class="cap_tab2">电话：0755－61524201－0（总机）<br />传真：0755－61524200</td>
 							</tr>
 							<tr>
 								<td class="cap_tab1">
 									电邮方式									</td>
 								<td class="cap_tab3">
 									<br>									</td>
-								<td class="cap_tab2">Mail：---@---.com<br /></td>
+								<td class="cap_tab2">Mail：sales@shdsyg.com<br /></td>
 							</tr>
 						</tbody>
 					</table>
