@@ -89,7 +89,7 @@ function turn(id) {
 							<td>&nbsp;</td>
 							<td>品牌</td>
 							<td>产品类型</td>
-							<td>产品名称  (含各种规格信息)</td>
+							<td>产品名称  (点击名称查看详细规格)</td>
 							<!--
 							<td>产品规格</td>
 							<td>颜色</td>

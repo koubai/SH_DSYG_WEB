@@ -64,25 +64,39 @@
 					<img alt="董事长 " src="<%=request.getContextPath()%>/images/chief.jpg" height="209" width="621"> 
 				</p>
 				<p>
-&nbsp&nbsp&nbsp&nbsp做为一家著名品牌的专业代理商，背靠住友电工强大产品的综合优势。二十多年来，在中国经济强劲增长的背景下，东升盈港公司脚踏实地地稳步发展、前进着。
+				<span style=" font-family:微软雅黑; font-size:15px; color: #666666">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp做为一家著名品牌的专业代理商，背靠住友电工强大产品的综合优势。二十多年来，在中国经济强劲增长的背景下，东升盈港公司脚踏实地地稳步发展、前进着。
+				</span>
 				</p>
 				<p>
-2014年我们荣获《住友电工优秀海外代理商》荣誉和奖杯，这是对东升公司二十多年来努力的肯定，是对住友电工二十多年来支持、帮助的回报，更是对我们公司今后二十年、三十年的期待，我们将一如既往地努力工作，积极配合住友电工的市场发展策略，努力工作，锐意进取！
+				<span style=" font-family:微软雅黑; font-size:15px; color: #666666">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2014年我们荣获《住友电工优秀海外代理商》荣誉和奖杯，这是对东升公司二十多年来努力的肯定，是对住友电工二十多年来支持、帮助的回报，更是对我们公司今后二十年、三十年的期待，我们将一如既往地努力工作，积极配合住友电工的市场发展策略，努力工作，锐意进取！
+				</span>
 				</p>
 				<p>
-谢谢广大用户多年来的支持！
+				<span style=" font-family:微软雅黑; font-size:15px; color: #666666">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp谢谢广大用户多年来的支持！
+				</span>
 				</p>
 				<p>
-谢谢住友电工多年来的支持！
+				<span style=" font-family:微软雅黑; font-size:15px; color: #666666">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp谢谢住友电工多年来的支持！
+				</span>
 				</p>
 				<p>
-谢谢东升盈港全体员工多年来的努力！
+				<span style=" font-family:微软雅黑; font-size:15px; color: #666666">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp谢谢东升盈港全体员工多年来的努力！
+				</span>
 				</p>
 				<p>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp徐敏嘉
+				<span style=" font-family:微软雅黑; font-size:15px; color: #666666">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp徐敏嘉
+				</span>
 				</p>
 				<p>
-&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2015年3月31日
+				<span style=" font-family:微软雅黑; font-size:15px; color: #666666">
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp2015年3月31日
+				</span>
 				</p>
 				</div>
 			<div class="clear"></div>
