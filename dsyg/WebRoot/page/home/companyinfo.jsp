@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="/WEB-INF/c.tld" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -60,6 +60,7 @@
 				<p class="wire_content">
 					<img alt="经营理念" src="<%=request.getContextPath()%>/images/mimg1.jpg" height="226" width="639"> 
 				</p>
+				<!-- 
 				<div class="capital_heights">
 				</div>
 				<div class="capital_details">
@@ -87,6 +88,7 @@
 						</li>
 					</ul>
 				</div>
+				 -->
 				<!--
 				<div class="capital_details nostyle">
 					<ul>
@@ -117,14 +119,16 @@
 						</li>
 					</ul>
 				</div>
-				-->
 				<div class="capital_heights2">
 				</div>
+				-->
 				<p class="tabletit">
 					公司简介
 				</p>
 				<p class="basic_rules">
+					<h3>
 					20多年来東升盈港遵循住友的经营理念：万事入精，信用确实，不趋浮利。
+					</h3>
 				</p>
 			  <div class="cap_table">
 					<table class="ke-zeroborder" cellpadding="0" cellspacing="0" border="0" width="660">

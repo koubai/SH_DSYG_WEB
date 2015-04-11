@@ -60,7 +60,7 @@ function turn(id) {
 					<div class="search_result">
 						<a class="return fr" href="<c:url value="/search/showSearchAction.action"></c:url>">返回</a>					
 					</div>
-					点击产品名称查看详细信息（含规格信息）， 如未能找到产品请点击“咨询信息Q/A”
+					点击产品名称查看详细信息（含规格信息）， 如未能找到产品请点击“<a href="<c:url value="/home/showQaAction.action"></c:url>">咨询信息Q/A</a>”
 					<div class="page">
 						<span>第${page.startIndex + 1}页/共${page.totalPage==0?1:page.totalPage}页　共${page.totalCount}条记录</span>
 						<span>跳转到第<input class="num" id="pagenum1" type="text" maxlength="6" />页</span><a href="javascript:void(0);" onclick="turn('pagenum1');">跳转</a>　　
