@@ -50,7 +50,7 @@
 				<p class="news_tit"><s:property value="newsDetail.title"/></p>
 				<p class="wire_content">
 					<s:if test='newsDetail.pic01 != null && newsDetail.pic01 != ""'>
-						<img alt="" src="<s:property value="newsDetail.newsPicUrl"/><s:property value="newsDetail.pic01"/>" height="226" width="639"> 
+						<img alt="" src="<s:property value="newsDetail.newsPicUrl"/><s:property value="newsDetail.pic01"/>" height="226" > 
 					</s:if>
 				</p>
 				<div class="newscontent">
