@@ -273,10 +273,21 @@
 										<div class="line"></div>
 									</div>
 								</s:if>
-								<s:elseif test='goodsId == "03" || goodsId == "04" || goodsId == "05" || goodsId == "06"'>
+								<s:elseif test='goodsId == "03" || goodsId == "04" || goodsId == "05"'>
 									<div class="search3">
 										<h3>定制检索</h3>
 										<div><img src="<%=request.getContextPath()%>/images/img.png" /></div>
+									</div>
+								</s:elseif>
+								<s:elseif test='goodsId == "06"'>
+									<div class="search3">
+										<h3>定制检索</h3>
+										<div>
+										<a href="<%=request.getContextPath()%>/images/fpc1.jpg"/><img src="<%=request.getContextPath()%>/images/fpc1.jpg" height="300" /> 
+										<a href="<%=request.getContextPath()%>/images/fpc2.jpg"/><img src="<%=request.getContextPath()%>/images/fpc2.jpg" height="300" /> 
+										<a href="<%=request.getContextPath()%>/images/fpc3.jpg"/><img src="<%=request.getContextPath()%>/images/fpc3.jpg" height="300" /> 
+										<a href="<%=request.getContextPath()%>/images/fpc4.jpg"/><img src="<%=request.getContextPath()%>/images/fpc4.jpg" height="300" /> 
+										</div>
 									</div>
 								</s:elseif>
 								<s:else >
