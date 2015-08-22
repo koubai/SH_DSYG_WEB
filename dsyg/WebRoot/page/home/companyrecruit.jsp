@@ -30,7 +30,7 @@
 				<img src="<%=request.getContextPath()%>/images/company.jpg" alt="公司概要">
 			</div>
 			<div class="pro_adress">
-				<a href="#">首页 </a> &gt; <a href="#">公司概要</a> &gt; 招聘信息
+				<a href="<%=request.getContextPath()%>/">首页 </a> &gt; <a href="<%=request.getContextPath()%>/companyinfo.shtml">公司概要</a> &gt; 招聘信息
 			</div>
 		</div>
 		<div class="item_line">

@@ -37,7 +37,7 @@
 				<img src="<%=request.getContextPath()%>/images/news.jpg" alt="新闻">
 			</div>
 			<div class="pro_adress">
-				<a href="#">首页 </a> &gt; 新闻				
+				<a href="<%=request.getContextPath()%>/">首页 </a> &gt; <a href="<%=request.getContextPath()%>/companynews.shtml#">新闻				
 			</div>
 		</div>
 		<div class="item_line">
@@ -50,8 +50,8 @@
 				<p class="news_tit"><s:property value="newsDetail.title"/></p>
 				<p class="wire_content">
 					<s:if test='newsDetail.pic01 != null && newsDetail.pic01 != ""'>
-						<img alt="" src="<s:property value="newsDetail.newsPicUrl"/><s:property value="newsDetail.pic01"/>" height="226" > 
-					</s:if>
+					<a href="<s:property value="newsDetail.newsPicUrl"/><s:property value="newsDetail.pic01"/>"><img alt="" src="<s:property value="newsDetail.newsPicUrl"/><s:property value="newsDetail.pic01"/>" >
+</s:if>
 				</p>
 				<div class="newscontent">
 					<p>${newsDetail.data}</p>

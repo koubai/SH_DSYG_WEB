@@ -37,7 +37,7 @@
 				招聘信息
 			</div>
 			<div class="pro_adress">
-				<a href="#">首页 </a> &gt; <a href="#"> 招聘信息</a> &gt; 招聘信息明细
+				<a href="<%=request.getContextPath()%>/">首页 </a> &gt; <a href="<%=request.getContextPath()%>/companyinfo.shtml"> 招聘信息</a> &gt; 招聘信息明细
 			</div>
 		</div>
 		<div class="item_line">
