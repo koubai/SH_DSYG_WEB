@@ -209,6 +209,25 @@
 	</select>
 	<!-- searchProduct01List -->
 	
+	<select id="searchProduct01ByGoodsid" parameterClass="java.util.Map" resultMap="Product01Dto">
+		select B.* from ( 
+			SELECT T.fieldcode,T.nameno,MIN(T.id) AS id FROM tbproduct01 T where 1 = 1	
+			<isNotEmpty prepend="and" property="fieldcode">
+				T.fieldcode = #fieldcode#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="status">
+				T.status = #status#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="rank">
+				T.rank <![CDATA[<=]]> #rank#
+			</isNotEmpty>
+			GROUP BY T.fieldcode,T.nameno
+		) A, tbproduct01 B where 1 = 1 
+		and A.fieldcode = B.fieldcode 
+		and A.id = B.id 
+		order by A.id
+	</select>
+	
 	<select id="queryProduct01ByPage" parameterClass="java.util.Map" resultMap="Product01Dto">
 		select T.* from tbproduct01 T where 1 = 1
 		<isNotEmpty prepend="and" property="fieldcode">

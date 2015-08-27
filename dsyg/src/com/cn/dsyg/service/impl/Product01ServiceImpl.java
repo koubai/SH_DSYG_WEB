@@ -29,6 +29,26 @@ public class Product01ServiceImpl implements Product01Service {
 	private Dict01Dao dict01Dao;
 	
 	@Override
+	public List<Product01Dto> searchProduct01ByGoodsid(String fieldcode,
+			String status, String rank) {
+		List<Product01Dto> list = product01Dao.searchProduct01ByGoodsid(fieldcode, status, rank);
+
+		List<Product01Dto> list2 = new ArrayList<Product01Dto>();
+		if(list != null && list.size() > 0) {
+			//PDF文件URL
+			String pdfurl = PropertiesConfig.getPropertiesValueByKey(Constants.PROPERTIES_PDF_URL);
+			for(Product01Dto tmp : list) {
+				//逐个查询数据
+				Product01Dto p = product01Dao.queryProduct01ByID(tmp.getId(), "");
+				//添加PDF文件URL
+				p.setPdfurl(pdfurl);
+				list2.add(p);
+			}
+		}	
+		return list2;
+	}
+	
+	@Override
 	public Page searchProduct01List(String fieldcode, String item01, String item02,
 			String item03, String item04, String item05, String item06, String ulCode,
 			String status, String keyword, String rank, Page page, int startIndex) {

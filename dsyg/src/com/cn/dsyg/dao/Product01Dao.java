@@ -15,6 +15,15 @@ import com.cn.dsyg.dto.Product01TmpDto;
 public interface Product01Dao {
 	
 	/**
+	 * 根据产品类型查询所有产品
+	 * @param fieldcode
+	 * @param status
+	 * @param rank
+	 * @return
+	 */
+	public List<Product01Dto> searchProduct01ByGoodsid(String fieldcode, String status, String rank);
+	
+	/**
 	 * 检索产品汇总
 	 * @param fieldcode
 	 * @param item01

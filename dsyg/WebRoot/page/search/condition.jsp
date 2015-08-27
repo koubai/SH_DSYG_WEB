@@ -273,25 +273,14 @@
 										<div class="line"></div>
 									</div>
 								</s:if>
-								<s:elseif test='goodsId == "03" || goodsId == "04" || goodsId == "05"'>
+								<s:elseif test='goodsId == "03" || goodsId == "04" || goodsId == "05" || goodsId == "06"'>
 									<div class="search3">
 										<h3>定制检索</h3>
 										<div><img src="<%=request.getContextPath()%>/images/img.png" /></div>
 									</div>
 								</s:elseif>
-								<s:elseif test='goodsId == "06"'>
-									<div class="search3">
-										<h3>定制检索</h3>
-										<div>
-										<a href="<%=request.getContextPath()%>/images/fpc1.jpg"/><img src="<%=request.getContextPath()%>/images/fpc1.jpg" height="300" /> 
-										<a href="<%=request.getContextPath()%>/images/fpc2.jpg"/><img src="<%=request.getContextPath()%>/images/fpc2.jpg" height="300" /> 
-										<a href="<%=request.getContextPath()%>/images/fpc3.jpg"/><img src="<%=request.getContextPath()%>/images/fpc3.jpg" height="300" /> 
-										<a href="<%=request.getContextPath()%>/images/fpc4.jpg"/><img src="<%=request.getContextPath()%>/images/fpc4.jpg" height="300" /> 
-										</div>
-									</div>
-								</s:elseif>
 								<s:else >
-								</s:else>
+								</s:else>								
 							</s:if>
 						</div>
 					</div>
@@ -312,10 +301,116 @@
 					</div>
 				</div>	
 				<div class="buttons"><a href="#">
-						<input type="button" class="search_btn" value="检索" onclick="searchSummary();" /></a>
-						<input type="button" class="reset_btn" value="重置" onclick="btnreset();" />
-				  </div>
+					<input type="button" class="search_btn" value="检索" onclick="searchSummary();" /></a>
+					<input type="button" class="reset_btn" value="重置" onclick="btnreset();" />
+				</div>
 			</div>
+			<s:if test="product01List != null && product01List.size() > 0">
+			<table class="product_tab" width="100%" border="1" cellspacing="5" cellpadding="10">
+				<tr class="tab_tittle">
+					<td>&nbsp;</td>
+					<td>品牌</td>
+					<td>产品类型</td>
+					<td>产品名称</td>
+					<!--
+					<td>颜色</td>
+					-->
+					<s:if test='goodsId == "01" || goodsId == "02"'>
+						<s:if test='featureList.size() > 0'>
+							<s:iterator value="featureList" id="featureList" status="st1">
+								<td><s:property value="name"/></td>
+							</s:iterator>
+						</s:if>
+					</s:if>
+				</tr>
+				<s:iterator value="product01List" id="product01List" status="st2">
+					<s:if test="#st2.odd==true">
+						<tr>
+					</s:if>
+					<s:else>
+						<tr class="bg2">
+					</s:else>
+						<td><s:property value="#st2.index + 1"/></td>
+						<td><s:property value="item08"/></td>
+						<td>
+							<s:iterator id="goodsList" value="goodsList" status="st3">
+								<s:if test="%{goodsList[#st3.index].code == product01List[#st2.index].fieldcode}">
+									<s:property value="fieldname"/>
+								</s:if>
+							</s:iterator>
+						</td>
+						<td>
+							<!--
+							<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target="parent"><s:property value="nameno"/></a>
+							-->
+							<a href="<s:property value="pdfurl"/><s:property value="pdfpath"/>" target="_blank"><s:property value="nameno"/></a>
+							<!--<a type="application/pdf" href="<c:url value="/home/showPdfAction.action"><c:param name="pdfFileName" value="${pdfpath}"></c:param></c:url>" target=""><s:property value="nameno"/></a>-->
+						</td>
+						<!--
+						<td>
+							<s:iterator value="colorList" id="colorList" status="st1">
+								<s:if test="%{colorList[#st1.index].code == product01List[#st2.index].color1}">
+									<s:property value="fieldname"/>
+								</s:if>
+							</s:iterator>
+						</td>
+						-->
+						<s:if test='goodsId == "01"'>
+							<s:iterator value="featureList" id="featureList" status="st4">
+								<s:if test='#st4.index == 3 && featureList[#st4.index].codename == "code01_item04" && (item04 == null || item04 == "")'>
+									<td>无</td>
+								</s:if>
+								<s:else>
+									<s:iterator value="dictList" id="dictList" status="st5">
+										<s:if test="%{dictList[#st5.index].code == item01 && #st4.index == 0}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item02 && #st4.index == 1}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item03 && #st4.index == 2}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+									</s:iterator>
+								</s:else>
+							</s:iterator>
+						</s:if>
+						<s:elseif test='goodsId == "02"'>
+							<s:iterator value="featureList" id="featureList" status="st4">
+								<s:if test='#st4.index == 5 && featureList[#st4.index].codename == "code02_item06" && (item06 == null || item06 == "")'>
+									<td>无</td>
+								</s:if>
+								<s:else>
+									<s:iterator value="dictList" id="dictList" status="st5">
+										<s:if test="%{dictList[#st5.index].code == item01 && #st4.index == 0}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item02 && #st4.index == 1}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item03 && #st4.index == 2}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item04 && #st4.index == 3}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item05 && #st4.index == 4}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+										<s:if test="%{dictList[#st5.index].code == item06 && #st4.index == 5}">
+											<td><s:property value="fieldname"/></td>
+										</s:if>
+									</s:iterator>
+								</s:else>
+							</s:iterator>
+						</s:elseif>
+					</tr>
+				</s:iterator>
+			</table>
+			</s:if>		
 		</div>
 	</div>
 </div>

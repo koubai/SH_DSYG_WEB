@@ -19,6 +19,18 @@ import com.cn.dsyg.dto.Product01TmpDto;
 public class Product01DaoImpl extends BaseDao implements Product01Dao {
 	
 	@Override
+	public List<Product01Dto> searchProduct01ByGoodsid(String fieldcode,
+			String status, String rank) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("fieldcode", fieldcode);
+		paramMap.put("status", status);
+		paramMap.put("rank", rank);
+		@SuppressWarnings("unchecked")
+		List<Product01Dto> list = getSqlMapClientTemplate().queryForList("searchProduct01ByGoodsid", paramMap);
+		return list;
+	}
+	
+	@Override
 	public List<Product01SummaryDto> searchProduct01Summary(String fieldcode, String item01,
 			String item02, String item03, String item04, String item05, String item06, String ulCode,
 			String status, String keyword, String rank) {

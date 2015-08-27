@@ -135,9 +135,11 @@ public class SearchAction extends BaseAction {
 			if(Constants.DICT_GOODS_TYPE_CODE_01.equals(goodsId)) {
 				//电线
 				featureList = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_01, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+				product01List = product01Service.searchProduct01ByGoodsid(goodsId, "" + Constants.STATUS_NORMAL, "" + Constants.ROLE_RANK_OPERATOR);
 			} else if(Constants.DICT_GOODS_TYPE_CODE_02.equals(goodsId)) {
 				//套管
 				featureList = dict01Service.queryFeatureByFieldcode(Constants.DICT_GOODS_TYPE_CODE_02, PropertiesConfig.getPropertiesValueByKey(Constants.SYSTEM_LANGUAGE));
+				product01List = product01Service.searchProduct01ByGoodsid(goodsId, "" + Constants.STATUS_NORMAL, "" + Constants.ROLE_RANK_OPERATOR);
 			} else {
 				featureList = new ArrayList<FeatureDto>();
 			}

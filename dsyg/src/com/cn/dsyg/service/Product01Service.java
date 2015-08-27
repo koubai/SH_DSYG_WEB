@@ -77,6 +77,15 @@ public interface Product01Service {
 			String keyword, String rank, Page page, int startIndex);
 	
 	/**
+	 * 根据产品类型查询所有产品
+	 * @param fieldcode
+	 * @param status
+	 * @param rank
+	 * @return
+	 */
+	public List<Product01Dto> searchProduct01ByGoodsid(String fieldcode, String status, String rank);
+	
+	/**
 	 * 翻页查询数据
 	 * @param fieldcode
 	 * @param keyword 关键字
