@@ -167,9 +167,9 @@
 							<td width="120">品牌</td>
 							<td width="130">产品名称</td>
 							<td width="80">产品分类</td>
-							<td width="70">数量</td>
+							<td width="70">库存数量</td>
 							<td width="70">定单单位</td>
-							<td width="70">送货期</td>
+							<td width="70">预计交货期</td>
 							<td width="140">创建日期</td>
 							<td width="60">状况</td>
 						</tr>

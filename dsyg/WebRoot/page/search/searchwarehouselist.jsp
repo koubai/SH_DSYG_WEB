@@ -153,10 +153,10 @@ function search() {
 							<td width="160">产品名称</td>
 							<td width="120">产品规格</td>
 							<td width="60">颜色</td>
-							<td width="60">数量</td>
+							<td width="60">库存数量</td>
 							<td width="60">单位</td>
 							<!-- <td width="70">产地</td> -->
-							<td width="70">发货天数</td>
+							<td width="70">预计交货期</td>
 							<td width="60"></td>
 						</tr>
 						<s:iterator value="searchWarehouseList" id="searchWarehouseList" status="st2">
