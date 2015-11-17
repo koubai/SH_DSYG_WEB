@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="../head_web.jsp" flush="true" />
+<jsp:include page="../head_home.jsp" flush="true" />
 <div id="main" class="banner_bg">
 	<div class="main">
 		<div class="content">
@@ -38,7 +38,11 @@
 				<div class="products">
 					<table width="80%" border="0" cellpadding="0" cellspacing="10">
 `						<tr><s:iterator id="homeGoodsList" value="homeGoodsList" status="st1"><s:if test="#st1.index < 3">
-							<td width="33.3%"><a href="<c:url value="/search/searchConditionAction.action"><c:param name="goodsId" value="${code}"></c:param></c:url>">
+							<td width="33.3%">
+								<a href="searchcondition_g<s:property value="code"/>.shtml">
+								<!--
+								<a href="<c:url value="/search/searchConditionAction.action"><c:param name="goodsId" value="${code}"></c:param></c:url>">
+								-->
 								<div class="product">
 									<p><s:property value="fieldname"/></p>
 									<p class="arial"><s:property value="mean"/></p>
@@ -46,7 +50,11 @@
 							</td>
 						</s:if></s:iterator></tr>
 						<tr><s:iterator id="homeGoodsList" value="homeGoodsList" status="st1"><s:if test="#st1.index >= 3">
-							<td width="33.3%"><a href="<c:url value="/search/searchConditionAction.action"><c:param name="goodsId" value="${code}"></c:param></c:url>">
+							<td width="33.3%">
+								<a href="searchcondition_g<s:property value="code"/>.shtml">
+								<!--
+								<a href="<c:url value="/search/searchConditionAction.action"><c:param name="goodsId" value="${code}"></c:param></c:url>">
+								-->
 								<div class="product">
 									<p><s:property value="fieldname"/></p>
 									<p class="arial"><s:property value="mean"/></p>
@@ -68,7 +76,12 @@
 						<div class="news_c_c">
 							<ul>
 								<s:iterator id="homeNewsList" value="homeNewsList" status="st">
-									<li><span><s:property value="newsdate"/></span><a target="_blank" href="<c:url value="/home/showNewsDetailAction.action"><c:param name="newsDetailId" value="${id}"></c:param></c:url>"><s:property value="title"/></a></li>
+									<li><span><s:property value="newsdate"/></span>
+										<!--
+										<a target="_blank" href="<c:url value="/home/showNewsDetailAction.action"><c:param name="newsDetailId" value="${id}"></c:param></c:url>"><s:property value="title"/></a>
+										-->
+										<a target="_blank" href="newsdetail_id<s:property value="id"/>.shtml"><s:property value="title"/></a>
+									</li>
 								</s:iterator>
 							</ul>
 						</div>
