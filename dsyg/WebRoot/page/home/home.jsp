@@ -28,7 +28,7 @@
 </script>
 </head>
 <body>
-<jsp:include page="../head_home.jsp" flush="true" />
+<jsp:include page="../head_web.jsp" flush="true" />
 <div id="main" class="banner_bg">
 	<div class="main">
 		<div class="content">
