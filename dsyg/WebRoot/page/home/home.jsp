@@ -16,10 +16,10 @@
 <script type="text/javascript">
 	$(function(){
 		$('#newsSlider').loopedSlider({
-			autoStart: 2000
+			autoStart: 5000
 		});
 		$('.validate_Slider').loopedSlider({
-			autoStart: 2000
+			autoStart: 5000
 		});
 		$("#enter_lab").click(function(){
 			window.location=$(this).find("a").attr("href"); return false;
