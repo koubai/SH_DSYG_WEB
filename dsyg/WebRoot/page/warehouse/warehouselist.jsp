@@ -191,7 +191,7 @@
 										</s:if>
 									</s:iterator>
 								</td>
-								<td><s:property value="item01" /></td>
+								<td align="right"><s:property value="item01" /></td>
 								<td>
 									<s:iterator value="unitList" id="unitList" status="st2">
 										<s:if test="%{unitList[#st2.index].code == warehouseManageList[#st1.index].res01}">
