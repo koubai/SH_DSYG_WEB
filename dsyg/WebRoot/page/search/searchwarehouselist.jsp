@@ -205,7 +205,8 @@ function search() {
 								<td>
 									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
 									<!--<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>-->
-									<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
+									<!--<s:if test='searchWarehouseList[#st2.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>-->
+									<s:if test='searchWarehouseList[#st2.index].item01 < 0'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
 									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
 								</td>
 							</tr>

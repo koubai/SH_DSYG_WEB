@@ -203,7 +203,8 @@
 								<td><s:property value="createdate" /></td>
 								<td><s:if test='warehouseManageList[#st1.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
 									<!--<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>-->
-									<s:if test='warehouseManageList[#st1.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
+									<!--<s:if test='warehouseManageList[#st1.index].res04 == "1"'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>-->
+									<s:if test='warehouseManageList[#st1.index].item01 < 0'><img src="<%=request.getContextPath()%>/images/futures.png" /></s:if>
 									<s:else><img src="<%=request.getContextPath()%>/images/instock.png" /></s:else>
 								</td>
 							</tr>
