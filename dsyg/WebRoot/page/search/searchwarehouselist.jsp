@@ -156,7 +156,7 @@ function search() {
 							<td width="60">差数</td>
 							<td width="60">单位</td>
 							<!-- <td width="70">产地</td> -->
-							<td width="70">预计交货期</td>
+							<!-- <td width="70">预计交货期</td> -->
 							<td width="60"></td>
 						</tr>
 						<s:iterator value="searchWarehouseList" id="searchWarehouseList" status="st2">
@@ -200,8 +200,8 @@ function search() {
 										</s:if>
 									</s:iterator>
 								</td>
-								-->
 								<td><s:property value="item03"/></td>
+								-->
 								<td>
 									<s:if test='searchWarehouseList[#st2.index].res03 == "1"'><img src="<%=request.getContextPath()%>/images/luan.png" /></s:if>
 									<!--<s:else><img src="<%=request.getContextPath()%>/images/zheng.png" /></s:else>-->
